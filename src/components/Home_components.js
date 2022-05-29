@@ -139,7 +139,7 @@ function Bookingsteps() {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          order={{ xs: 2, sm: 2 }}
+          order={{ xs: 2, sm: 2, lg: 1, md: 1 }}
         >
           <Box
             component="img"
@@ -150,7 +150,14 @@ function Bookingsteps() {
             }}
           />
         </Grid>
-        <Grid item lg={7} xs={12} sm={12} md={7} order={{ xs: 1, sm: 1 }}>
+        <Grid
+          item
+          lg={7}
+          xs={12}
+          sm={12}
+          md={7}
+          order={{ xs: 1, sm: 1, lg: 2, md: 2 }}
+        >
           <Box
             sx={{
               marginTop: { lg: 5, xs: 6, md: 5, sm: 4 },
@@ -358,7 +365,7 @@ function Vehicleowner() {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          order={{ xs: 2, sm: 2 }}
+          order={{ xs: 2, sm: 2, lg: 1, md: 1 }}
         >
           <Box
             component="img"
@@ -371,7 +378,14 @@ function Vehicleowner() {
             }}
           />
         </Grid>
-        <Grid item lg={7} xs={12} sm={12} md={6} order={{ xs: 1, sm: 1 }}>
+        <Grid
+          item
+          lg={7}
+          xs={12}
+          sm={12}
+          md={6}
+          order={{ xs: 1, sm: 1, lg: 2, md: 2 }}
+        >
           <Box
             sx={{
               marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
