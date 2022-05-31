@@ -27,16 +27,15 @@ function Delivererbooking() {
         container
         direction={"row"}
         sx={{
-          background:
-            "linear-gradient(180deg, #0074B7 0%, rgba(0, 59, 115, 0) 100%)",
-          height: { lg: 620, xs: 820, md: 500, sm: 800 },
+          background: "#E0EAFF",
+          height: { lg: 800, xs: 820, md: 500, sm: 800 },
         }}
       >
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 20, xs: 4, md: 15, sm: 6 },
-              marginLeft: { lg: 14, xs: 2, md: 5, sm: 2 },
+              marginTop: { lg: 35, xs: 8, md: 15, sm: 18 },
+              marginLeft: { lg: 22, xs: 2, md: 5, sm: 2 },
               marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
             }}
           >
@@ -44,8 +43,7 @@ function Delivererbooking() {
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
-                fontSize: { lg: 40, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 55, xs: 28, md: 30, sm: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -54,9 +52,9 @@ function Delivererbooking() {
                 },
               }}
             >
-              <span style={{ color: "#003B73" }}> Delivery </span>Booking
+              <b>Delivery</b> Booking
               <br />
-              In A <span style={{ color: "#003B73" }}>Easy Way</span>
+              In A <b>Easy Way</b>
             </Typography>
 
             <Typography
@@ -76,12 +74,10 @@ function Delivererbooking() {
             <Button
               variant="contained"
               sx={{
-                backgroundColor: { xs: " #32303a" },
-                borderRadius: 3,
-                marginTop: { lg: 4, xs: 6, md: 3, sm: 6 },
+                borderRadius: 1,
+                marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
                 width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 45, md: 35 },
-                "&:hover": { backgroundColor: "#32303a" },
+                height: { lg: 50, md: 35 },
               }}
             >
               Book Now
@@ -104,8 +100,8 @@ function Delivererbooking() {
             src={deliverer}
             sx={{
               width: { xs: "80%", sm: "60%", md: "80%", lg: "65%" },
-              /**marginTop: { xs: 0, md: 2, lg: 0, sm: 0 },*/
-              marginBottom: { xs: 10, lg: 0, md: 0, sm: 3 },
+              marginTop: { xs: 0, md: 2, lg: 10, sm: 0 },
+              //marginBottom: { xs: 10, lg: 0, md: 0, sm: 3 },
             }}
           />
         </Grid>
