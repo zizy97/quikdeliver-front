@@ -13,6 +13,8 @@ import Drawercomp from "./NavbarDrawer";
 import logo from "../images/logo.png";
 
 const PAGES = ["Home", "About", "Create Booking"];
+
+//===============Nav bar=========================================
 const Navbar = () => {
   const [value, setValue] = useState(0);
   const theme = useTheme();
@@ -25,19 +27,18 @@ const Navbar = () => {
       <AppBar
         elevation={0}
         sx={{
-          background: "#E0EAFF",
-          margin: "0%",
-          padding: "0%",
+          background: "#D4DCF7",
         }}
       >
-        <Toolbar sx={{ marginTop: { lg: 3 } }}>
+        <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>
           <Box
             component="img"
             alt="Your logo."
             src={logo}
             sx={{
-              marginLeft: 8,
+              marginLeft: { lg: 5, md: 2 },
               display: { xs: "none", sm: "none", lg: "block", md: "block" },
+              width: { lg: 80, md: 70 },
             }}
           />
 
@@ -61,9 +62,8 @@ const Navbar = () => {
                     key={index}
                     label={page}
                     sx={{
-                      fontSize: { lg: 20 },
+                      fontSize: { lg: 18, md: 15 },
                       color: "#06173B",
-                      fontFamily: "Roboto",
                     }}
                   />
                 ))}
@@ -72,9 +72,8 @@ const Navbar = () => {
                 sx={{
                   marginLeft: "auto",
                   width: { lg: 120 },
-                  height: 45,
+                  height: { lg: 45 },
                   backgroundColor: "#FFD481",
-                  "&:hover": { backgroundColor: "#FFD481" },
                 }}
                 variant="contained"
               >
@@ -84,7 +83,7 @@ const Navbar = () => {
                 sx={{
                   margin: "10px",
                   width: { lg: 120 },
-                  height: 45,
+                  height: { lg: 45 },
                 }}
                 variant="contained"
               >

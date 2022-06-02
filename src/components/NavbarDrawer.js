@@ -8,6 +8,7 @@ import {
   IconButton,
 } from "@mui/material"; //==============Components==================================
 import MenuIcon from "@mui/icons-material/Menu"; //============menuicon=============
+//import logo from "../images/logo.png"; //===================logo image===============
 
 //===============Drawer Component starting==========================================
 //===============Drawer Component starting==========================================
@@ -18,7 +19,7 @@ function Drawercomp() {
     <div>
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List>
-          <ListItemText>Quik</ListItemText>
+          <ListItemText></ListItemText>
           {PAGES.map((page, index) => (
             <ListItemButton onClick={() => setOpenDrawer(false)} key={index}>
               <ListItemIcon>
@@ -30,12 +31,15 @@ function Drawercomp() {
       </Drawer>
       <IconButton
         sx={{
-          color: "inherit",
-          paddingTop: 2,
+          color: "primary",
+          marginTop: 2,
         }}
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <MenuIcon fontSize="large" />
+        <MenuIcon
+          fontSize="large"
+          sx={{ marginLeft: { xs: "auto", sm: "auto" } }}
+        />
       </IconButton>
     </div>
   );

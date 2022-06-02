@@ -8,10 +8,10 @@ import {
   Box,
   Button,
   ListItem,
+  Stack,
+  Badge,
 } from "@mui/material"; //==============Components==================================
-import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
-import FileUploadRoundedIcon from "@mui/icons-material/FileUploadRounded";
-import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
+import CircleIcon from "@mui/icons-material/Circle";
 import deliverer from "../images/deliverer.png"; //========image====================
 import driver from "../images/driver.png"; //========image========================
 import deliverstep from "../images/deliverstep.png"; //========image==============
@@ -19,7 +19,11 @@ import vehicleowner from "../images/vehicleowner.png";
 
 //==============Customer Section Starting============================================
 //==============Customer Section Starting============================================
-
+const shapeStyles = { bgcolor: "#FFD481", width: 40, height: 40 };
+const shapeCircleStyles = { borderRadius: "50%" };
+const circle = (
+  <Box component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} />
+);
 function Delivererbooking() {
   return (
     <div>
@@ -27,23 +31,22 @@ function Delivererbooking() {
         container
         direction={"row"}
         sx={{
-          background: "#E0EAFF",
-          height: { lg: 800, xs: 820, md: 500, sm: 800 },
+          background: "#D4DCF7",
         }}
       >
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 35, xs: 8, md: 15, sm: 18 },
-              marginLeft: { lg: 22, xs: 2, md: 5, sm: 2 },
-              marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
+              marginTop: { lg: 35, md: 22, sm: 18, xs: 8 },
+              marginLeft: { lg: 16, md: 8, xs: 2, sm: 2 },
+              marginRight: { lg: 0, md: 0, xs: 2, sm: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontSize: { lg: 55, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 55, xs: 28, md: 35, sm: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -71,17 +74,37 @@ function Delivererbooking() {
               through us.We will bring it to your door step quickly and safely
               from Quik.
             </Typography>
+          </Box>
+          <Box sx={{ mt: 5, textAlign: "center" }}>
             <Button
               variant="contained"
               sx={{
                 borderRadius: 1,
                 marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
-                width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 50, md: 35 },
+                width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
+                height: { lg: 55, md: 35 },
+                backgroundColor: "#1964FF",
               }}
             >
               Book Now
             </Button>
+            <Stack
+              spacing={15}
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              sx={{ mt: 8 }}
+            >
+              <Badge color="secondary" overlap="circular" badgeContent="+24">
+                {circle}
+              </Badge>
+              <Badge color="secondary" overlap="circular" badgeContent="+1">
+                {circle}
+              </Badge>
+              <Badge color="secondary" overlap="circular" badgeContent="+51">
+                {circle}
+              </Badge>
+            </Stack>
           </Box>
         </Grid>
         <Grid
@@ -101,7 +124,6 @@ function Delivererbooking() {
             sx={{
               width: { xs: "80%", sm: "60%", md: "80%", lg: "65%" },
               marginTop: { xs: 0, md: 2, lg: 10, sm: 0 },
-              //marginBottom: { xs: 10, lg: 0, md: 0, sm: 3 },
             }}
           />
         </Grid>
@@ -122,8 +144,7 @@ function Bookingsteps() {
         container
         direction={"row"}
         sx={{
-          background: "white",
-          height: { lg: 500, xs: 850, md: 420, sm: 850 },
+          background: "#F8F7E9",
         }}
       >
         <Grid
@@ -165,7 +186,6 @@ function Bookingsteps() {
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
                 fontSize: { lg: 40, xs: 28, md: 30, sm: 25 },
                 textAlign: {
                   lg: "left",
@@ -175,9 +195,9 @@ function Bookingsteps() {
                 },
               }}
             >
-              <span style={{ color: "#003B73" }}> Three Steps </span>Away To
+              <b> Three Steps </b>Away To
               <br />
-              Place <span style={{ color: "#003B73" }}>A Request</span>
+              Place A Request
             </Typography>
             <Typography
               variant="body1"
@@ -194,9 +214,11 @@ function Bookingsteps() {
             <List>
               <ListItem>
                 <ListItemIcon>
-                  <AddLocationAltIcon
+                  <CircleIcon
+                    stroke="#FFA301"
+                    strokeWidth={4}
                     sx={{
-                      color: "#003B73",
+                      color: "#E9F0F8",
                     }}
                   />
                 </ListItemIcon>
@@ -204,9 +226,11 @@ function Bookingsteps() {
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <FileUploadRoundedIcon
+                  <CircleIcon
+                    stroke="#FFA301"
+                    strokeWidth={4}
                     sx={{
-                      color: "#003B73",
+                      color: "#E9F0F8",
                     }}
                   />
                 </ListItemIcon>
@@ -217,9 +241,11 @@ function Bookingsteps() {
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <CheckRoundedIcon
+                  <CircleIcon
+                    stroke="#FFA301"
+                    strokeWidth={4}
                     sx={{
-                      color: "#003B73",
+                      color: "#E9F0F8",
                     }}
                   />
                 </ListItemIcon>
@@ -246,7 +272,7 @@ function Driver() {
         container
         direction={"row"}
         sx={{
-          background: "#0074B7",
+          background: "#7594D3",
           height: { lg: 480, xs: 760, md: 460 },
         }}
       >
@@ -254,7 +280,7 @@ function Driver() {
           <Box
             sx={{
               marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
-              marginLeft: { lg: 14, xs: 2, md: 10, sm: 2 },
+              marginLeft: { lg: 16, xs: 2, md: 10, sm: 2 },
               marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
             }}
           >
@@ -262,7 +288,6 @@ function Driver() {
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
                 fontSize: { lg: 42, xs: 28, md: 30, sm: 25 },
                 textAlign: {
                   lg: "left",
@@ -272,12 +297,7 @@ function Driver() {
                 },
               }}
             >
-              Join
-              <span style={{ color: "white" }}>
-                {" "}
-                As A Deliverer <br /> To Earn
-              </span>{" "}
-              Money
+              Join As A Deliverer <br /> To<b> Earn Money</b>
             </Typography>
 
             <Typography
@@ -295,15 +315,16 @@ function Driver() {
               through us.We will bring it to your door step quickly and safely
               from Quik.
             </Typography>
+          </Box>
+          <Box textAlign="center">
             <Button
               variant="contained"
               sx={{
-                backgroundColor: { xs: "#32303a" },
-                borderRadius: 3,
-                marginTop: { lg: 4, xs: 6, md: 3, sm: 6 },
-                width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 45, md: 35 },
-                "&:hover": { backgroundColor: "#32303a" },
+                borderRadius: 1,
+                marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
+                height: { lg: 55, md: 35 },
+                backgroundColor: "#1964FF",
               }}
             >
               Join Now
@@ -348,7 +369,7 @@ function Vehicleowner() {
         container
         direction={"row"}
         sx={{
-          background: "#BFD7ED",
+          background: "#F8F7E9",
           height: { lg: 500, xs: 850, md: 420 },
         }}
       >
@@ -393,7 +414,6 @@ function Vehicleowner() {
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
                 fontSize: { lg: 42, xs: 28, md: 30, sm: 25 },
                 textAlign: {
                   lg: "left",
@@ -403,9 +423,13 @@ function Vehicleowner() {
                 },
               }}
             >
-              <span style={{ color: "#003B73" }}> Register </span>With Your
-              <br />
-              Vehicle <span style={{ color: "#003B73" }}>To Do Delivery</span>
+              <b>
+                {" "}
+                Register With Your
+                <br />
+                Vehicle To
+              </b>{" "}
+              Do Delivery
             </Typography>
 
             <Typography
@@ -425,15 +449,16 @@ function Vehicleowner() {
               door step quickly and safely from Quik. step quickly and safely
               from Quik.
             </Typography>
+          </Box>
+          <Box textAlign="center">
             <Button
               variant="contained"
               sx={{
-                backgroundColor: { xs: " #32303a" },
-                borderRadius: 3,
-                marginTop: { lg: 4, xs: 6, md: 3, sm: 6 },
-                width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 45, md: 35 },
-                "&:hover": { backgroundColor: "#32303a" },
+                borderRadius: 1,
+                marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
+                height: { lg: 55, md: 35 },
+                backgroundColor: "#1964FF",
               }}
             >
               Join Now
