@@ -37,16 +37,16 @@ function Delivererbooking() {
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 35, md: 22, sm: 18, xs: 8 },
-              marginLeft: { lg: 16, md: 8, xs: 2, sm: 2 },
-              marginRight: { lg: 0, md: 0, xs: 2, sm: 2 },
+              marginTop: { lg: 30 },
+              marginLeft: { lg: 14 },
+              marginRight: { lg: 0 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontSize: { lg: 55, xs: 28, md: 35, sm: 25 },
+                fontSize: { lg: 53 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -84,6 +84,7 @@ function Delivererbooking() {
                 width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
                 height: { lg: 55, md: 35 },
                 backgroundColor: "#1964FF",
+                color: "#FCF370",
               }}
             >
               Book Now
@@ -122,8 +123,8 @@ function Delivererbooking() {
             alt="Your logo."
             src={deliverer}
             sx={{
-              width: { xs: "80%", sm: "60%", md: "80%", lg: "65%" },
-              marginTop: { xs: 0, md: 2, lg: 10, sm: 0 },
+              width: { lg: "65%" },
+              marginTop: { lg: 10 },
             }}
           />
         </Grid>
@@ -177,7 +178,7 @@ function Bookingsteps() {
         >
           <Box
             sx={{
-              marginTop: { lg: 5, xs: 6, md: 5, sm: 4 },
+              marginTop: { lg: 8, xs: 6, md: 5, sm: 4 },
               marginLeft: { lg: 0, xs: 2, md: 0, sm: 2 },
               marginRight: { lg: 0, xs: 2, md: 1, sm: 2 },
             }}
@@ -204,7 +205,7 @@ function Bookingsteps() {
               sx={{
                 fontSize: { lg: 18 },
                 textAlign: "justify",
-                marginRight: { xs: 0, md: 2, lg: 15, sm: 0 },
+                marginRight: { xs: 0, md: 2, lg: 10, sm: 0 },
               }}
             >
               Now we have made it easy to order from different shops at a time.
@@ -280,7 +281,7 @@ function Driver() {
           <Box
             sx={{
               marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
-              marginLeft: { lg: 16, xs: 2, md: 10, sm: 2 },
+              marginLeft: { lg: 14, xs: 2, md: 10, sm: 2 },
               marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
             }}
           >
@@ -325,6 +326,7 @@ function Driver() {
                 width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
                 height: { lg: 55, md: 35 },
                 backgroundColor: "#1964FF",
+                color: "#FCF370",
               }}
             >
               Join Now
@@ -370,7 +372,6 @@ function Vehicleowner() {
         direction={"row"}
         sx={{
           background: "#F8F7E9",
-          height: { lg: 500, xs: 850, md: 420 },
         }}
       >
         <Grid
@@ -390,8 +391,8 @@ function Vehicleowner() {
             src={vehicleowner}
             sx={{
               width: { xs: "80%", sm: 400, md: "70%", lg: "64%" },
-              marginTop: { xs: 3, md: 0, lg: 2, sm: 0 },
-              marginBottom: { xs: 0, lg: 0, md: 0, sm: 3 },
+              marginTop: { lg: 2 },
+              marginBottom: {},
             }}
           />
         </Grid>
@@ -405,9 +406,9 @@ function Vehicleowner() {
         >
           <Box
             sx={{
-              marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
-              marginLeft: { lg: 5, xs: 2, md: 1, sm: 2 },
-              marginRight: { lg: 5, xs: 2, md: 0, sm: 2 },
+              marginTop: { lg: 8 },
+              marginLeft: { lg: 5 },
+              marginRight: { lg: 0 },
             }}
           >
             <Typography
@@ -438,7 +439,7 @@ function Vehicleowner() {
                 fontSize: { lg: 18 },
                 fontWeight: { lg: 300 },
                 textAlign: "justify",
-                marginRight: { lg: 8, md: 5 },
+                marginRight: { lg: 10, md: 5 },
               }}
             >
               Now we have made it easy to order from different shops at a time.
@@ -459,6 +460,7 @@ function Vehicleowner() {
                 width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
                 height: { lg: 55, md: 35 },
                 backgroundColor: "#1964FF",
+                color: "#FCF370",
               }}
             >
               Join Now

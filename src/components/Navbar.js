@@ -74,6 +74,7 @@ const Navbar = () => {
                   width: { lg: 120 },
                   height: { lg: 45 },
                   backgroundColor: "#FFD481",
+                  color: "#06173B",
                 }}
                 variant="contained"
               >
@@ -84,6 +85,7 @@ const Navbar = () => {
                   margin: "10px",
                   width: { lg: 120 },
                   height: { lg: 45 },
+                  color: "#FFD481",
                 }}
                 variant="contained"
               >
