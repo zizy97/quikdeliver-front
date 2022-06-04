@@ -37,16 +37,16 @@ function Delivererbooking() {
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 30 },
-              marginLeft: { lg: 14 },
-              marginRight: { lg: 0 },
+              marginTop: { lg: 30, md: 25, sm: 18, xs: 14 },
+              marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
+              marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontSize: { lg: 53 },
+                fontSize: { lg: 52, md: 34, sm: 30, xs: 30 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -63,7 +63,7 @@ function Delivererbooking() {
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16, sm: 16 },
                 textAlign: "justify",
               }}
             >
@@ -75,14 +75,14 @@ function Delivererbooking() {
               from Quik.
             </Typography>
           </Box>
-          <Box sx={{ mt: 5, textAlign: "center" }}>
+          <Box sx={{ textAlign: "center" }}>
             <Button
               variant="contained"
               sx={{
                 borderRadius: 1,
                 marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
-                width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 55, md: 35 },
+                width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                height: { lg: 55, md: 40, sm: 40, xs: 40 },
                 backgroundColor: "#1964FF",
                 color: "#FCF370",
               }}
@@ -90,7 +90,7 @@ function Delivererbooking() {
               Book Now
             </Button>
             <Stack
-              spacing={15}
+              spacing={12}
               direction="row"
               alignItems="center"
               justifyContent="center"
@@ -123,8 +123,9 @@ function Delivererbooking() {
             alt="Your logo."
             src={deliverer}
             sx={{
-              width: { lg: "65%" },
-              marginTop: { lg: 10 },
+              width: { lg: 370, md: 290, sm: 320, xs: 260 },
+              marginTop: { lg: 15, md: 15, sm: 8, xs: 5 },
+              marginBottom: { lg: 0, md: 0, sm: 5, xs: 5 },
             }}
           />
         </Grid>
@@ -164,7 +165,9 @@ function Bookingsteps() {
             alt="Your logo."
             src={deliverstep}
             sx={{
-              width: { xs: "80%", sm: "60%", md: "77%", lg: "65%" },
+              width: { lg: 350, md: 300, sm: 300, xs: 300 },
+              marginTop: { lg: 8, md: 5, sm: 6, xs: 3 },
+              marginBottom: { lg: 10, md: 5, sm: 5, xs: 3 },
             }}
           />
         </Grid>
@@ -187,7 +190,7 @@ function Bookingsteps() {
               component="h1"
               gutterBottom
               sx={{
-                fontSize: { lg: 40, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 35, md: 25, sm: 30, xs: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -203,14 +206,13 @@ function Bookingsteps() {
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16 },
                 textAlign: "justify",
                 marginRight: { xs: 0, md: 2, lg: 10, sm: 0 },
               }}
             >
               Now we have made it easy to order from different shops at a time.
-              Just order what you need through us.We will bring it to your door
-              step quickly and safely from Quik.
+              Just order what you need through us.
             </Typography>
             <List>
               <ListItem>
@@ -281,15 +283,15 @@ function Driver() {
           <Box
             sx={{
               marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
-              marginLeft: { lg: 14, xs: 2, md: 10, sm: 2 },
-              marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
+              marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
+              marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontSize: { lg: 42, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 35, md: 25, sm: 30, xs: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -304,7 +306,7 @@ function Driver() {
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16, sm: 16 },
                 fontWeight: { lg: 300 },
                 textAlign: "justify",
               }}
@@ -323,8 +325,8 @@ function Driver() {
               sx={{
                 borderRadius: 1,
                 marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
-                width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 55, md: 35 },
+                width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                height: { lg: 55, md: 40, sm: 40, xs: 40 },
                 backgroundColor: "#1964FF",
                 color: "#FCF370",
               }}
@@ -348,9 +350,9 @@ function Driver() {
             alt="Your logo."
             src={driver}
             sx={{
-              width: { xs: "70%", sm: "47%", md: "67%", lg: "60%" },
-              marginTop: { xs: 3, md: 0, lg: 0, sm: 1 },
-              marginBottom: { xs: 15, lg: 0, md: 0, sm: 3 },
+              width: { lg: 350, md: 300, sm: 300, xs: 270 },
+              marginTop: { lg: 8, md: 5, sm: 6, xs: 5 },
+              marginBottom: { lg: 15, md: 10, sm: 5, xs: 3 },
             }}
           />
         </Grid>
@@ -390,9 +392,9 @@ function Vehicleowner() {
             alt="Your logo."
             src={vehicleowner}
             sx={{
-              width: { xs: "80%", sm: 400, md: "70%", lg: "64%" },
-              marginTop: { lg: 2 },
-              marginBottom: {},
+              width: { lg: 350, md: 300, sm: 300, xs: 270 },
+              marginTop: { lg: 8, md: 5, sm: 6, xs: 5 },
+              marginBottom: { lg: 15, md: 10, sm: 5, xs: 3 },
             }}
           />
         </Grid>
@@ -406,16 +408,16 @@ function Vehicleowner() {
         >
           <Box
             sx={{
-              marginTop: { lg: 8 },
-              marginLeft: { lg: 5 },
-              marginRight: { lg: 0 },
+              marginTop: { lg: 8, xs: 6, md: 5, sm: 4 },
+              marginLeft: { lg: 0, xs: 2, md: 0, sm: 2 },
+              marginRight: { lg: 0, xs: 2, md: 1, sm: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontSize: { lg: 42, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 35, md: 25, sm: 30, xs: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -436,7 +438,7 @@ function Vehicleowner() {
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16, sm: 16 },
                 fontWeight: { lg: 300 },
                 textAlign: "justify",
                 marginRight: { lg: 10, md: 5 },
@@ -457,8 +459,8 @@ function Vehicleowner() {
               sx={{
                 borderRadius: 1,
                 marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
-                width: { lg: 250, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 55, md: 35 },
+                width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                height: { lg: 55, md: 40, sm: 40, xs: 40 },
                 backgroundColor: "#1964FF",
                 color: "#FCF370",
               }}
