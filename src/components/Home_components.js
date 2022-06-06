@@ -276,7 +276,6 @@ function Driver() {
         direction={"row"}
         sx={{
           background: "#7594D3",
-          height: { lg: 480, xs: 760, md: 460 },
         }}
       >
         <Grid item lg={7} xs={12} sm={12} md={6}>
