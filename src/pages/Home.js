@@ -6,6 +6,7 @@ import {
   Vehicleowner,
 } from "../components/Home_components";
 import Footer from "../components/Footer";
+
 function Home() {
   return (
     <div>
