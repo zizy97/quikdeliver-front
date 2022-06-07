@@ -145,6 +145,7 @@ export default function CustomDrawer() {
       <Main open={open}>
         <DrawerHeader />
         <Outlet />
+        {/* this is for rendering the content */}
       </Main>
     </Box>
   );
