@@ -12,7 +12,7 @@ import {
   Badge,
 } from "@mui/material"; //==============Components==================================
 import CircleIcon from "@mui/icons-material/Circle";
-import deliverer from "../images/deliverer.png"; //========image====================
+//import deliverer from "../images/deliverer.png"; //========image====================
 import driver from "../images/driver.png"; //========image========================
 import deliverstep from "../images/deliverstep.png"; //========image==============
 import vehicleowner from "../images/vehicleowner.png";
@@ -27,17 +27,11 @@ const circle = (
 function Delivererbooking() {
   return (
     <div>
-      <Grid
-        container
-        direction={"row"}
-        sx={{
-          background: "#D4DCF7",
-        }}
-      >
+      <Grid container direction={"row"}>
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 30, md: 25, sm: 18, xs: 14 },
+              marginTop: { lg: 22, md: 25, sm: 18, xs: 14 },
               marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
               marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
             }}
@@ -118,7 +112,7 @@ function Delivererbooking() {
           alignItems="center"
           justifyContent="center"
         >
-          <Box
+          {/*    <Box
             component="img"
             alt="Your logo."
             src={deliverer}
@@ -127,7 +121,7 @@ function Delivererbooking() {
               marginTop: { lg: 15, md: 15, sm: 8, xs: 5 },
               marginBottom: { lg: 0, md: 0, sm: 5, xs: 5 },
             }}
-          />
+          />*/}
         </Grid>
       </Grid>
     </div>
