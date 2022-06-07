@@ -7,21 +7,41 @@ import {
   setUserId,
   refreshAccessToken,
 } from "./tokensAPI";
-import {LOGIN_URL, LOGOUT_URL, ACCESS_URL, REFRESH_URL} from "../../config/urls";
+import {
+  LOGIN_URL,
+  LOGOUT_URL,
+  ACCESS_URL,
+  REFRESH_URL,
+} from "../../config/urls";
 
-var result = { status: false, error: null }; //global variable declared
+import qs from "qs";
+
+var result = { status: false, error: null }; //global return default declared
 
 export const loginIn = async (credentials) => {
-  console.log("loginIn");
-  await postRequest(LOGIN_URL, credentials)
+
+  var data = qs.stringify({
+    email: credentials.email,
+    password: credentials.password,
+  });//required data to send to server to login
+
+  var config = {
+    method: "post",
+    url: LOGIN_URL,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    data: data,
+  };
+
+  await authRequest(config)
     .then(({ data, error }) => {
       if (!error) {
-        const { token, refreshToken, id } = data.data;
-        setAccessToken(token);
-        setRefreshToken(refreshToken);
-        setUserId(id);
-        console.log("login success");
-        result = { status: true, error: null };
+        const { access, refresh, userId,roles } = data.data;
+        setAccessToken(access);
+        setRefreshToken(refresh);
+        setUserId(userId);
+        result = { status: true,data:{userId,roles}, error: null };
       } else {
         result = { status: false, error: getErrorMessage(error) };
       }
@@ -42,6 +62,8 @@ export const logOut = async () => {
   };
   await authRequest(config)
     .then(({ data, error }) => {
+      // console.log("error " + error);
+      console.log("data " + data);
       if (!error && data.status === 200) {
         console.log("logged out");
         setAccessToken(null);
@@ -53,6 +75,7 @@ export const logOut = async () => {
       }
     })
     .catch((error) => {
+      console.log("error " + error);
       result = { status: false, error: getErrorMessage(error) };
     });
   return result;

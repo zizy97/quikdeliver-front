@@ -1,15 +1,20 @@
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import CustomDrawer from "./components/CustomDrawer";
+import SignInSide from "../src/components/Signin";
 
-const routes = (isAuthenticated) => [
+const routes = (isAuthenticated,roles) => [
   {
-    path: "/",
-    element: <Home/>,
+    path: "",
+    element:<Home/> ,
+  },
+  {
+    path: "login",
+    element: <SignInSide/>,
   },
   {
     path: "/admin",
-    element: true ? (
+    element: isAuthenticated && roles.includes("ROLE_VO")  ? (
       <CustomDrawer/>
     ) : (
       <Navigate to="/login" />
