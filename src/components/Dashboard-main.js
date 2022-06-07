@@ -22,8 +22,15 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 
+//auth services
+import AuthServices from "../services/AuthServices";
+
+//redux resources--- userSlice access
+import { useDispatch } from "react-redux";
+
 const drawerWidth = 250; //===================drawer width=======================
 function ResponsiveDrawer(props) {
+  const dispatch= useDispatch();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
@@ -97,7 +104,13 @@ function ResponsiveDrawer(props) {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = () => {
+  
+  const handleCloseUserMenu = (setting) => {
+    console.log("method testing invoked");
+    if(setting==="Logout"){
+      AuthServices.handleLogout(dispatch);
+
+    }
     setAnchorElUser(null);
   };
   //=========================Dashboard Navbar ending==========================
@@ -172,7 +185,7 @@ function ResponsiveDrawer(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={()=>handleCloseUserMenu(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

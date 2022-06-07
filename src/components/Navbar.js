@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import Drawercomp from "./NavbarDrawer";
 import logo from "../images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const PAGES = ["Home", "About", "Create Booking"];
 
@@ -21,6 +22,7 @@ const Navbar = () => {
   console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -77,6 +79,9 @@ const Navbar = () => {
                   color: "#06173B",
                 }}
                 variant="contained"
+                onClick={() => {
+                  navigate("/login");
+                }}
               >
                 Log In
               </Button>

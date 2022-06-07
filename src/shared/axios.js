@@ -1,4 +1,4 @@
-/*import axios from "axios";
+import axios from "axios";
 
 const ipoAPIHostProd = "https://api/quik.lk"; //for production
 const ipoAPIHostDev = "http://localhost:8081/api"; // for development
@@ -9,4 +9,4 @@ const instance = axios.create({
     baseURL: ipoAPIHost
 });
 
-export default instance;*/
+export default instance;
