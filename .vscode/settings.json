@@ -1,9 +1,13 @@
 {
     "cSpell.words": [
+        "browserslist",
         "iuli",
         "NSSB",
         "persistor",
+        "quikdeliver",
         "reduxjs",
-        "SSNB"
+        "sockjs",
+        "SSNB",
+        "stompjs"
     ]
 }

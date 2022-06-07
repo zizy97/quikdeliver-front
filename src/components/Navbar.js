@@ -19,9 +19,7 @@ const PAGES = ["Home", "About", "Create Booking"];
 const Navbar = () => {
   const [value, setValue] = useState(0);
   const theme = useTheme();
-  console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(isMatch);
   const navigate = useNavigate();
 
   return (

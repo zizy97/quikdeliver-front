@@ -28,12 +28,18 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 //auth services
 import AuthServices from "../services/AuthServices";
 
+import {useNavigate} from "react-router-dom";
+import {Outlet} from "react-router-dom";
+
 //redux resources--- userSlice access
 import { useDispatch } from "react-redux";
 
 const drawerWidth = 250; //===================drawer width=======================
 function ResponsiveDrawer(props) {
   const dispatch= useDispatch();
+  const navigate=useNavigate();
+
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
@@ -69,7 +75,7 @@ function ResponsiveDrawer(props) {
           />
           <ListItemButton
             selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}
+            onClick={(event) => {navigate("/admin/vehicles")}}
             sx={{
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
@@ -85,7 +91,7 @@ function ResponsiveDrawer(props) {
           </ListItemButton>
           <ListItemButton
             selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
+            onClick={(event) => {navigate("/admin/drivers")}}
             sx={{
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
@@ -101,7 +107,7 @@ function ResponsiveDrawer(props) {
           </ListItemButton>
           <ListItemButton
             selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
+            onClick={(event) => {navigate("/admin/orders")}}
             sx={{
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
@@ -117,7 +123,7 @@ function ResponsiveDrawer(props) {
           </ListItemButton>
           <ListItemButton
             selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
+            onClick={(event) => {navigate("/admin/deliver")}}
             sx={{
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
@@ -133,7 +139,7 @@ function ResponsiveDrawer(props) {
           </ListItemButton>
           <ListItemButton
             selected={selectedIndex === 4}
-            onClick={(event) => handleListItemClick(event, 4)}
+            onClick={(event) => {navigate("/admin/history")}}
             sx={{
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
@@ -149,7 +155,7 @@ function ResponsiveDrawer(props) {
           </ListItemButton>
           <ListItemButton
             selected={selectedIndex === 5}
-            onClick={(event) => handleListItemClick(event, 5)}
+            onClick={(event) => {navigate("/admin/notification")}}
             sx={{
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
@@ -215,6 +221,8 @@ function ResponsiveDrawer(props) {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -224,6 +232,7 @@ function ResponsiveDrawer(props) {
     console.log("method testing invoked");
     if(setting==="Logout"){
       AuthServices.handleLogout(dispatch);
+      navigate("/");
 
     }
     setAnchorElUser(null);
@@ -365,13 +374,7 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          content Pellentesque nec nam aliquam sem et tortor. Habitant morbi
-          tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
-          viverra maecenas accumsan lacus vel facilisis. Nulla posuere
-          sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Outlet />
       </Box>
       {/**=======================================content of each links============================== */}
     </Box>

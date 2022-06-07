@@ -22,7 +22,12 @@ const routes = (isAuthenticated,roles) => [
     ),
     children: [
       { path: "", element: <h1>This is space to new component</h1> },
-      { path: "users", element: <h1>User List component</h1> },
+      { path: "vehicles", element: <h1>This is space to new vehicles</h1> },
+      { path: "drivers", element: <h1>This is space to new drivers</h1> },
+      { path: "orders", element: <h1>This is space to new orders</h1> },
+      { path: "deliver", element: <h1>This is space to new deliver</h1> },
+      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
