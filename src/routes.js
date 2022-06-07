@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import CustomDrawer from "./components/CustomDrawer";
+import Dashboard from "../src/components/Dashboard-main";
 
 const routes = (isAuthenticated) => [
   {
@@ -10,7 +10,7 @@ const routes = (isAuthenticated) => [
   {
     path: "/admin",
     element: true ? (
-      <CustomDrawer/>
+      <Dashboard/>
     ) : (
       <Navigate to="/login" />
     ),
