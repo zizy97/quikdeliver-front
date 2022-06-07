@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
+
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -28,17 +29,19 @@ import BookOnlineIcon from "@mui/icons-material/BookOnline";
 //auth services
 import AuthServices from "../services/AuthServices";
 
-import {useNavigate} from "react-router-dom";
-import {Outlet} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 //redux resources--- userSlice access
 import { useDispatch } from "react-redux";
 
+import { matchPath, useLocation } from "react-router-dom";
+
 const drawerWidth = 250; //===================drawer width=======================
 function ResponsiveDrawer(props) {
-  const dispatch= useDispatch();
-  const navigate=useNavigate();
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -52,6 +55,63 @@ function ResponsiveDrawer(props) {
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
+
+  const items = [
+    {
+      href: "/admin/vehicles",
+      icon: (
+        <CarRentalIcon
+          sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+        />
+      ),
+      title: "Vehicles",
+    },
+    {
+      href: "/admin/drivers",
+      icon: (
+        <PersonIcon
+          sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+        />
+      ),
+      title: "Drivers",
+    },
+    {
+      href: "/admin/orders",
+      icon: (
+        <BookOnlineIcon
+          sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+        />
+      ),
+      title: "Orders",
+    },
+    {
+      href: "/admin/deliver",
+      icon: (
+        <LocalShippingIcon
+          sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+        />
+      ),
+      title: "Deliveries",
+    },
+    {
+      href: "/admin/history",
+      icon: (
+        <HistoryIcon
+          sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+        />
+      ),
+      title: "History",
+    },
+    {
+      href: "/admin/notification",
+      icon: (
+        <NotificationsIcon
+          sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+        />
+      ),
+      title: "Notifications",
+    },
+  ];
   const drawer = (
     <div>
       <Box
@@ -73,102 +133,37 @@ function ResponsiveDrawer(props) {
               color: "#737374",
             }}
           />
-          <ListItemButton
-            selected={selectedIndex === 0}
-            onClick={(event) => {navigate("/admin/vehicles")}}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <CarRentalIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Vehicles" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 1}
-            onClick={(event) => {navigate("/admin/drivers")}}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <PersonIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Drivers" color="primary" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 2}
-            onClick={(event) => {navigate("/admin/orders")}}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <BookOnlineIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Orders" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 3}
-            onClick={(event) => {navigate("/admin/deliver")}}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <LocalShippingIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Delivery" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 4}
-            onClick={(event) => {navigate("/admin/history")}}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <HistoryIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="History" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 5}
-            onClick={(event) => {navigate("/admin/notification")}}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <NotificationsIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Notification" />
-          </ListItemButton>
+
+          {items.map((item, index) => {
+            var active = item.href
+              ? !!matchPath(
+                  {
+                    path: item.href,
+                    end: false,
+                  },
+                  location.pathname
+                )
+              : false;
+
+            return (
+              <ListItemButton
+                key={index}
+                selected={active}
+                onClick={(event) => {
+                  navigate(item.href);
+                }}
+                sx={{
+                  borderTopLeftRadius: 20,
+                  borderBottomLeftRadius: 20,
+                  color: "#1964FF",
+                }}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.title} />
+              </ListItemButton>
+            );
+          })}
+
           <ListItemText
             primary="USER"
             sx={{
@@ -221,19 +216,15 @@ function ResponsiveDrawer(props) {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  
   const handleCloseUserMenu = (setting) => {
     console.log("method testing invoked");
-    if(setting==="Logout"){
+    if (setting === "Logout") {
       AuthServices.handleLogout(dispatch);
       navigate("/");
-
     }
     setAnchorElUser(null);
   }; //=========================Dashboard Navbar related===============================================
@@ -311,7 +302,10 @@ function ResponsiveDrawer(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={()=>handleCloseUserMenu(setting)}>
+                <MenuItem
+                  key={setting}
+                  onClick={() => handleCloseUserMenu(setting)}
+                >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
