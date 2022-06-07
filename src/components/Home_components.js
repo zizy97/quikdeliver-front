@@ -8,10 +8,10 @@ import {
   Box,
   Button,
   ListItem,
+  Stack,
+  Badge,
 } from "@mui/material"; //==============Components==================================
-import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
-import FileUploadRoundedIcon from "@mui/icons-material/FileUploadRounded";
-import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
+import CircleIcon from "@mui/icons-material/Circle";
 import deliverer from "../images/deliverer.png"; //========image====================
 import driver from "../images/driver.png"; //========image========================
 import deliverstep from "../images/deliverstep.png"; //========image==============
@@ -19,7 +19,11 @@ import vehicleowner from "../images/vehicleowner.png";
 
 //==============Customer Section Starting============================================
 //==============Customer Section Starting============================================
-
+const shapeStyles = { bgcolor: "#FFD481", width: 40, height: 40 };
+const shapeCircleStyles = { borderRadius: "50%" };
+const circle = (
+  <Box component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} />
+);
 function Delivererbooking() {
   return (
     <div>
@@ -27,25 +31,22 @@ function Delivererbooking() {
         container
         direction={"row"}
         sx={{
-          background:
-            "linear-gradient(180deg, #0074B7 0%, rgba(0, 59, 115, 0) 100%)",
-          height: { lg: 620, xs: 820, md: 500, sm: 800 },
+          background: "#D4DCF7",
         }}
       >
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 20, xs: 4, md: 15, sm: 6 },
-              marginLeft: { lg: 14, xs: 2, md: 5, sm: 2 },
-              marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
+              marginTop: { lg: 30, md: 25, sm: 18, xs: 14 },
+              marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
+              marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
-                fontSize: { lg: 40, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 52, md: 34, sm: 30, xs: 30 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -54,15 +55,15 @@ function Delivererbooking() {
                 },
               }}
             >
-              <span style={{ color: "#003B73" }}> Delivery </span>Booking
+              <b>Delivery</b> Booking
               <br />
-              In A <span style={{ color: "#003B73" }}>Easy Way</span>
+              In A <b>Easy Way</b>
             </Typography>
 
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16, sm: 16 },
                 textAlign: "justify",
               }}
             >
@@ -73,19 +74,38 @@ function Delivererbooking() {
               through us.We will bring it to your door step quickly and safely
               from Quik.
             </Typography>
+          </Box>
+          <Box sx={{ textAlign: "center" }}>
             <Button
               variant="contained"
               sx={{
-                backgroundColor: { xs: " #32303a" },
-                borderRadius: 3,
-                marginTop: { lg: 4, xs: 6, md: 3, sm: 6 },
-                width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 45, md: 35 },
-                "&:hover": { backgroundColor: "#32303a" },
+                borderRadius: 1,
+                marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                height: { lg: 55, md: 40, sm: 40, xs: 40 },
+                backgroundColor: "#1964FF",
+                color: "#FCF370",
               }}
             >
               Book Now
             </Button>
+            <Stack
+              spacing={12}
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              sx={{ mt: 8 }}
+            >
+              <Badge color="secondary" overlap="circular" badgeContent="+24">
+                {circle}
+              </Badge>
+              <Badge color="secondary" overlap="circular" badgeContent="+1">
+                {circle}
+              </Badge>
+              <Badge color="secondary" overlap="circular" badgeContent="+51">
+                {circle}
+              </Badge>
+            </Stack>
           </Box>
         </Grid>
         <Grid
@@ -103,9 +123,9 @@ function Delivererbooking() {
             alt="Your logo."
             src={deliverer}
             sx={{
-              width: { xs: "80%", sm: "60%", md: "80%", lg: "65%" },
-              /**marginTop: { xs: 0, md: 2, lg: 0, sm: 0 },*/
-              marginBottom: { xs: 10, lg: 0, md: 0, sm: 3 },
+              width: { lg: 370, md: 290, sm: 320, xs: 260 },
+              marginTop: { lg: 15, md: 15, sm: 8, xs: 5 },
+              marginBottom: { lg: 0, md: 0, sm: 5, xs: 5 },
             }}
           />
         </Grid>
@@ -126,8 +146,7 @@ function Bookingsteps() {
         container
         direction={"row"}
         sx={{
-          background: "white",
-          height: { lg: 500, xs: 850, md: 420, sm: 850 },
+          background: "#F8F7E9",
         }}
       >
         <Grid
@@ -139,20 +158,30 @@ function Bookingsteps() {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          order={{ xs: 2, sm: 2, lg: 1, md: 1 }}
         >
           <Box
             component="img"
             alt="Your logo."
             src={deliverstep}
             sx={{
-              width: { xs: "80%", sm: "60%", md: "77%", lg: "65%" },
+              width: { lg: 350, md: 300, sm: 300, xs: 300 },
+              marginTop: { lg: 8, md: 5, sm: 6, xs: 3 },
+              marginBottom: { lg: 10, md: 5, sm: 5, xs: 3 },
             }}
           />
         </Grid>
-        <Grid item lg={7} xs={12} sm={12} md={7}>
+        <Grid
+          item
+          lg={7}
+          xs={12}
+          sm={12}
+          md={7}
+          order={{ xs: 1, sm: 1, lg: 2, md: 2 }}
+        >
           <Box
             sx={{
-              marginTop: { lg: 5, xs: 6, md: 5, sm: 4 },
+              marginTop: { lg: 8, xs: 6, md: 5, sm: 4 },
               marginLeft: { lg: 0, xs: 2, md: 0, sm: 2 },
               marginRight: { lg: 0, xs: 2, md: 1, sm: 2 },
             }}
@@ -161,8 +190,7 @@ function Bookingsteps() {
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
-                fontSize: { lg: 40, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 35, md: 25, sm: 30, xs: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -171,28 +199,29 @@ function Bookingsteps() {
                 },
               }}
             >
-              <span style={{ color: "#003B73" }}> Three Steps </span>Away To
+              <b> Three Steps </b>Away To
               <br />
-              Place <span style={{ color: "#003B73" }}>A Request</span>
+              Place A Request
             </Typography>
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16 },
                 textAlign: "justify",
-                marginRight: { xs: 0, md: 2, lg: 15, sm: 0 },
+                marginRight: { xs: 0, md: 2, lg: 10, sm: 0 },
               }}
             >
               Now we have made it easy to order from different shops at a time.
-              Just order what you need through us.We will bring it to your door
-              step quickly and safely from Quik.
+              Just order what you need through us.
             </Typography>
             <List>
               <ListItem>
                 <ListItemIcon>
-                  <AddLocationAltIcon
+                  <CircleIcon
+                    stroke="#FFA301"
+                    strokeWidth={4}
                     sx={{
-                      color: "#003B73",
+                      color: "#E9F0F8",
                     }}
                   />
                 </ListItemIcon>
@@ -200,9 +229,11 @@ function Bookingsteps() {
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <FileUploadRoundedIcon
+                  <CircleIcon
+                    stroke="#FFA301"
+                    strokeWidth={4}
                     sx={{
-                      color: "#003B73",
+                      color: "#E9F0F8",
                     }}
                   />
                 </ListItemIcon>
@@ -213,9 +244,11 @@ function Bookingsteps() {
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <CheckRoundedIcon
+                  <CircleIcon
+                    stroke="#FFA301"
+                    strokeWidth={4}
                     sx={{
-                      color: "#003B73",
+                      color: "#E9F0F8",
                     }}
                   />
                 </ListItemIcon>
@@ -242,24 +275,22 @@ function Driver() {
         container
         direction={"row"}
         sx={{
-          background: "#0074B7",
-          height: { lg: 480, xs: 760, md: 460 },
+          background: "#7594D3",
         }}
       >
         <Grid item lg={7} xs={12} sm={12} md={6}>
           <Box
             sx={{
               marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
-              marginLeft: { lg: 14, xs: 2, md: 10, sm: 2 },
-              marginRight: { lg: 0, xs: 2, md: 0, sm: 2 },
+              marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
+              marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
-                fontSize: { lg: 42, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 35, md: 25, sm: 30, xs: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -268,18 +299,13 @@ function Driver() {
                 },
               }}
             >
-              Join
-              <span style={{ color: "white" }}>
-                {" "}
-                As A Deliverer <br /> To Earn
-              </span>{" "}
-              Money
+              Join As A Deliverer <br /> To<b> Earn Money</b>
             </Typography>
 
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16, sm: 16 },
                 fontWeight: { lg: 300 },
                 textAlign: "justify",
               }}
@@ -291,15 +317,17 @@ function Driver() {
               through us.We will bring it to your door step quickly and safely
               from Quik.
             </Typography>
+          </Box>
+          <Box textAlign="center">
             <Button
               variant="contained"
               sx={{
-                backgroundColor: { xs: "#32303a" },
-                borderRadius: 3,
-                marginTop: { lg: 4, xs: 6, md: 3, sm: 6 },
-                width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 45, md: 35 },
-                "&:hover": { backgroundColor: "#32303a" },
+                borderRadius: 1,
+                marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                height: { lg: 55, md: 40, sm: 40, xs: 40 },
+                backgroundColor: "#1964FF",
+                color: "#FCF370",
               }}
             >
               Join Now
@@ -321,9 +349,9 @@ function Driver() {
             alt="Your logo."
             src={driver}
             sx={{
-              width: { xs: "70%", sm: "47%", md: "67%", lg: "60%" },
-              marginTop: { xs: 3, md: 0, lg: 0, sm: 1 },
-              marginBottom: { xs: 15, lg: 0, md: 0, sm: 3 },
+              width: { lg: 350, md: 300, sm: 300, xs: 270 },
+              marginTop: { lg: 8, md: 5, sm: 6, xs: 5 },
+              marginBottom: { lg: 15, md: 10, sm: 5, xs: 3 },
             }}
           />
         </Grid>
@@ -344,8 +372,7 @@ function Vehicleowner() {
         container
         direction={"row"}
         sx={{
-          background: "#BFD7ED",
-          height: { lg: 500, xs: 850, md: 420 },
+          background: "#F8F7E9",
         }}
       >
         <Grid
@@ -357,32 +384,39 @@ function Vehicleowner() {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          order={{ xs: 2, sm: 2, lg: 1, md: 1 }}
         >
           <Box
             component="img"
             alt="Your logo."
             src={vehicleowner}
             sx={{
-              width: { xs: "80%", sm: 400, md: "70%", lg: "64%" },
-              marginTop: { xs: 3, md: 0, lg: 2, sm: 0 },
-              marginBottom: { xs: 0, lg: 0, md: 0, sm: 3 },
+              width: { lg: 350, md: 300, sm: 300, xs: 270 },
+              marginTop: { lg: 8, md: 5, sm: 6, xs: 5 },
+              marginBottom: { lg: 15, md: 10, sm: 5, xs: 3 },
             }}
           />
         </Grid>
-        <Grid item lg={7} xs={12} sm={12} md={6}>
+        <Grid
+          item
+          lg={7}
+          xs={12}
+          sm={12}
+          md={6}
+          order={{ xs: 1, sm: 1, lg: 2, md: 2 }}
+        >
           <Box
             sx={{
-              marginTop: { lg: 8, xs: 6, md: 5, sm: 6 },
-              marginLeft: { lg: 5, xs: 2, md: 1, sm: 2 },
-              marginRight: { lg: 5, xs: 2, md: 0, sm: 2 },
+              marginTop: { lg: 8, xs: 6, md: 5, sm: 4 },
+              marginLeft: { lg: 0, xs: 2, md: 0, sm: 2 },
+              marginRight: { lg: 0, xs: 2, md: 1, sm: 2 },
             }}
           >
             <Typography
               component="h1"
               gutterBottom
               sx={{
-                fontWeight: "bold",
-                fontSize: { lg: 42, xs: 28, md: 30, sm: 25 },
+                fontSize: { lg: 35, md: 25, sm: 30, xs: 25 },
                 textAlign: {
                   lg: "left",
                   xs: "center",
@@ -391,18 +425,22 @@ function Vehicleowner() {
                 },
               }}
             >
-              <span style={{ color: "#003B73" }}> Register </span>With Your
-              <br />
-              Vehicle <span style={{ color: "#003B73" }}>To Do Delivery</span>
+              <b>
+                {" "}
+                Register With Your
+                <br />
+                Vehicle To
+              </b>{" "}
+              Do Delivery
             </Typography>
 
             <Typography
               variant="body1"
               sx={{
-                fontSize: { lg: 18 },
+                fontSize: { lg: 18, md: 16, sm: 16 },
                 fontWeight: { lg: 300 },
                 textAlign: "justify",
-                marginRight: { lg: 8, md: 5 },
+                marginRight: { lg: 10, md: 5 },
               }}
             >
               Now we have made it easy to order from different shops at a time.
@@ -413,15 +451,17 @@ function Vehicleowner() {
               door step quickly and safely from Quik. step quickly and safely
               from Quik.
             </Typography>
+          </Box>
+          <Box textAlign="center">
             <Button
               variant="contained"
               sx={{
-                backgroundColor: { xs: " #32303a" },
-                borderRadius: 3,
-                marginTop: { lg: 4, xs: 6, md: 3, sm: 6 },
-                width: { lg: 200, xs: "100%", md: 180, sm: "100%" },
-                height: { lg: 45, md: 35 },
-                "&:hover": { backgroundColor: "#32303a" },
+                borderRadius: 1,
+                marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                height: { lg: 55, md: 40, sm: 40, xs: 40 },
+                backgroundColor: "#1964FF",
+                color: "#FCF370",
               }}
             >
               Join Now

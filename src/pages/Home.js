@@ -5,6 +5,7 @@ import {
   Driver,
   Vehicleowner,
 } from "../components/Home_components";
+import Footer from "../components/Footer";
 function Home() {
   return (
     <div>
@@ -13,6 +14,7 @@ function Home() {
       <Bookingsteps />
       <Driver />
       <Vehicleowner />
+      <Footer />
     </div>
   );
 }

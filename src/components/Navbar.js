@@ -7,11 +7,14 @@ import {
   Button,
   useMediaQuery,
   useTheme,
-  Typography,
+  Box,
 } from "@mui/material";
 import Drawercomp from "./NavbarDrawer";
+import logo from "../images/logo.png";
 
 const PAGES = ["Home", "About", "Create Booking"];
+
+//===============Nav bar=========================================
 const Navbar = () => {
   const [value, setValue] = useState(0);
   const theme = useTheme();
@@ -24,30 +27,21 @@ const Navbar = () => {
       <AppBar
         elevation={0}
         sx={{
-          background: "#0074B7",
-          margin: "0%",
-          padding: "0%",
-          position: "sticky",
+          background: "#D4DCF7",
         }}
       >
-        <Toolbar sx={{ marginTop: { lg: 3 } }}>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+        <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>
+          <Box
+            component="img"
+            alt="Your logo."
+            src={logo}
             sx={{
-              pr: 3,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "roboto",
-              fontWeight: 700,
-              color: "inherit",
-              textDecoration: "none",
-              fontSize: 30,
+              marginLeft: { lg: 5, md: 2 },
+              display: { xs: "none", sm: "none", lg: "block", md: "block" },
+              width: { lg: 80, md: 70 },
             }}
-          >
-            Quik
-          </Typography>
+          />
+
           {isMatch ? (
             <>
               <Drawercomp />
@@ -68,8 +62,8 @@ const Navbar = () => {
                     key={index}
                     label={page}
                     sx={{
-                      fontSize: { lg: 18 },
-                      color: "white",
+                      fontSize: { lg: 18, md: 15 },
+                      color: "#06173B",
                     }}
                   />
                 ))}
@@ -78,9 +72,9 @@ const Navbar = () => {
                 sx={{
                   marginLeft: "auto",
                   width: { lg: 120 },
-                  height: 45,
-                  backgroundColor: "#003B73",
-                  "&:hover": { backgroundColor: "#003B73" },
+                  height: { lg: 45 },
+                  backgroundColor: "#FFD481",
+                  color: "#06173B",
                 }}
                 variant="contained"
               >
@@ -90,9 +84,8 @@ const Navbar = () => {
                 sx={{
                   margin: "10px",
                   width: { lg: 120 },
-                  height: 45,
-                  backgroundColor: "#003B73",
-                  "&:hover": { backgroundColor: "#003B73" },
+                  height: { lg: 45 },
+                  color: "#FFD481",
                 }}
                 variant="contained"
               >
