@@ -121,26 +121,22 @@ const Login = () => {
                     </FormControl>
                 </Grid>
                 
-                <Grid item xs={6}
-                    sx={{
-                        display:{sm:'none'}
-                    }}
-                >
-                  <Card 
-                    sx={{
-                        marginTop:3, 
-                        display:{xs:'none',sm:'none',md:'flex',lg:'flex'}    
-                    }}>
-                      <CardMedia
-                        component="img"
-                        image={'public/assets/sign_in.jpg'}
+                <Grid item xs={6} >
+                    <Card 
                         sx={{
-                            width:{lg:300,md:300,sm:270,xs:240},
-                            height:'100%',
-                            padding:'2px'
-                        }}
-                      />
-                  </Card>
+                            marginTop:2, 
+                            display:{xs:'none',sm:'none',md:'flex',lg:'flex'}        
+                        }}>
+                        <CardMedia
+                            component="img"
+                            image={'public/assets/sign_in.jpg'}
+                            sx={{
+                                width:{lg:300,md:300,sm:270,xs:240},
+                                height:'100%',
+                                padding:'2px'
+                            }}
+                        />
+                    </Card>
                 </Grid>
 
                 <Grid item xs={12}
