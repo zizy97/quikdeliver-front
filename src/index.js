@@ -7,7 +7,6 @@ import { store, persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import AuthContextProvider from "./contexts/AuthContext";
 // import reportWebVitals from './reportWebVitals';
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

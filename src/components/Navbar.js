@@ -29,7 +29,8 @@ const Navbar = () => {
       <AppBar
         elevation={0}
         sx={{
-          background: "#D4DCF7",
+          position: "sticky",
+          background: "none",
         }}
       >
         <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>

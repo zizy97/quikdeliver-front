@@ -12,7 +12,7 @@ import Toolbar from "@mui/material/Toolbar";
 import logo from "../images/logo.png";
 import CarRentalIcon from "@mui/icons-material/CarRental";
 import PersonIcon from "@mui/icons-material/Person";
-import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HistoryIcon from "@mui/icons-material/History";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -21,6 +21,9 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import BookOnlineIcon from "@mui/icons-material/BookOnline";
 
 //auth services
 import AuthServices from "../services/AuthServices";
@@ -36,8 +39,13 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  //=========================drawer component starting==========================
-  //=========================drawer component starting==========================
+  //=========================Sidebar drawer component starting============================
+  //=========================Sidebar drawer component starting============================
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
   const drawer = (
     <div>
       <Box
@@ -45,45 +53,153 @@ function ResponsiveDrawer(props) {
         alt="logo image"
         src={logo}
         sx={{
-          width: 70,
-          marginLeft: { xs: 2, lg: 2, md: 2, sm: 3 },
-          marginTop: { xs: 2, lg: 2, md: 2, sm: 3 },
+          width: 80,
+          marginLeft: { xs: 4, lg: 2, md: 2, sm: 3 },
+          marginTop: { xs: 2 },
           display: { lg: "none", md: "none", sm: "none" },
         }}
       />
       <Box>
-        <List>
-          <ListItemButton>
+        <List sx={{ marginLeft: 2, marginTop: 2 }}>
+          <ListItemText
+            primary="LISTS"
+            sx={{
+              color: "#737374",
+            }}
+          />
+          <ListItemButton
+            selected={selectedIndex === 0}
+            onClick={(event) => handleListItemClick(event, 0)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
             <ListItemIcon>
               <CarRentalIcon
-                sx={{ fontSize: { xs: "28px", lg: "30px" }, color: "#1964FF" }}
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
               />
             </ListItemIcon>
             <ListItemText primary="Vehicles" />
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 1}
+            onClick={(event) => handleListItemClick(event, 1)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
             <ListItemIcon>
               <PersonIcon
-                sx={{ fontSize: { xs: "28px", lg: "30px" }, color: "#1964FF" }}
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
               />
             </ListItemIcon>
             <ListItemText primary="Drivers" color="primary" />
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 2}
+            onClick={(event) => handleListItemClick(event, 2)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
             <ListItemIcon>
-              <DeliveryDiningIcon
-                sx={{ fontSize: { xs: "28px", lg: "30px" }, color: "#1964FF" }}
+              <BookOnlineIcon
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
               />
             </ListItemIcon>
-            <ListItemText primary="Booking Orders" />
+            <ListItemText primary="Orders" />
           </ListItemButton>
-          <ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 3}
+            onClick={(event) => handleListItemClick(event, 3)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
+            <ListItemIcon>
+              <LocalShippingIcon
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+              />
+            </ListItemIcon>
+            <ListItemText primary="Delivery" />
+          </ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 4}
+            onClick={(event) => handleListItemClick(event, 4)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
             <ListItemIcon>
               <HistoryIcon
-                sx={{ fontSize: { xs: "28px", lg: "30px" }, color: "#1964FF" }}
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
               />
             </ListItemIcon>
             <ListItemText primary="History" />
+          </ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 5}
+            onClick={(event) => handleListItemClick(event, 5)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
+            <ListItemIcon>
+              <NotificationsIcon
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+              />
+            </ListItemIcon>
+            <ListItemText primary="Notification" />
+          </ListItemButton>
+          <ListItemText
+            primary="USER"
+            sx={{
+              color: "#737374",
+            }}
+          />
+          <ListItemButton
+            selected={selectedIndex === 6}
+            onClick={(event) => handleListItemClick(event, 6)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
+            <ListItemIcon>
+              <AccountCircleIcon
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+              />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItemButton>
+          <ListItemButton
+            selected={selectedIndex === 7}
+            onClick={(event) => handleListItemClick(event, 7)}
+            sx={{
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              color: "#1964FF",
+            }}
+          >
+            <ListItemIcon>
+              <ExitToAppIcon
+                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
+              />
+            </ListItemIcon>
+            <ListItemText primary="Log Out" />
           </ListItemButton>
         </List>
       </Box>
@@ -92,8 +208,7 @@ function ResponsiveDrawer(props) {
   //=========================drawer component ending==========================
   //=========================drawer component ending==========================
 
-  //=========================Dashboard Navbar starting==========================
-  //=========================Dashboard Navbar starting==========================
+  //=========================Dashboard Navbar related==============================================
   const container =
     window !== undefined ? () => window().document.body : undefined;
   const settings = ["Profile", "Logout"];
@@ -112,11 +227,12 @@ function ResponsiveDrawer(props) {
 
     }
     setAnchorElUser(null);
-  };
-  //=========================Dashboard Navbar ending==========================
-  //=========================Dashboard Navbar ending==========================
+  }; //=========================Dashboard Navbar related===============================================
+
+  //===============================display dashboard=================================================
   return (
     <Box>
+      {/**==========================================Navigation bar========================================== */}
       <AppBar
         elevation={0}
         sx={{
@@ -124,6 +240,7 @@ function ResponsiveDrawer(props) {
           margin: "0%",
           padding: "0%",
           position: "sticky",
+          height: 80,
         }}
       >
         <Toolbar>
@@ -132,7 +249,7 @@ function ResponsiveDrawer(props) {
             alt="logo image"
             src={logo}
             sx={{
-              width: 70,
+              width: 80,
               marginTop: { lg: 1, md: 1, sm: 1 },
               display: { xs: "none", md: "block", sm: "block", lg: "block" },
             }}
@@ -193,9 +310,14 @@ function ResponsiveDrawer(props) {
           </Box>
         </Toolbar>
       </AppBar>
+      {/**==========================================Navigation bar ending========================================== */}
+      {/**====================================side bar starting================================================= */}
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
         aria-label="mailbox folders"
       >
         <Drawer
@@ -223,7 +345,7 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              marginTop: 9,
+              marginTop: 10,
             },
           }}
           open
@@ -231,6 +353,27 @@ function ResponsiveDrawer(props) {
           {drawer}
         </Drawer>
       </Box>
+      {/**====================================side bar Ending================================================= */}
+      {/**=======================================content of each links============================== */}
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          ml: { sm: `${drawerWidth}px` },
+          paddingLeft: 2,
+          paddingRight: 2,
+        }}
+      >
+        <Toolbar />
+        <Typography paragraph>
+          content Pellentesque nec nam aliquam sem et tortor. Habitant morbi
+          tristique senectus et. Adipiscing elit duis tristique sollicitudin
+          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
+          viverra maecenas accumsan lacus vel facilisis. Nulla posuere
+          sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
+      </Box>
+      {/**=======================================content of each links============================== */}
     </Box>
   );
 }
