@@ -29,8 +29,8 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  //=========================drawer componenet starting==========================
-  //=========================drawer componenet starting==========================
+  //=========================drawer component starting==========================
+  //=========================drawer component starting==========================
   const drawer = (
     <div>
       <Box
@@ -82,8 +82,8 @@ function ResponsiveDrawer(props) {
       </Box>
     </div>
   );
-  //=========================drawer componenet ending==========================
-  //=========================drawer componenet ending==========================
+  //=========================drawer component ending==========================
+  //=========================drawer component ending==========================
 
   //=========================Dashboard Navbar starting==========================
   //=========================Dashboard Navbar starting==========================

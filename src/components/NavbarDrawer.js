@@ -7,7 +7,7 @@ import {
   ListItemText,
   IconButton,
 } from "@mui/material"; //==============Components==================================
-import MenuIcon from "@mui/icons-material/Menu"; //============menuicon=============
+import MenuIcon from "@mui/icons-material/Menu"; //============menuIcon=============
 //import logo from "../images/logo.png"; //===================logo image===============
 
 //===============Drawer Component starting==========================================
