@@ -98,9 +98,31 @@ function Delivererbooking() {
               <Badge color="secondary" overlap="circular" badgeContent="+1">
                 {circle}
               </Badge>
-              <Badge color="secondary" overlap="circular" badgeContent="+51">
+              <Badge
+                color="secondary"
+                overlap="circular"
+                badgeContent="+51"
+                primary="hello"
+              >
                 {circle}
               </Badge>
+            </Stack>
+            <Stack
+              direction="row"
+              spacing={5}
+              alignItems="center"
+              justifyContent="center"
+              sx={{ mt: 2, mb: 3 }}
+            >
+              <Typography>
+                Parcels
+                <br /> Delivered
+              </Typography>
+              <Typography>
+                Cities and <br />
+                More on the Way
+              </Typography>
+              <Typography>Deliverers</Typography>
             </Stack>
           </Box>
         </Grid>
