@@ -11,6 +11,23 @@ export const theme = createTheme({
     }
   },
   components: {
+    MuiList:{
+      styleOverrides:{
+        root:{
+          padding:0,
+          '& .MuiListItemIcon-root':{
+            padding: '0px',
+            minWidth: '32px',
+          },
+          '& .MuiListItemText-root':{
+            span:{
+              fontSize: '14px',
+              fontWeight: '500',
+            }
+          }
+        },
+      }
+    },
     MuiButton: {
       defaultProps: {
         disableElevation: true
@@ -295,5 +312,17 @@ export const theme = createTheme({
       fontSize: '1.125rem',
       lineHeight: 1.375
     }
+  },
+  customShadows:{
+    button: `0 2px #0000000b`,
+    text: `0 -1px 0 rgb(0 0 0 / 12%)`,
+    z1: `0px 2px 8px rgba(100, 116, 139, 0.25)`
+  },
+  direction: 'ltr',
+  listItem:{
+    padding: '0.5rem 1rem',
+    fontSize: '1rem',
+    fontWeight: 900,
+    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"',
   }
 });
