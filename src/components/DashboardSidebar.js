@@ -1,192 +1,144 @@
 import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Box,
-  Divider,
-  Drawer,
-  Hidden,
-  List,
-  Typography
-} from '@material-ui/core';
-import {
-  BarChart as BarChartIcon, BarChart2, Book,
-  ShoppingBag as ShoppingBagIcon,
-  Users as UsersIcon, Truck,
-  BookOpen,
-  Bookmark, XSquare, Settings,
-  Edit,
-  Clock
-} from 'react-feather';
-import NavItem from './NavItem';
-
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Stelan Briyan Simonsz'
-};
+import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
+import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
+import { Cog as CogIcon } from '../icons/cog';
+import { Truck as TruckIcon } from '../icons/vehicle';
+import { User as UserIcon } from '../icons/user';
+import { Logout as LogoutIcon } from '../icons/logout';
+import { Users as UsersIcon } from '../icons/users';
+import { NavItem } from './NavItem';
 
 const items = [
   {
-    href: '/admin/dashboard',
-    icon: BarChartIcon,
+    href: '/vo',
+    icon: (<ChartBarIcon fontSize="small" />),
     title: 'Dashboard'
   },
   {
-    href: '/admin/delivery/requests',
-    icon: Edit,
-    title: 'Delivery Requests'
-  },
-  {
-    href: '/admin/allocations',
-    icon: ShoppingBagIcon,
-    title: 'Allocation'
-  },
-  {
-    href: '/admin/deliveries/ongoing',
-    icon: BookOpen,
-    title: 'Ongoing Deliveries'
-  },
-  {
-    href: '/admin/deliveries/upcoming',
-    icon: Bookmark,
-    title: 'Upcoming Deliveries'
-  },
-  {
-    href: '/admin/deliveries/completed',
-    icon: Book,
-    title: 'Completed Deliveries'
-  },
-  {
-    href: '/admin/deliveries/expired',
-    icon: Clock,
-    title: 'Expired Deliveries'
-  },
-  {
-    href: '/admin/deliveries/rejected',
-    icon: XSquare,
-    title: 'Rejected Deliveries'
-  },
-  {
-    href: '/admin/drivers',
-    icon: UsersIcon,
+    href: '/vo/drivers',
+    icon: (<UsersIcon fontSize="small" />),
     title: 'Drivers'
   },
   {
-    href: '/admin/vehicles',
-    icon: Truck,
+    href: '/vo/vehicles',
+    icon: (<TruckIcon fontSize="small" />),
     title: 'Vehicles'
   },
   {
-    href: '/admin/reports',
-    icon: BarChart2,
-    title: 'Reports'
-  }
+    href: '/vo/account',
+    icon: (<UserIcon fontSize="small" />),
+    title: 'Account'
+  },
+  {
+    href: '/vo/settings',
+    icon: (<CogIcon fontSize="small" />),
+    title: 'Settings'
+  },
+  {
+    href: '/vo/logout',
+    icon: (<LogoutIcon fontSize="small" />),
+    title: 'Logout'
+  },
 ];
 
-const DashboardSidebar = ({ onMobileClose, openMobile }) => {
+export const DashboardSidebar = (props) => {
+  const { open, onClose } = props;
   const location = useLocation();
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+    defaultMatches: true,
+    noSsr: false
+  });
 
+  useEffect(
+    () => {
+      if (!location.pathname) {
+        return;
+      }
 
-  useEffect(() => {
-    if (openMobile && onMobileClose) {
-      onMobileClose();
-    }
-  }, [location.pathname]);
-
-  const content = (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%'
-      }}
-    >
-      <Box
-        sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          p: 2
-        }}
-      >
-
-        <Typography
-          color="textPrimary"
-          variant="h5"
-        >
-          GradeAMovers
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
-          Admin Portal
-        </Typography>
-      </Box>
-      <Divider />
-      <Box sx={{ p: 2 }}>
-        <List>
-          {items.map((item) => (
-            <NavItem
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
-          ))}
-        </List>
-      </Box>
-      <Box sx={{ flexGrow: 1 }} />
-
-    </Box>
+      if (open) {
+        onClose?.();
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location.pathname]
   );
 
-  return (
+  const content = (
     <>
-      <Hidden lgUp>
-        <Drawer
-          anchor="left"
-          onClose={onMobileClose}
-          open={openMobile}
-          variant="temporary"
-          PaperProps={{
-            sx: {
-              width: 256
-            }
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+          width: '100%'
+        }}
+      >
+        <div>
+          <Box sx={{ p: 3 }}></Box>
+        </div>
+        <Divider
+          sx={{
+            borderColor: '#2D3748',
+            my: 3
           }}
-        >
-          {content}
-        </Drawer>
-      </Hidden>
-      <Hidden lgDown>
-        <Drawer
-          anchor="left"
-          open
-          variant="persistent"
-          PaperProps={{
-            sx: {
-              width: 256,
-              top: 64,
-              height: 'calc(100% - 64px)'
-            }
-          }}
-        >
-          {content}
-        </Drawer>
-      </Hidden>
+        />
+        <Box sx={{ flexGrow: 1 }}>
+          {items.map((item) => (
+            <NavItem
+              key={item.title}
+              icon={item.icon}
+              href={item.href}
+              title={item.title}
+            />
+          ))}
+        </Box>
+        <Divider sx={{ borderColor: '#2D3748' }} />
+      </Box>
     </>
+  );
+
+  if (lgUp) {
+    return (
+      <Drawer
+        anchor="left"
+        open
+        PaperProps={{
+          sx: {
+            backgroundColor: 'neutral.900',
+            color: '#FFFFFF',
+            width: 280
+          }
+        }}
+        variant="permanent"
+      >
+        {content}
+      </Drawer>
+    );
+  }
+
+  return (
+    <Drawer
+      anchor="left"
+      onClose={onClose}
+      open={open}
+      PaperProps={{
+        sx: {
+          backgroundColor: 'neutral.900',
+          color: '#FFFFFF',
+          width: 280
+        }
+      }}
+      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+      variant="temporary"
+    >
+      {content}
+    </Drawer>
   );
 };
 
 DashboardSidebar.propTypes = {
-  onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  onClose: PropTypes.func,
+  open: PropTypes.bool
 };
-
-DashboardSidebar.defaultProps = {
-  onMobileClose: () => { },
-  openMobile: false
-};
-
-export default DashboardSidebar;
