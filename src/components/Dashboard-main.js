@@ -24,7 +24,7 @@ import Typography from "@mui/material/Typography";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
-
+import Addvehicle from "../components/Vehicleowner/Addvehicle";
 const drawerWidth = 250; //===================drawer width====================================
 
 function ResponsiveDrawer(props) {
@@ -54,147 +54,157 @@ function ResponsiveDrawer(props) {
         }}
       />
       <Box>
-        <List sx={{ marginLeft: 2, marginTop: 2 }}>
-          <ListItemText
-            primary="LISTS"
-            sx={{
-              color: "#737374",
-            }}
-          />
-          <ListItemButton
-            selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <CarRentalIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Vehicles" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <PersonIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Drivers" color="primary" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <BookOnlineIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Orders" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <LocalShippingIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Delivery" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 4}
-            onClick={(event) => handleListItemClick(event, 4)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <HistoryIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="History" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 5}
-            onClick={(event) => handleListItemClick(event, 5)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <NotificationsIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Notification" />
-          </ListItemButton>
-          <ListItemText
-            primary="USER"
-            sx={{
-              color: "#737374",
-            }}
-          />
-          <ListItemButton
-            selected={selectedIndex === 6}
-            onClick={(event) => handleListItemClick(event, 6)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <AccountCircleIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItemButton>
-          <ListItemButton
-            selected={selectedIndex === 7}
-            onClick={(event) => handleListItemClick(event, 7)}
-            sx={{
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              color: "#1964FF",
-            }}
-          >
-            <ListItemIcon>
-              <ExitToAppIcon
-                sx={{ fontSize: { xs: "28px", lg: "32px" }, color: "#1964FF" }}
-              />
-            </ListItemIcon>
-            <ListItemText primary="Log Out" />
-          </ListItemButton>
+        <List>
+          <Box sx={{ marginLeft: 2 }}>
+            <ListItemText
+              primary="LISTS"
+              sx={{
+                color: "#737374",
+              }}
+            />
+            <ListItemButton
+              selected={selectedIndex === 0}
+              onClick={(event) => handleListItemClick(event, 0)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <CarRentalIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Vehicles" />
+            </ListItemButton>
+            <ListItemButton
+              selected={selectedIndex === 1}
+              onClick={(event) => handleListItemClick(event, 1)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <PersonIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Drivers" color="primary" />
+            </ListItemButton>
+            <ListItemButton
+              selected={selectedIndex === 2}
+              onClick={(event) => handleListItemClick(event, 2)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <BookOnlineIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Orders" />
+            </ListItemButton>
+            <ListItemButton
+              selected={selectedIndex === 3}
+              onClick={(event) => handleListItemClick(event, 3)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <LocalShippingIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Delivery" />
+            </ListItemButton>
+            <ListItemButton
+              selected={selectedIndex === 4}
+              onClick={(event) => handleListItemClick(event, 4)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <HistoryIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="History" />
+            </ListItemButton>
+            <ListItemButton
+              selected={selectedIndex === 5}
+              onClick={(event) => handleListItemClick(event, 5)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <NotificationsIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Notification" />
+            </ListItemButton>
+            <ListItemText
+              primary="USER"
+              sx={{
+                color: "#737374",
+              }}
+            />
+            <ListItemButton
+              selected={selectedIndex === 6}
+              onClick={(event) => handleListItemClick(event, 6)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <AccountCircleIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItemButton>
+            <ListItemButton
+              selected={selectedIndex === 7}
+              onClick={(event) => handleListItemClick(event, 7)}
+              sx={{
+                color: "#1964FF",
+              }}
+            >
+              <ListItemIcon>
+                <ExitToAppIcon
+                  sx={{
+                    fontSize: { xs: "28px", lg: "32px" },
+                    color: "#1964FF",
+                  }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Log Out" />
+            </ListItemButton>
+          </Box>
         </List>
       </Box>
     </div>
@@ -350,16 +360,11 @@ function ResponsiveDrawer(props) {
           ml: { sm: `${drawerWidth}px` },
           paddingLeft: 2,
           paddingRight: 2,
+          // bgcolor: "#E3F0EE",
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          content Pellentesque nec nam aliquam sem et tortor. Habitant morbi
-          tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo
-          viverra maecenas accumsan lacus vel facilisis. Nulla posuere
-          sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Addvehicle />
       </Box>
       {/**=======================================content of each links============================== */}
     </Box>
