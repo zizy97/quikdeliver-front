@@ -11,6 +11,13 @@ export const theme = createTheme({
     }
   },
   components: {
+    MuiLink:{
+      styleOverrides:{
+        root:{
+          textDecoration: 'none'
+        }
+      }
+    },
     MuiList:{
       styleOverrides:{
         root:{

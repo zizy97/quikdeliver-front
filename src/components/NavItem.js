@@ -29,7 +29,7 @@ export const NavItem = (props) => {
       {...others}
     >
       <Link
-        sx={{textDecoration: 'none',width: '100%'}}
+        sx={{width: '100%'}}
       >
         <Button
           startIcon={icon}
