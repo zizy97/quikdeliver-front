@@ -2,11 +2,14 @@ import Link from '@mui/material/Link';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Box, Button, ListItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export const NavItem = (props) => {
   const { href, icon, title, ...others } = props;
   const location = useLocation();
   const active = href ? (location.pathname === href) : false;
+
+  const navigate = useNavigate();
 
   return (
     <ListItem
@@ -22,10 +25,10 @@ export const NavItem = (props) => {
         },
         borderRadius: 1,
       }}
+      onClick={() => navigate(href)}
       {...others}
     >
       <Link
-        href={href}
         sx={{textDecoration: 'none',width: '100%'}}
       >
         <Button
