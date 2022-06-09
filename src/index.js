@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 //import App from "./App";
+//import Addvehicle from "./components/Vehicleowner/Addvehicle";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./contexts/AuthContext";
 //import Dashboard from "../src/components/Dashboard-main";
@@ -11,8 +12,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        {/* <Dashboard />*/}
         <Home />
+        {/*<Dashboard />*/}
       </AuthContextProvider>
     </BrowserRouter>
   </React.StrictMode>

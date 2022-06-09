@@ -12,7 +12,7 @@ import {
 import Drawercomp from "./NavbarDrawer";
 import logo from "../images/logo.png";
 
-const PAGES = ["Home", "About", "Create Booking"];
+const PAGES = ["Home", "About", "Services"];
 
 //===============Nav bar=========================================
 const Navbar = () => {
