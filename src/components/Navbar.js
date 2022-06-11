@@ -79,12 +79,15 @@ const Navbar = () => {
                 }}
                 variant="contained"
                 onClick={() => {
-                  navigate("/login");
+                  navigate("/signin");
                 }}
               >
                 Log In
               </Button>
               <Button
+                onClick={() => {
+                  navigate("/signup");
+                }}
                 sx={{
                   margin: "10px",
                   width: { lg: 120 },

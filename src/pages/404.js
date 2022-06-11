@@ -2,9 +2,11 @@ import Link from "@mui/material/Link";
 import { Box, Button, Container, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NotFound = () => {
   const navigate = useNavigate();
+  const isAuthenticated = useSelector(state => state.user.iuli) === "NSSB"?true:false;
   return (
     <>
       <Box
@@ -45,7 +47,11 @@ const NotFound = () => {
             </Box>
             <Link
               onClick={() => {
-                navigate("/");
+                if(isAuthenticated){
+                  navigate("/admin");
+                }else{
+                  navigate("/");
+                }
               }}
             >
               <Button
@@ -54,7 +60,7 @@ const NotFound = () => {
                 sx={{ mt: 3 }}
                 variant="contained"
               >
-                Go back to dashboard
+                Go back to {isAuthenticated ? "Dashboard" : "Home"}
               </Button>
             </Link>
           </Box>

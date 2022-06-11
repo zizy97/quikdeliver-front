@@ -1,4 +1,4 @@
-import { authRequest, getErrorMessage, postRequest } from "../utils";
+import { authRequest, getErrorMessage, postRequest,getRequest } from "../utils";
 import {
   getAccessToken,
   setAccessToken,
@@ -12,6 +12,7 @@ import {
   LOGOUT_URL,
   ACCESS_URL,
   REFRESH_URL,
+  GOOGLE_LOGIN_URL
 } from "../../config/urls";
 
 import qs from "qs";
@@ -80,6 +81,29 @@ export const logOut = async () => {
     });
   return result;
 };
+
+export const googleLogin = async (access) => {
+  var config = {
+    method: "GET",
+    url: GOOGLE_LOGIN_URL,
+    headers:{
+      Authorization: "Bearer " + access
+    },
+  };
+  await authRequest(config)
+    .then(({ data, error }) => {
+      if (!error) {
+        const { access, refresh, userId,roles } = data.data;
+        setAccessToken(access);
+        setRefreshToken(refresh);
+        setUserId(userId);
+        result = { status: true,data:{userId,roles}, error: null };
+      } else {
+        result = { status: false, error: getErrorMessage(error) };
+      }
+    })
+    return result;
+}
 
 export const isUser = async () => {
   var config = {

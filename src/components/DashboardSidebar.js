@@ -12,32 +12,32 @@ import { NavItem } from './NavItem';
 
 const items = [
   {
-    href: '/vo',
+    href: '/admin',
     icon: (<ChartBarIcon fontSize="small" />),
     title: 'Dashboard'
   },
   {
-    href: '/vo/drivers',
+    href: '/admin/drivers',
     icon: (<UsersIcon fontSize="small" />),
     title: 'Drivers'
   },
   {
-    href: '/vo/vehicles',
+    href: '/admin/vehicles',
     icon: (<TruckIcon fontSize="small" />),
     title: 'Vehicles'
   },
   {
-    href: '/vo/account',
+    href: '/admin/account',
     icon: (<UserIcon fontSize="small" />),
     title: 'Account'
   },
   {
-    href: '/vo/settings',
+    href: '/admin/settings',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
   },
   {
-    href: '/vo/logout',
+    href: '/',
     icon: (<LogoutIcon fontSize="small" />),
     title: 'Logout'
   },

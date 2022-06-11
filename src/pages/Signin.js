@@ -21,6 +21,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 
+
 //Services get
 import AuthServices from "../services/AuthServices";
 
@@ -29,7 +30,6 @@ import CustomSnackBar from "../components/CustomSnackBar";
 
 //redux resources--- userSlice access
 import { useDispatch } from "react-redux";
-import { setUserId, setUserLoggedIn,setUserRoles } from "../store/userSlice";
 
 //handle navigation
 import { useNavigate } from "react-router-dom";
@@ -83,11 +83,8 @@ export default function SignInSide() {
     const result = await AuthServices.handleLogin(
       credential,
       dispatch,
-      setUserLoggedIn
     );
     if (result.status) {
-      dispatch(setUserId(result.data.userId));
-      dispatch(setUserRoles(result.data.roles));
       setIsErrorMsgOpen(false);
       navigate("/admin");
     } else {

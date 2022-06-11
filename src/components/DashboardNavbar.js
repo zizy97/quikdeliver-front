@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Users as UsersIcon } from "../icons/users";
 import NotificationsPopover from "./notification/NotificationsPopover";
 import Profile from "./profile";
 
@@ -60,11 +59,6 @@ export const DashboardNavbar = (props) => {
             </IconButton>
           </Tooltip>
           <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Driver Requests">
-            <IconButton sx={{ ml: 1 }}>
-              <UsersIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
           <Stack
             direction="row"
             alignItems="center"

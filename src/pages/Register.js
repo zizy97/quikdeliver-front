@@ -71,12 +71,14 @@ const Register = () => {
       >
         <Container maxWidth="sm">
           <Link
-            href="/"
+            onClick={() => {
+              navigate('/');
+            }}
           >
             <Button
               startIcon={<ArrowBackIcon fontSize="small" />}
             >
-              Dashboard
+              Home
             </Button>
           </Link>
           <form onSubmit={formik.handleSubmit}>
@@ -200,7 +202,9 @@ const Register = () => {
               Have an account?
               {' '}
               <Link
-                href="/login"
+                onClick={() => {
+                  navigate('/signin');
+                }}
               >
                 <span
                   variant="subtitle2"

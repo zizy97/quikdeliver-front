@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import TestCase from "./test/TestCase";
 import DashboardAdmin from "../src/components/Dashboard-main";
-import SignInSide from "../src/components/Signin";
+import SignInSide from "./pages/Signin";
 import NotFound from "./pages/404";
 
 //Admin Dashboard 
@@ -12,6 +12,8 @@ import Drivers from "./pages/Drivers";
 import Vehicles from "./pages/Vehicles";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 const routes = (isAuthenticated,roles) => [
   {
@@ -23,8 +25,16 @@ const routes = (isAuthenticated,roles) => [
     element: <SignInSide/>,
   },
   {
-    path: "/admin",
-    element: isAuthenticated && roles.includes("ROLE_VO")  ? (
+    path: "signup",
+    element: <Register/>,
+  },
+  {
+    path: "signin",
+    element: <Login/>,
+  },
+  {
+    path: "/vo",
+    element: true  ? (
       <DashboardAdmin/>
     ) : (
       <Navigate to="/login" />
@@ -41,8 +51,8 @@ const routes = (isAuthenticated,roles) => [
     ],
   },
   {
-    path: "/vo",
-    element:  true ? (
+    path: "/admin",
+    element:  isAuthenticated ? (
       <DashboardLayout/>
     ) : (
       <Navigate to="/login" />
