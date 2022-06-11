@@ -37,7 +37,7 @@ const routes = (isAuthenticated,roles) => [
     element: true  ? (
       <DashboardAdmin/>
     ) : (
-      <Navigate to="/login" />
+      <Navigate to="/signin" />
     ),
     children: [
       { path: "", element: <h1>This is space to new component</h1> },
@@ -55,7 +55,7 @@ const routes = (isAuthenticated,roles) => [
     element:  isAuthenticated ? (
       <DashboardLayout/>
     ) : (
-      <Navigate to="/login" />
+      <Navigate to="/signin" />
     ),
     children: [
       { path: "", element: <Dashboard/> },
