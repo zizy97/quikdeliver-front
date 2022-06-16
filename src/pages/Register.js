@@ -1,6 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useNavigate, useLocation } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import AuthServices from "../services/AuthServices";
+import { useState } from "react";
+
 import {
   Box,
   Button,
@@ -9,53 +12,71 @@ import {
   FormHelperText,
   Link,
   TextField,
-  Typography
-} from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+  Typography,
+} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CustomSnackBar from "../components/CustomSnackBar";
 
 const Register = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const search = location.search;
+  const query = new URLSearchParams(search);
+  const option = query.get("type");
+
+  //configs for snackbar
+  const [isSnackOpen, setIsSnackOpen] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState(null);
+  const [isError, setIsError] = useState(false);
+
+  //this method is use to snackbar close/open
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setIsSnackOpen(false);
+  };
+
   const formik = useFormik({
     initialValues: {
-      email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-      policy: false
+      email: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      policy: false,
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email(
-          'Must be a valid email')
+      email: Yup.string()
+        .email("Must be a valid email")
         .max(255)
-        .required(
-          'Email is required'),
-      firstName: Yup
-        .string()
-        .max(255)
-        .required(
-          'First name is required'),
-      lastName: Yup
-        .string()
-        .max(255)
-        .required(
-          'Last name is required'),
-      password: Yup
-        .string()
-        .max(255)
-        .required(
-          'Password is required'),
-      policy: Yup
-        .boolean()
-        .oneOf(
-          [true],
-          'This field must be checked'
-        )
+        .required("Email is required"),
+      firstName: Yup.string().max(255).required("First name is required"),
+      lastName: Yup.string().max(255).required("Last name is required"),
+      password: Yup.string().max(255).required("Password is required"),
+      policy: Yup.boolean().oneOf([true], "This field must be checked"),
     }),
-    onSubmit: () => {
-      navigate('/');
-    }
+    onSubmit: async () => {
+      const email = formik.values.email;
+      const password = formik.values.password;
+      const name = formik.values.firstName + " " + formik.values.lastName;
+      const type = "customer";
+
+      const { status, error } = await AuthServices.handleSignup({
+        email,
+        password,
+        name,
+        type,
+      });
+
+      if (status) {
+        setSubmitMessage(
+          "Successfully Created User Please Verify Your Email And Login"
+        );
+      } else {
+        setIsError(true);
+        setSubmitMessage(error);
+      }
+    },
   });
 
   return (
@@ -63,42 +84,33 @@ const Register = () => {
       <Box
         component="main"
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           flexGrow: 1,
-          minHeight: '100%'
+          minHeight: "100%",
         }}
       >
         <Container maxWidth="sm">
           <Link
             onClick={() => {
-              navigate('/');
+              navigate("/");
             }}
           >
-            <Button
-              startIcon={<ArrowBackIcon fontSize="small" />}
-            >
-              Home
-            </Button>
+            <Button startIcon={<ArrowBackIcon fontSize="small" />}>Home</Button>
           </Link>
           <form onSubmit={formik.handleSubmit}>
             <Box sx={{ my: 3 }}>
-              <Typography
-                color="textPrimary"
-                variant="h4"
-              >
+              <Typography color="textPrimary" variant="h4">
                 Create a new account
               </Typography>
-              <Typography
-                color="textSecondary"
-                gutterBottom
-                variant="body2"
-              >
+              <Typography color="textSecondary" gutterBottom variant="body2">
                 Use your email to create a new account
               </Typography>
             </Box>
             <TextField
-              error={Boolean(formik.touched.firstName && formik.errors.firstName)}
+              error={Boolean(
+                formik.touched.firstName && formik.errors.firstName
+              )}
               fullWidth
               helperText={formik.touched.firstName && formik.errors.firstName}
               label="First Name"
@@ -149,9 +161,9 @@ const Register = () => {
             />
             <Box
               sx={{
-                alignItems: 'center',
-                display: 'flex',
-                ml: -1
+                alignItems: "center",
+                display: "flex",
+                ml: -1,
               }}
             >
               <Checkbox
@@ -159,34 +171,22 @@ const Register = () => {
                 name="policy"
                 onChange={formik.handleChange}
               />
-              <Typography
-                color="textSecondary"
-                variant="body2"
-              >
-                I have read the
-                {' '}
-                <Link
-                  href="#"
-                >
-                  <span
-                    color="primary"
-                    underline="always"
-                    variant="subtitle2"
-                  >
+              <Typography color="textSecondary" variant="body2">
+                I have read the{" "}
+                <Link href="#">
+                  <span color="primary" underline="always" variant="subtitle2">
                     Terms and Conditions
                   </span>
                 </Link>
               </Typography>
             </Box>
             {Boolean(formik.touched.policy && formik.errors.policy) && (
-              <FormHelperText error>
-                {formik.errors.policy}
-              </FormHelperText>
+              <FormHelperText error>{formik.errors.policy}</FormHelperText>
             )}
             <Box sx={{ py: 2 }}>
               <Button
                 color="primary"
-                disabled={formik.isSubmitting}
+                disabled={formik.isSubmitting && !isError}
                 fullWidth
                 size="large"
                 type="submit"
@@ -195,21 +195,14 @@ const Register = () => {
                 Sign Up Now
               </Button>
             </Box>
-            <Typography
-              color="textSecondary"
-              variant="body2"
-            >
-              Have an account?
-              {' '}
+            <Typography color="textSecondary" variant="body2">
+              Have an account?{" "}
               <Link
                 onClick={() => {
-                  navigate('/signin');
+                  navigate("/signin");
                 }}
               >
-                <span
-                  variant="subtitle2"
-                  underline="hover"
-                >
+                <span variant="subtitle2" underline="hover">
                   Sign In
                 </span>
               </Link>
@@ -217,6 +210,12 @@ const Register = () => {
           </form>
         </Container>
       </Box>
+      <CustomSnackBar
+        isOpen={isSnackOpen}
+        severity={isError ? "error" : "success"}
+        handleClose={handleClose}
+        message={submitMessage}
+      />
     </>
   );
 };

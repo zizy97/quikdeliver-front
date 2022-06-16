@@ -1,11 +1,12 @@
-import { loginIn,googleLogin } from "../api/auth/authAPI";
+import { loginIn,googleLogin,signup } from "../api/auth/authAPI";
 import { setUserId, setUserLoggedIn, setUserRoles } from "../store/userSlice";
 
 export default class AuthServices {
-      // credentials = {email:"supun97", password:"qweasdzxc"}// -input payload sample
-  static handleLogin = async (credentials, dispatch) => {
-    console.log("method invoked");
-    const { status,data, error } = await loginIn(credentials);
+
+//==============================login functions=============================
+
+  //this is subfunction for user login and google login
+  userSave =async (status,data,error,dispatch)=>{
     if (status) {
       dispatch(setUserLoggedIn("NSSB"));
       dispatch(setUserId(data.userId));
@@ -14,22 +15,38 @@ export default class AuthServices {
     } else {
       return {status:status,error:error};
     }
+  }
+
+  //this is user login function
+  static handleLogin = async (credentials, dispatch) => {
+    console.log("method invoked");
+    const { status,data, error } = await loginIn(credentials);
+    await this.userSave(status,data, error,dispatch);
   };
+
+  //this is google login function
+  static handleGoogleLogin = async (access,dispatch) => {
+    console.log("method invoked google login");
+    const { status,data, error } = await googleLogin(access);
+    await this.userSave(status,data, error,dispatch);
+  }
+
+//==============================logout functions=============================
+
+  //this is local logout function
   static handleLogout = async (dispatch) => {
     dispatch(setUserLoggedIn("SSNB"));
     dispatch(setUserId(""));
     dispatch(setUserRoles([]));
   };
-  static handleGoogleLogin = async (access,dispatch) => {
-    console.log("method invoked google login");
-    const { status,data, error } = await googleLogin(access);
-    if (status) {
-      dispatch(setUserLoggedIn("NSSB"));
-      dispatch(setUserId(data.userId));
-      dispatch(setUserRoles(data.roles));
-      return {status:status,roles:data.roles,error:error};
-    } else {
-      return {status:status,error:error};
-    }
+
+  //todo: need to implement user logout function server side
+
+
+//==============================signup functions=============================
+
+  static handleSignup = async (data) =>{
+    console.log(data);
+    return await signup(data);
   }
 }
