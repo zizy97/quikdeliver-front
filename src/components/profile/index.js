@@ -98,7 +98,6 @@ const Profile = () => {
             >
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
                     <Avatar alt="profile user" src="/static/images/avatars/avatar-2.png" sx={{ width: 32, height: 32 }} />
-                    <Typography variant="subtitle1" sx={{color:"black"}}>Supun Tharuka</Typography>
                 </Stack>
             </ButtonBase>
             <Popper

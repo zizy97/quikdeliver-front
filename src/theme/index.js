@@ -68,6 +68,13 @@ export const theme = createTheme({
         disableRipple: true
       }
     },
+    MuiCard:{
+      styleOverrides:{
+        root:{
+          backgroundColor: '#F3F4F6',
+        }
+      }
+    },
     MuiCardContent: {
       styleOverrides: {
         root: {
@@ -176,8 +183,9 @@ export const theme = createTheme({
       disabled: 'rgba(55, 65, 81, 0.26)'
     },
     background: {
-      default: '#F9FAFC',
-      paper: '#FFFFFF'
+      default: '#E9F0F8',
+      paper: '#FFFFFF',
+      toolbar:'#D4DCF7'
     },
     divider: '#E6E8F0',
     primary: {

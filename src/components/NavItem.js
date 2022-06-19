@@ -16,8 +16,8 @@ export const NavItem = (props) => {
       disableGutters
       sx={{
         display: 'flex',
-        mb: 1,
-        py: 1,
+        mb: 0.5,
+        py: 0.5,
         px: 2,
         backgroundColor: active && 'rgba(255,255,255, 0.08)',
         '&:hover': {

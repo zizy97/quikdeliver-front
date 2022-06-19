@@ -31,7 +31,7 @@ export const Income = (props) => (
         <Grid item>
           <Avatar
             sx={{
-              backgroundColor: 'error.main',
+              backgroundColor: 'success.dark',
               height: 56,
               width: 56
             }}

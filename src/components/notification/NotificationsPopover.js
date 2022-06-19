@@ -83,7 +83,7 @@ export default function NotificationsPopover() {
 
   const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
 
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const [heightScroll, setHeightScroll] = useState(window.innerHeight - window.innerHeight*0.5);
   useEffect(() => {
@@ -116,7 +116,7 @@ export default function NotificationsPopover() {
       <IconButton
         ref={anchorRef}
         color={open ? 'primary' : 'default'}
-        onClick={handleOpen}
+        onClick={open ? handleClose : handleOpen}
         sx={{ width: 40, height: 40 }}
       >
         <Badge badgeContent={totalUnRead} color="error">

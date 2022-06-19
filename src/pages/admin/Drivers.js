@@ -1,7 +1,7 @@
 import { Box, Container } from '@mui/material';
-import { DriverListResults } from '../components/driver/DriverListResults';
-import { DriverListToolbar } from '../components/driver/DriverListToolbar';
-import { drivers } from '../__mocks__/drivers';
+import { DriverListResults } from '../../components/driver/DriverListResults';
+import { DriverListToolbar } from '../../components/driver/DriverListToolbar';
+import { drivers } from '../../__mocks__/drivers';
 
 const Drivers = () => (
   <>

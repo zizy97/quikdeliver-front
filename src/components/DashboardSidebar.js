@@ -2,46 +2,9 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
-import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
-import { Cog as CogIcon } from '../icons/cog';
-import { Truck as TruckIcon } from '../icons/vehicle';
-import { User as UserIcon } from '../icons/user';
-import { Logout as LogoutIcon } from '../icons/logout';
-import { Users as UsersIcon } from '../icons/users';
 import { NavItem } from './NavItem';
+import { adminItems,customerItems,driverItems,voItems } from '../config/sidebar';
 
-const items = [
-  {
-    href: '/admin',
-    icon: (<ChartBarIcon fontSize="small" />),
-    title: 'Dashboard'
-  },
-  {
-    href: '/admin/drivers',
-    icon: (<UsersIcon fontSize="small" />),
-    title: 'Drivers'
-  },
-  {
-    href: '/admin/vehicles',
-    icon: (<TruckIcon fontSize="small" />),
-    title: 'Vehicles'
-  },
-  {
-    href: '/admin/account',
-    icon: (<UserIcon fontSize="small" />),
-    title: 'Account'
-  },
-  {
-    href: '/admin/settings',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Settings'
-  },
-  {
-    href: '/',
-    icon: (<LogoutIcon fontSize="small" />),
-    title: 'Logout'
-  },
-];
 
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
@@ -50,6 +13,30 @@ export const DashboardSidebar = (props) => {
     defaultMatches: true,
     noSsr: false
   });
+
+  var items;//items is coming from sidebar.js
+
+  switch (location.pathname.split('/')[1]) {
+    case 'admin':{
+      items = adminItems;
+      break;
+    }
+    case 'customer':{
+      items=customerItems;
+      break;
+    }
+    case 'driver':{
+      items=driverItems;
+      break;
+    }
+    case 'vo':{
+      items=voItems;
+      break;
+    }
+    default: {
+      
+    }
+  }
 
   useEffect(
     () => {
@@ -75,15 +62,16 @@ export const DashboardSidebar = (props) => {
           width: '100%'
         }}
       >
-        <div>
-          <Box sx={{ p: 3 }}></Box>
+        {/* <div>
+          <Box sx={{ minHeight:"64px",backgroundColor:"background.paper"}}></Box>
         </div>
         <Divider
           sx={{
             borderColor: '#2D3748',
-            my: 3
+            // my: 3
           }}
-        />
+        /> */}
+        <Box sx={{minHeight:"12%"}}></Box>
         <Box sx={{ flexGrow: 1 }}>
           {items.map((item) => (
             <NavItem
@@ -106,9 +94,9 @@ export const DashboardSidebar = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: 'neutral.900',
+            backgroundColor: 'neutral.800',
             color: '#FFFFFF',
-            width: 280
+            width: 200
           }
         }}
         variant="permanent"
@@ -125,9 +113,9 @@ export const DashboardSidebar = (props) => {
       open={open}
       PaperProps={{
         sx: {
-          backgroundColor: 'neutral.900',
+          backgroundColor: 'neutral.800',
           color: '#FFFFFF',
-          width: 280
+          width: 200
         }
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}

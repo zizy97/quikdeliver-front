@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Pagination } from '@mui/material';
-import { vehicles } from '../__mocks__/vehicles';
-import { VehicleListToolbar } from '../components/vehicles/VehicleListToolbar';
-import { VehicleCard } from '../components/vehicles/VehicleCard';
+import { vehicles } from '../../__mocks__/vehicles';
+import { VehicleListToolbar } from '../../components/vehicles/VehicleListToolbar';
+import { VehicleCard } from '../../components/vehicles/VehicleCard';
 
 const Vehicles = () => (
   <>
