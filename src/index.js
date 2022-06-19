@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
-import AuthContextProvider from "./contexts/AuthContext";
+// import AuthContextProvider from "./contexts/AuthContext";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { theme } from "./theme";
@@ -17,12 +17,12 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <AuthContextProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <App />
-            </ThemeProvider>
-          </AuthContextProvider>
+          {/* <AuthContextProvider> */}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <App />
+          </ThemeProvider>
+          {/* </AuthContextProvider> */}
         </BrowserRouter>
       </PersistGate>
     </Provider>

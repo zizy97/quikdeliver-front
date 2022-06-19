@@ -26,6 +26,11 @@ import Offers from './components/driver/joboffer/Offers';
 import ProContent from './components/driver/inprocess/ProContent';
 import History from './components/driver/history/History';
 
+//Customer Dashboard
+import Customer from "./pages/customer/Customer"
+import Customer2 from "./pages/customer/Customer2"
+import Customer3 from "./pages/customer/Customer3"
+
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
@@ -94,7 +99,7 @@ const routes = (isAuthenticated, roles) => [
       { path: "drivers", element: <Drivers /> },
       { path: "account", element: <Account /> },
       { path: "settings", element: <Settings /> },
-      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "history", element: <Customer3 /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
@@ -104,10 +109,13 @@ const routes = (isAuthenticated, roles) => [
     path: "/customer",
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
     children: [
-      { path: "", element: <Dashboard /> },
+      { path: "", element: <h1>This is space to new component</h1> },
+      { path: "bookings", element: <h1>This is space to new Bookings</h1> },
+      { path: "history", element: <h1>This is space to new History</h1> },
       { path: "account", element: <Account /> },
       { path: "settings", element: <Settings /> },
-      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "page1", element: <Customer /> },
+      { path: "page2", element: <Customer2 /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
