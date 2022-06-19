@@ -1,12 +1,12 @@
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import TestCase from "./test/TestCase";
-import DashboardAdmin from "../src/components/Dashboard-main";
+// import DashboardAdmin from "../src/components/Dashboard-main";
 import SignInSide from "./pages/Signin";
 import NotFound from "./pages/404";
 
-//Admin Dashboard 
-import {DashboardLayout} from "../src/components/DashboardLayout"
+//Admin Dashboard
+import { DashboardLayout } from "../src/components/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Drivers from "./pages/Drivers";
 import Vehicles from "./pages/Vehicles";
@@ -14,31 +14,60 @@ import Account from "./pages/Account";
 import Settings from "./pages/Settings";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+//Customer
+import Customer from "./pages/customer/Customer"
+import Customer2 from "./pages/customer/Customer2"
+import Customer3 from "./pages/customer/Customer3"
 
-const routes = (isAuthenticated,roles) => [
+const routes = (isAuthenticated, roles) => [
   {
     path: "",
-    element:<Home/> ,
+    element: <Home />,
   },
   {
     path: "login",
-    element: <SignInSide/>,
+    element: <SignInSide />,
   },
   {
     path: "signup",
-    element: <Register/>,
+    element: <Register />,
   },
   {
     path: "signin",
-    element: <Login/>,
+    element: <Login />,
+  },
+  {
+    path: "/admin",
+    element: isAuthenticated ? <DashboardLayout /> : <Navigate to="/signin" />,
+    children: [
+      { path: "", element: <Dashboard /> },
+      { path: "vehicles", element: <Vehicles /> },
+      { path: "drivers", element: <Drivers /> },
+      { path: "account", element: <Account /> },
+      { path: "settings", element: <Settings /> },
+      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "notification", element: <h1>This is space to notification</h1> },
+      { path: "*", element: <Navigate to="/404" /> },
+    ],
+  },
+  {
+    path: "/customer",
+    element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
+    children: [
+      { path: "", element: <h1>This is space to new component</h1> },
+      { path: "bookings", element: <h1>This is space to new Bookings</h1> },
+      { path: "history", element: <h1>This is space to new History</h1> },
+      { path: "account", element: <Account /> },
+      { path: "settings", element: <Settings /> },
+      { path: "page1", element: <Customer /> },
+      { path: "page2", element: <Customer2 /> },
+      { path: "notification", element: <h1>This is space to notification</h1> },
+      { path: "*", element: <Navigate to="/404" /> },
+    ],
   },
   {
     path: "/vo",
-    element: true  ? (
-      <DashboardAdmin/>
-    ) : (
-      <Navigate to="/signin" />
-    ),
+    element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
     children: [
       { path: "", element: <h1>This is space to new component</h1> },
       { path: "vehicles", element: <h1>This is space to new vehicles</h1> },
@@ -51,31 +80,13 @@ const routes = (isAuthenticated,roles) => [
     ],
   },
   {
-    path: "/admin",
-    element:  isAuthenticated ? (
-      <DashboardLayout/>
-    ) : (
-      <Navigate to="/signin" />
-    ),
-    children: [
-      { path: "", element: <Dashboard/> },
-      { path: "vehicles", element: <Vehicles/> },
-      { path: "drivers", element: <Drivers/> },
-      { path: "account", element: <Account/> },
-      { path: "settings", element: <Settings/> },
-      { path: "history", element: <h1>This is space to history</h1> },
-      { path: "notification", element: <h1>This is space to notification</h1> },
-      { path: "*", element: <Navigate to="/404" /> },
-    ],
-  },
-  {
     path: "/test",
-    element: <TestCase/>
+    element: <TestCase />,
   },
   {
     path: "*",
-    element: <NotFound/>
-  }
+    element: <NotFound />,
+  },
 ];
 
 export default routes;

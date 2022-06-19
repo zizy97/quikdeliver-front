@@ -10,32 +10,31 @@ import {
   Box,
 } from "@mui/material";
 import Drawercomp from "./NavbarDrawer";
-import logo from "../images/logo.png";
-import { useNavigate } from "react-router-dom";
+import logo from "../../images/logo.png";
 
-const PAGES = ["Home", "About", "Services"];
+const PAGES = ["Home", "About", "Create Booking"];
 
 //===============Nav bar=========================================
 const Navbar = () => {
   const [value, setValue] = useState(0);
   const theme = useTheme();
+  console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  const navigate = useNavigate();
+  console.log(isMatch);
 
   return (
     <div>
       <AppBar
         elevation={0}
         sx={{
-          position: "sticky",
-          background: "transparent",
-          position:"absolute"
+          backgroundColor: "transparent",
         }}
       >
-        <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>
+        <Toolbar sx={{ marginTop: { lg: 1, md: 1 } }}>
           <Box
-            component="img"
             alt="Your logo."
+            component="a"
+            href="/"
             src={logo}
             sx={{
               marginLeft: { lg: 5, md: 2 },
@@ -65,7 +64,7 @@ const Navbar = () => {
                     label={page}
                     sx={{
                       fontSize: { lg: 18, md: 15 },
-                      color: "#06173B",
+                      color: "white",
                     }}
                   />
                 ))}
@@ -76,24 +75,16 @@ const Navbar = () => {
                   width: { lg: 120 },
                   height: { lg: 45 },
                   backgroundColor: "#FFD481",
-                  color: "#06173B",
                 }}
                 variant="contained"
-                onClick={() => {
-                  navigate("/signin");
-                }}
               >
                 Log In
               </Button>
               <Button
-                onClick={() => {
-                  navigate("/signup");
-                }}
                 sx={{
                   margin: "10px",
                   width: { lg: 120 },
                   height: { lg: 45 },
-                  color: "#FFD481",
                 }}
                 variant="contained"
               >

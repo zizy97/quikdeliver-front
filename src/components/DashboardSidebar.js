@@ -1,54 +1,96 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
-import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
-import { Cog as CogIcon } from '../icons/cog';
-import { Truck as TruckIcon } from '../icons/vehicle';
-import { User as UserIcon } from '../icons/user';
-import { Logout as LogoutIcon } from '../icons/logout';
-import { Users as UsersIcon } from '../icons/users';
-import { NavItem } from './NavItem';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Box, Divider, Drawer, useMediaQuery } from "@mui/material";
+import { ChartBar as ChartBarIcon } from "../icons/chart-bar";
+import { Cog as CogIcon } from "../icons/cog";
+import { Truck as TruckIcon } from "../icons/vehicle";
+import { User as UserIcon } from "../icons/user";
+import { Logout as LogoutIcon } from "../icons/logout";
+import { Users as UsersIcon } from "../icons/users";
+import { NavItem } from "./NavItem";
 
 const items = [
   {
-    href: '/admin',
-    icon: (<ChartBarIcon fontSize="small" />),
-    title: 'Dashboard'
+    href: "/admin",
+    icon: (
+      <ChartBarIcon
+        fontSize="small"
+        sx={{
+          color: "black",
+        }}
+      />
+    ),
+    title: "Dashboard",
   },
   {
-    href: '/admin/drivers',
-    icon: (<UsersIcon fontSize="small" />),
-    title: 'Drivers'
+    href: "/admin/drivers",
+    icon: (
+      <UsersIcon
+        fontSize="small"
+        sx={{
+          color: "black",
+        }}
+      />
+    ),
+    title: "Drivers",
   },
   {
-    href: '/admin/vehicles',
-    icon: (<TruckIcon fontSize="small" />),
-    title: 'Vehicles'
+    href: "/admin/vehicles",
+    icon: (
+      <TruckIcon
+        fontSize="small"
+        sx={{
+          color: "black",
+        }}
+      />
+    ),
+    title: "Vehicles",
   },
   {
-    href: '/admin/account',
-    icon: (<UserIcon fontSize="small" />),
-    title: 'Account'
+    href: "/admin/account",
+    icon: (
+      <UserIcon
+        fontSize="small"
+        sx={{
+          color: "black",
+        }}
+      />
+    ),
+    title: "Account",
   },
   {
-    href: '/admin/settings',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Settings'
+    href: "/admin/settings",
+    icon: (
+      <CogIcon
+        fontSize="small"
+        sx={{
+          color: "black",
+        }}
+      />
+    ),
+    title: "Settings",
   },
   {
-    href: '/',
-    icon: (<LogoutIcon fontSize="small" />),
-    title: 'Logout'
+    href: "/",
+    icon: (
+      <LogoutIcon
+        fontSize="small"
+        sx={{
+          color: "black",
+        }}
+      />
+    ),
+    title: "Logout",
   },
 ];
 
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const location = useLocation();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
     defaultMatches: true,
-    noSsr: false
+    noSsr: false,
   });
 
   useEffect(
@@ -69,22 +111,27 @@ export const DashboardSidebar = (props) => {
     <>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%'
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          width: "100%",
         }}
       >
         <div>
-          <Box sx={{ p: 3 }}></Box>
+          <Box sx={{ p: 2 }}></Box>
         </div>
         <Divider
           sx={{
-            borderColor: '#2D3748',
-            my: 3
+            borderColor: "#2D3748",
+            my: 3,
           }}
         />
-        <Box sx={{ flexGrow: 1 }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            color: "black",
+          }}
+        >
           {items.map((item) => (
             <NavItem
               key={item.title}
@@ -94,7 +141,7 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Divider sx={{ borderColor: '#2D3748' }} />
+        <Divider sx={{ borderColor: "#2D3748" }} />
       </Box>
     </>
   );
@@ -106,10 +153,10 @@ export const DashboardSidebar = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: 'neutral.900',
-            color: '#FFFFFF',
-            width: 280
-          }
+            backgroundColor: "#D3E2FF",
+            color: "#FFFFFF",
+            width: 180,
+          },
         }}
         variant="permanent"
       >
@@ -125,10 +172,10 @@ export const DashboardSidebar = (props) => {
       open={open}
       PaperProps={{
         sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280
-        }
+          backgroundColor: "#D3E2FF",
+          color: "#FFFFFF",
+          width: 200,
+        },
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
       variant="temporary"
@@ -140,5 +187,5 @@ export const DashboardSidebar = (props) => {
 
 DashboardSidebar.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
