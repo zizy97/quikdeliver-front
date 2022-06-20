@@ -19,6 +19,14 @@ import SendMail from "./pages/SendMail";
 
 
 
+//Driver Dashboard
+//import DriverDashboard from "./components/driver/DriverDashboard";
+//import NewOrders from './components/driver/newrequests/NewOrders';
+//import Offers from './components/driver/joboffer/Offers';
+//import ProContent from './components/driver/inprocess/ProContent';
+//import History from './components/driver/history/History';
+
+
 const routes = (isAuthenticated,roles) => [
   {
     path: "",
@@ -78,6 +86,8 @@ const routes = (isAuthenticated,roles) => [
     ],
   },
   {
+<<<<<<< HEAD
+<<<<<<< HEAD
     path: "/customer",
     element:  true ? (
       <DashboardLayout/>
@@ -107,10 +117,25 @@ const routes = (isAuthenticated,roles) => [
       { path: "history", element: <h1>This is space to history</h1> },
       { path: "newrequests", element: <h1>This is space to News Requests</h1> },
       { path: "inprocess", element: <h1>This is space to Inprocess</h1> },
+=======
+    path: "/driver",
+    element:<DriverDashboardLayout/> ,
+    children: [
+      { path: "", element: <DriverDashboard/> },
+      { path: "newrequests", element: <NewOrders/> },
+      { path: "inprocess", element: <ProContent/> },
+      { path: "joboffers", element: <Offers/> },
+      { path: "account", element: <Account/> },
+      { path: "settings", element: <Settings/> },
+      { path: "history", element: <History/> },
+      { path: "notification", element: <h1>This is space to notification</h1> },
+>>>>>>> 1cf89ca (driver components and routings)
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
   {
+=======
+>>>>>>> 8d01fec (remove unnecessary components from driver)
     path: "/test",
     element: <TestCase/>
   },
