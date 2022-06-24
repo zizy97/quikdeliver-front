@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const ipoAPIHostProd = "https://quikapp-back.herokuapp.com/api"; //for production
-const ipoAPIHostDev = "http://localhost:8081/api"; // for development
+const ipoAPIHostDev = "https://quik-back.herokuapp.com/api"; // for development
+// const ipoAPIHostDev = "http://localhost:8081/api"; // for development
 
 const ipoAPIHost = process.env.NODE_ENV === "development" ? ipoAPIHostDev : ipoAPIHostProd;
 

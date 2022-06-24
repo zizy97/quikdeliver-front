@@ -105,7 +105,7 @@ export const logOut = async () => {
 //signup function
 
 export const signup = async (data) => {
-  console.log("signup function triggered")
+  console.log("signup function triggered");
   var out = JSON.stringify({
     email: data.email,
     password: data.password,
@@ -123,9 +123,9 @@ export const signup = async (data) => {
   await authRequest(config)
     .then(({ data, error }) => {
       if (!error) {
-        if(data.status === 201){
+        if (data.status === 201) {
           const { id, name, email } = data.data;
-          console.log("id -"+id+" name -"+name+" email -"+email);
+          console.log("id -" + id + " name -" + name + " email -" + email);
           result = { status: true, error: null };
         }
       } else {
@@ -133,7 +133,6 @@ export const signup = async (data) => {
       }
     })
     .catch((error) => {
-      console.log("error " + error);
       result = { status: false, error: getErrorMessage(error) };
     });
   return result;

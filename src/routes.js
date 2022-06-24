@@ -15,6 +15,7 @@ import Account from "./pages/Account";
 import Settings from "./pages/Settings";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import SendMail from "./pages/SendMail";
 
 
 
@@ -26,6 +27,10 @@ const routes = (isAuthenticated,roles) => [
   {
     path: "login",
     element: <SignInSide/>,
+  },
+  {
+    path: "sendmail",
+    element: <SendMail/>,
   },
   {
     path: "signup",
@@ -54,9 +59,9 @@ const routes = (isAuthenticated,roles) => [
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
-  {
+  { 
     path: "/admin",
-    element:  true ? (
+    element:  isAuthenticated && roles.includes("ROLE_CUSTOMER") ? (
       <DashboardLayout/>
     ) : (
       <Navigate to="/signin" />
