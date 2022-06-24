@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ipoAPIHostProd = "https://quikapp-back.herokuapp.com/api"; //for production
+const ipoAPIHostProd = "https://quik-back.herokuapp.com/api"; //for production
 const ipoAPIHostDev = "https://quik-back.herokuapp.com/api"; // for development
 // const ipoAPIHostDev = "http://localhost:8081/api"; // for development
 
