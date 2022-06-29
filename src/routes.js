@@ -94,6 +94,23 @@ const routes = (isAuthenticated,roles) => [
     ],
   },
   {
+    path: "/driver",
+    element:  true ? (
+      <DashboardLayout/>
+    ) : (
+      <Navigate to="/signin" />
+    ),
+    children: [
+      { path: "", element: <Dashboard/> },
+      { path: "account", element: <Account/> },
+      { path: "settings", element: <Settings/> },
+      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "newrequests", element: <h1>This is space to News Requests</h1> },
+      { path: "inprocess", element: <h1>This is space to Inprocess</h1> },
+      { path: "*", element: <Navigate to="/404" /> },
+    ],
+  },
+  {
     path: "/test",
     element: <TestCase/>
   },

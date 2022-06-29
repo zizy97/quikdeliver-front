@@ -5,6 +5,10 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import SettingsIcon from '@mui/icons-material/Settings';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import HistoryIcon from '@mui/icons-material/History';
 
 //this is the sidebar for admin
 export const adminItems = [
@@ -111,9 +115,24 @@ export const adminItems = [
       title: 'Dashboard'
     },
     {
-      href: '/driver/requests',
-      icon: (<PersonIcon/>),
-      title: 'Drivers'
+      href: '/driver/newrequests',
+      icon: (<AddTaskIcon/>),
+      title: 'New Requests'
+    },
+    {
+      href: '/driver/inprocess',
+      icon: (<HourglassTopIcon/>),
+      title: 'In Process'
+    },
+    {
+      href: '/driver/joboffers',
+      icon: (<WorkOutlineIcon/>),
+      title: 'Job Offer'
+    },
+    {
+      href: '/driver/history',
+      icon: (<HistoryIcon/>),
+      title: 'History'
     },
     {
       href: '/driver/account',

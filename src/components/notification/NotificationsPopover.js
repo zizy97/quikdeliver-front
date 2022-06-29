@@ -89,17 +89,20 @@ export default function NotificationsPopover() {
   useEffect(() => {
     function handleResize() {
       setHeightScroll(window.innerHeight - window.innerHeight*0.5);
-      console.log(heightScroll);
+      // console.log(heightScroll);
     }
     window.addEventListener("resize", handleResize);
   });
 
   const handleOpen = (event) => {
-    setOpen(event.currentTarget);
+    setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(null);
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
   };
 
   const handleMarkAllAsRead = () => {
