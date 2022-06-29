@@ -19,6 +19,13 @@ import Services from "./pages/Services";
 import Contactus from "./pages/ContactUs";
 import DefaultLayout from "./components/DefaultLayout";
 
+//Driver Dashboard
+import DriverDashboard from "./components/driver/DriverDashboard";
+import NewOrders from './components/driver/newrequests/NewOrders';
+import Offers from './components/driver/joboffer/Offers';
+import ProContent from './components/driver/inprocess/ProContent';
+import History from './components/driver/history/History';
+
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
