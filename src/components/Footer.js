@@ -6,8 +6,10 @@ import {
   Typography,
   Box,
   ListItem,
+  ListItemButton,
+  Divider,
 } from "@mui/material"; //==============Components==================================
-import logo from "../images/logo.png";
+import logo from "../../src/images/logo.png";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
@@ -70,50 +72,85 @@ function Footer() {
               <ListItemText
                 primary="Navigation Links"
                 primaryTypographyProps={{
-                  fontSize: "22px",
                   fontWeight: "bold",
                 }}
               />
             </ListItem>
+
             <ListItem>
-              <ListItemText
-                primary="Home"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="Home" />
+              </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="About"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="About" />
+              </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="Services"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="Services" />
+              </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="Sign In"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="Sign In" />
+              </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="Sign Up"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="Sign Up" primaryTypographyProps={{}} />
+              </ListItemButton>
             </ListItem>
           </List>
         </Grid>
@@ -128,26 +165,69 @@ function Footer() {
               <ListItemText
                 primary="Links"
                 primaryTypographyProps={{
-                  fontSize: "22px",
                   fontWeight: "bold",
                 }}
               />
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="Join as a Deliverer"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="Create Delivery Booking" />
+              </ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemText
-                primary="Join as a vehicle Owner"
-                primaryTypographyProps={{
-                  fontSize: "18px",
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
-              />
+              >
+                <ListItemText primary="Join as a Deliverer" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
+                }}
+              >
+                <ListItemText primary="Join as a vehicle Owner" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
+                sx={{
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
+                }}
+              >
+                <ListItemText primary="Privacy & policy" />
+              </ListItemButton>
             </ListItem>
           </List>
         </Grid>
@@ -162,7 +242,6 @@ function Footer() {
               <ListItemText
                 primary="Contact Us"
                 primaryTypographyProps={{
-                  fontSize: "22px",
                   fontWeight: "bold",
                 }}
               />
@@ -191,29 +270,54 @@ function Footer() {
               </Typography>
             </ListItem>
             <ListItem>
-              <FacebookIcon />
-              <Typography
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
                 sx={{
-                  fontSize: 18,
-                  ml: 1,
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
               >
-                FaceBook
-              </Typography>
+                <FacebookIcon />
+                <Typography
+                  sx={{
+                    fontSize: 18,
+                    ml: 1,
+                  }}
+                >
+                  FaceBook
+                </Typography>
+              </ListItemButton>
             </ListItem>
             <ListItem>
-              <InstagramIcon />
-              <Typography
+              <ListItemButton
+                disableRipple
+                disableGutters
+                size="small"
                 sx={{
-                  fontSize: 18,
-                  ml: 1,
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                  height: 20,
                 }}
               >
-                Instagram
-              </Typography>
+                <InstagramIcon />
+                <Typography
+                  sx={{
+                    fontSize: 18,
+                    ml: 1,
+                  }}
+                >
+                  Instagram
+                </Typography>
+              </ListItemButton>
             </ListItem>
           </List>
         </Grid>
+        <Divider />
       </Grid>
     </div>
   );
