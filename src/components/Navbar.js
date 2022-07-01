@@ -13,7 +13,12 @@ import Drawercomp from "./NavbarDrawer";
 import logo from "../images/logo.png";
 import { useNavigate } from "react-router-dom";
 
-const PAGES = ["Home", "About", "Services"];
+const PAGES = [
+  { title: "Home", url: "/" },
+  { title: "About", url: "/about" },
+  { title: "Services", url: "/services" },
+  { title: "Contact Us", url: "/contactus" },
+];
 
 //===============Nav bar=========================================
 const Navbar = () => {
@@ -23,12 +28,16 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        zIndex: 10,
+      }}
+    >
       <AppBar
         elevation={0}
         sx={{
-          position: "sticky",
-          background: "none",
+          background: "transparent",
         }}
       >
         <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>
@@ -61,10 +70,13 @@ const Navbar = () => {
                 {PAGES.map((page, index) => (
                   <Tab
                     key={index}
-                    label={page}
+                    label={page.title}
                     sx={{
                       fontSize: { lg: 18, md: 15 },
                       color: "#06173B",
+                    }}
+                    onClick={() => {
+                      navigate(page.url);
                     }}
                   />
                 ))}

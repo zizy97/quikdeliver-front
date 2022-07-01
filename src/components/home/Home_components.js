@@ -12,12 +12,10 @@ import {
   Badge,
 } from "@mui/material"; //==============Components==================================
 import CircleIcon from "@mui/icons-material/Circle";
-//import deliverer from "../images/deliverer.png"; //========image====================
-import driver from "../images/driver.png"; //========image========================
-import deliverstep from "../images/deliverstep.png"; //========image==============
-import vehicleowner from "../images/vehicleowner.png";
-
-
+import driver from "../../images/driver.png"; //========image========================
+import deliverstep from "../../images/deliverstep.png"; //========image==============
+import vehicleowner from "../../images/vehicleowner.png"; //========image========================
+import Background from "../../images/home.jpg"; //========image========================
 //==============Customer Section Starting============================================
 //==============Customer Section Starting============================================
 const shapeStyles = { bgcolor: "#FFD481", width: 40, height: 40 };
@@ -27,17 +25,23 @@ const circle = (
 );
 function Delivererbooking() {
   return (
-    <div>
+    <div
+      style={{
+        background: `url(${Background})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+      }}
+    >
       <Grid container direction={"row"}>
         <Grid item lg={7} xs={12} sm={12} md={7}>
           <Box
             sx={{
-              marginTop: { lg: 22, md: 25, sm: 18, xs: 14 },
+              marginTop: { lg: 30, md: 25, sm: 18, xs: 14 },
               marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
               marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
             }}
           >
-
             <Typography
               component="h1"
               gutterBottom
@@ -135,18 +139,7 @@ function Delivererbooking() {
           display="flex"
           alignItems="center"
           justifyContent="center"
-        >
-          {/*    <Box
-            component="img"
-            alt="Your logo."
-            src={deliverer}
-            sx={{
-              width: { lg: 370, md: 290, sm: 320, xs: 260 },
-              marginTop: { lg: 15, md: 15, sm: 8, xs: 5 },
-              marginBottom: { lg: 0, md: 0, sm: 5, xs: 5 },
-            }}
-          />*/}
-        </Grid>
+        ></Grid>
       </Grid>
     </div>
   );
