@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import TestCase from "./test/TestCase";
-import SignInSide from "./pages/Signin";
+// import SignInSide from "./pages/Signin";
 import NotFound from "./pages/404";
 import SendMail from "./pages/SendMail";
 
@@ -16,7 +16,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Services from "./pages/Services";
-import Contactus from "./pages/ContactUs";
+import ContactUs from "./pages/ContactUs";
 import DefaultLayout from "./components/DefaultLayout";
 
 //Driver Dashboard
@@ -45,13 +45,13 @@ const routes = (isAuthenticated, roles) => [
       },
       {
         path: "/contactus",
-        element: <Contactus />,
+        element: <ContactUs />,
       },
     ],
   },
   {
     path: "login",
-    element: <SignInSide />,
+    element: <Login />,
   },
   {
     path: "sendmail",

@@ -39,15 +39,15 @@ const NOTIFICATIONS = [
     createdAt: set(new Date(), { hours: 10, minutes: 30 }),
     isUnRead: true,
   },
-  {
-    id: faker.datatype.uuid(),
-    title: faker.name.findName(),
-    description: 'answered to your comment on the Minimal',
-    avatar: '/static/mock-images/avatars/avatar_2.jpg',
-    type: 'friend_interactive',
-    createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
-    isUnRead: true,
-  },
+  // {
+  //   id: faker.datatype.uuid(),
+  //   title: faker.name.findName(),
+  //   description: 'answered to your comment on the Minimal',
+  //   avatar: '/static/mock-images/avatars/avatar_2.jpg',
+  //   type: 'friend_interactive',
+  //   createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
+  //   isUnRead: true,
+  // },
   {
     id: faker.datatype.uuid(),
     title: 'You have new message',
@@ -57,15 +57,15 @@ const NOTIFICATIONS = [
     createdAt: sub(new Date(), { days: 1, hours: 3, minutes: 30 }),
     isUnRead: false,
   },
-  {
-    id: faker.datatype.uuid(),
-    title: 'You have new mail',
-    description: 'sent from Guido Padberg',
-    avatar: null,
-    type: 'mail',
-    createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
-    isUnRead: false,
-  },
+  // {
+  //   id: faker.datatype.uuid(),
+  //   title: 'You have new mail',
+  //   description: 'sent from Guido Padberg',
+  //   avatar: null,
+  //   type: 'mail',
+  //   createdAt: sub(new Date(), { days: 2, hours: 3, minutes: 30 }),
+  //   isUnRead: false,
+  // },
   {
     id: faker.datatype.uuid(),
     title: 'Delivery processing',
@@ -86,7 +86,7 @@ export default function NotificationsPopover() {
 
   const [open, setOpen] = useState(null);
 
-  const [heightScroll, setHeightScroll] = useState(window.innerHeight - window.innerHeight*0.5);
+  const [heightScroll, setHeightScroll] = useState(window.innerHeight - window.innerHeight*0.55);
   useEffect(() => {
     function handleResize() {
       setHeightScroll(window.innerHeight - window.innerHeight*0.5);
