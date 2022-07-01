@@ -18,6 +18,7 @@ import {
   ListSubheader,
   ListItemAvatar,
   ListItemButton,
+  ClickAwayListener
 } from '@mui/material';
 // utils
 import { fToNow } from '../../utils/formatTime';
@@ -38,15 +39,15 @@ const NOTIFICATIONS = [
     createdAt: set(new Date(), { hours: 10, minutes: 30 }),
     isUnRead: true,
   },
-  // {
-  //   id: faker.datatype.uuid(),
-  //   title: faker.name.findName(),
-  //   description: 'answered to your comment on the Minimal',
-  //   avatar: '/static/images/avatars/avatar_2.jpg',
-  //   type: 'friend_interactive',
-  //   createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
-  //   isUnRead: true,
-  // },
+  {
+    id: faker.datatype.uuid(),
+    title: faker.name.findName(),
+    description: 'answered to your comment on the Minimal',
+    avatar: '/static/mock-images/avatars/avatar_2.jpg',
+    type: 'friend_interactive',
+    createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
+    isUnRead: true,
+  },
   {
     id: faker.datatype.uuid(),
     title: 'You have new message',
@@ -83,7 +84,7 @@ export default function NotificationsPopover() {
 
   const totalUnRead = notifications.filter((item) => item.isUnRead === true).length;
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(null);
 
   const [heightScroll, setHeightScroll] = useState(window.innerHeight - window.innerHeight*0.5);
   useEffect(() => {
@@ -95,14 +96,11 @@ export default function NotificationsPopover() {
   });
 
   const handleOpen = (event) => {
-    setOpen(true);
+    setOpen(event.currentTarget);
   };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-    setOpen(false);
+  const handleClose = () => {
+    setOpen(null);
   };
 
   const handleMarkAllAsRead = () => {
@@ -115,11 +113,12 @@ export default function NotificationsPopover() {
   };
 
   return (
-    <>
+    <ClickAwayListener onClickAway={handleClose}>
+    <div>
       <IconButton
         ref={anchorRef}
         color={open ? 'primary' : 'default'}
-        onClick={open ? handleClose : handleOpen}
+        onClick={handleOpen}
         sx={{ width: 40, height: 40 }}
       >
         <Badge badgeContent={totalUnRead} color="error">
@@ -152,7 +151,7 @@ export default function NotificationsPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <Scrollbar sx={{ height: heightScroll }}>
+        <Scrollbar sx={{ height: heightScroll}}>
           <List
             disablePadding
             subheader={
@@ -188,7 +187,8 @@ export default function NotificationsPopover() {
           </Button>
         </Box>
       </MenuPopover>
-    </>
+    </div>
+    </ClickAwayListener>
   );
 }
 
