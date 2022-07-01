@@ -114,7 +114,7 @@ const routes = (isAuthenticated, roles) => [
   },
   {
     path: "/driver",
-    element:<DriverDashboardLayout/> ,
+    element:<DashboardLayout/> ,
     children: [
       { path: "", element: <DriverDashboard/> },
       { path: "newrequests", element: <NewOrders/> },
