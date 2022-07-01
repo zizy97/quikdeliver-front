@@ -15,9 +15,10 @@ import Settings from "./pages/Settings";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 //Customer
-import Customer from "./pages/customer/Customer"
-import Customer2 from "./pages/customer/Customer2"
-import Customer3 from "./pages/customer/Customer3"
+import Customer from "./pages/customer/Customer";
+import Customer2 from "./pages/customer/Customer2";
+import Customer3 from "./pages/customer/Customer3";
+import Map from "./pages/customer/Map";
 
 const routes = (isAuthenticated, roles) => [
   {
@@ -56,11 +57,12 @@ const routes = (isAuthenticated, roles) => [
     children: [
       { path: "", element: <h1>This is space to new component</h1> },
       { path: "bookings", element: <h1>This is space to new Bookings</h1> },
-      { path: "history", element: <h1>This is space to new History</h1> },
+      { path: "history", element: <Customer3 /> },
       { path: "account", element: <Account /> },
       { path: "settings", element: <Settings /> },
       { path: "page1", element: <Customer /> },
       { path: "page2", element: <Customer2 /> },
+      { path: "page3", element: <Map /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],

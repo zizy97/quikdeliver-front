@@ -1,11 +1,11 @@
 import Navbar from "../components/Navbar";
 import { Delivererbooking } from "../components/Home_components";
-import Background from "../images/home.jpg";
+// import Background from "../images/home.jpg";
 function Homecontainer() {
   return (
     <div
       style={{
-        background: `url(${Background})`,
+        // background: `url(${Background})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

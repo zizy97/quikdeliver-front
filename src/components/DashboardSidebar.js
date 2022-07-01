@@ -9,6 +9,8 @@ import { User as UserIcon } from "../icons/user";
 import { Logout as LogoutIcon } from "../icons/logout";
 import { Users as UsersIcon } from "../icons/users";
 import { NavItem } from "./NavItem";
+import Typography from "@mui/material/Typography";
+import logo2 from "../images/logo2.png";
 
 const items = [
   {
@@ -118,11 +120,53 @@ export const DashboardSidebar = (props) => {
         }}
       >
         <div>
-          <Box sx={{ p: 2 }}></Box>
+          <Box sx={{ p: 2, pl: 3.25 }}>
+            {/* =====Logo ====== */}
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "Nunito",
+                fontWeight: 700,
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              <lord-icon
+                src="https://cdn.lordicon.com/fihkmkwt.json"
+                trigger="loop-on-hover"
+                colors="primary:#ffffff,secondary:#1663c7"
+                state="loop-spin"
+                style={{
+                  width: "65px",
+                  height: "65px",
+                  marginTop: "-10px",
+                  marginRight: "-55px",
+                }}
+              />
+              <Box
+                component="img"
+                alt="Your logo."
+                src={logo2}
+                sx={{
+                  marginTop: { lg: 0.5, md: 0.5 },
+                  marginLeft: { lg: 1, md: 1 },
+                  display: { xs: "none", sm: "none", lg: "block", md: "block" },
+                  width: { lg: 80, md: 70 },
+                  height: { lg: 50, md: 50 },
+                }}
+              />
+            </Typography>
+            {/* =====Logo ending====== */}
+          </Box>
         </div>
         <Divider
           sx={{
-            borderColor: "#2D3748",
+            borderColor: "transparent",
             my: 3,
           }}
         />
@@ -141,6 +185,12 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
+        <div>
+          <Box sx={{ p: 2 }}>
+            {/* map activate/deactivate status(not essential) */}
+            <div>hello</div>
+          </Box>
+        </div>
         <Divider sx={{ borderColor: "#2D3748" }} />
       </Box>
     </>

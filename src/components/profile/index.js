@@ -82,131 +82,186 @@ const Profile = () => {
     const iconBackColorOpen = 'grey.300';
 
     return (
-        <Box sx={{ flexShrink: 0, ml: 0.75 }}>
-            <ButtonBase
-                sx={{
-                    p: 0.25,
-                    bgcolor: open ? iconBackColorOpen : 'transparent',
-                    borderRadius: 1,
-                    '&:hover': { bgcolor: 'secondary.lighter' }
-                }}
-                aria-label="open profile"
-                ref={anchorRef}
-                aria-controls={open ? 'profile-grow' : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-            >
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-                    <Avatar alt="profile user" src="/static/images/avatars/avatar-2.png" sx={{ width: 32, height: 32 }} />
-                    <Typography variant="subtitle1" sx={{color:"black"}}>Supun Tharuka</Typography>
-                </Stack>
-            </ButtonBase>
-            <Popper
-                placement="bottom-end"
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                transition
-                disablePortal
-                popperOptions={{
-                    modifiers: [
-                        {
-                            name: 'offset',
-                            options: {
-                                offset: [0, 9]
-                            }
-                        }
-                    ]
-                }}
-            >
-                {({ TransitionProps }) => (
-                    <Transitions type="fade" in={open} {...TransitionProps}>
-                        {open && (
-                            <Paper
-                                sx={{
-                                    boxShadow: theme.customShadows.z1,
-                                    width: 290,
-                                    minWidth: 240,
-                                    maxWidth: 290,
-                                    [theme.breakpoints.down('md')]: {
-                                        maxWidth: 250
-                                    }
-                                }}
+      <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+        <ButtonBase
+          sx={{
+            p: 0.25,
+            bgcolor: open ? iconBackColorOpen : "white",
+                    borderRadius: 6,
+            border:1,
+            borderColor: "#357CDF",
+            "&:hover": { bgcolor: "secondary.lighter" },
+          }}
+          aria-label="open profile"
+          ref={anchorRef}
+          aria-controls={open ? "profile-grow" : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+        >
+          <Stack
+            direction="row"
+            spacing={2}
+            alignItems="center"
+            sx={{ p: 0.5 }}
+          >
+            <Avatar
+              alt="profile user"
+              src="/static/images/avatars/avatar-2.png"
+              sx={{ width: 32, height: 32 }}
+            />
+            <Typography variant="subtitle1" sx={{ color: "black" }}>
+              Supun Tharuka
+            </Typography>
+          </Stack>
+        </ButtonBase>
+        <Popper
+          placement="bottom-end"
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal
+          popperOptions={{
+            modifiers: [
+              {
+                name: "offset",
+                options: {
+                  offset: [0, 9],
+                },
+              },
+            ],
+          }}
+        >
+          {({ TransitionProps }) => (
+            <Transitions type="fade" in={open} {...TransitionProps}>
+              {open && (
+                <Paper
+                  sx={{
+                    boxShadow: theme.customShadows.z1,
+                    width: 290,
+                    minWidth: 240,
+                    maxWidth: 290,
+                    [theme.breakpoints.down("md")]: {
+                      maxWidth: 250,
+                    },
+                  }}
+                >
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MainCard elevation={0} border={false} content={false}>
+                      <CardContent sx={{ pb: 0, px: 1, pt: 1 }}>
+                        <Grid
+                          container
+                          justifyContent="space-between"
+                          alignItems="center"
+                        >
+                          <Grid item>
+                            <Stack
+                              direction="row"
+                              spacing={1.25}
+                              alignItems="center"
                             >
-                                <ClickAwayListener onClickAway={handleClose}>
-                                    <MainCard elevation={0} border={false} content={false}>
-                                        <CardContent sx={{ pb:0,px: 1, pt: 1}}>
-                                            <Grid container justifyContent="space-between" alignItems="center">
-                                                <Grid item>
-                                                    <Stack direction="row" spacing={1.25} alignItems="center">
-                                                        <Avatar alt="profile user" src="/static/images/avatars/avatar-2.png" sx={{ width: 32, height: 32 }} />
-                                                        <Stack>
-                                                            <Typography variant="h6">Supun Tharuka</Typography>
-                                                            <Typography variant="body2" color="textSecondary">
-                                                                @supuntharuka
-                                                            </Typography>
-                                                        </Stack>
-                                                    </Stack>
-                                                </Grid>
-                                                <Grid item>
-                                                    <IconButton size="large" color="secondary" onClick={handleLogout}>
-                                                        <LogoutOutlined />
-                                                    </IconButton>
-                                                </Grid>
-                                            </Grid>
-                                        </CardContent>
-                                        {open && (
-                                            <>
-                                                <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
-                                                    <Tabs
-                                                        variant="fullWidth"
-                                                        value={value}
-                                                        onChange={handleChange}
-                                                        aria-label="profile tabs"
-                                                    >
-                                                        <Tab
-                                                            sx={{
-                                                                display: 'flex',
-                                                                flexDirection: 'row',
-                                                                justifyContent: 'center',
-                                                                alignItems: 'center',
-                                                                textTransform: 'capitalize',
-                                                    
-                                                            }}
-                                                            icon={<UserOutlined style={{ marginBottom: 0, marginRight: '10px'}} />}
-                                                            label="Profile"
-                                                            {...a11yProps(0)}
-                                                        />
-                                                        <Tab
-                                                            sx={{
-                                                                display: 'flex',
-                                                                flexDirection: 'row',
-                                                                justifyContent: 'center',
-                                                                alignItems: 'center',
-                                                                textTransform: 'capitalize'
-                                                            }}
-                                                            icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                                                            label="Setting"
-                                                            {...a11yProps(1)}
-                                                        />
-                                                    </Tabs>
-                                                </Box>
-                                                <TabPanel value={value} index={0} dir={theme.direction}>
-                                                    <ProfileTab handleLogout={handleLogout} />
-                                                </TabPanel>
-                                                <TabPanel value={value} index={1} dir={theme.direction}>
-                                                    <SettingTab />
-                                                </TabPanel>
-                                            </>
-                                        )}
-                                    </MainCard>
-                                </ClickAwayListener>
-                            </Paper>
-                        )}
-                    </Transitions>
-                )}
-            </Popper>
-        </Box>
+                              <Avatar
+                                alt="profile user"
+                                src="/static/images/avatars/avatar-2.png"
+                                sx={{ width: 32, height: 32 }}
+                              />
+                              <Stack>
+                                <Typography variant="h6">
+                                  Supun Tharuka
+                                </Typography>
+                                <Typography
+                                  variant="body2"
+                                  color="textSecondary"
+                                >
+                                  @supuntharuka
+                                </Typography>
+                              </Stack>
+                            </Stack>
+                          </Grid>
+                          <Grid item>
+                            <IconButton
+                              size="large"
+                              color="secondary"
+                              onClick={handleLogout}
+                            >
+                              <LogoutOutlined />
+                            </IconButton>
+                          </Grid>
+                        </Grid>
+                      </CardContent>
+                      {open && (
+                        <>
+                          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                            <Tabs
+                              variant="fullWidth"
+                              value={value}
+                              onChange={handleChange}
+                              aria-label="profile tabs"
+                            >
+                              <Tab
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                                  textTransform: "capitalize",
+                                }}
+                                icon={
+                                  <UserOutlined
+                                    style={{
+                                      marginBottom: 0,
+                                      marginRight: "10px",
+                                    }}
+                                  />
+                                }
+                                label="Profile"
+                                {...a11yProps(0)}
+                              />
+                              <Tab
+                                sx={{
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                                  textTransform: "capitalize",
+                                }}
+                                icon={
+                                  <SettingOutlined
+                                    style={{
+                                      marginBottom: 0,
+                                      marginRight: "10px",
+                                    }}
+                                  />
+                                }
+                                label="Setting"
+                                {...a11yProps(1)}
+                              />
+                            </Tabs>
+                          </Box>
+                          <TabPanel
+                            value={value}
+                            index={0}
+                            dir={theme.direction}
+                          >
+                            <ProfileTab handleLogout={handleLogout} />
+                          </TabPanel>
+                          <TabPanel
+                            value={value}
+                            index={1}
+                            dir={theme.direction}
+                          >
+                            <SettingTab />
+                          </TabPanel>
+                        </>
+                      )}
+                    </MainCard>
+                  </ClickAwayListener>
+                </Paper>
+              )}
+            </Transitions>
+          )}
+        </Popper>
+      </Box>
     );
 };
 

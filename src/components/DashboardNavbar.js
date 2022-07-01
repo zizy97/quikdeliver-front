@@ -14,8 +14,9 @@ import NotificationsPopover from "./notification/NotificationsPopover";
 import Profile from "./profile";
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[3],
+  backgroundColor: "transparent",
+  boxShadow: theme.shadows[0],
+  position: "",
 }));
 
 export const DashboardNavbar = (props) => {
@@ -26,10 +27,10 @@ export const DashboardNavbar = (props) => {
       <DashboardNavbarRoot
         sx={{
           left: {
-            lg: 280,
+            lg: 180,
           },
           width: {
-            lg: "calc(100% - 280px)",
+            lg: "calc(100% - 180px)",
           },
         }}
         {...other}
@@ -53,19 +54,15 @@ export const DashboardNavbar = (props) => {
           >
             <MenuIcon fontSize="small" />
           </IconButton>
-          <Tooltip title="Search">
-            <IconButton sx={{ ml: 1 }}>
-              <SearchIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
+
           <Box sx={{ flexGrow: 1 }} />
           <Stack
             direction="row"
             alignItems="center"
             spacing={{ xs: 0.5, sm: 1.5 }}
           >
-              <NotificationsPopover />
-              <Profile />
+            <NotificationsPopover />
+            <Profile />
           </Stack>
         </Toolbar>
       </DashboardNavbarRoot>

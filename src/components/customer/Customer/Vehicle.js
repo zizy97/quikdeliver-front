@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 
 // MUI
 import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import Radio from "@mui/material/Radio";
+import CardMedia from "@mui/material/CardMedia";
+import Divider from "@mui/material/Divider";
+import Chip from "@mui/material/Chip";
 // MUI
 
 //========Vehicles Component===================
@@ -16,7 +20,7 @@ function VehicleType({
   name,
   inputProps,
   size,
-  Driver,
+  Vehicle,
   vehicleName,
   costPerKm,
   description,
@@ -32,46 +36,110 @@ function VehicleType({
 
   return (
     <>
+      {/* =========================================== */}
       <Card
         variant="outlined"
         sx={{
-          bgcolor: "#D0D3D8",
-          justifyContent: "center",
-          borderColor: "#FFD481",
+          bgcolor: "#ECF2FF",
+          height: 151,
+          // borderColor: "#FEA500",
+          "&:hover": { bgcolor: "#D9D9D9" },
           elavation: 0,
-          width: "100%",
-          m: 2,
+          width: "90%",
+          ml: "5%",
           mt: 0,
+          display: "flex",
+          borderRadius: 1,
+          textAlign: "center",
+          justifyContent: "center",
         }}
       >
-        <img
-          src="https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
-          alt="mage"
-          style={{ width: "100%", height: "5rem", objectFit: "cover" }}
+        <CardMedia
+          component="img"
+          sx={{ width: 151 }}
+          image="/static/images/vehicles/veh-8.jpg"
+          alt="Live from space album cover"
+          objectFit="cover"
+          justifyContent="left"
         />
+
         <CardContent
           sx={{
             py: 0,
+            p: 1,
+            flexGrow: 1,
           }}
         >
-          <Typography component={"div"} variant="h6">
-            {Driver}
-          </Typography>
-          <Typography component={"div"} sx={{ mb: 1.5 }} color="text.primary">
-            Cost per km <b>{costPerKm}LKR</b>
-          </Typography>
-          <Typography component={"div"} sx={{ mb: 1.5 }} color="text.secondary">
-            {capasity}
-          </Typography>
+          <Divider>
+            <Typography
+              component={"div"}
+              variant="h6"
+              sx={{
+                p: 0.5,
+                borderRadius: 4,
+                minWidth: 90,
+                background: "white",
+              }}
+            >
+              {Vehicle}
+            </Typography>
+            {/* <Chip label={Vehicle} /> */}
+          </Divider>
+
+          <Grid container alignItems="center">
+            <Grid item xs>
+              <Typography
+                gutterBottom
+                color="text.secondary"
+                component="div"
+                textAlign="left"
+              >
+                Cost per km :
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                gutterBottom
+                color="text.secondary"
+                component="div"
+                textAlign="right"
+              >
+                <b>{costPerKm}LKR</b>
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid container alignItems="center">
+            <Grid item xs>
+              <Typography
+                gutterBottom
+                color="text.secondary"
+                component="div"
+                textAlign="left"
+              >
+                Max Weight :
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                gutterBottom
+                color="text.secondary"
+                component="div"
+                textAlign="right"
+              >
+                <b>{capasity}</b>
+              </Typography>
+            </Grid>
+          </Grid>
+
           <Typography component={"div"} variant="body2">
             {description}
           </Typography>
         </CardContent>
-
+        {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
         <CardActions
           component={"div"}
           sx={{
-            justifyContent: "center",
+            justifyContent: "right",
           }}
         >
           {/* <Button

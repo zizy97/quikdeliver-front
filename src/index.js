@@ -9,6 +9,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { theme } from "./theme";
+import { AppProvider } from "./components/customer/userContext";
+//==3rd party library==
+import Scrollbar from "smooth-scrollbar";
+//  Scrollbar.init(document.querySelector("#my-scrollbar"));
 
 // import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,8 +23,10 @@ root.render(
         <BrowserRouter>
           {/* <AuthContextProvider> */}
           <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <App />
+            <AppProvider>
+              <CssBaseline />
+              <App />
+            </AppProvider>
           </ThemeProvider>
           {/* </AuthContextProvider> */}
         </BrowserRouter>
