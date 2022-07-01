@@ -23,6 +23,7 @@ const ExpandMore = styled((props) => {
 
 const Offers = () => {
     const [expanded, setExpanded] = useState(false);
+    // eslint-disable-next-line
     const [date, setDate] = useState("06 - May - 2022");
     const [iconColor, setIconColor] = useState("");
 

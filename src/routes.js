@@ -74,6 +74,7 @@ const routes = (isAuthenticated, roles) => [
       { path: "drivers", element: <Drivers /> },
       { path: "orders", element: <Account /> },
       { path: "deliver", element: <h1>This is space to new deliver</h1> },
+      { path: "account", element: <Account /> },
       { path: "history", element: <h1>This is space to history</h1> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "settings", element: <Settings /> },
