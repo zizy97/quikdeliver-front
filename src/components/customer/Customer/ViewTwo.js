@@ -11,10 +11,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import PropTypes from "prop-types";
-import LinearProgress from "@mui/material/LinearProgress";
 import Tooltip from "@mui/material/Tooltip";
 import Grow from "@mui/material/Grow";
+import Slide from "@mui/material/Slide";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -28,14 +27,28 @@ import IconButton from "@mui/material/IconButton";
 // =========Icons end==========
 // =========Import Component==========
 import VehicleType from "./Vehicle";
+import Indicator from "../Indicator";
+import CircularIndicator from "../CircularIndicator";
+import { useGlobalContext } from "../userContext";
 // =========Import Component ending==========
 //==data import====
 import { vehicle1 } from "./VehicleOneData";
 import { vehicle2 } from "./VehicleTwoData";
 import { vehicle3 } from "./VehicleThreeData";
 //==data import end -----
+//==3rd party Library==
+import { motion } from "framer-motion";
+import { useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 
 function ViewTwo() {
+  //===Indicator===
+  const { indicator, setIndicator } = useGlobalContext();
+  const [value1, setvalue1] = useState(0);
+  const [value2, setvalue2] = useState(0);
+  //===Indicator===
+
   //handle radio button
   const [value, setValue] = useState("female");
 
@@ -45,101 +58,18 @@ function ViewTwo() {
   //handle radio button end
 
   //=========Prograss Bar==========
-  function LinearProgressWithLabel(props) {
-    return (
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Box
-          sx={{
-            width: { lg: 800, md: 650, sm: 450, xs: 300 },
-            mr: 1,
-            mt: 1,
-            ml: 2,
-            position: "fixed",
-          }}
-        >
-          <LinearProgress
-            variant="determinate"
-            {...props}
-            sx={{
-              backgroundColor: "white",
-              "& .MuiLinearProgress-bar": {
-                backgroundColor: "#12C919",
-              },
-              transform: "rotate(-90deg)",
-              width: 400,
-              position: "fixed",
-              top: { lg: 390, md: 390, sm: 390, xs: 390 },
-              left: { lg: -3, md: -170, sm: -170, xs: -170 },
-              borderRadius: 5,
-              height: 13,
-            }}
-          />
-        </Box>
-        {/* <Box>
-          <Typography
-            sx={{
-              textAlign: "center",
-              mt: 1,
-              color: "blue",
-              
-            }}
-          >
-            You have completed 30% delivery process...!
-          </Typography>
-        </Box> */}
-        <Box
-          sx={{
-            minWidth: 35,
-            mt: 1,
-            ml: 2,
-            position: "fixed",
-            top: 160,
-            left: { lg: 167, md: 3, sm: 3, xs: 3 },
-          }}
-        >
-          <Typography variant="body2" color="white">{`${Math.round(
-            props.value
-          )}%`}</Typography>
-        </Box>
-      </Box>
-    );
-  }
-
-  LinearProgressWithLabel.propTypes = {
-    /**
-     * The value of the progress indicator for the determinate and buffer variants.
-     * Value between 0 and 100.
-     */
-    value: PropTypes.number.isRequired,
-  };
-
-  const [progress, setProgress] = useState(30);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      //   setProgress((prevProgress) =>
-      //     prevProgress >= 100 ? 10 : prevProgress + 10
-      //   );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   //=========Prograss Bar end==========
 
   function MapInfo() {
     return (
       <Card
-        variant="outlined"
+        elavation={0}
         sx={{
           bgcolor: "#D3E2FF",
           justifyContent: "center",
-          borderColor: "#FFD481",
-          elavation: 0,
           mx: 2,
           mt: 0,
-
           height: 500,
         }}
       >
@@ -182,13 +112,7 @@ function ViewTwo() {
             Conform path
           </Button>
         </CardActions>
-        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-        <lord-icon
-          src="https://cdn.lordicon.com/vtmsmyks.json"
-          trigger="loop-on-hover"
-          style={{ width: "255px", height: "255px" }}
-          colors="outline:#121331,primary:#3a3347,secondary:#e8b730,tertiary:#4bb3fd,quaternary:#f9c9c0"
-        />
+
         {/* <Box
           component="img"
           alt="Your logo."
@@ -205,6 +129,7 @@ function ViewTwo() {
 
   // =============Transition handling===========
   const [checked, setChecked] = useState(false);
+  const containerRef = React.useRef(null);
 
   useEffect(() => {
     return () => {
@@ -213,6 +138,66 @@ function ViewTwo() {
     };
   }, []);
   // =============Transition handling end===========
+  //=====prograss bar transition=======
+  const { ref, inView } = useInView({ threshold: 0.8 });
+  const animation = useAnimation();
+  const animation1 = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotate: 0,
+        transition: {
+          duration: 0.6,
+          type: "tween",
+        },
+      });
+      animation1.start({
+        opacity: 0,
+        scale: 0.4,
+      });
+    }
+    if (!inView) {
+      animation.start({
+        x: -500,
+        y: 600,
+        opacity: 0,
+        scale: 0.4,
+        rotate: 90,
+        transition: {
+          duration: 0.6,
+          type: "tween",
+        },
+      });
+      animation1.start({
+        opacity: 1,
+        scale: 1,
+      });
+    }
+    console.log("use effect hook : ", inView);
+  }, [inView]);
+  //=====prograss bar transition=======
+  //==3D effect===
+  // useEffect(() => {
+  //   first
+
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+
+  // const handleMouseMove = (e) => {
+  //   let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+  //   let yAxis = (window.innerWidth / 2 - e.pageY) / 25;
+
+  //   console.log("hello");
+  // };
+
+  //==3D effect ending ===
 
   //============Radio button Handling============
   const [selectedValue, setSelectedValue] = useState("a");
@@ -271,6 +256,7 @@ function ViewTwo() {
         sx={{
           bgcolor: "transparent",
           pt: 1,
+          paddingTop: 8,
         }}
       >
         <Grid>
@@ -282,37 +268,22 @@ function ViewTwo() {
             }}
           >
             <Grid item xs={12}>
-              <Card
-                elevation={0}
+              <Box
                 sx={{
-                  minWidth: { lg: "5px" },
-                  maxHeight: {
-                    lg: "900px",
-                  },
-                  textAlign: "center",
-                  alignItems: "center",
-                  bgcolor: "#303135",
-                  mt: 2,
-                  borderRadius: 1,
-                  position: "fixed",
-                  width: 100,
-                  top: 144,
-                  left: { lg: 115, md: -43, sm: -43, xs: -43 },
-                  height: 450,
-                  transform: "rotate(deg)",
+                  m: 2,
                 }}
               >
-                <CardContent>
-                  <LinearProgressWithLabel
-                    value={progress}
-                    component="div"
-                    sx={{
-                      px: 10,
-                    }}
-                  />
-                </CardContent>
-              </Card>
-              <Grid item lg={12}></Grid>
+                <Box ref={ref} sx={{ m: 2 }}></Box>
+                {/* Indicator */}
+                <motion.div animate={animation}>
+                  <Indicator indicator={indicator} />
+                </motion.div>
+                <motion.div animate={animation1}>
+                  <CircularIndicator indicator={indicator} />
+                </motion.div>
+
+                {/* Indicator ending */}
+              </Box>
             </Grid>
           </Box>
         </Grid>
@@ -323,6 +294,7 @@ function ViewTwo() {
           style={{ transformOrigin: "0 0 0" }}
           {...(checked ? { timeout: 500 } : {})}
         >
+        
           <div>
             <Grid>
               <Box
@@ -334,52 +306,91 @@ function ViewTwo() {
               >
                 <Grid item xs={12}>
                   <Card
-                    variant="outlined"
+                    varient="container"
+                    ref={containerRef}
+                    elevation={0}
                     sx={{
-                      minWidth: { lg: "275px" },
-                      maxHeight: {
-                        xs: "225px",
-                        sm: "225px",
-                        md: "223px",
-                        lg: "240px",
-                      },
-                      textAlign: "center",
-                      alignItems: "center",
-                      bgcolor: "#D3E2FF",
-                      mt: 2,
-                      mb: -9,
-                      borderRadius: 20,
-                      borderColor: "blue",
+                      bgcolor: "transparent",
                     }}
                   >
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        color="text.primary"
-                        component="div"
-                        sx={{
-                          px: 10,
-                          pt: 1,
-                        }}
+                    <Box ref={containerRef} varient="container">
+                      <Slide
+                        direction="up"
+                        in={checked}
+                        container={containerRef.current}
+                        // style={{
+                        //   transitionDelay: checked ? "100ms" : "0ms",
+                        // }}
+                        {...(checked ? { timeout: 1500 } : {})}
                       >
-                        Now you can choose a vehicle to deliver your pacege
-                      </Typography>
-                      {/* <DeliveryDiningIcon
+                        <Typography
+                          color="text.primary"
+                          component="div"
+                          sx={{
+                            px: 10,
+                            pt: 0,
+                            fontSize: 35,
+                            fontWeight: 190,
+                          }}
+                        >
+                          Now you can <b>choose a vehicle</b>
+                        </Typography>
+                      </Slide>{" "}
+                    </Box>
+                  </Card>
+                  <Card
+                    varient="container"
+                    ref={containerRef}
+                    elevation={0}
+                    sx={{
+                      bgcolor: "transparent",
+                      textAlign: "center",
+                      mb: -11.5,
+                      p: 2,
+                      mt: 0,
+                      pt: 0,
+                    }}
+                  >
+                    <Box ref={containerRef}>
+                      <Slide
+                        direction="down"
+                        in={checked}
+                        container={containerRef.current}
+                        style={{
+                          transitionDelay: checked ? "200ms" : "0ms",
+                        }}
+                        {...(checked ? { timeout: 1500 } : {})}
+                      >
+                        <Typography
+                          color="text.primary"
+                          component="div"
+                          sx={{
+                            px: 10,
+                            pt: 0,
+                            fontSize: 35,
+                            fontWeight: 190,
+                          }}
+                        >
+                          to deliver your pacege
+                        </Typography>
+                      </Slide>
+                    </Box>
+
+                    {/* <DeliveryDiningIcon
                       fontSize="large"
                       sx={{ color: "#1964FF", mb: -2 }}
                     /> */}
-                      <lord-icon
-                        src="https://cdn.lordicon.com/uetqnvvg.json"
-                        trigger="loop"
-                        colors="primary:#121331,secondary:#3080e8"
-                        state="hover"
-                        style={{
-                          width: "45px",
-                          height: "45px",
-                          marginBottom: "-10px",
-                        }}
-                      />
-                    </CardContent>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/uetqnvvg.json"
+                      trigger="loop"
+                      colors="primary:#121331,secondary:#3080e8"
+                      state="hover"
+                      style={{
+                        width: "45px",
+                        height: "45px",
+                        marginBottom: "-25px",
+                      }}
+                    />
                   </Card>
                 </Grid>
               </Box>
@@ -392,60 +403,64 @@ function ViewTwo() {
               sx={{
                 flexGrow: 1,
                 mx: 4,
-                mb: 4,
-                pt: 10,
+                mb: 10,
+                pt: 15,
                 display: "flex",
                 background: "white",
                 textAlign: "center",
-                borderRadius: 1,
-                borderColor: "#3878FE",
+                // borderRadius: 1,
+                // borderColor: "#3878FE",
               }}
               container
               direction={"row"}
               justifyContent="center"
             >
-              <Grid container spacing={0}>
-                {/* form */}
-                <Box
+              <Box
+                container
+                variant="outlined"
+                direction={"row"}
+                sx={{
+                  display: "flex",
+                  textAlign: "center",
+                  my: 2,
+                  px: 3,
+                  justifyContent: "center",
+                  width: "100%",
+                }}
+              >
+                <Grid
                   container
-                  variant="outlined"
-                  direction={"row"}
+                  rowSpacing={5}
+                  columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1 }}
                   sx={{
-                    display: "flex",
-                    textAlign: "center",
-                    my: 2,
-                    mr: 4,
-                    width: "100%",
+                    alignItems: "center",
                   }}
                 >
-                  <Grid
-                    container
-                    rowSpacing={1}
-                    columnSpacing={{ xs: 1, sm: 1, md: 1 }}
-                    sx={{
-                      alignItems: "center",
-                    }}
-                  >
-                    <Grid item xs={12} sm={6} md={6} lg={4}>
-                      {/* ========vehicle 01========= */}
+                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                    {/* ========vehicle 01========= */}
 
-                      <VehicleType {...vehicleOne} {...vehicle1} />
-                      {/* ========vehicle 01 end========= */}
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={6} lg={4}>
-                      {/* ========vehicle 02========= */}
-                      <VehicleType {...vehicleTwo} {...vehicle2} />
-                      {/* ========vehicle 02 end========= */}
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={6} lg={4}>
-                      {/* =========vehicle 03========= */}
-                      <VehicleType {...vehicleThree} {...vehicle3} />
-                      {/* =========vehicle 03 end========= */}
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={12} sx={{}}>
-                      <Box>
-                        {/* =========submit button========= */}
-                        {/* <Paper
+                    <VehicleType {...vehicleOne} {...vehicle1} />
+                    {/* ========vehicle 01 end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                    {/* ========vehicle 02========= */}
+                    <VehicleType {...vehicleTwo} {...vehicle2} />
+                    {/* ========vehicle 02 end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                    {/* =========vehicle 03========= */}
+                    <VehicleType {...vehicleThree} {...vehicle3} />
+                    {/* =========vehicle 03 end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                    {/* =========vehicle 03========= */}
+                    <VehicleType {...vehicleThree} {...vehicle3} />
+                    {/* =========vehicle 03 end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} sx={{}}>
+                    <Box>
+                      {/* =========submit button========= */}
+                      {/* <Paper
                         size="small"
                         variant="contained"
                         sx={{
@@ -458,49 +473,47 @@ function ViewTwo() {
                       >
                         Let it select by quik app
                       </Paper> */}
-                        <FormControlLabel
-                          value="start"
-                          control={
-                            <Radio
-                              checked={systemVehicle.checked}
-                              onChange={systemVehicle.onChange}
-                              value={systemVehicle.value}
-                              name={systemVehicle.name}
-                              inputProps={systemVehicle.inputProps}
-                              size={systemVehicle.size}
-                              // size="small"
-                              // {...controlProps("c")}
-                              // sx={{
-                              //   "& .MuiSvgIcon-root": {
-                              //     fontSize: 28,
-                              //   },
-                              // }}
-                            />
-                          }
-                          label="Let it select by quik app"
-                          labelPlacement="start"
-                        />
+                      <FormControlLabel
+                        value="start"
+                        control={
+                          <Radio
+                            checked={systemVehicle.checked}
+                            onChange={systemVehicle.onChange}
+                            value={systemVehicle.value}
+                            name={systemVehicle.name}
+                            inputProps={systemVehicle.inputProps}
+                            size={systemVehicle.size}
+                            // size="small"
+                            // {...controlProps("c")}
+                            // sx={{
+                            //   "& .MuiSvgIcon-root": {
+                            //     fontSize: 28,
+                            //   },
+                            // }}
+                          />
+                        }
+                        label="Let it select by quik app"
+                        labelPlacement="start"
+                      />
 
-                        {/* =========submit button end========= */}
-                        {/* =====tooltip====== */}
-                        <Tooltip
-                          title="You may expect your delivery sooner than by selecting a vehicle on your own"
-                          placement="bottom-end"
+                      {/* =========submit button end========= */}
+                      {/* =====tooltip====== */}
+                      <Tooltip
+                        title="You may expect your delivery sooner than by selecting a vehicle on your own"
+                        placement="bottom-end"
+                      >
+                        <IconButton
+                          sx={{ color: "" }}
+                          aria-label={`info about `}
                         >
-                          <IconButton
-                            sx={{ color: "" }}
-                            aria-label={`info about `}
-                          >
-                            <InfoIcon />
-                          </IconButton>
-                        </Tooltip>
-                        {/* =====tooltip end====== */}
-                      </Box>
-                    </Grid>
+                          <InfoIcon />
+                        </IconButton>
+                      </Tooltip>
+                      {/* =====tooltip end====== */}
+                    </Box>
                   </Grid>
-                </Box>
-                {/* form ending*/}
-              </Grid>
+                </Grid>
+              </Box>
             </Card>
           </div>
         </Grow>
@@ -522,52 +535,103 @@ function ViewTwo() {
             >
               <Grid item xs={12}>
                 <Card
-                  variant="outlined"
+                  varient="container"
+                  ref={containerRef}
+                  elevation={0}
                   sx={{
-                    minWidth: { lg: "275px" },
-                    maxHeight: {
-                      xs: "225px",
-                      sm: "225px",
-                      md: "223px",
-                      lg: "246px",
-                    },
-                    textAlign: "center",
-                    alignItems: "center",
-                    bgcolor: "#D3E2FF",
-                    mt: 2,
-                    mb:-9,
-                    borderRadius: 20,
-                    borderColor:"blue"
+                    bgcolor: "transparent",
                   }}
                 >
-                  <CardContent>
-                    <Typography
-                      variant="h5"
-                      color="text.primary"
-                      component="div"
-                      sx={{
-                        px: 10,
-                        pt: 1,
-                      }}
+                  <Box
+                    ref={containerRef}
+                    varient="container"
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
+                    <Slide
+                      direction="up"
+                      in={checked}
+                      container={containerRef.current}
+                      // style={{
+                      //   transitionDelay: checked ? "100ms" : "0ms",
+                      // }}
+                      {...(checked ? { timeout: 1500 } : {})}
                     >
-                      And you have freedom to select route for your delivery
-                    </Typography>
-                    {/* <RouteIcon
+                      <Typography
+                        color="text.primary"
+                        component="div"
+                        sx={{
+                          px: 10,
+                          pt: 0,
+                          fontSize: 35,
+                          fontWeight: 190,
+                        }}
+                      >
+                        And you have freedom
+                      </Typography>
+                    </Slide>{" "}
+                  </Box>
+                </Card>
+                <Card
+                  varient="container"
+                  ref={containerRef}
+                  elevation={0}
+                  sx={{
+                    bgcolor: "transparent",
+                    textAlign: "center",
+                    mb: -12,
+                    p: 2,
+                    mt: 0,
+                    pt: 0,
+                    pb: 3,
+                  }}
+                >
+                  <Box
+                    ref={containerRef}
+                    sx={{
+                      textAlign: "center",
+                    }}
+                  >
+                    <Slide
+                      direction="down"
+                      in={checked}
+                      container={containerRef.current}
+                      style={{
+                        transitionDelay: checked ? "200ms" : "0ms",
+                      }}
+                      {...(checked ? { timeout: 1500 } : {})}
+                    >
+                      <Typography
+                        color="text.primary"
+                        component="div"
+                        sx={{
+                          px: 10,
+                          pt: 0,
+                          fontSize: 35,
+                          fontWeight: 190,
+                        }}
+                      >
+                        to <b>select route</b> for your delivery
+                      </Typography>
+                    </Slide>
+                  </Box>
+
+                  {/* <DeliveryDiningIcon
                       fontSize="large"
                       sx={{ color: "#1964FF", mb: -2 }}
                     /> */}
-                    <lord-icon
-                      src="https://cdn.lordicon.com/zzcjjxew.json"
-                      trigger="loop"
-                      colors="primary:#121331,secondary:#3080e8"
-                      state="hover-jump-spin"
-                      style={{
-                        width: "45px",
-                        height: "45px",
-                        marginBottom: "-10px",
-                      }}
-                    />
-                  </CardContent>
+                  <lord-icon
+                    src="https://cdn.lordicon.com/zzcjjxew.json"
+                    trigger="loop"
+                    colors="primary:#121331,secondary:#3080e8"
+                    state="hover-jump-spin"
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                      marginBottom: "-25px",
+                    }}
+                  />
                 </Card>
               </Grid>
             </Box>
@@ -578,12 +642,13 @@ function ViewTwo() {
           sx={{
             flexGrow: 1,
             mx: 4,
-            pt: 10,
+            pt: 8,
+            mb: 10,
             display: "flex",
             background: "white",
             textAlign: "center",
-            borderRadius: 1,
-            borderColor: "#3878FE",
+            // borderRadius: 1,
+            // borderColor: "#3878FE",
           }}
           container
           direction={"row"}
@@ -623,12 +688,11 @@ function ViewTwo() {
                   <Box
                     sx={{
                       //this need to be fixed
-
+                      borderRadius: 1,
                       backgroundColor: "#D6DAE3",
                       mr: 2,
                       m: 2,
                       height: 500,
-
                       alignItems: "center",
                     }}
                     elivation={0}
@@ -720,67 +784,170 @@ function ViewTwo() {
             }}
           >
             <Grid item xs={12}>
-              <Card
-                elevation={0}
+              <Box
                 sx={{
                   minWidth: { lg: "275px" },
                   maxHeight: {
                     xs: "225px",
                     sm: "225px",
                     md: "223px",
-                    lg: "246px",
+                    lg: "240px",
                   },
                   textAlign: "center",
                   alignItems: "center",
-                  bgcolor: "#D3E2FF",
-                  mt: 2,
+                  bgcolor: "transparent",
+                  mt: 0,
+                  pt: 2,
+                  pb: 0,
+                  mb: 0,
                   borderRadius: 20,
+
+                  // borderColor: "#5E8FD4",
                 }}
               >
-                <CardContent>
-                  <Typography
-                    variant="h5"
-                    color="text.primary"
-                    component="div"
-                    sx={{
-                      px: 10,
-                      pt: 1,
-                    }}
+                <Card
+                  varient="container"
+                  ref={containerRef}
+                  elevation={0}
+                  sx={{
+                    bgcolor: "transparent",
+                  }}
+                >
+                  <Slide
+                    direction="up"
+                    in={checked}
+                    container={containerRef.current}
+                    // style={{
+                    //   transitionDelay: checked ? "100ms" : "0ms",
+                    // }}
+                    {...(checked ? { timeout: 1500 } : {})}
                   >
-                    You can select one method to pay your delivery fee
-                  </Typography>
-                  <FormControl
-                    sx={{
-                      mt: -0.5,
-                      pl: 3,
-                    }}
-                  >
-                    <RadioGroup
-                      row
-                      aria-labelledby="demo-controlled-radio-buttons-group"
-                      name="controlled-radio-buttons-group"
-                      value={value}
-                      onChange={handleChange}
+                    <Typography
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        px: 10,
+                        pt: 0,
+                        fontSize: 35,
+                        fontWeight: 190,
+                      }}
                     >
-                      <FormControlLabel
-                        value="female"
-                        control={<Radio />}
-                        label="cash on delivery"
-                        labelPlacement="bottom"
-                      />
-                      <FormControlLabel
-                        value="male"
-                        control={<Radio />}
-                        label="pay online"
-                        labelPlacement="bottom"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </CardContent>
-              </Card>
+                      You Can <b>Select One method to pay</b>
+                    </Typography>
+                  </Slide>
+                </Card>
+              </Box>
+
+              <Box
+                sx={{
+                  minWidth: { lg: "275px" },
+                  maxHeight: {
+                    xs: "225px",
+                    sm: "225px",
+                    md: "223px",
+                    lg: "240px",
+                  },
+                  textAlign: "center",
+                  alignItems: "center",
+                  bgcolor: "transparent",
+                  mt: 0,
+                  p: 2,
+                  pt: 0,
+                  mb: -12,
+                  borderRadius: 20,
+
+                  // borderColor: "#5E8FD4",
+                }}
+                ref={containerRef}
+              >
+                <Card
+                  varient="container"
+                  ref={containerRef}
+                  elevation={0}
+                  sx={{
+                    bgcolor: "transparent",
+                  }}
+                >
+                  <Slide
+                    direction="down"
+                    in={checked}
+                    container={containerRef.current}
+                    style={{
+                      transitionDelay: checked ? "200ms" : "0ms",
+                    }}
+                    {...(checked ? { timeout: 1500 } : {})}
+                  >
+                    <Typography
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        px: 10,
+                        pt: 0,
+                        fontSize: 35,
+                        fontWeight: 190,
+                      }}
+                    >
+                      Your Delivery Fees
+                    </Typography>
+                  </Slide>
+                </Card>
+              </Box>
             </Grid>
           </Box>
         </Grid>
+        <Box
+          sx={{
+            flexGrow: 1,
+            m: 4,
+            pt: 6, //overlapping
+            pb: 3,
+            display: "flex",
+            background: "white",
+            justifyContent: "center",
+            borderRadius: 1,
+            borderColor: "#3878FE",
+            alignContent: "center",
+            textAlign: "center",
+            bgcolor: "white",
+          }}
+          onSubmit={handleSubmit}
+          container
+          variant="outlined"
+          component="form"
+        >
+          <FormControl
+            sx={{
+              justifyContent: "center",
+            }}
+          >
+            <RadioGroup
+              row
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={value}
+              onChange={handleChange}
+            >
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Cash On Delivery"
+                InputLabelProps={{
+                  style: {
+                    color: "#1964FF",
+                    fontWeight: 800,
+                  },
+                }}
+                labelPlacement="bottom"
+              />
+              <FormControlLabel
+                value="male"
+                control={<Radio />}
+                label="Online Payment"
+                labelPlacement="bottom"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Box>
         {/* ===========PAYMENT SELECTION PART ENDING */}
 
         {/* ===========submit button=========== */}
@@ -795,7 +962,7 @@ function ViewTwo() {
             }}
           >
             <Link
-              to="/customer/v3"
+              to="/customer/page3"
               style={{ textDecoration: "none", color: "white" }}
             >
               <Button
@@ -832,7 +999,7 @@ function ViewTwo() {
             }}
           >
             <Link
-              to="/customer/v1"
+              to="/customer/page1"
               style={{ textDecoration: "none", color: "black" }}
             >
               <Button
@@ -862,7 +1029,7 @@ function ViewTwo() {
                 sx={{
                   position: "fixed",
                   width: 180,
-                  top: 73,
+                  top: 10,
                   left: { lg: 160, md: -20, sm: -20, xs: -20 },
                   height: 67,
                   textAlign: "center",
@@ -877,7 +1044,7 @@ function ViewTwo() {
                     color="text.primary"
                     component="div"
                     sx={{
-                      mt: -2,
+                      mt: -2.75,
                     }}
                   >
                     Delivery Cost : {deliveryCost}LKR

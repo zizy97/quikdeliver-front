@@ -2,8 +2,9 @@ export const vehicle1 =
   {
     id: 1,
     vehicleName: "Bike",
-    costPerKm: 350,
+  costPerKm: 350,
+    Vehicle:"Scooter",
     Driver: "Saman Kumara",
     description: "This Bike is awesome",
-    capasity: "up to 100kg",
+    capasity: "100kg",
   };

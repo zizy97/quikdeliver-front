@@ -3,7 +3,7 @@ import React from "react";
 import ViewOne from "../../components/customer/Customer/ViewOne";
 import Box from "@mui/material/Box";
 // ====== Images ========
-// import Img03 from "../images/sky.jpg";
+import Img03 from "../../images/blue-sky.jpg";
 //=======3rd  party library========
 import { Parallax } from "react-parallax";
 
@@ -15,7 +15,7 @@ function CustomerPage() {
       // }}
       style={{
         // background: `url(${Img03})`,
-        background: `#ECF2FF`,
+        background: `#E9EAEC`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

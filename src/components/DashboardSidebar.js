@@ -82,6 +82,12 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
+        <div>
+          <Box sx={{ p: 2 }}>
+            {/* map activate/deactivate status(not essential) */}
+            <div>hello</div>
+          </Box>
+        </div>
         <Divider sx={{ borderColor: "#2D3748" }} />
       </Box>
     </>
