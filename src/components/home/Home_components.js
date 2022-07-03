@@ -17,18 +17,18 @@ import Zoom from "@mui/material/Zoom";
 import Slide from "@mui/material/Slide";
 //==============Components==================================
 import CircleIcon from "@mui/icons-material/Circle";
-//import deliverer from "../images/deliverer.png"; //========image====================
-import driver from "../images/driver.png"; //========image========================
-import deliverstep from "../images/deliverstep.png"; //========image==============
-import vehicleowner from "../images/vehicleowner.png";
+//import deliverer from "../../images/deliverer.png"; //========image====================
+import driver from "../../images/driver.png"; //========image========================
+import deliverstep from "../../images/deliverstep.png"; //========image==============
+import vehicleowner from "../../images/vehicleowner.png";
 //=======3rd  party library========
 import { Parallax } from "react-parallax";
 //========Backgroubd Images===========
-import ImgOne from "../images/cheerful-courier.png";
-import ImgTwo from "../images/man-delivering-box.jpg";
-import ImgThree from "../images/footer.jpg";
+import ImgOne from "../../images/cheerful-courier.png";
+import ImgTwo from "../../images/man-delivering-box.jpg";
+import ImgThree from "../../images/footer.jpg";
 //=========Icons=============
-import logo from "../images/logo.png";
+import logo from "../../images/logo.png";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";

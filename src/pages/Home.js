@@ -5,9 +5,8 @@ import {
   Driver,
   Vehicleowner,
   Footer,
-} from "../components/Home_components";
+} from "../components/home/Home_components";
 // import Footer from "../components/Footer";
-import Homecontainer from "../containers/Homecontainer";
 
 function Home() {
   return (

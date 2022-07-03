@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
 import { NavItem } from './NavItem';
 import { adminItems,customerItems,driverItems,voItems } from '../config/sidebar';
-
-
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const location = useLocation();

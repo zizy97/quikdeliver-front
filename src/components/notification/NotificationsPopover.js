@@ -126,10 +126,10 @@ export default function NotificationsPopover() {
         sx={{
           width: 40,
           height: 40,
-          bgcolor: "white",
-          "&:hover": { bgcolor: "white" },
-          border: 1,
-          borderColor: "#357CDF",
+          // bgcolor: "white",
+          // "&:hover": { bgcolor: "white" },
+          // border: 1,
+          // borderColor: "#357CDF",
         }}
       >
         <Badge badgeContent={totalUnRead} color="error">
