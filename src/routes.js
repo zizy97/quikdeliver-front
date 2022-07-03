@@ -14,7 +14,6 @@ import Account from "./pages/Account";
 import Settings from "./pages/Settings";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-<<<<<<< HEAD
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contactus from "./pages/ContactUs";
@@ -28,16 +27,10 @@ import ProContent from './components/driver/inprocess/ProContent';
 import History from './components/driver/history/History';
 
 //Customer Dashboard
-import Customer from "./pages/customer/Customer"
-import Customer2 from "./pages/customer/Customer2"
-import Customer3 from "./pages/customer/Customer3"
-=======
-//Customer
 import Customer from "./pages/customer/Customer";
 import Customer2 from "./pages/customer/Customer2";
 import Customer3 from "./pages/customer/Customer3";
 import Map from "./pages/customer/Map";
->>>>>>> Update files
 
 const routes = (isAuthenticated, roles) => [
   {

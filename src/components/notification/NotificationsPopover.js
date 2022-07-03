@@ -18,12 +18,8 @@ import {
   ListSubheader,
   ListItemAvatar,
   ListItemButton,
-<<<<<<< HEAD
   ClickAwayListener
 } from '@mui/material';
-=======
-} from "@mui/material";
->>>>>>> Update files
 // utils
 import { fToNow } from "../../utils/formatTime";
 // components
@@ -46,15 +42,9 @@ const NOTIFICATIONS = [
   {
     id: faker.datatype.uuid(),
     title: faker.name.findName(),
-<<<<<<< HEAD
     description: 'answered to your comment on the Minimal',
     avatar: '/static/mock-images/avatars/avatar_2.jpg',
     type: 'friend_interactive',
-=======
-    description: "answered to your comment on the Minimal",
-    avatar: "/static/images/avatars/avatar_2.jpg",
-    type: "friend_interactive",
->>>>>>> Update files
     createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
     isUnRead: true,
   },
