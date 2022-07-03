@@ -97,7 +97,7 @@ function ViewThree() {
   }
 
   // =============Transition handling===========
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
 
   useEffect(() => {
     return () => {

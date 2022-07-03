@@ -129,7 +129,7 @@ function ViewTwo() {
   }
 
   // =============Transition handling===========
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const containerRef = React.useRef(null);
 
   useEffect(() => {
