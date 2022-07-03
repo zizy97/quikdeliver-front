@@ -50,21 +50,13 @@ const circle = (
 );
 function Delivererbooking() {
   // =============Transition handling===========
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const containerRef = React.useRef(null);
   const navigate = useNavigate();
-  // useEffect(() => {
-
-  //   return () => {
-  //     second
-  //   }
-  // }, [])
 
   useEffect(() => {
-    return () => {
-      setChecked(true);
-      console.log(" clecked ");
-    };
+    setChecked(true);
+    console.log(" clecked ");
   }, []);
   // =============Transition handling end===========
 
