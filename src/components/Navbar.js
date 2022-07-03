@@ -129,10 +129,13 @@ const Navbar = () => {
                   marginLeft: "auto",
                   width: { lg: 120 },
                   height: { lg: 45 },
-                  backgroundColor: "#FFD481",
-                  color: "#06173B",
+                  backgroundColor: "warning.main",
+                  color: "neutral.800",
                   borderRadius: 10,
-                }}
+                  "&:hover":  {
+                    color: "warning.main",
+                  }
+                }}  
                 variant="contained"
                 onClick={() => {
                   navigate("/signin");
@@ -148,8 +151,12 @@ const Navbar = () => {
                   margin: "10px",
                   width: { lg: 120 },
                   height: { lg: 45 },
-                  color: "#FFD481",
+                  color: "warning.main",
                   borderRadius: 10,
+                  "&:hover": {
+                    backgroundColor: "warning.main",
+                    color: "neutral.800",
+                  }
                 }}
                 variant="contained"
               >

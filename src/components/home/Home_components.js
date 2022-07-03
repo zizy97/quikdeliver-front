@@ -39,6 +39,7 @@ import { motion } from "framer-motion";
 import { useAnimation } from "framer-motion";
 import { useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
 
 //==============Customer Section Starting============================================
 //==============Customer Section Starting============================================
@@ -51,6 +52,7 @@ function Delivererbooking() {
   // =============Transition handling===========
   const [checked, setChecked] = useState(false);
   const containerRef = React.useRef(null);
+  const navigate = useNavigate();
   // useEffect(() => {
 
   //   return () => {
@@ -149,10 +151,6 @@ function Delivererbooking() {
             </Box>
 
             <Box container ref={containerRef} sx={{ textAlign: "center" }}>
-              <Link
-                to="./customer/page1"
-                style={{ textDecoration: "none", color: "white" }}
-              >
                 <Slide
                   direction="up"
                   in={checked}
@@ -164,6 +162,9 @@ function Delivererbooking() {
                   {...(checked ? { timeout: 1200 } : {})}
                 >
                   <Button
+                    onClick={()=>{
+                      navigate("/new-booking")
+                    }}
                     variant="contained"
                     sx={{
                       borderRadius: 10,
@@ -178,7 +179,6 @@ function Delivererbooking() {
                     Book Now
                   </Button>
                 </Slide>
-              </Link>
 
               <Stack
                 spacing={20}

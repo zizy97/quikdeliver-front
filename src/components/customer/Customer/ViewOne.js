@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"; //react
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 //--MUI--
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -34,6 +34,8 @@ import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 function ViewOne() {
+
+  const navigate = useNavigate();
   //===Indicator===
   const { indicator, setIndicator } = useGlobalContext();
   const [value1, setvalue1] = useState(0);
@@ -642,11 +644,14 @@ function ViewOne() {
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                       {/* =========submit button========= */}
                       {/* ========Routing========== */}
-                      <Link
+                      {/* <Link
                         to="/customer/page2"
                         style={{ textDecoration: "none", color: "white" }}
-                      >
+                      > */}
                         <Button
+                          onClick={()=>{
+                            navigate("/page2")
+                          }}
                           variant="contained"
                           disableElevation
                           size="large"
@@ -664,7 +669,7 @@ function ViewOne() {
                         >
                           Done
                         </Button>
-                      </Link>
+                      {/* </Link> */}
                       {/* =========submit button end========= */}
                     </Grid>
                   </Grid>

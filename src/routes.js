@@ -72,6 +72,18 @@ const routes = (isAuthenticated, roles) => [
     element: <Login />,
   },
   {
+    path: "new-booking",
+    element: <Customer />,
+  },
+  { 
+    path: "page2", 
+    element: <Customer2 /> 
+  },
+  { 
+    path: "page3", 
+    element: <Map /> 
+  },
+  {
     path: "/vo",
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
     children: [
@@ -114,6 +126,7 @@ const routes = (isAuthenticated, roles) => [
       { path: "bookings", element: <h1>This is space to new Bookings</h1> },
       { path: "history", element: <Customer3 /> },
       { path: "account", element: <Account /> },
+      { path: "new-booking", element: <Customer /> },
       { path: "settings", element: <Settings /> },
       { path: "page1", element: <Customer /> },
       { path: "page2", element: <Customer2 /> },

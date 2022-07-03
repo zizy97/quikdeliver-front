@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; //react
-import { Link } from "react-router-dom"; //react-router-dom
+import { Link,useNavigate } from "react-router-dom"; //react-router-dom
 //--MUI--
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -43,6 +43,7 @@ import { useInView } from "react-intersection-observer";
 
 
 function ViewTwo() {
+  const navigate = useNavigate();
   //===Indicator===
   const { indicator, setIndicator } = useGlobalContext();
   const [value1, setvalue1] = useState(0);
@@ -109,7 +110,7 @@ function ViewTwo() {
               borderRadius: 10,
             }}
           >
-            Conform path
+            Confirm path
           </Button>
         </CardActions>
 
@@ -961,11 +962,14 @@ function ViewTwo() {
               p: 4,
             }}
           >
-            <Link
+            {/* <Link
               to="/customer/page3"
               style={{ textDecoration: "none", color: "white" }}
-            >
+            > */}
               <Button
+                onClick={()=>{
+                  navigate("/page3")
+                }}
                 variant="contained"
                 disableElevation
                 size="large"
@@ -981,9 +985,9 @@ function ViewTwo() {
                   my: 1,
                 }}
               >
-                Conform
+                Confirm
               </Button>
-            </Link>
+            {/* </Link> */}
           </Box>
           {/* =========submit button end========= */}
         </Grid>
