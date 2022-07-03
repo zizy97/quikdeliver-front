@@ -67,7 +67,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
@@ -152,7 +153,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
@@ -237,7 +239,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
@@ -322,7 +325,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">

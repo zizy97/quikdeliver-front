@@ -60,8 +60,8 @@ export const DashboardNavbar = (props) => {
               mr:"15px",
             }}
           >
-              <NotificationsPopover />
-              <Profile />
+            <NotificationsPopover />
+            <Profile />
           </Stack>
         </Toolbar>
       </DashboardNavbarRoot>

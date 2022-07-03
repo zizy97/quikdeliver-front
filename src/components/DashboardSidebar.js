@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
 import { NavItem } from './NavItem';
 import { adminItems,customerItems,driverItems,voItems } from '../config/sidebar';
-
-
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const location = useLocation();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
     defaultMatches: true,
-    noSsr: false
+    noSsr: false,
   });
 
   var items;//items is coming from sidebar.js
@@ -56,10 +54,10 @@ export const DashboardSidebar = (props) => {
     <>
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: '100%'
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          width: "100%",
         }}
       >
         {/* <div>
@@ -82,7 +80,13 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Divider sx={{ borderColor: '#2D3748' }} />
+        <div>
+          <Box sx={{ p: 2 }}>
+            {/* map activate/deactivate status(not essential) */}
+            <div>hello</div>
+          </Box>
+        </div>
+        <Divider sx={{ borderColor: "#2D3748" }} />
       </Box>
     </>
   );
@@ -128,5 +132,5 @@ export const DashboardSidebar = (props) => {
 
 DashboardSidebar.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
