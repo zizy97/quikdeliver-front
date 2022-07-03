@@ -146,8 +146,8 @@ function ViewOne() {
       <Container
         sx={{
           bgcolor: "transparent",
-          pb: 2,
-          paddingTop: 8,
+          pb: 1,
+          pt: 1,
         }}
       >
         <Grid>
@@ -161,7 +161,7 @@ function ViewOne() {
             <Grid item xs={12}>
               <Box
                 sx={{
-                  m: 2,
+                  m: 1,
                 }}
               >
                 <Box ref={ref} sx={{ m: 2 }}></Box>
