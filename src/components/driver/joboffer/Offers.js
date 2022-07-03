@@ -23,7 +23,7 @@ const ExpandMore = styled((props) => {
 
 const Offers = () => {
     const [expanded, setExpanded] = useState(false);
-    const [date, setDate] = useState("06 - May - 2022");
+    // const [date, setDate] = useState("06 - May - 2022");
     const [iconColor, setIconColor] = useState("");
 
     const handleExpandClick = () => {
@@ -66,7 +66,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
@@ -151,7 +152,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
@@ -236,7 +238,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
@@ -321,7 +324,8 @@ const Offers = () => {
                             </IconButton>
                             }
                             title="Mahanati Travel Services"
-                            subheader={date}
+                            // subheader={date}
+                            subheader="06 - May - 2022"
                         />
                         <CardContent>
                             <Typography variant="body2" color="text.secondary">
