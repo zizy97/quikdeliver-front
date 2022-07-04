@@ -31,6 +31,7 @@ import Customer from "./pages/customer/Customer";
 import Customer2 from "./pages/customer/Customer2";
 import Customer3 from "./pages/customer/Customer3";
 import Map from "./pages/customer/Map";
+import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 
 const routes = (isAuthenticated, roles) => [
   {
@@ -123,11 +124,15 @@ const routes = (isAuthenticated, roles) => [
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
     children: [
       { path: "", element: <h1>This is space to new component</h1> },
-      { path: "bookings", element: <h1>This is space to new Bookings</h1> },
+      // { path: "bookings", element: <h1>This is space to new Bookings</h1> },
       { path: "history", element: <Customer3 /> },
       { path: "account", element: <Account /> },
       { path: "new-booking", element: <Customer /> },
       { path: "settings", element: <Settings /> },
+      {
+        path: "UnregisteredCustomer",
+        element: <UnregisteredCustomerDetails />,
+      },
       { path: "page1", element: <Customer /> },
       { path: "page2", element: <Customer2 /> },
       { path: "page3", element: <Map /> },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"; //react
 import { Link,useNavigate } from "react-router-dom";
 //--MUI--
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -15,6 +16,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import Grow from "@mui/material/Grow";
 import Slide from "@mui/material/Slide";
+import Divider from "@mui/material/Divider";
 //--MUI--
 // =========Icons==========
 import ScaleIcon from "@mui/icons-material/Scale";
@@ -141,6 +143,10 @@ function ViewOne() {
     e.preventDefault();
     console.log("hello world");
   };
+
+  const Input = styled("input")({
+    display: "none",
+  });
   //============Form Handling ending============
 
   return (
@@ -406,13 +412,149 @@ function ViewOne() {
                   >
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                       <div>
+                        <Box>
+                          <Typography>Sender's Details</Typography>
+                        </Box>
+                        {/* ========Pickup address========= */}
+                        <TextField
+                          style={{
+                            backgroundColor: "#EFF0F3",
+                          }}
+                          id="outlined-textarea"
+                          label="Pickup Address*"
+                          placeholder="Placeholder"
+                          InputLabelProps={{
+                            style: {
+                              color: "#1964FF",
+                              fontWeight: 800,
+                            },
+                          }}
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          InputProps={{
+                            style: {
+                              borderRadius: 3,
+                              borderColor: "blue",
+                            },
+                            endAdornment: (
+                              <InputAdornment position="start" sx={{ mr: -1 }}>
+                                {/* <FileUploadIcon
+                                sx={{ color: "#1964FF", fontSize: 40 }}
+                              /> */}
+                                <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                                <lord-icon
+                                  src="https://cdn.lordicon.com/ribwzplp.json"
+                                  trigger="hover"
+                                  colors="primary:#1663c7"
+                                  state="hover-2"
+                                  style={{ width: "50px", height: "50px" }}
+                                ></lord-icon>
+                              </InputAdornment>
+                            ),
+                          }}
+                          multiline
+                          maxRows={4}
+                          name="pickupAddress"
+                          value={values.pickupAddress}
+                          onChange={handleInputChange}
+                          size="large"
+                          margin="dense"
+                          helperText="Please enter Sender's Address"
+                        />
+                        {/* ========Pickup address========= */}
+
+                        {/* =========Sender's Name========= */}
+                        <TextField
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          // size="small"
+                          id="outlined-textarea"
+                          label="Sender's Name*"
+                          placeholder="Placeholder"
+                          multiline
+                          maxRows={4}
+                          name="senderName"
+                          value={values.senderName}
+                          onChange={handleInputChange}
+                          // onChange={handleChange}
+                          margin="dense"
+                         
+                        />
+                        {/* =========Sender's Name end========= */}
+                        {/* =========Sender's Contact Number========= */}
+                        <TextField
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          // size="small"
+                          id="outlined-textarea"
+                          label="Sender's Contact Number*"
+                          placeholder="Placeholder"
+                          multiline
+                          maxRows={4}
+                          name="senderNumber"
+                          value={values.senderNumber}
+                          onChange={handleInputChange}
+                          // onChange={handleChange}
+                          margin="dense"
+                          
+                        />
+                        {/* =========Sender's Contact Number end========= */}
+                        {/* =========Sender's Alternative Contact Number========= */}
+                        <TextField
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          // size="small"
+                          id="outlined-textarea"
+                          label="Sender's Alternative Number"
+                          placeholder="Placeholder"
+                          multiline
+                          maxRows={4}
+                          name="senderAlternativeNumber"
+                          value={values.senderAlternativeNumber}
+                          onChange={handleInputChange}
+                          // onChange={handleChange}
+                          margin="dense"
+                         
+                        />
+                        {/* =========Sender's Alternative Contact Number end========= */}
+                      </div>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={6} lg={6}>
+                      <div>
+                        <Box>
+                          <Typography>Receiver's Details</Typography>
+                        </Box>
                         {/* ========Delivery address========= */}
                         <TextField
                           style={{
                             backgroundColor: "#EFF0F3",
                           }}
                           id="custom-css-outlined-input"
-                          label="Delivery Address"
+                          label="Delivery Address*"
                           InputLabelProps={{
                             style: {
                               color: "#1964FF",
@@ -458,160 +600,218 @@ function ViewOne() {
                           onChange={handleInputChange}
                           size="large"
                           margin="dense"
-                          helperText="Please enter Delivery Location"
+                          helperText="Please enter Receiver's Address"
                         />
                         {/* ========Delivery address end========= */}
+                        {/* =========Receiver's Name========= */}
+                        <TextField
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          // size="small"
+                          id="outlined-textarea"
+                          label="Receiver's Name*"
+                          placeholder="Placeholder"
+                          multiline
+                          maxRows={4}
+                          name="receiverName"
+                          value={values.receiverName}
+                          onChange={handleInputChange}
+                          // onChange={handleChange}
+                          margin="dense"
+                          
+                        />
+                        {/* =========Receiver's Name end========= */}
+                        {/* =========Receiver's Contact Number========= */}
+                        <TextField
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          // size="small"
+                          id="outlined-textarea"
+                          label="Receiver's Contact Number*"
+                          placeholder="Placeholder"
+                          multiline
+                          maxRows={4}
+                          name="receiverNumber"
+                          value={values.receiverNumber}
+                          onChange={handleInputChange}
+                          // onChange={handleChange}
+                          margin="dense"
+                          
+                        />
+                        {/* =========Receiver's Contact Number end========= */}
+                        {/* =========Receiver's Alternative Contact Number========= */}
+                        <TextField
+                          sx={{
+                            minWidth: {
+                              lg: "450px",
+                              md: "400px",
+                              sm: "450px",
+                              xs: "300px",
+                            },
+                          }}
+                          // size="small"
+                          id="outlined-textarea"
+                          label="Receiver's Alternative Number"
+                          placeholder="Placeholder"
+                          multiline
+                          maxRows={4}
+                          name="receiverAlternativeNumber"
+                          value={values.receiverAlternativeNumber}
+                          onChange={handleInputChange}
+                          // onChange={handleChange}
+                          margin="dense"
+                        
+                        />
+                        {/* =========Receiver's Alternative Contact Number end========= */}
                       </div>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                      {/* ========Pickup address========= */}
-                      <TextField
-                        style={{
-                          backgroundColor: "#EFF0F3",
-                        }}
-                        id="outlined-textarea"
-                        label="Pickup Address"
-                        placeholder="Placeholder"
-                        InputLabelProps={{
-                          style: {
-                            color: "#1964FF",
-                            fontWeight: 800,
-                          },
-                        }}
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        InputProps={{
-                          style: {
-                            borderRadius: 3,
-                            borderColor: "blue",
-                          },
-                          endAdornment: (
-                            <InputAdornment position="start" sx={{ mr: -1 }}>
-                              {/* <FileUploadIcon
-                                sx={{ color: "#1964FF", fontSize: 40 }}
-                              /> */}
-                              <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                              <lord-icon
-                                src="https://cdn.lordicon.com/ribwzplp.json"
-                                trigger="hover"
-                                colors="primary:#1663c7"
-                                state="hover-2"
-                                style={{ width: "50px", height: "50px" }}
-                              ></lord-icon>
-                            </InputAdornment>
-                          ),
-                        }}
-                        multiline
-                        maxRows={4}
-                        name="pickupAddress"
-                        value={values.pickupAddress}
-                        onChange={handleInputChange}
-                        size="large"
-                        margin="dense"
-                        helperText="Please enter Pick Up Location"
-                      />
-                      {/* ========Pickup address========= */}
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                      {/* =========weight========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Weight"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="weight"
-                        value={values.weight}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="start">
-                              <ScaleIcon sx={{ color: "#FFBC39" }} />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                      {/* =========weight end========= */}
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                      {/* =========photo========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Photo"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        // onChange={handleChange}
-                        margin="dense"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="start">
-                              <AddAPhotoIcon sx={{ color: "#FFBC39" }} />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                      {/* =========photo end========= */}
-                    </Grid>
+                    {/* <Divider>CENTER</Divider> */}
+                    <Divider sx={{ color: "black" }} />
+                    
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                      {/* =========Special Notes========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "90%",
-                            md: "90%",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                          mt: 3,
-                        }}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="start">
-                              <NoteAltIcon
-                                sx={{ color: "#FFBC39", fontSize: 30 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                        id="outlined-textarea"
-                        label="Special Notes"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        // onChange={handleChange}
-                        // size="small"
-                        margin="dense"
-                        helperText="Please mention about your parcel"
-                      />
-                      {/* =========Special Notes end========= */}
+                      <div>
+                        <Box sx={{ mt: 3 }}>
+                          <Typography>Pickup Details</Typography>
+                        </Box>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          {" "}
+                          {/* =========Description of item========= */}
+                          <TextField
+                            sx={{
+                              minWidth: {
+                                lg: "450px",
+                                md: "400px",
+                                sm: "450px",
+                                xs: "300px",
+                              },
+                            }}
+                            // size="small"
+                            id="outlined-textarea"
+                            label="Description Of the Item"
+                            placeholder="Placeholder"
+                            multiline
+                            maxRows={4}
+                            name="descriptionOfItem"
+                            value={values.descriptionOfItem}
+                            onChange={handleInputChange}
+                            // onChange={handleChange}
+                            margin="dense"
+                           
+                          />
+                          {/* =========Description of itam end========= */}
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          {/* =========Pacage weight========= */}
+                          <TextField
+                            sx={{
+                              minWidth: {
+                                lg: "450px",
+                                md: "400px",
+                                sm: "450px",
+                                xs: "300px",
+                              },
+                              mx: 4,
+                            }}
+                            // size="small"
+                            id="outlined-textarea"
+                            label="Pacage Weight"
+                            placeholder="Placeholder"
+                            multiline
+                            maxRows={4}
+                            name="pacageWeight"
+                            value={values.pacageWeight}
+                            onChange={handleInputChange}
+                            // onChange={handleChange}
+                            margin="dense"
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="start">
+                                  <ScaleIcon sx={{ color: "#FFBC39" }} />
+                                </InputAdornment>
+                              ),
+                            }}
+                          />
+                          {/* ========= Pacage weight end========= */}
+                          {/* =========Pacage Image========= */}
+                          <label htmlFor="contained-button-file">
+                            <Input
+                              accept="image/*"
+                              id="contained-button-file"
+                              multiple
+                              type="file"
+                            />
+                            <Button
+                              sx={{
+                                minWidth: {
+                                  lg: "450px",
+                                  md: "400px",
+                                  sm: "450px",
+                                  xs: "300px",
+                                },
+                                mx: 4,
+                                my: 1.3,
+                              }}
+                              variant="outlined"
+                              component="span"
+                              size="large"
+                              endIcon={
+                                <AddAPhotoIcon sx={{ color: "#FFBC39" }} />
+                              }
+                            >
+                              Pacage Image
+                            </Button>
+                          </label>
+
+                          {/* =========Pacage Image end========= */}
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          {/* =========Special Notes========= */}
+                          <TextField
+                            sx={{
+                              minWidth: {
+                                lg: "90%",
+                                md: "90%",
+                                sm: "450px",
+                                xs: "300px",
+                              },
+                              mt: 1,
+                            }}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="start">
+                                  <NoteAltIcon
+                                    sx={{ color: "#FFBC39", fontSize: 30 }}
+                                  />
+                                </InputAdornment>
+                              ),
+                            }}
+                            id="outlined-textarea"
+                            label="Special Notes"
+                            placeholder="Placeholder"
+                            multiline
+                            maxRows={4}
+                            // onChange={handleChange}
+                            // size="small"
+                            margin="dense"
+                            helperText="Please mention about your parcel"
+                          />
+                          {/* =========Special Notes end========= */}
+                        </Grid>
+                      </div>
                     </Grid>
+
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                       {/* =========submit button========= */}
                       <Button
