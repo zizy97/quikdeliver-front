@@ -41,7 +41,6 @@ import { motion } from "framer-motion";
 import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-
 function ViewTwo() {
   //===Indicator===
   const { indicator, setIndicator } = useGlobalContext();
@@ -294,7 +293,6 @@ function ViewTwo() {
           style={{ transformOrigin: "0 0 0" }}
           {...(checked ? { timeout: 500 } : {})}
         >
-        
           <div>
             <Grid>
               <Box
@@ -402,7 +400,7 @@ function ViewTwo() {
               variant="outlined"
               sx={{
                 flexGrow: 1,
-                mx: 4,
+                mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
                 mb: 10,
                 pt: 15,
                 display: "flex",
@@ -641,7 +639,7 @@ function ViewTwo() {
           variant="outlined"
           sx={{
             flexGrow: 1,
-            mx: 4,
+            mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
             pt: 8,
             mb: 10,
             display: "flex",
@@ -899,6 +897,7 @@ function ViewTwo() {
           sx={{
             flexGrow: 1,
             m: 4,
+            mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
             pt: 6, //overlapping
             pb: 3,
             display: "flex",
@@ -951,109 +950,119 @@ function ViewTwo() {
         {/* ===========PAYMENT SELECTION PART ENDING */}
 
         {/* ===========submit button=========== */}
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          {/* ========Routing========== */}
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              p: 4,
-            }}
-          >
-            <Link
-              to="/customer/page3"
-              style={{ textDecoration: "none", color: "white" }}
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{ justifyContent: "center", alignItems: "center", mb: 4 }}
+        >
+          <Grid item>
+            <Box
+              sx={{
+                justifyContent: "center",
+              }}
             >
-              <Button
-                variant="contained"
-                disableElevation
-                size="large"
-                sx={{
-                  minWidth: {
-                    lg: "450px",
-                    md: "400px",
-                    sm: "450px",
-                    xs: "400px",
-                  },
-                  borderRadius: 10,
-                  py: 2,
-                  my: 1,
-                }}
+              <Link
+                to="/customer/page1"
+                style={{ textDecoration: "none", color: "black" }}
               >
-                Conform
-              </Button>
-            </Link>
-          </Box>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    borderRadius: 10,
+                    borderColor: "black",
+                    m: 3,
+                    backgroundColor: "",
+                    color: "black",
+                  }}
+                >
+                  Back
+                </Button>
+              </Link>
+            </Box>
+          </Grid>
+          <Grid item>
+            <Box
+              sx={{
+                justifyContent: "center",
+              }}
+            >
+              <Link
+                to="/customer/page3"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <Button
+                  variant="contained"
+                  disableElevation
+                  size="large"
+                  sx={{
+                    minWidth: {
+                      lg: "450px",
+                      md: "400px",
+                      sm: "450px",
+                      xs: "400px",
+                    },
+                    m: 3,
+                    borderRadius: 10,
+                    py: 2,
+                    my: 1,
+                  }}
+                >
+                  Conform
+                </Button>
+              </Link>
+            </Box>
+          </Grid>
+          <Grid item>
+            <Box>
+              <Grid item xs={12}>
+                <Card
+                  elevation={0}
+                  sx={{
+                    m: 3,
+                    width: 320,
+                    top: 10,
+                    left: { lg: 160, md: -20, sm: -20, xs: -20 },
+                    height: 67,
+                    textAlign: "center",
+                    alignItems: "center",
+                    bgcolor: "#FFDF70",
+                    borderRadius: 1,
+                  }}
+                >
+                  <CardContent>
+                    <Typography
+                      variant="h6"
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        mt: -2.75,
+                      }}
+                    >
+                      Approximate Delivery Cost : {deliveryCost}LKR
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Box>
+          </Grid>
+
+          {/* ========Routing========== */}
+
           {/* =========submit button end========= */}
         </Grid>
         {/* ===========submit button=========== */}
         {/* ===========back button=========== */}
         <Grid item xs={12} sm={12} md={12} lg={12}>
           {/* ========Routing========== */}
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            <Link
-              to="/customer/page1"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <Button
-                variant="outlined"
-                size="small"
-                sx={{
-                  borderRadius: 10,
-                  borderColor: "black",
-                  my: 1,
-                  mb: 6,
-                  backgroundColor: "",
-                  color: "black",
-                }}
-              >
-                Back
-              </Button>
-            </Link>
-          </Box>
+
           {/* =========back button end========= */}
         </Grid>
         {/* =======Delivery Cost=========== */}
-        <Grid>
-          <Box>
-            <Grid item xs={12}>
-              <Card
-                elevation={0}
-                sx={{
-                  position: "fixed",
-                  width: 180,
-                  top: 10,
-                  left: { lg: 160, md: -20, sm: -20, xs: -20 },
-                  height: 67,
-                  textAlign: "center",
-                  alignItems: "center",
-                  bgcolor: "#FFDF70",
-                  borderRadius: 10,
-                }}
-              >
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    color="text.primary"
-                    component="div"
-                    sx={{
-                      mt: -2.75,
-                    }}
-                  >
-                    Delivery Cost : {deliveryCost}LKR
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Box>
-        </Grid>
+        <Grid></Grid>
         {/* =======Delivery Cost ending=========== */}
       </Container>
     </>
