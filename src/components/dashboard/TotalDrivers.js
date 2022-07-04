@@ -22,7 +22,7 @@ export const TotalDrivers = (props) => (
             color="textPrimary"
             variant="h4"
           >
-            1,6k
+            453
           </Typography>
         </Grid>
         <Grid item>

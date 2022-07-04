@@ -15,7 +15,12 @@ import logo from "../images/logo.png";
 import logo2 from "../images/logo2.png";
 import { useNavigate } from "react-router-dom";
 
-const PAGES = ["Home", "About", "Services"];
+const PAGES = [
+  { title: "Home", url: "/" },
+  { title: "About", url: "/about" },
+  { title: "Services", url: "/services" },
+  { title: "Contact Us", url: "/contactus" },
+];
 
 //===============Nav bar=========================================
 const Navbar = () => {
@@ -25,12 +30,16 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        zIndex: 10,
+      }}
+    >
       <AppBar
         elevation={0}
         sx={{
           background: "transparent",
-          position: "absolute",
         }}
       >
         <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>
@@ -104,10 +113,13 @@ const Navbar = () => {
                 {PAGES.map((page, index) => (
                   <Tab
                     key={index}
-                    label={page}
+                    label={page.title}
                     sx={{
                       fontSize: { lg: 18, md: 15 },
                       color: "#06173B",
+                    }}
+                    onClick={() => {
+                      navigate(page.url);
                     }}
                   />
                 ))}
@@ -117,10 +129,13 @@ const Navbar = () => {
                   marginLeft: "auto",
                   width: { lg: 120 },
                   height: { lg: 45 },
-                  backgroundColor: "#FFD481",
-                  color: "#06173B",
+                  backgroundColor: "warning.main",
+                  color: "neutral.800",
                   borderRadius: 10,
-                }}
+                  "&:hover":  {
+                    color: "warning.main",
+                  }
+                }}  
                 variant="contained"
                 onClick={() => {
                   navigate("/signin");
@@ -136,8 +151,12 @@ const Navbar = () => {
                   margin: "10px",
                   width: { lg: 120 },
                   height: { lg: 45 },
-                  color: "#FFD481",
+                  color: "warning.main",
                   borderRadius: 10,
+                  "&:hover": {
+                    backgroundColor: "warning.main",
+                    color: "neutral.800",
+                  }
                 }}
                 variant="contained"
               >

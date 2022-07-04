@@ -1,20 +1,32 @@
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import TestCase from "./test/TestCase";
-// import DashboardAdmin from "../src/components/Dashboard-main";
 import SignInSide from "./pages/Signin";
 import NotFound from "./pages/404";
+import SendMail from "./pages/SendMail";
 
 //Admin Dashboard
 import { DashboardLayout } from "../src/components/DashboardLayout";
-import Dashboard from "./pages/Dashboard";
-import Drivers from "./pages/Drivers";
-import Vehicles from "./pages/Vehicles";
+import Dashboard from "./pages/admin/Dashboard";
+import Drivers from "./pages/admin/Drivers";
+import Vehicles from "./pages/admin/Vehicles";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-//Customer
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Contactus from "./pages/ContactUs";
+import DefaultLayout from "./components/DefaultLayout";
+
+//Driver Dashboard
+import DriverDashboard from "./components/driver/DriverDashboard";
+import NewOrders from './components/driver/newrequests/NewOrders';
+import Offers from './components/driver/joboffer/Offers';
+import ProContent from './components/driver/inprocess/ProContent';
+import History from './components/driver/history/History';
+
+//Customer Dashboard
 import Customer from "./pages/customer/Customer";
 import Customer2 from "./pages/customer/Customer2";
 import Customer3 from "./pages/customer/Customer3";
@@ -24,11 +36,33 @@ import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
-    element: <Home />,
+    element: <DefaultLayout />,
+    children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/contactus",
+        element: <Contactus />,
+      },
+    ],
   },
   {
     path: "login",
     element: <SignInSide />,
+  },
+  {
+    path: "sendmail",
+    element: <SendMail />,
   },
   {
     path: "signup",
@@ -39,19 +73,52 @@ const routes = (isAuthenticated, roles) => [
     element: <Login />,
   },
   {
+    path: "new-booking",
+    element: <Customer />,
+  },
+  { 
+    path: "page2", 
+    element: <Customer2 /> 
+  },
+  { 
+    path: "page3", 
+    element: <Map /> 
+  },
+  {
+    path: "/vo",
+    element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
+    children: [
+      { path: "", element: <Dashboard /> },
+      { path: "vehicles", element: <Vehicles /> },
+      { path: "drivers", element: <Drivers /> },
+      { path: "orders", element: <Account /> },
+      { path: "deliver", element: <h1>This is space to new deliver</h1> },
+      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "notification", element: <h1>This is space to notification</h1> },
+      { path: "settings", element: <Settings /> },
+      { path: "*", element: <Navigate to="/404" /> },
+    ],
+  },
+  {
     path: "/admin",
-    element: isAuthenticated ? <DashboardLayout /> : <Navigate to="/signin" />,
+    element:
+      isAuthenticated && roles.includes("ROLE_CUSTOMER") ? (
+        <DashboardLayout />
+      ) : (
+        <Navigate to="/signin" />
+      ),
     children: [
       { path: "", element: <Dashboard /> },
       { path: "vehicles", element: <Vehicles /> },
       { path: "drivers", element: <Drivers /> },
       { path: "account", element: <Account /> },
       { path: "settings", element: <Settings /> },
-      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "history", element: <Customer3 /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
+
   {
     path: "/customer",
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
@@ -60,6 +127,7 @@ const routes = (isAuthenticated, roles) => [
       // { path: "bookings", element: <h1>This is space to new Bookings</h1> },
       { path: "history", element: <Customer3 /> },
       { path: "account", element: <Account /> },
+      { path: "new-booking", element: <Customer /> },
       { path: "settings", element: <Settings /> },
       {
         path: "UnregisteredCustomer",
@@ -73,15 +141,16 @@ const routes = (isAuthenticated, roles) => [
     ],
   },
   {
-    path: "/vo",
-    element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
+    path: "/driver",
+    element:<DashboardLayout/> ,
     children: [
-      { path: "", element: <h1>This is space to new component</h1> },
-      { path: "vehicles", element: <h1>This is space to new vehicles</h1> },
-      { path: "drivers", element: <h1>This is space to new drivers</h1> },
-      { path: "orders", element: <h1>This is space to new orders</h1> },
-      { path: "deliver", element: <h1>This is space to new deliver</h1> },
-      { path: "history", element: <h1>This is space to history</h1> },
+      { path: "", element: <DriverDashboard/> },
+      { path: "newrequests", element: <NewOrders/> },
+      { path: "inprocess", element: <ProContent/> },
+      { path: "joboffers", element: <Offers/> },
+      { path: "account", element: <Account/> },
+      { path: "settings", element: <Settings/> },
+      { path: "history", element: <History/> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],

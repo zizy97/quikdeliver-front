@@ -1,92 +1,9 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Box, Divider, Drawer, useMediaQuery } from "@mui/material";
-import { ChartBar as ChartBarIcon } from "../icons/chart-bar";
-import { Cog as CogIcon } from "../icons/cog";
-import { Truck as TruckIcon } from "../icons/vehicle";
-import { User as UserIcon } from "../icons/user";
-import { Logout as LogoutIcon } from "../icons/logout";
-import { Users as UsersIcon } from "../icons/users";
-import { NavItem } from "./NavItem";
-import Typography from "@mui/material/Typography";
-import logo2 from "../images/logo2.png";
-
-const items = [
-  {
-    href: "/admin",
-    icon: (
-      <ChartBarIcon
-        fontSize="small"
-        sx={{
-          color: "black",
-        }}
-      />
-    ),
-    title: "Dashboard",
-  },
-  {
-    href: "/admin/drivers",
-    icon: (
-      <UsersIcon
-        fontSize="small"
-        sx={{
-          color: "black",
-        }}
-      />
-    ),
-    title: "Drivers",
-  },
-  {
-    href: "/admin/vehicles",
-    icon: (
-      <TruckIcon
-        fontSize="small"
-        sx={{
-          color: "black",
-        }}
-      />
-    ),
-    title: "Vehicles",
-  },
-  {
-    href: "/admin/account",
-    icon: (
-      <UserIcon
-        fontSize="small"
-        sx={{
-          color: "black",
-        }}
-      />
-    ),
-    title: "Account",
-  },
-  {
-    href: "/admin/settings",
-    icon: (
-      <CogIcon
-        fontSize="small"
-        sx={{
-          color: "black",
-        }}
-      />
-    ),
-    title: "Settings",
-  },
-  {
-    href: "/",
-    icon: (
-      <LogoutIcon
-        fontSize="small"
-        sx={{
-          color: "black",
-        }}
-      />
-    ),
-    title: "Logout",
-  },
-];
-
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Box, Divider, Drawer, useMediaQuery } from '@mui/material';
+import { NavItem } from './NavItem';
+import { adminItems,customerItems,driverItems,voItems } from '../config/sidebar';
 export const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const location = useLocation();
@@ -94,6 +11,30 @@ export const DashboardSidebar = (props) => {
     defaultMatches: true,
     noSsr: false,
   });
+
+  var items;//items is coming from sidebar.js
+
+  switch (location.pathname.split('/')[1]) {
+    case 'admin':{
+      items = adminItems;
+      break;
+    }
+    case 'customer':{
+      items=customerItems;
+      break;
+    }
+    case 'driver':{
+      items=driverItems;
+      break;
+    }
+    case 'vo':{
+      items=voItems;
+      break;
+    }
+    default: {
+      
+    }
+  }
 
   useEffect(
     () => {
@@ -119,63 +60,17 @@ export const DashboardSidebar = (props) => {
           width: "100%",
         }}
       >
-        <div>
-          <Box sx={{ p: 2, pl: 3.25 }}>
-            {/* =====Logo ====== */}
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "Nunito",
-                fontWeight: 700,
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              <lord-icon
-                src="https://cdn.lordicon.com/fihkmkwt.json"
-                trigger="loop-on-hover"
-                colors="primary:#ffffff,secondary:#1663c7"
-                state="loop-spin"
-                style={{
-                  width: "65px",
-                  height: "65px",
-                  marginTop: "-10px",
-                  marginRight: "-55px",
-                }}
-              />
-              <Box
-                component="img"
-                alt="Your logo."
-                src={logo2}
-                sx={{
-                  marginTop: { lg: 0.5, md: 0.5 },
-                  marginLeft: { lg: 1, md: 1 },
-                  display: { xs: "none", sm: "none", lg: "block", md: "block" },
-                  width: { lg: 80, md: 70 },
-                  height: { lg: 50, md: 50 },
-                }}
-              />
-            </Typography>
-            {/* =====Logo ending====== */}
-          </Box>
+        {/* <div>
+          <Box sx={{ minHeight:"64px",backgroundColor:"background.paper"}}></Box>
         </div>
         <Divider
           sx={{
-            borderColor: "transparent",
-            my: 3,
+            borderColor: '#2D3748',
+            // my: 3
           }}
-        />
-        <Box
-          sx={{
-            flexGrow: 1,
-            color: "black",
-          }}
-        >
+        /> */}
+        <Box sx={{minHeight:"12%"}}></Box>
+        <Box sx={{ flexGrow: 1 }}>
           {items.map((item) => (
             <NavItem
               key={item.title}
@@ -203,10 +98,10 @@ export const DashboardSidebar = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: "#D3E2FF",
-            color: "#FFFFFF",
-            width: 180,
-          },
+            backgroundColor: 'neutral.800',
+            color: '#FFFFFF',
+            width: 200
+          }
         }}
         variant="permanent"
       >
@@ -222,10 +117,10 @@ export const DashboardSidebar = (props) => {
       open={open}
       PaperProps={{
         sx: {
-          backgroundColor: "#D3E2FF",
-          color: "#FFFFFF",
-          width: 200,
-        },
+          backgroundColor: 'neutral.800',
+          color: '#FFFFFF',
+          width: 200
+        }
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
       variant="temporary"

@@ -84,6 +84,7 @@ export default function SignInSide() {
       credential,
       dispatch,
     );
+    console.log("result"+result)
     if (result.status) {
       setIsErrorMsgOpen(false);
       navigate("/admin");

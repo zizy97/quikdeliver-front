@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; //react
-import { Link } from "react-router-dom"; //react-router-dom
+import { Link,useNavigate } from "react-router-dom"; //react-router-dom
 //--MUI--
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -42,6 +42,7 @@ import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 function ViewTwo() {
+  const navigate = useNavigate();
   //===Indicator===
   const { indicator, setIndicator } = useGlobalContext();
   const [value1, setvalue1] = useState(0);
@@ -108,7 +109,7 @@ function ViewTwo() {
               borderRadius: 10,
             }}
           >
-            Conform path
+            Confirm path
           </Button>
         </CardActions>
 
@@ -950,108 +951,43 @@ function ViewTwo() {
         {/* ===========PAYMENT SELECTION PART ENDING */}
 
         {/* ===========submit button=========== */}
-        <Grid
-          container
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          sx={{ justifyContent: "center", alignItems: "center", mb: 4 }}
-        >
-          <Grid item>
-            <Box
-              sx={{
-                justifyContent: "center",
-              }}
-            >
-              <Link
-                to="/customer/page1"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <Button
-                  variant="outlined"
-                  size="small"
-                  sx={{
-                    borderRadius: 10,
-                    borderColor: "black",
-                    m: 3,
-                    backgroundColor: "",
-                    color: "black",
-                  }}
-                >
-                  Back
-                </Button>
-              </Link>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Box
-              sx={{
-                justifyContent: "center",
-              }}
-            >
-              <Link
-                to="/customer/page3"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <Button
-                  variant="contained"
-                  disableElevation
-                  size="large"
-                  sx={{
-                    minWidth: {
-                      lg: "450px",
-                      md: "400px",
-                      sm: "450px",
-                      xs: "400px",
-                    },
-                    m: 3,
-                    borderRadius: 10,
-                    py: 2,
-                    my: 1,
-                  }}
-                >
-                  Conform
-                </Button>
-              </Link>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Box>
-              <Grid item xs={12}>
-                <Card
-                  elevation={0}
-                  sx={{
-                    m: 3,
-                    width: 320,
-                    top: 10,
-                    left: { lg: 160, md: -20, sm: -20, xs: -20 },
-                    height: 67,
-                    textAlign: "center",
-                    alignItems: "center",
-                    bgcolor: "#FFDF70",
-                    borderRadius: 1,
-                  }}
-                >
-                  <CardContent>
-                    <Typography
-                      variant="h6"
-                      color="text.primary"
-                      component="div"
-                      sx={{
-                        mt: -2.75,
-                      }}
-                    >
-                      Approximate Delivery Cost : {deliveryCost}LKR
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Box>
-          </Grid>
-
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           {/* ========Routing========== */}
-
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              p: 4,
+            }}
+          >
+            {/* <Link
+              to="/customer/page3"
+              style={{ textDecoration: "none", color: "white" }}
+            > */}
+              <Button
+                onClick={()=>{
+                  navigate("/page3")
+                }}
+                variant="contained"
+                disableElevation
+                size="large"
+                sx={{
+                  minWidth: {
+                    lg: "450px",
+                    md: "400px",
+                    sm: "450px",
+                    xs: "400px",
+                  },
+                  borderRadius: 10,
+                  py: 2,
+                  my: 1,
+                }}
+              >
+                Confirm
+              </Button>
+            {/* </Link> */}
+          </Box>
           {/* =========submit button end========= */}
         </Grid>
         {/* ===========submit button=========== */}

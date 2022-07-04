@@ -1,5 +1,5 @@
 import { Avatar, Card, CardContent, Grid, Typography } from '@mui/material';
-import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 
 export const TotalVehicles = (props) => (
   <Card {...props}>
@@ -21,7 +21,7 @@ export const TotalVehicles = (props) => (
             color="textPrimary"
             variant="h4"
           >
-            23k
+            810
           </Typography>
         </Grid>
         <Grid item>
@@ -32,7 +32,7 @@ export const TotalVehicles = (props) => (
               width: 56
             }}
           >
-            <DirectionsCarFilledIcon />
+            <LocalShippingIcon />
           </Avatar>
         </Grid>
       </Grid>

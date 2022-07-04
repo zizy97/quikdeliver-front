@@ -18,7 +18,8 @@ import {
   ListSubheader,
   ListItemAvatar,
   ListItemButton,
-} from "@mui/material";
+  ClickAwayListener
+} from '@mui/material';
 // utils
 import { fToNow } from "../../utils/formatTime";
 // components
@@ -41,9 +42,9 @@ const NOTIFICATIONS = [
   {
     id: faker.datatype.uuid(),
     title: faker.name.findName(),
-    description: "answered to your comment on the Minimal",
-    avatar: "/static/images/avatars/avatar_2.jpg",
-    type: "friend_interactive",
+    description: 'answered to your comment on the Minimal',
+    avatar: '/static/mock-images/avatars/avatar_2.jpg',
+    type: 'friend_interactive',
     createdAt: sub(new Date(), { hours: 3, minutes: 30 }),
     isUnRead: true,
   },
@@ -92,8 +93,8 @@ export default function NotificationsPopover() {
   );
   useEffect(() => {
     function handleResize() {
-      setHeightScroll(window.innerHeight - window.innerHeight * 0.5);
-      console.log(heightScroll);
+      setHeightScroll(window.innerHeight - window.innerHeight*0.5);
+      // console.log(heightScroll);
     }
     window.addEventListener("resize", handleResize);
   });
@@ -116,7 +117,8 @@ export default function NotificationsPopover() {
   };
 
   return (
-    <>
+    <ClickAwayListener onClickAway={handleClose}>
+    <div>
       <IconButton
         ref={anchorRef}
         color={open ? "primary" : "default"}
@@ -124,10 +126,10 @@ export default function NotificationsPopover() {
         sx={{
           width: 40,
           height: 40,
-          bgcolor: "white",
-          "&:hover": { bgcolor: "white" },
-          border: 1,
-          borderColor: "#357CDF",
+          // bgcolor: "white",
+          // "&:hover": { bgcolor: "white" },
+          // border: 1,
+          // borderColor: "#357CDF",
         }}
       >
         <Badge badgeContent={totalUnRead} color="error">
@@ -160,7 +162,7 @@ export default function NotificationsPopover() {
 
         <Divider sx={{ borderStyle: "dashed" }} />
 
-        <Scrollbar sx={{ height: heightScroll }}>
+        <Scrollbar sx={{ height: heightScroll}}>
           <List
             disablePadding
             subheader={
@@ -208,7 +210,8 @@ export default function NotificationsPopover() {
           </Button>
         </Box>
       </MenuPopover>
-    </>
+    </div>
+    </ClickAwayListener>
   );
 }
 

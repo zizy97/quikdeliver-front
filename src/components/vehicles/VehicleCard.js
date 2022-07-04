@@ -17,10 +17,12 @@ export const VehicleCard = ({ vehicle, ...rest }) => (
         sx={{
           display: 'flex',
           justifyContent: 'center',
-          pb: 3
+          pb: 3,
+          width:"100%",
+          height:"200px" 
         }}
       >
-        <Avatar
+        <img
         sx={{backgroundSize:"cover"}}
           alt="vehicle"
           src={vehicle.media}
@@ -35,13 +37,13 @@ export const VehicleCard = ({ vehicle, ...rest }) => (
       >
         {vehicle.title}
       </Typography>
-      <Typography
+      {/* <Typography
         align="center"
         color="textPrimary"
         variant="body1"
       >
         {vehicle.description}
-      </Typography>
+      </Typography> */}
     </CardContent>
     <Box sx={{ flexGrow: 1 }} />
     <Divider />

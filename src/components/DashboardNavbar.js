@@ -5,18 +5,16 @@ import {
   Box,
   IconButton,
   Toolbar,
-  Tooltip,
   Stack,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import NotificationsPopover from "./notification/NotificationsPopover";
 import Profile from "./profile";
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
-  backgroundColor: "transparent",
-  boxShadow: theme.shadows[0],
-  position: "",
+  backgroundColor: theme.palette.background.toolbar,
+  boxShadow: theme.shadows[3],
+  zIndex: 100000
 }));
 
 export const DashboardNavbar = (props) => {
@@ -26,21 +24,20 @@ export const DashboardNavbar = (props) => {
     <>
       <DashboardNavbarRoot
         sx={{
-          left: {
-            lg: 180,
-          },
+          // left: {
+          //   lg: 200,
+          // },
           width: {
-            lg: "calc(100% - 180px)",
-          },
-        }}
+            lg: "100%",
+          },       }}
         {...other}
       >
         <Toolbar
           disableGutters
           sx={{
-            minHeight: 64,
+            minHeight:"60px",
             left: 0,
-            px: 2,
+            
           }}
         >
           <IconButton
@@ -54,12 +51,14 @@ export const DashboardNavbar = (props) => {
           >
             <MenuIcon fontSize="small" />
           </IconButton>
-
           <Box sx={{ flexGrow: 1 }} />
           <Stack
             direction="row"
             alignItems="center"
             spacing={{ xs: 0.5, sm: 1.5 }}
+            sx={{
+              mr:"15px",
+            }}
           >
             <NotificationsPopover />
             <Profile />

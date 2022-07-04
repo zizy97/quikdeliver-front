@@ -69,12 +69,14 @@ const Register = () => {
       });
 
       if (status) {
-        setSubmitMessage(
-          "Successfully Created User Please Verify Your Email And Login"
-        );
+        sessionStorage.setItem("email",email);
+        window.open(window.location.origin+'/sendmail');
+        navigate('/signin');
       } else {
         setIsError(true);
         setSubmitMessage(error);
+        setIsSnackOpen(true);
+
       }
     },
   });

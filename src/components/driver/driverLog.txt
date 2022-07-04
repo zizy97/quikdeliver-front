@@ -1,0 +1,14 @@
+#npm installs
+material-ui-popup-state
+@mui/x-data-grid
+material-ui-popup-state
+
+
+#delivery address rendering parameter
+renderCell: (params) => {
+      return (
+        <Typography>
+          {params.value}
+        </Typography>
+      );
+    }

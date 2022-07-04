@@ -79,5 +79,18 @@ export const authRequest = async (config) => {
 };
 
 export const getErrorMessage = (error) => {
-  return error.data ? error.data.fieldsErrors?error.data.fieldsErrors[0].userMessage:error.data.error : error.message;
+  if(error.data){
+    console.log("in error.data")
+    if(error.data.commonError){
+      console.log("in error.data.commonError")
+      return error.data.commonError.cause;
+    }else if(error.data.fieldsErrors){
+      console.log("in error.data.fieldsErrors")
+      return error.data.fieldsErrors[0].userMessage;
+    }else{
+      return error.data.error;
+    }
+  }
+  console.log("in error default")
+  return error.message;
 };

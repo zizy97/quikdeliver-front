@@ -144,7 +144,7 @@ const Login = () => {
             </Box>
             <Grid container spacing={3}>
               <Grid item xs={12} md={12}>
-                <Link href="http://localhost:8081/api/oauth2/authorize/google?req=login">
+                <Link href="https://quik-back.herokuapp.com/api/oauth2/authorize/google?req=login">
                 <Button
                   fullWidth
                   color="error"

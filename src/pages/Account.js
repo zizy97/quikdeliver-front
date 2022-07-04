@@ -26,7 +26,7 @@ function Account() {
         component="main"
         sx={{
           flexGrow: 1,
-          py: 2,
+          py: 8,
           background: "#ECF2FF",
         }}
       >
@@ -34,7 +34,7 @@ function Account() {
           <Typography sx={{ mb: 3 }} variant="h4">
             Account
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container sx={{ pt: 3 }} spacing={3}>
             <Grid item lg={4} md={6} xs={12}>
               <AccountProfile />
             </Grid>

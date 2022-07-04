@@ -1,14 +1,14 @@
 import { Box, Container, Grid } from '@mui/material';
-import { Income } from '../components/dashboard/Income';
-import { LatestOrders } from '../components/dashboard/LatestOrders';
-import { DeliveryRequest } from '../components/dashboard/DeliveryRequest';
-import { IncomeStats } from '../components/dashboard/IncomeStats';
-import { DeliverProgress } from '../components/dashboard/DeliverProgress';
-import { TotalDrivers } from '../components/dashboard/TotalDrivers';
-import { TotalVehicles } from '../components/dashboard/TotalVehicles';
-import { StatByVehicle } from '../components/dashboard/StatByVehicle';
+import { Income } from '../dashboard/Income';
+import { LatestOrders } from '../dashboard/LatestOrders';
+import { DeliveryRequest } from '../dashboard/DeliveryRequest';
+import { IncomeStats } from '../dashboard/IncomeStats';
+import { DeliverProgress } from '../dashboard/DeliverProgress';
+import { TotalDrivers } from '../dashboard/TotalDrivers';
+import { TotalVehicles } from '../dashboard/TotalVehicles';
+import { StatByVehicle } from '../dashboard/StatByVehicle';
 
-const Dashboard = () => (
+const DriverDashboard = () => (
   <>
     <Box
       component="main"
@@ -101,4 +101,4 @@ const Dashboard = () => (
   </>
 );
 
-export default Dashboard;
+export default DriverDashboard;
