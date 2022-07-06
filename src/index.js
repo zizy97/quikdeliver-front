@@ -5,10 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
-import AuthContextProvider from "./contexts/AuthContext";
+// import AuthContextProvider from "./contexts/AuthContext";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { theme } from "./theme";
+import { AppProvider } from "./components/customer/userContext";
+//==3rd party library==
+import Scrollbar from "smooth-scrollbar";
+//  Scrollbar.init(document.querySelector("#my-scrollbar"));
 
 // import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,12 +21,14 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <AuthContextProvider>
-            <ThemeProvider theme={theme}>
+          {/* <AuthContextProvider> */}
+          <ThemeProvider theme={theme}>
+            <AppProvider>
               <CssBaseline />
               <App />
-            </ThemeProvider>
-          </AuthContextProvider>
+            </AppProvider>
+          </ThemeProvider>
+          {/* </AuthContextProvider> */}
         </BrowserRouter>
       </PersistGate>
     </Provider>

@@ -9,6 +9,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import HistoryIcon from '@mui/icons-material/History';
+import AddCardIcon from '@mui/icons-material/AddCard';
 
 //this is the sidebar for admin
 export const adminItems = [
@@ -52,6 +53,11 @@ export const adminItems = [
       title: 'Dashboard'
     },
     {
+      href: '/customer/new-booking',
+      icon: (<AddCardIcon/>),
+      title: 'New Booking'
+    },
+    {
       href: '/customer/account',
       icon: (<ManageAccountsIcon/>),
       title: 'Account'
@@ -60,6 +66,11 @@ export const adminItems = [
       href: '/customer/settings',
       icon: (<SettingsIcon/>),
       title: 'Settings'
+    },
+    {
+      href: '/customer/history',
+      icon: (<HistoryIcon/>),
+      title: 'History'
     },
     {
       href: '/',

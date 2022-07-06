@@ -1,30 +1,60 @@
-import { useState } from 'react';
-import { Box, Button, Card, CardContent, CardHeader, Divider, TextField } from '@mui/material';
+import { useState } from "react";
+//=======MUI======
+import { styled } from "@mui/material/styles";
+//=======MUI======
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  TextField,
+} from "@mui/material";
+
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "#1964FF",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#1964FF",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#1964FF",
+      borderRadius: 30,
+    },
+    "&:hover fieldset": {
+      borderColor: "#1964FF",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#1964FF",
+    },
+  },
+});
 
 export const SettingsPassword = (props) => {
   const [values, setValues] = useState({
-    password: '',
-    confirm: ''
+    password: "",
+    confirm: "",
   });
 
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
   return (
     <form {...props}>
       <Card>
-        <CardHeader
-          subheader="Update password"
-          title="Password"
-        />
+        <CardHeader subheader="Update password" title="Password" />
         <Divider />
         <CardContent>
-          <TextField
+          <CssTextField
             fullWidth
+            size="small"
             label="Password"
             margin="normal"
             name="password"
@@ -33,8 +63,10 @@ export const SettingsPassword = (props) => {
             value={values.password}
             variant="outlined"
           />
-          <TextField
+          <CssTextField
+            // variant="style1"
             fullWidth
+            size="small"
             label="Confirm password"
             margin="normal"
             name="confirm"
@@ -47,15 +79,12 @@ export const SettingsPassword = (props) => {
         <Divider />
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            p: 2
+            display: "flex",
+            justifyContent: "center",
+            p: 2,
           }}
         >
-          <Button
-            color="primary"
-            variant="contained"
-          >
+          <Button color="primary" variant="contained" sx={{ borderRadius: 10 }}>
             Update
           </Button>
         </Box>

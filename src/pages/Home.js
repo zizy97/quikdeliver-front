@@ -1,15 +1,19 @@
+import Navbar from "../components/Navbar";
 import {
   Delivererbooking,
   Bookingsteps,
   Driver,
   Vehicleowner,
-} from "../../src/components/home/Home_components";
-import Footer from "../components/Footer";
+  Footer,
+} from "../components/home/Home_components";
+// import Footer from "../components/Footer";
 
 function Home() {
   return (
     <div>
+      <Navbar />
       <Delivererbooking />
+      {/* <Homecontainer /> */}
       <Bookingsteps />
       <Driver />
       <Vehicleowner />
