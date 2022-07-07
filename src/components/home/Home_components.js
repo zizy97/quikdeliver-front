@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; //=================react===================
-import { Link } from "react-router-dom"; //=================react===================
+//import { Link } from "react-router-dom"; //=================react===================
 import {
   List,
   ListItemIcon,
@@ -12,11 +12,11 @@ import {
   Stack,
   Badge,
 } from "@mui/material";
-import Grow from "@mui/material/Grow";
+//import Grow from "@mui/material/Grow";
 import Zoom from "@mui/material/Zoom";
 import Slide from "@mui/material/Slide";
 //==============Components==================================
-import CircleIcon from "@mui/icons-material/Circle";
+//import CircleIcon from "@mui/icons-material/Circle";
 //import deliverer from "../../images/deliverer.png"; //========image====================
 import driver from "../../images/driver.png"; //========image========================
 import deliverstep from "../../images/deliverstep.png"; //========image==============
@@ -36,7 +36,7 @@ import MailIcon from "@mui/icons-material/Mail";
 
 //==3rd party Library==
 import { motion } from "framer-motion";
-import { useAnimation } from "framer-motion";
+//import { useAnimation } from "framer-motion";
 import { useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useNavigate } from "react-router-dom";
@@ -151,34 +151,34 @@ function Delivererbooking() {
             </Box>
 
             <Box container ref={containerRef} sx={{ textAlign: "center" }}>
-                <Slide
-                  direction="up"
-                  in={checked}
-                  container={containerRef.current}
-                  style={{
-                    transformOrigin: "0 0 0",
-                    transitionDelay: checked ? "700ms" : "0ms",
+              <Slide
+                direction="up"
+                in={checked}
+                container={containerRef.current}
+                style={{
+                  transformOrigin: "0 0 0",
+                  transitionDelay: checked ? "700ms" : "0ms",
+                }}
+                {...(checked ? { timeout: 1200 } : {})}
+              >
+                <Button
+                  onClick={() => {
+                    navigate("/new-booking");
                   }}
-                  {...(checked ? { timeout: 1200 } : {})}
+                  variant="contained"
+                  sx={{
+                    borderRadius: 10,
+                    marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                    width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                    height: { lg: 55, md: 40, sm: 40, xs: 40 },
+                    backgroundColor: "#1964FF",
+                    color: "#FCF370",
+                    fontSize: 18,
+                  }}
                 >
-                  <Button
-                    onClick={()=>{
-                      navigate("/new-booking")
-                    }}
-                    variant="contained"
-                    sx={{
-                      borderRadius: 10,
-                      marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
-                      width: { lg: 250, md: 180, sm: 250, xs: 200 },
-                      height: { lg: 55, md: 40, sm: 40, xs: 40 },
-                      backgroundColor: "#1964FF",
-                      color: "#FCF370",
-                      fontSize: 18,
-                    }}
-                  >
-                    Book Now
-                  </Button>
-                </Slide>
+                  Book Now
+                </Button>
+              </Slide>
 
               <Stack
                 spacing={20}

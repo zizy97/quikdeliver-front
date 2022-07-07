@@ -21,10 +21,10 @@ import DefaultLayout from "./components/DefaultLayout";
 
 //Driver Dashboard
 import DriverDashboard from "./components/driver/DriverDashboard";
-import NewOrders from './components/driver/newrequests/NewOrders';
-import Offers from './components/driver/joboffer/Offers';
-import ProContent from './components/driver/inprocess/ProContent';
-import History from './components/driver/history/History';
+import NewOrders from "./components/driver/newrequests/NewOrders";
+import Offers from "./components/driver/joboffer/Offers";
+import ProContent from "./components/driver/inprocess/ProContent";
+import History from "./components/driver/history/History";
 
 //Customer Dashboard
 import Customer from "./pages/customer/Customer";
@@ -33,6 +33,13 @@ import Customer3 from "./pages/customer/Customer3";
 import Map from "./pages/customer/Map";
 import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 
+//vo Dashboard
+import Dashboardvo from "./pages/vo/Dashboardvo";
+import Newrequest from "./components/vo/Newrequest";
+import { Orderhistory } from "./components/vo/Orderhistory";
+import Inprocess from "./components/vo/Inprocess";
+import Driversvo from "./pages/vo/Drivers";
+import Vehiclesvo from "./pages/vo/Vehicles";
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
@@ -76,25 +83,25 @@ const routes = (isAuthenticated, roles) => [
     path: "new-booking",
     element: <Customer />,
   },
-  { 
-    path: "page2", 
-    element: <Customer2 /> 
+  {
+    path: "page2",
+    element: <Customer2 />,
   },
-  { 
-    path: "page3", 
-    element: <Map /> 
+  {
+    path: "page3",
+    element: <Map />,
   },
   {
     path: "/vo",
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
     children: [
-      { path: "", element: <Dashboard /> },
-      { path: "vehicles", element: <Vehicles /> },
-      { path: "drivers", element: <Drivers /> },
-      { path: "orders", element: <Account /> },
-      { path: "deliver", element: <h1>This is space to new deliver</h1> },
-      { path: "history", element: <h1>This is space to history</h1> },
-      { path: "notification", element: <h1>This is space to notification</h1> },
+      { path: "", element: <Dashboardvo /> },
+      { path: "requests", element: <Newrequest /> },
+      { path: "inprocess", element: <Inprocess /> },
+      { path: "vehicles", element: <Vehiclesvo /> },
+      { path: "drivers", element: <Driversvo /> },
+      { path: "account", element: <Account /> },
+      { path: "history", element: <Orderhistory /> },
       { path: "settings", element: <Settings /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
@@ -142,15 +149,15 @@ const routes = (isAuthenticated, roles) => [
   },
   {
     path: "/driver",
-    element:<DashboardLayout/> ,
+    element: <DashboardLayout />,
     children: [
-      { path: "", element: <DriverDashboard/> },
-      { path: "newrequests", element: <NewOrders/> },
-      { path: "inprocess", element: <ProContent/> },
-      { path: "joboffers", element: <Offers/> },
-      { path: "account", element: <Account/> },
-      { path: "settings", element: <Settings/> },
-      { path: "history", element: <History/> },
+      { path: "", element: <DriverDashboard /> },
+      { path: "newrequests", element: <NewOrders /> },
+      { path: "inprocess", element: <ProContent /> },
+      { path: "joboffers", element: <Offers /> },
+      { path: "account", element: <Account /> },
+      { path: "settings", element: <Settings /> },
+      { path: "history", element: <History /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],

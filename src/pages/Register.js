@@ -69,14 +69,13 @@ const Register = () => {
       });
 
       if (status) {
-        sessionStorage.setItem("email",email);
-        window.open(window.location.origin+'/sendmail');
-        navigate('/signin');
+        sessionStorage.setItem("email", email);
+        window.open(window.location.origin + "/sendmail");
+        navigate("/signin");
       } else {
         setIsError(true);
         setSubmitMessage(error);
         setIsSnackOpen(true);
-
       }
     },
   });
