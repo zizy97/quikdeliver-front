@@ -36,7 +36,7 @@ import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 //vo Dashboard
 import Dashboardvo from "./pages/vo/Dashboardvo";
 import Newrequest from "./components/vo/Newrequest";
-import { Orderhistory } from "./components/vo/Orderhistory";
+import Orderhistory from "./components/vo/Orderhistory";
 import Inprocess from "./components/vo/Inprocess";
 import Driversvo from "./pages/vo/Drivers";
 import Vehiclesvo from "./pages/vo/Vehicles";
