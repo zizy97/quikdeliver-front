@@ -268,14 +268,14 @@ export default function Newrequest() {
           ml: 5,
         }}
       >
-        <Typography variant="h4">Orders in Process</Typography>
+        <Typography variant="h4">Orders History</Typography>
       </Grid>
 
       <Grid
         container
         direction={"row"}
         sx={{
-          p: 4,
+          p: { xs: 2, sm: 2, md: 2, lg: 4 },
         }}
       >
         <TableContainer component={Paper}>

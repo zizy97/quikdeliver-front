@@ -14,14 +14,20 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Grid, Button } from "@mui/material";
+//=============model Dialolg box==========================================//
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+//===========model Dialog box=============================================//
 function createData(
   orderno,
   orderdate,
   customername,
   customertel,
   pickupadress,
-  weight,
-  height,
+
   price
 ) {
   return {
@@ -30,8 +36,7 @@ function createData(
     customername,
     customertel,
     pickupadress,
-    weight,
-    height,
+
     price,
     detailmore: [
       {
@@ -39,6 +44,10 @@ function createData(
         Receivername: "Nimal perera",
         Daddress: "No 12 Nagolla matale",
         Receivertel: "0748452123",
+        vehiclename: "Van-Nissan",
+        vehicleno: "45PO12",
+        weight: 100,
+        height: 20,
       },
     ],
   };
@@ -47,9 +56,21 @@ function createData(
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+  //=====================model Diaolg box===========================================//
+  const [opend, setOpendialog] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpendialog(true);
+  };
+
+  const handleClose = () => {
+    setOpendialog(false);
+  };
+  //=====================model Diaolg box===========================================//
+
+  //====================================Accept Decline Buttons===========================//
   const Accept = (
     <Button
-      onClick={console.log("Accept")}
+      onClick={handleClickOpen}
       variant="contained"
       size="small"
       sx={{
@@ -81,7 +102,7 @@ function Row(props) {
       Decline
     </Button>
   );
-
+  //====================================Accept Decline Buttons===========================//
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -101,8 +122,50 @@ function Row(props) {
         <TableCell align="left">{row.customername}</TableCell>
         <TableCell align="left">{row.customertel}</TableCell>
         <TableCell align="left">{row.pickupadress}</TableCell>
-        <TableCell align="left">{row.weight}</TableCell>
-        <TableCell align="left">{row.height}</TableCell>
+        <TableCell align="left">{Accept}</TableCell>
+        {/**========================================================================open model Dialog===================================== */}
+        <Dialog open={opend} onClose={handleClose} sx={{ mt: { xs: 5 } }}>
+          <DialogTitle>Assign Vehicle and Driver</DialogTitle>
+          <DialogContent>
+            <DialogContentText sx={{ pb: 2 }}>
+              Please Choose vehicles and Drivers.
+            </DialogContentText>
+            <DialogContentText sx={{ pb: 2 }}>Select Driver</DialogContentText>
+            <DialogContentText sx={{ pb: 2 }}>Select Vehicle</DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Send
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+        {/**========================================================================open model Dialog===================================== */}
+        <TableCell align="left">{Delete}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={8}>
@@ -118,9 +181,10 @@ function Row(props) {
                     <TableCell align="left">Reciever's Name</TableCell>
                     <TableCell align="left">Reciever's Tel.No</TableCell>
                     <TableCell align="left">Delivery Address</TableCell>
-                    <TableCell align="left">Delivery Cost ($)</TableCell>
-                    <TableCell align="left">Accept</TableCell>
-                    <TableCell align="left">Decline</TableCell>
+                    <TableCell align="left">Veh.Name</TableCell>
+                    <TableCell align="left">Veh.No</TableCell>
+                    <TableCell align="left">Height</TableCell>
+                    <TableCell align="left">Weight</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -139,11 +203,13 @@ function Row(props) {
                         {detailmoreRow.Daddress}
                       </TableCell>
                       <TableCell align="left">
-                        {Math.round(detailmoreRow.Daddress * row.price * 100) /
-                          100}
+                        {detailmoreRow.vehiclename}
                       </TableCell>
-                      <TableCell align="left">{Accept}</TableCell>
-                      <TableCell align="left">{Delete}</TableCell>
+                      <TableCell align="left">
+                        {detailmoreRow.vehicleno}
+                      </TableCell>
+                      <TableCell align="left">{detailmoreRow.weight}</TableCell>
+                      <TableCell align="left">{detailmoreRow.height}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -168,12 +234,14 @@ Row.propTypes = {
         Receivername: PropTypes.string.isRequired,
         Receivertel: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
+        vehiclename: PropTypes.string.isRequired,
+        vehicleno: PropTypes.string.isRequired,
+        weight: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
       })
     ).isRequired,
     orderno: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    weight: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
   }).isRequired,
 };
 
@@ -250,8 +318,8 @@ export default function Newrequest() {
         container
         direction={"row"}
         sx={{
-          mt: 5,
-          ml: 5,
+          mt: 4,
+          ml: 4,
         }}
       >
         <Typography variant="h4">New Orders</Typography>
@@ -261,7 +329,7 @@ export default function Newrequest() {
         container
         direction={"row"}
         sx={{
-          p: 4,
+          p: { xs: 2, sm: 2, md: 2, lg: 4 },
         }}
       >
         <TableContainer component={Paper}>
@@ -274,8 +342,8 @@ export default function Newrequest() {
                 <TableCell align="left">Customer Name</TableCell>
                 <TableCell align="left">Customer Tel.No</TableCell>
                 <TableCell align="left">Pick up Address</TableCell>
-                <TableCell align="left">Weight(kg)</TableCell>
-                <TableCell align="left">Height(m)</TableCell>
+                <TableCell align="left">Accept</TableCell>
+                <TableCell align="left">Decline</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

@@ -55,43 +55,61 @@ export function VehicleListToolbar(props) {
             Add Vehicle
           </Button>
         </Box>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} sx={{ mt: { xs: 5 } }}>
           <DialogTitle>Add Vehicle Details</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Please enter all the details about the vehicle.
             </DialogContentText>
             <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Vehicle Name"
-              type="email"
-              fullWidth
-              variant="standard"
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Vehicle Name"
+              variant="outlined"
             />
             <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-              variant="standard"
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Vehicle Number"
+              variant="outlined"
             />
             <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-              variant="standard"
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Vehicle Color"
+              variant="outlined"
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Save</Button>
-            <Button onClick={handleClose}>Cancel</Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                width: 80,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Save
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Cancel
+            </Button>
           </DialogActions>
         </Dialog>
       </Box>

@@ -8,6 +8,7 @@ import {
   InputAdornment,
   SvgIcon,
   Typography,
+  FormControlLabel,
 } from "@mui/material";
 import { Search as SearchIcon } from "../../icons/search";
 //import { Upload as UploadIcon } from "../../icons/upload";
@@ -19,6 +20,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Checkbox from "@mui/material/Checkbox";
 //===========model===========//
 
 export function DriverListToolbar(props) {
@@ -57,41 +59,87 @@ export function DriverListToolbar(props) {
             Add Drivers
           </Button>
         </Box>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} sx={{ mt: { xs: 5 } }}>
           <DialogTitle>Add Driver Details</DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText sx={{ pb: 2 }}>
               Please enter all the details about the Drivers.
             </DialogContentText>
             <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Please enter the Name"
-              type="email"
-              fullWidth
-              variant="standard"
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Frist Name"
+              variant="outlined"
             />
             <TextField
-              id="standard-number"
-              label="Enter Id Number"
-              type="number"
-              fullWidth
-              variant="standard"
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Last Name"
+              variant="outlined"
             />
             <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="Email Address"
-              type="email"
-              fullWidth
-              variant="standard"
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter ID Number"
+              variant="outlined"
             />
+            <TextField
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Email"
+              variant="outlined"
+              type="email"
+            />
+            <TextField
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Address"
+              variant="outlined"
+            />
+            <TextField
+              sx={{ m: 1 }}
+              id="outlined-basic"
+              label="Enter Telephone Number"
+              variant="outlined"
+            />
+            <DialogContentText sx={{ mt: 2 }}>
+              Choose vehicles to able to drive
+            </DialogContentText>
+            <FormControlLabel control={<Checkbox />} label="Motor Bike" />
+            <FormControlLabel control={<Checkbox />} label="Car" />
+            <FormControlLabel control={<Checkbox />} label="Van" />
+            <FormControlLabel control={<Checkbox />} label="Lorry" />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Save</Button>
-            <Button onClick={handleClose}>Cancel</Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                width: 80,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Save
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Cancel
+            </Button>
           </DialogActions>
         </Dialog>
       </Box>

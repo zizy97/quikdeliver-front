@@ -13,8 +13,15 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import { SeverityPill } from "../SeverityPill";
+//=============model Dialolg box==========================================//
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+//===========model Dialog box=============================================//
 function createData(
   orderno,
   orderdate,
@@ -55,7 +62,34 @@ function createData(
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+  //=====================model Diaolg box===========================================//
+  const [opend, setOpendialog] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpendialog(true);
+  };
 
+  const handleClose = () => {
+    setOpendialog(false);
+  };
+  //=====================model Diaolg box===========================================//
+  //====================================Change Buttons===========================//
+  const Change = (
+    <Button
+      onClick={handleClickOpen}
+      variant="contained"
+      size="small"
+      sx={{
+        borderRadius: 40,
+        backgroundColor: "primary.main",
+        "&:hover": {
+          backgroundColor: "primary.main",
+        },
+      }}
+    >
+      Change
+    </Button>
+  );
+  //====================================Change Buttons===========================//
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -83,12 +117,52 @@ function Row(props) {
             color={
               (row.status === "Accepted" && "success") ||
               (row.status === "pending" && "error") ||
+              (row.status === "canceled" && "info") ||
               "warning"
             }
           >
             {row.status}
           </SeverityPill>
         </TableCell>
+        <TableCell align="center">{Change}</TableCell>
+        <Dialog open={opend} onClose={handleClose} sx={{ mt: { xs: 5 } }}>
+          <DialogTitle>Change Vehicle Or Driver</DialogTitle>
+          <DialogContent>
+            <DialogContentText sx={{ pb: 2 }}>
+              Please Choose vehicles and Drivers.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Add Changes
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              size="small"
+              sx={{
+                borderRadius: 30,
+                backgroundColor: "primary.main",
+                "&:hover": {
+                  backgroundColor: "primary.main",
+                },
+              }}
+            >
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}>
@@ -107,8 +181,8 @@ function Row(props) {
                     <TableCell align="left">Pickup Address</TableCell>
                     <TableCell align="left">Height</TableCell>
                     <TableCell align="left">Weight</TableCell>
-                    <TableCell align="left">vehicle Name</TableCell>
-                    <TableCell align="left">Vehicle No</TableCell>
+                    <TableCell align="left">veh.Name</TableCell>
+                    <TableCell align="left">Veh.No</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -203,7 +277,7 @@ const rows = [
     "Kumara Dissanayake",
     "958475123v",
     "0741245126",
-    "pending"
+    "canceled"
   ),
   createData(
     "03",
@@ -275,7 +349,7 @@ export default function Newrequest() {
         container
         direction={"row"}
         sx={{
-          p: 4,
+          p: { xs: 2, sm: 2, md: 2, lg: 4 },
         }}
       >
         <TableContainer component={Paper}>
@@ -291,6 +365,7 @@ export default function Newrequest() {
                 <TableCell align="left">Driver ID</TableCell>
                 <TableCell align="left">Driver Tel.No</TableCell>
                 <TableCell align="left">Status</TableCell>
+                <TableCell align="left">Change Vehicle/Driver</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
