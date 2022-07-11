@@ -30,7 +30,7 @@ const CustomerDashboard = (props) => {
         </Box>
       </DashboardLayoutRoot>
     
-      <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} />
+      <DashboardNavbar onSidebarOpen={() => setSidebarOpen(true)} onClose={() => setSidebarOpen(false)} open={isSidebarOpen}/>
       <DashboardSidebar
         onClose={() => setSidebarOpen(false)}
         open={isSidebarOpen}

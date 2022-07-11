@@ -4,7 +4,7 @@ import { AppBar, Box, IconButton, Toolbar, Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsPopover from "./notification/NotificationsPopover";
 import Profile from "./profile";
-
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: "rgba(0, 0, 0, 0.3)",
@@ -12,7 +12,7 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
 }));
 
 export const DashboardNavbar = (props) => {
-  const { onSidebarOpen, ...other } = props;
+  const { onSidebarOpen, open, onClose, ...other } = props;
 
   return (
     <>
@@ -35,16 +35,21 @@ export const DashboardNavbar = (props) => {
           }}
         >
           <IconButton
-            onClick={onSidebarOpen}
+            icon={<MenuIcon />}
+            onClick={open ? onClose : onSidebarOpen}
             sx={{
               display: {
                 xs: "inline-flex",
-                lg: "none",
+                lg: "inline-flex",
               },
-              bgcolor:"white"
+              bgcolor: "white",
             }}
           >
-            <MenuIcon fontSize="small" />
+            {!open ? (
+              <MenuIcon fontSize="small" />
+            ) : (
+              <CancelIcon fontSize="small" />
+            )}
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
           <Stack

@@ -91,24 +91,24 @@ const DashboardSidebar = (props) => {
     </>
   );
 
-  if (lgUp) {
-    return (
-      <Drawer
-        anchor="left"
-        open
-        PaperProps={{
-          sx: {
-            backgroundColor: "white",
-            color: "black",
-            width: 200,
-          },
-        }}
-        variant="permanent"
-      >
-        {content}
-      </Drawer>
-    );
-  }
+  // if (lgUp) {
+  //   return (
+  //     <Drawer
+  //       anchor="left"
+  //       open
+  //       PaperProps={{
+  //         sx: {
+  //           backgroundColor: "white",
+  //           color: "black",
+  //           width: 200,
+  //         },
+  //       }}
+  //       variant="permanent"
+  //     >
+  //       {content}
+  //     </Drawer>
+  //   );
+  // }
 
   return (
     <Drawer
