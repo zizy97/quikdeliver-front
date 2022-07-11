@@ -1,10 +1,19 @@
 import * as React from "react";
 import { Grid } from "@mui/material"; //==============Components==================================
 import about from "../../images/about.png";
+//====import components
+import { useGlobalContext } from "../customer/userContext";
+//====Import 3rd party Library
+import { motion } from "framer-motion";
 
 function Aboutmain() {
+  const { containerVarients } = useGlobalContext();
+
   return (
-    <div
+    <motion.div
+      variants={containerVarients}
+      initial="hidden"
+      animate="visible"
       style={{
         background: `url(${about})`,
         backgroundSize: "cover",
@@ -26,7 +35,7 @@ function Aboutmain() {
           justifyContent="center"
         ></Grid>
       </Grid>
-    </div>
+    </motion.div>
   );
 }
 export default Aboutmain;

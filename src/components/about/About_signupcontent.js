@@ -24,7 +24,7 @@ function Aboutsignupcontent() {
             component="h1"
             gutterBottom
             sx={{
-              fontSize: 18,
+              fontSize: 15,
               color: "White",
               padding: { xs: 2 },
               textAlign: "center",

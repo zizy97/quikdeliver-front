@@ -31,18 +31,16 @@ const Navbar = () => {
 
   return (
     <div
-      style={{
-        position: "fixed",
-        zIndex: 10,
-      }}
+     
     >
       <AppBar
         elevation={0}
         sx={{
           background: "transparent",
+          position: "absolute",
         }}
       >
-        <Toolbar sx={{ marginTop: { lg: 3, md: 2 } }}>
+        <Toolbar sx={{ marginTop: { lg: 1, md: 2 } }}>
           {/* <Box
             component="img"
             alt="Your logo."
@@ -115,7 +113,7 @@ const Navbar = () => {
                     key={index}
                     label={page.title}
                     sx={{
-                      fontSize: { lg: 18, md: 15 },
+                      fontSize: { lg: 14, md: 12 },
                       color: "#06173B",
                     }}
                     onClick={() => {
@@ -132,10 +130,10 @@ const Navbar = () => {
                   backgroundColor: "warning.main",
                   color: "neutral.800",
                   borderRadius: 10,
-                  "&:hover":  {
+                  "&:hover": {
                     color: "warning.main",
-                  }
-                }}  
+                  },
+                }}
                 variant="contained"
                 onClick={() => {
                   navigate("/signin");
@@ -156,7 +154,7 @@ const Navbar = () => {
                   "&:hover": {
                     backgroundColor: "warning.main",
                     color: "neutral.800",
-                  }
+                  },
                 }}
                 variant="contained"
               >

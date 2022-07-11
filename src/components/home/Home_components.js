@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; //=================react===================
-import { Link } from "react-router-dom"; //=================react===================
+import { useNavigate } from "react-router-dom"; //=================react===================
 import {
   List,
   ListItemIcon,
@@ -12,11 +12,9 @@ import {
   Stack,
   Badge,
 } from "@mui/material";
-import Grow from "@mui/material/Grow";
 import Zoom from "@mui/material/Zoom";
 import Slide from "@mui/material/Slide";
 //==============Components==================================
-import CircleIcon from "@mui/icons-material/Circle";
 //import deliverer from "../../images/deliverer.png"; //========image====================
 import driver from "../../images/driver.png"; //========image========================
 import deliverstep from "../../images/deliverstep.png"; //========image==============
@@ -36,18 +34,12 @@ import MailIcon from "@mui/icons-material/Mail";
 
 //==3rd party Library==
 import { motion } from "framer-motion";
-import { useAnimation } from "framer-motion";
 import { useViewportScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useNavigate } from "react-router-dom";
 
 //==============Customer Section Starting============================================
 //==============Customer Section Starting============================================
-const shapeStyles = { bgcolor: "#FFD481", width: 40, height: 40 };
-const shapeCircleStyles = { borderRadius: "50%" };
-const circle = (
-  <Box component="span" sx={{ ...shapeStyles, ...shapeCircleStyles }} />
-);
+
 function Delivererbooking() {
   // =============Transition handling===========
   const [checked, setChecked] = useState(false);
@@ -66,6 +58,28 @@ function Delivererbooking() {
       console.log(" clecked ");
     };
   }, []);
+
+  //---framer-motion---
+  // const containerVarients = {
+  //   hidden: {
+  //     opacity: 0.5,
+  //     x: "100vw",
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     x: 0,
+  //     transition: {
+  //       type: "spring",
+  //       mass: 0.6,
+  //       dumping: 8,
+  //     },
+  //     exit: {
+  //       opacity: 0.5,
+  //       x: "-100vw",
+  //     },
+  //   },
+  // };
+  // //---framer-motion---
   // =============Transition handling end===========
 
   return (
@@ -89,7 +103,7 @@ function Delivererbooking() {
               container
               ref={containerRef}
               sx={{
-                marginTop: { lg: 22, md: 25, sm: 18, xs: 14 },
+                marginTop: { lg: 17, md: 20, sm: 14, xs: 12 },
                 marginLeft: { lg: 14, md: 6, sm: 3, xs: 2 },
                 marginRight: { lg: 0, md: 0, sm: 3, xs: 2 },
               }}
@@ -109,7 +123,7 @@ function Delivererbooking() {
                   gutterBottom
                   sx={{
                     fontWeight: 190,
-                    fontSize: { lg: 62, md: 44, sm: 40, xs: 40 },
+                    fontSize: { lg: 70, md: 44, sm: 40, xs: 40 },
                     textAlign: {
                       lg: "left",
                       xs: "center",
@@ -151,34 +165,34 @@ function Delivererbooking() {
             </Box>
 
             <Box container ref={containerRef} sx={{ textAlign: "center" }}>
-                <Slide
-                  direction="up"
-                  in={checked}
-                  container={containerRef.current}
-                  style={{
-                    transformOrigin: "0 0 0",
-                    transitionDelay: checked ? "700ms" : "0ms",
+              <Slide
+                direction="up"
+                in={checked}
+                container={containerRef.current}
+                style={{
+                  transformOrigin: "0 0 0",
+                  transitionDelay: checked ? "700ms" : "0ms",
+                }}
+                {...(checked ? { timeout: 1200 } : {})}
+              >
+                <Button
+                  onClick={() => {
+                    navigate("/new-booking");
                   }}
-                  {...(checked ? { timeout: 1200 } : {})}
+                  variant="contained"
+                  sx={{
+                    borderRadius: 10,
+                    marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
+                    width: { lg: 250, md: 180, sm: 250, xs: 200 },
+                    height: { lg: 55, md: 40, sm: 40, xs: 40 },
+                    backgroundColor: "#1964FF",
+                    color: "#FCF370",
+                    fontSize: 18,
+                  }}
                 >
-                  <Button
-                    onClick={()=>{
-                      navigate("/new-booking")
-                    }}
-                    variant="contained"
-                    sx={{
-                      borderRadius: 10,
-                      marginTop: { lg: 6, xs: 6, md: 3, sm: 6 },
-                      width: { lg: 250, md: 180, sm: 250, xs: 200 },
-                      height: { lg: 55, md: 40, sm: 40, xs: 40 },
-                      backgroundColor: "#1964FF",
-                      color: "#FCF370",
-                      fontSize: 18,
-                    }}
-                  >
-                    Book Now
-                  </Button>
-                </Slide>
+                  Book Now
+                </Button>
+              </Slide>
 
               <Stack
                 spacing={20}
@@ -955,9 +969,9 @@ function Footer() {
   });
   const containerRef = React.useRef(null);
 
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.3, 2]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 2]);
+  // const { scrollYProgress } = useViewportScroll();
+  // const scale = useTransform(scrollYProgress, [0, 1], [0.3, 2]);
+  // const opacity = useTransform(scrollYProgress, [0, 1], [0, 2]);
   // =============Transition handling end===========
 
   return (

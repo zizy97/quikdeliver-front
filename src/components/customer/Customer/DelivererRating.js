@@ -3,15 +3,25 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import StarIcon from "@mui/icons-material/Star";
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
+//====Import Components=======
+import { useGlobalContext } from "../userContext";
+//====Import 3rd party Library
+import { motion } from "framer-motion";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return (
+    <Slide
+      direction="up"
+      ref={ref}
+      {...props}
+      style={{ transitionDelay: 2000 }}
+    />
+  );
 });
 
 //=======Rating==========
@@ -35,31 +45,39 @@ function getLabelText(value) {
 //=======Rating ending==========
 
 const AlertDialogSlide1 = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   // ------rating------
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   // ------rating------
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const { appRating, setAppRating } = useGlobalContext();
 
   const handleClose = () => {
     setOpen(false);
+    setAppRating(true);
+    console.log(appRating);
   };
 
+  const AppRatingVarients = {
+    hidden: {
+      opacity: 0,
+      y: "100vw",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        mass: 0.5,
+        dumping: 8,
+        delay: 4,
+      },
+    },
+  };
+  //---framer-motion---
+
   return (
-    <div>
-      <Button
-        variant="outlined"
-        onClick={handleClickOpen}
-        sx={{
-          m: 15,
-        }}
-      >
-        Deliverer Rating
-      </Button>
+    <motion.div variants={AppRatingVarients} initial="hidden" animate="visible">
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -117,10 +135,8 @@ const AlertDialogSlide1 = () => {
           <Button onClick={handleClose}>Close</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </motion.div>
   );
-}
+};
 
-
-
-export  default AlertDialogSlide1 
+export default AlertDialogSlide1;

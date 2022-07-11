@@ -12,11 +12,9 @@ import {
   Stack,
   Badge,
 } from "@mui/material";
-import Grow from "@mui/material/Grow";
 import Zoom from "@mui/material/Zoom";
 import Slide from "@mui/material/Slide";
 //==============Components==================================
-import CircleIcon from "@mui/icons-material/Circle";
 //import deliverer from "../images/deliverer.png"; //========image====================
 import driver from "../images/driver.png"; //========image========================
 import deliverstep from "../images/deliverstep.png"; //========image==============
@@ -107,7 +105,7 @@ function Delivererbooking() {
                   gutterBottom
                   sx={{
                     fontWeight: 190,
-                    fontSize: { lg: 62, md: 44, sm: 40, xs: 40 },
+                    fontSize: { lg: 82, md: 44, sm: 40, xs: 40 },
                     textAlign: {
                       lg: "left",
                       xs: "center",
@@ -116,7 +114,6 @@ function Delivererbooking() {
                     },
                   }}
                 >
-                  <b>Delivery</b> Booking
                   <br />
                   In A <b>Easy Way</b>
                 </Typography>
@@ -130,22 +127,7 @@ function Delivererbooking() {
                   transitionDelay: checked ? "500ms" : "0ms",
                 }}
                 {...(checked ? { timeout: 1000 } : {})}
-              >
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { lg: 17, md: 14, sm: 14 },
-                    textAlign: "justify",
-                  }}
-                >
-                  Now we have made it easy to order from different shops at a
-                  time. Just order what you need through us.We will bring it to
-                  your door step quickly and safely from Quik. Now we have made
-                  it easy to order from different shops at a time. Just order
-                  what you need through us.We will bring it to your door step
-                  quickly and safely from Quik.
-                </Typography>
-              </Slide>
+              ></Slide>
             </Box>
 
             <Box container ref={containerRef} sx={{ textAlign: "center" }}>

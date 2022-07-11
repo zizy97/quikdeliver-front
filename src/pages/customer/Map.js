@@ -1,6 +1,6 @@
 import React from "react";
 
-import ViewThree from "../../components/customer/Customer/ViewThree";
+import MapDetails from "../../components/customer/Customer/MapDetails";
 
 // ====== Images ========
 import Img03 from "../../images/blue-sky.jpg";
@@ -21,7 +21,7 @@ function CustomerPage() {
         backgroundPosition: "center",
       }}
     >
-      <ViewThree />
+      <MapDetails />
     </div>
   );
 }

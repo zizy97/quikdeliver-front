@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom"; //react
 import Home from "./pages/Home";
 import TestCase from "./test/TestCase";
 import SignInSide from "./pages/Signin";
@@ -21,15 +21,16 @@ import DefaultLayout from "./components/DefaultLayout";
 
 //Driver Dashboard
 import DriverDashboard from "./components/driver/DriverDashboard";
-import NewOrders from './components/driver/newrequests/NewOrders';
-import Offers from './components/driver/joboffer/Offers';
-import ProContent from './components/driver/inprocess/ProContent';
-import History from './components/driver/history/History';
+import NewOrders from "./components/driver/newrequests/NewOrders";
+import Offers from "./components/driver/joboffer/Offers";
+import ProContent from "./components/driver/inprocess/ProContent";
+import History from "./components/driver/history/History";
 
 //Customer Dashboard
-import Customer from "./pages/customer/Customer";
-import Customer2 from "./pages/customer/Customer2";
-import Customer3 from "./pages/customer/Customer3";
+import CustomerDashboard from "./components/customer/customer_dashboard/CustomerDashboard"
+import NewRequestDeliveryDetails from "./pages/customer/NewRequestDeliveryDetails";
+import NewRequestVehicleAndRoute from "./pages/customer/NewRequestVehicleAndRoute";
+import CustomerHistory from "./pages/customer/History";
 import Map from "./pages/customer/Map";
 import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 
@@ -74,15 +75,15 @@ const routes = (isAuthenticated, roles) => [
   },
   {
     path: "new-booking",
-    element: <Customer />,
+    element: <NewRequestDeliveryDetails />,
   },
-  { 
-    path: "page2", 
-    element: <Customer2 /> 
+  {
+    path: "page2",
+    element: <NewRequestVehicleAndRoute />,
   },
-  { 
-    path: "page3", 
-    element: <Map /> 
+  {
+    path: "page3",
+    element: <Map />,
   },
   {
     path: "/vo",
@@ -113,7 +114,7 @@ const routes = (isAuthenticated, roles) => [
       { path: "drivers", element: <Drivers /> },
       { path: "account", element: <Account /> },
       { path: "settings", element: <Settings /> },
-      { path: "history", element: <Customer3 /> },
+      { path: "history", element: <History /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
@@ -121,20 +122,20 @@ const routes = (isAuthenticated, roles) => [
 
   {
     path: "/customer",
-    element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
+    element: true ? <CustomerDashboard /> : <Navigate to="/signin" />,
     children: [
       { path: "", element: <h1>This is space to new component</h1> },
       // { path: "bookings", element: <h1>This is space to new Bookings</h1> },
-      { path: "history", element: <Customer3 /> },
+      { path: "history", element: <CustomerHistory /> },
       { path: "account", element: <Account /> },
-      { path: "new-booking", element: <Customer /> },
+      { path: "new-booking", element: <NewRequestDeliveryDetails /> },
       { path: "settings", element: <Settings /> },
       {
         path: "UnregisteredCustomer",
         element: <UnregisteredCustomerDetails />,
       },
-      { path: "page1", element: <Customer /> },
-      { path: "page2", element: <Customer2 /> },
+      { path: "page1", element: <NewRequestDeliveryDetails /> },
+      { path: "page2", element: <NewRequestVehicleAndRoute /> },
       { path: "page3", element: <Map /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
@@ -142,15 +143,15 @@ const routes = (isAuthenticated, roles) => [
   },
   {
     path: "/driver",
-    element:<DashboardLayout/> ,
+    element: <DashboardLayout />,
     children: [
-      { path: "", element: <DriverDashboard/> },
-      { path: "newrequests", element: <NewOrders/> },
-      { path: "inprocess", element: <ProContent/> },
-      { path: "joboffers", element: <Offers/> },
-      { path: "account", element: <Account/> },
-      { path: "settings", element: <Settings/> },
-      { path: "history", element: <History/> },
+      { path: "", element: <DriverDashboard /> },
+      { path: "newrequests", element: <NewOrders /> },
+      { path: "inprocess", element: <ProContent /> },
+      { path: "joboffers", element: <Offers /> },
+      { path: "account", element: <Account /> },
+      { path: "settings", element: <Settings /> },
+      { path: "history", element: <History /> },
       { path: "notification", element: <h1>This is space to notification</h1> },
       { path: "*", element: <Navigate to="/404" /> },
     ],

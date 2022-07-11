@@ -11,7 +11,7 @@ function Homecontainer() {
         backgroundPosition: "center",
       }}
     >
-      <Navbar />
+      {/* <Navbar /> */}
       <Delivererbooking />
     </div>
   );

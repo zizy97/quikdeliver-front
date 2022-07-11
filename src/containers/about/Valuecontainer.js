@@ -20,10 +20,10 @@ function Valuecontainer() {
             gutterBottom
             color="text.secondary"
             sx={{
-              fontSize: { lg: 45, md: 35, sm: 30, xs: 28 },
+              fontSize: { lg: 30, md: 35, sm: 30, xs: 28 },
               textAlign: "center",
-              fontWeight: 700,
-              padding: 5,
+              fontWeight: 500,
+              paddingTop: 5,
             }}
           >
             Our Values

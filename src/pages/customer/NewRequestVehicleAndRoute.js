@@ -1,7 +1,6 @@
 import React from "react";
-
-import ViewOne from "../../components/customer/Customer/ViewOne";
-import Box from "@mui/material/Box";
+import NavbarCustomer from "../../components/customer/NavbarCustomer";
+import NewRequestVehicleAndRoute from "../../components/customer/Customer/NewRequestVehicleAndRoute";
 // ====== Images ========
 import Img03 from "../../images/blue-sky.jpg";
 //=======3rd  party library========
@@ -9,10 +8,7 @@ import { Parallax } from "react-parallax";
 
 function CustomerPage() {
   return (
-    <Box
-      // style={{
-      //   backgroundColor: "#ECF2FF",
-      // }}
+    <div
       style={{
         // background: `url(${Img03})`,
         background: `#E9EAEC`,
@@ -21,10 +17,9 @@ function CustomerPage() {
         backgroundPosition: "center",
       }}
     >
-      {/* <NavbarCustomer /> */}
       {/* <LoginView /> */}
-      <ViewOne />
-    </Box>
+      <NewRequestVehicleAndRoute />
+    </div>
   );
 }
 

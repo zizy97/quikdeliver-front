@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; //react
-import { Link,useNavigate } from "react-router-dom"; //react-router-dom
+import { useNavigate } from "react-router-dom"; //react-router-dom
 //--MUI--
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -12,8 +12,6 @@ import Typography from "@mui/material/Typography";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Tooltip from "@mui/material/Tooltip";
-import Grow from "@mui/material/Grow";
-import Slide from "@mui/material/Slide";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -42,11 +40,19 @@ import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 function ViewTwo() {
+  const [first, setfirst] = useState(true);
+  useEffect(() => {
+    if (first) {
+      window.scrollTo(0, 0);
+    }
+    setfirst(false);
+  }, [first]);
+
   const navigate = useNavigate();
   //===Indicator===
-  const { indicator, setIndicator } = useGlobalContext();
-  const [value1, setvalue1] = useState(0);
-  const [value2, setvalue2] = useState(0);
+  const { indicator } = useGlobalContext();
+  // const [value1, setvalue1] = useState(0);
+  // const [value2, setvalue2] = useState(0);
   //===Indicator===
 
   //handle radio button
@@ -67,7 +73,6 @@ function ViewTwo() {
         elavation={0}
         sx={{
           bgcolor: "#D3E2FF",
-          justifyContent: "center",
           mx: 2,
           mt: 0,
           height: 500,
@@ -77,19 +82,45 @@ function ViewTwo() {
           sx={{
             py: 0,
             pt: 6,
+            textAlign: "left",
           }}
         >
-          <Typography component={"div"} variant="h6">
-            Information about route
+          <Grid container>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              sx={{ alignItems: "center" }}
+            >
+              <Typography
+                component={"div"}
+                variant="h6"
+                sx={{ mb: 1.5, py: 1 }}
+              >
+                Map Status :
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6}>
+              <Typography
+                sx={{
+                  bgcolor: "#C0C0C0",
+                  borderRadius: 0.5,
+                  textAlign: "center",
+                  py: 1,
+                }}
+              >
+                Deactivated
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Typography component={"div"} variant="h6" sx={{ mb: 1.5 }}>
+            Vehicle Type : Bike
           </Typography>
           <Typography component={"div"} sx={{ mb: 1.5 }} color="text.primary">
             Approximate Time : <b>2 hours</b>
-          </Typography>
-          <Typography component={"div"} sx={{ mb: 1.5 }} color="text.secondary">
-            Information about route
-          </Typography>
-          <Typography component={"div"} variant="body2">
-            Information about route
           </Typography>
         </CardContent>
 
@@ -137,49 +168,64 @@ function ViewTwo() {
       console.log(" clecked ");
     };
   }, []);
+
+  //---framer-motion---
+  const containerVarients = {
+    hidden: {
+      opacity: 0.5,
+      x: "100vw",
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        mass: 0.5,
+        dumping: 8,
+      },
+    },
+
+    exit: {
+      opacity: 0.5,
+      x: "100vw",
+      transition: {
+        type: "easeInOut",
+        delay: 4,
+      },
+    },
+  };
+  //---framer-motion---
   // =============Transition handling end===========
   //=====prograss bar transition=======
-  const { ref, inView } = useInView({ threshold: 0.8 });
+  const { ref, inView } = useInView({ threshold: 0.1 });
   const animation = useAnimation();
   const animation1 = useAnimation();
 
   useEffect(() => {
     if (inView) {
       animation.start({
-        x: 0,
-        y: 0,
         opacity: 1,
-        scale: 1,
-        rotate: 0,
         transition: {
-          duration: 0.6,
-          type: "tween",
+          duration: 0.5,
         },
       });
       animation1.start({
         opacity: 0,
-        scale: 0.4,
       });
     }
     if (!inView) {
       animation.start({
-        x: -500,
-        y: 600,
         opacity: 0,
-        scale: 0.4,
-        rotate: 90,
         transition: {
-          duration: 0.6,
-          type: "tween",
+          duration: 0.3,
         },
       });
       animation1.start({
         opacity: 1,
-        scale: 1,
       });
     }
     console.log("use effect hook : ", inView);
-  }, [inView]);
+  }, [inView, animation, animation1]);
   //=====prograss bar transition=======
   //==3D effect===
   // useEffect(() => {
@@ -201,7 +247,8 @@ function ViewTwo() {
 
   //============Radio button Handling============
   const [selectedValue, setSelectedValue] = useState("a");
-  const [deliveryCost, setDeliveryCost] = useState(vehicle1.costPerKm);
+  // const [deliveryCost, setDeliveryCost] = useState(vehicle1.costPerKm);
+  const [setDeliveryCost] = useState(vehicle1.costPerKm);
 
   const handleInputChange = (event) => {
     setSelectedValue(event.target.value);
@@ -273,6 +320,7 @@ function ViewTwo() {
                   m: 2,
                 }}
               >
+                {/* Reference point */}
                 <Box ref={ref} sx={{ m: 2 }}></Box>
                 {/* Indicator */}
                 <motion.div animate={animation}>
@@ -289,177 +337,163 @@ function ViewTwo() {
         </Grid>
         {/* ===========VEHICLE SELECTION PART========== */}
         {/* =====label===== */}
-        <Grow
+        {/* <Grow
           in={checked}
           style={{ transformOrigin: "0 0 0" }}
           {...(checked ? { timeout: 500 } : {})}
+        > */}
+        <motion.div
+          variants={containerVarients}
+          initial="hidden"
+          animate="visible"
         >
-          <div>
-            <Grid>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "center",
-                }}
-              >
-                <Grid item xs={12}>
-                  <Card
-                    varient="container"
-                    ref={containerRef}
-                    elevation={0}
-                    sx={{
-                      bgcolor: "transparent",
-                    }}
-                  >
-                    <Box ref={containerRef} varient="container">
-                      <Slide
-                        direction="up"
-                        in={checked}
-                        container={containerRef.current}
-                        // style={{
-                        //   transitionDelay: checked ? "100ms" : "0ms",
-                        // }}
-                        {...(checked ? { timeout: 1500 } : {})}
-                      >
-                        <Typography
-                          color="text.primary"
-                          component="div"
-                          sx={{
-                            px: 10,
-                            pt: 0,
-                            fontSize: 35,
-                            fontWeight: 190,
-                          }}
-                        >
-                          Now you can <b>choose a vehicle</b>
-                        </Typography>
-                      </Slide>{" "}
-                    </Box>
-                  </Card>
-                  <Card
-                    varient="container"
-                    ref={containerRef}
-                    elevation={0}
-                    sx={{
-                      bgcolor: "transparent",
-                      textAlign: "center",
-                      mb: -11.5,
-                      p: 2,
-                      mt: 0,
-                      pt: 0,
-                    }}
-                  >
-                    <Box ref={containerRef}>
-                      <Slide
-                        direction="down"
-                        in={checked}
-                        container={containerRef.current}
-                        style={{
-                          transitionDelay: checked ? "200ms" : "0ms",
-                        }}
-                        {...(checked ? { timeout: 1500 } : {})}
-                      >
-                        <Typography
-                          color="text.primary"
-                          component="div"
-                          sx={{
-                            px: 10,
-                            pt: 0,
-                            fontSize: 35,
-                            fontWeight: 190,
-                          }}
-                        >
-                          to deliver your pacege
-                        </Typography>
-                      </Slide>
-                    </Box>
+          <Grid>
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+              }}
+            >
+              <Grid item xs={12}>
+                <Card
+                  varient="container"
+                  ref={containerRef}
+                  elevation={0}
+                  sx={{
+                    bgcolor: "transparent",
+                  }}
+                >
+                  <Box ref={containerRef} varient="container">
+                    <Typography
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        px: 10,
+                        pt: 0,
+                        fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
+                        fontWeight: 190,
+                      }}
+                    >
+                      Now you can <b>choose a vehicle</b>
+                    </Typography>
+                  </Box>
+                </Card>
+                <Card
+                  varient="container"
+                  ref={containerRef}
+                  elevation={0}
+                  sx={{
+                    bgcolor: "transparent",
+                    textAlign: "center",
+                    mb: -11.5,
+                    p: 2,
+                    mt: 0,
+                    pt: 0,
+                  }}
+                >
+                  <Box ref={containerRef}>
+                    <Typography
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        px: 10,
+                        pt: 0,
+                        fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
+                        fontWeight: 190,
+                      }}
+                    >
+                      to deliver your pacege
+                    </Typography>
+                  </Box>
 
-                    {/* <DeliveryDiningIcon
+                  {/* <DeliveryDiningIcon
                       fontSize="large"
                       sx={{ color: "#1964FF", mb: -2 }}
                     /> */}
-                    <lord-icon
-                      src="https://cdn.lordicon.com/uetqnvvg.json"
-                      trigger="loop"
-                      colors="primary:#121331,secondary:#3080e8"
-                      state="hover"
-                      style={{
-                        width: "45px",
-                        height: "45px",
-                        marginBottom: "-25px",
-                      }}
-                    />
-                  </Card>
-                </Grid>
-              </Box>
-            </Grid>
+                  <lord-icon
+                    src="https://cdn.lordicon.com/uetqnvvg.json"
+                    trigger="loop"
+                    colors="primary:#121331,secondary:#3080e8"
+                    state="hover"
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                      marginBottom: "-25px",
+                    }}
+                  />
+                </Card>
+              </Grid>
+            </Box>
+          </Grid>
 
-            {/* =====label end===== */}
+          {/* =====label end===== */}
 
-            <Card
-              variant="outlined"
-              sx={{
-                flexGrow: 1,
-                mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
-                mb: 10,
-                pt: 15,
-                display: "flex",
-                background: "white",
-                textAlign: "center",
-                // borderRadius: 1,
-                // borderColor: "#3878FE",
-              }}
+          {/* </Grow> */}
+
+          <Card
+            sx={{
+              flexGrow: 1,
+              mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
+              mb: 10,
+              pt: 15,
+              display: "flex",
+              background: "white",
+              textAlign: "center",
+              boxShadow: `0px 2px 8px rgba(100, 116, 139, 0.25)`,
+              // borderRadius: 1,
+              // borderColor: "#3878FE",
+            }}
+            container
+            direction={"row"}
+            justifyContent="center"
+          >
+            <Box
               container
+              variant="outlined"
               direction={"row"}
-              justifyContent="center"
+              sx={{
+                display: "flex",
+                textAlign: "center",
+                my: 2,
+                px: 3,
+                justifyContent: "center",
+                width: "100%",
+              }}
             >
-              <Box
+              <Grid
                 container
-                variant="outlined"
-                direction={"row"}
+                rowSpacing={5}
+                columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1 }}
                 sx={{
-                  display: "flex",
-                  textAlign: "center",
-                  my: 2,
-                  px: 3,
-                  justifyContent: "center",
-                  width: "100%",
+                  alignItems: "center",
                 }}
               >
-                <Grid
-                  container
-                  rowSpacing={5}
-                  columnSpacing={{ xs: 1, sm: 1, md: 1, lg: 1 }}
-                  sx={{
-                    alignItems: "center",
-                  }}
-                >
-                  <Grid item xs={12} sm={12} md={12} lg={6}>
-                    {/* ========vehicle 01========= */}
+                <Grid item xs={12} sm={12} md={12} lg={6}>
+                  {/* ========vehicle 01========= */}
 
-                    <VehicleType {...vehicleOne} {...vehicle1} />
-                    {/* ========vehicle 01 end========= */}
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6}>
-                    {/* ========vehicle 02========= */}
-                    <VehicleType {...vehicleTwo} {...vehicle2} />
-                    {/* ========vehicle 02 end========= */}
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6}>
-                    {/* =========vehicle 03========= */}
-                    <VehicleType {...vehicleThree} {...vehicle3} />
-                    {/* =========vehicle 03 end========= */}
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6}>
-                    {/* =========vehicle 03========= */}
-                    <VehicleType {...vehicleThree} {...vehicle3} />
-                    {/* =========vehicle 03 end========= */}
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} sx={{}}>
-                    <Box>
-                      {/* =========submit button========= */}
-                      {/* <Paper
+                  <VehicleType {...vehicleOne} {...vehicle1} />
+                  {/* ========vehicle 01 end========= */}
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={6}>
+                  {/* ========vehicle 02========= */}
+                  <VehicleType {...vehicleTwo} {...vehicle2} />
+                  {/* ========vehicle 02 end========= */}
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={6}>
+                  {/* =========vehicle 03========= */}
+                  <VehicleType {...vehicleThree} {...vehicle3} />
+                  {/* =========vehicle 03 end========= */}
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={6}>
+                  {/* =========vehicle 03========= */}
+                  <VehicleType {...vehicleThree} {...vehicle3} />
+                  {/* =========vehicle 03 end========= */}
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} sx={{}}>
+                  <Box>
+                    {/* =========submit button========= */}
+                    {/* <Paper
                         size="small"
                         variant="contained"
                         sx={{
@@ -472,57 +506,59 @@ function ViewTwo() {
                       >
                         Let it select by quik app
                       </Paper> */}
-                      <FormControlLabel
-                        value="start"
-                        control={
-                          <Radio
-                            checked={systemVehicle.checked}
-                            onChange={systemVehicle.onChange}
-                            value={systemVehicle.value}
-                            name={systemVehicle.name}
-                            inputProps={systemVehicle.inputProps}
-                            size={systemVehicle.size}
-                            // size="small"
-                            // {...controlProps("c")}
-                            // sx={{
-                            //   "& .MuiSvgIcon-root": {
-                            //     fontSize: 28,
-                            //   },
-                            // }}
-                          />
-                        }
-                        label="Let it select by quik app"
-                        labelPlacement="start"
-                      />
+                    <FormControlLabel
+                      value="start"
+                      control={
+                        <Radio
+                          checked={systemVehicle.checked}
+                          onChange={systemVehicle.onChange}
+                          value={systemVehicle.value}
+                          name={systemVehicle.name}
+                          inputProps={systemVehicle.inputProps}
+                          size={systemVehicle.size}
+                          // size="small"
+                          // {...controlProps("c")}
+                          // sx={{
+                          //   "& .MuiSvgIcon-root": {
+                          //     fontSize: 28,
+                          //   },
+                          // }}
+                        />
+                      }
+                      label="Let it select by quik app"
+                      labelPlacement="start"
+                    />
 
-                      {/* =========submit button end========= */}
-                      {/* =====tooltip====== */}
-                      <Tooltip
-                        title="You may expect your delivery sooner than by selecting a vehicle on your own"
-                        placement="bottom-end"
-                      >
-                        <IconButton
-                          sx={{ color: "" }}
-                          aria-label={`info about `}
-                        >
-                          <InfoIcon />
-                        </IconButton>
-                      </Tooltip>
-                      {/* =====tooltip end====== */}
-                    </Box>
-                  </Grid>
+                    {/* =========submit button end========= */}
+                    {/* =====tooltip====== */}
+                    <Tooltip
+                      title="You may expect your delivery sooner than by selecting a vehicle on your own"
+                      placement="bottom-end"
+                    >
+                      <IconButton sx={{ color: "" }} aria-label={`info about `}>
+                        <InfoIcon />
+                      </IconButton>
+                    </Tooltip>
+                    {/* =====tooltip end====== */}
+                  </Box>
                 </Grid>
-              </Box>
-            </Card>
-          </div>
-        </Grow>
+              </Grid>
+            </Box>
+          </Card>
+        </motion.div>
+
         {/* ===========VEHICLE SELECTION PART ENDING========== */}
 
         {/* ===========ROUTE SLECTION PART========== */}
-        <Grow
+        {/* <Grow
           in={checked}
           style={{ transformOrigin: "0 0 0" }}
           {...(checked ? { timeout: 500 } : {})}
+        > */}
+        <motion.div
+          variants={containerVarients}
+          initial="hidden"
+          animate="visible"
         >
           <Grid>
             <Box
@@ -548,28 +584,18 @@ function ViewTwo() {
                       textAlign: "center",
                     }}
                   >
-                    <Slide
-                      direction="up"
-                      in={checked}
-                      container={containerRef.current}
-                      // style={{
-                      //   transitionDelay: checked ? "100ms" : "0ms",
-                      // }}
-                      {...(checked ? { timeout: 1500 } : {})}
+                    <Typography
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        px: 10,
+                        pt: 0,
+                        fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
+                        fontWeight: 190,
+                      }}
                     >
-                      <Typography
-                        color="text.primary"
-                        component="div"
-                        sx={{
-                          px: 10,
-                          pt: 0,
-                          fontSize: 35,
-                          fontWeight: 190,
-                        }}
-                      >
-                        And you have freedom
-                      </Typography>
-                    </Slide>{" "}
+                      And you have freedom
+                    </Typography>
                   </Box>
                 </Card>
                 <Card
@@ -592,28 +618,18 @@ function ViewTwo() {
                       textAlign: "center",
                     }}
                   >
-                    <Slide
-                      direction="down"
-                      in={checked}
-                      container={containerRef.current}
-                      style={{
-                        transitionDelay: checked ? "200ms" : "0ms",
+                    <Typography
+                      color="text.primary"
+                      component="div"
+                      sx={{
+                        px: 10,
+                        pt: 0,
+                        fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
+                        fontWeight: 190,
                       }}
-                      {...(checked ? { timeout: 1500 } : {})}
                     >
-                      <Typography
-                        color="text.primary"
-                        component="div"
-                        sx={{
-                          px: 10,
-                          pt: 0,
-                          fontSize: 35,
-                          fontWeight: 190,
-                        }}
-                      >
-                        to <b>select route</b> for your delivery
-                      </Typography>
-                    </Slide>
+                      to <b>select route</b> for your delivery
+                    </Typography>
                   </Box>
 
                   {/* <DeliveryDiningIcon
@@ -635,106 +651,107 @@ function ViewTwo() {
               </Grid>
             </Box>
           </Grid>
-        </Grow>
-        <Card
-          variant="outlined"
-          sx={{
-            flexGrow: 1,
-            mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
-            pt: 8,
-            mb: 10,
-            display: "flex",
-            background: "white",
-            textAlign: "center",
-            // borderRadius: 1,
-            // borderColor: "#3878FE",
-          }}
-          container
-          direction={"row"}
-          justifyContent="center"
-        >
-          <Grid container spacing={0}>
-            {/* form */}
-            <Box
-              container
-              variant="outlined"
-              direction={"row"}
-              sx={{
-                display: "flex",
-                background: "transparent",
-                textAlign: "center",
-                my: 2,
-              }}
-              justifyContent="center"
-              width="100%"
-            >
-              <Grid
+
+          <Card
+            sx={{
+              flexGrow: 1,
+              mx: { xs: 0.5, sm: 2, md: 3, lg: 4 },
+              pt: 8,
+              mb: 10,
+              display: "flex",
+              background: "white",
+              textAlign: "center",
+              boxShadow: `0px 2px 8px rgba(100, 116, 139, 0.25)`,
+              // borderRadius: 1,
+              // borderColor: "#3878FE",
+            }}
+            container
+            direction={"row"}
+            justifyContent="center"
+          >
+            <Grid container spacing={0}>
+              {/* form */}
+              <Box
                 container
-                rowSpacing={1}
-                columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+                variant="outlined"
+                direction={"row"}
                 sx={{
-                  alignItems: "center",
+                  display: "flex",
+                  background: "transparent",
                   textAlign: "center",
-                  justifyContent: "center",
+                  my: 2,
                 }}
+                justifyContent="center"
+                width="100%"
               >
-                <Grid item xs={12} sm={12} md={12} lg={4}>
-                  {/* ========vehicle 01========= */}
-                  <MapInfo />
-                  {/* ========vehicle 01 end========= */}
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={8}>
-                  <Box
-                    sx={{
-                      //this need to be fixed
-                      borderRadius: 1,
-                      backgroundColor: "#D6DAE3",
-                      mr: 2,
-                      m: 2,
-                      height: 500,
-                      alignItems: "center",
-                    }}
-                    elivation={0}
-                  >
-                    <Typography varient="body2" sx={{ pt: 10 }}>
-                      Map goes here
-                    </Typography>
-                  </Box>
-                </Grid>
-
-                <Grid item xs={12} sm={12} md={12} lg={12}>
-                  {/* =========vehicle system vehicle========= */}
-
-                  {/* =========vehicle system vehicle end========= */}
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12}>
-                  {/* =========Special Notes========= */}
-
-                  {/* =========Special Notes end========= */}
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} sx={{}}>
-                  <Box>
-                    {/* =========submit button========= */}
-                    <Button
-                      size="small"
-                      variant="contained"
+                <Grid
+                  container
+                  rowSpacing={1}
+                  columnSpacing={{ xs: 1, sm: 1, md: 1 }}
+                  sx={{
+                    alignItems: "center",
+                    textAlign: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Grid item xs={12} sm={12} md={12} lg={4}>
+                    {/* ========vehicle 01========= */}
+                    <MapInfo />
+                    {/* ========vehicle 01 end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={8}>
+                    <Box
                       sx={{
-                        m: 0,
-                        color: "white",
-                        width: 300,
-                        borderRadius: 10,
+                        //this need to be fixed
+                        borderRadius: 1,
+                        backgroundColor: "#D6DAE3",
+                        mr: 2,
+                        m: 2,
+                        height: 500,
+                        alignItems: "center",
                       }}
+                      elivation={0}
                     >
-                      select custpm path
-                    </Button>
-                    {/* =========submit button end========= */}
-                  </Box>
+                      <Typography varient="body2" sx={{ pt: 10 }}>
+                        Map goes here
+                      </Typography>
+                    </Box>
+                  </Grid>
+
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    {/* =========vehicle system vehicle========= */}
+
+                    {/* =========vehicle system vehicle end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    {/* =========Special Notes========= */}
+
+                    {/* =========Special Notes end========= */}
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={12} sx={{}}>
+                    <Box>
+                      {/* =========submit button========= */}
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                          m: 0,
+                          color: "white",
+                          width: { lg: 300, md: 300, sm: 250, xs: 220 },
+                          borderRadius: 10,
+                        }}
+                      >
+                        select custpm path
+                      </Button>
+                      {/* =========submit button end========= */}
+                    </Box>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </Box>
-            {/* form ending*/}
-          </Grid>
-        </Card>
+              </Box>
+              {/* form ending*/}
+            </Grid>
+          </Card>
+        </motion.div>
         {/* ===========safe delivery option========== */}
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Box
@@ -742,7 +759,6 @@ function ViewTwo() {
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "right",
-
               mr: 8,
             }}
           >
@@ -812,28 +828,18 @@ function ViewTwo() {
                     bgcolor: "transparent",
                   }}
                 >
-                  <Slide
-                    direction="up"
-                    in={checked}
-                    container={containerRef.current}
-                    // style={{
-                    //   transitionDelay: checked ? "100ms" : "0ms",
-                    // }}
-                    {...(checked ? { timeout: 1500 } : {})}
+                  <Typography
+                    color="text.primary"
+                    component="div"
+                    sx={{
+                      px: 10,
+                      pt: 0,
+                      fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
+                      fontWeight: 190,
+                    }}
                   >
-                    <Typography
-                      color="text.primary"
-                      component="div"
-                      sx={{
-                        px: 10,
-                        pt: 0,
-                        fontSize: 35,
-                        fontWeight: 190,
-                      }}
-                    >
-                      You Can <b>Select One method to pay</b>
-                    </Typography>
-                  </Slide>
+                    You Can <b>Select One method to pay</b>
+                  </Typography>
                 </Card>
               </Box>
 
@@ -867,28 +873,18 @@ function ViewTwo() {
                     bgcolor: "transparent",
                   }}
                 >
-                  <Slide
-                    direction="down"
-                    in={checked}
-                    container={containerRef.current}
-                    style={{
-                      transitionDelay: checked ? "200ms" : "0ms",
+                  <Typography
+                    color="text.primary"
+                    component="div"
+                    sx={{
+                      px: 10,
+                      pt: 0,
+                      fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
+                      fontWeight: 190,
                     }}
-                    {...(checked ? { timeout: 1500 } : {})}
                   >
-                    <Typography
-                      color="text.primary"
-                      component="div"
-                      sx={{
-                        px: 10,
-                        pt: 0,
-                        fontSize: 35,
-                        fontWeight: 190,
-                      }}
-                    >
-                      Your Delivery Fees
-                    </Typography>
-                  </Slide>
+                    Your Delivery Fees
+                  </Typography>
                 </Card>
               </Box>
             </Grid>
@@ -909,6 +905,7 @@ function ViewTwo() {
             alignContent: "center",
             textAlign: "center",
             bgcolor: "white",
+            boxShadow: `0px 2px 8px rgba(100, 116, 139, 0.25)`,
           }}
           onSubmit={handleSubmit}
           container
@@ -965,27 +962,27 @@ function ViewTwo() {
               to="/customer/page3"
               style={{ textDecoration: "none", color: "white" }}
             > */}
-              <Button
-                onClick={()=>{
-                  navigate("/page3")
-                }}
-                variant="contained"
-                disableElevation
-                size="large"
-                sx={{
-                  minWidth: {
-                    lg: "450px",
-                    md: "400px",
-                    sm: "450px",
-                    xs: "400px",
-                  },
-                  borderRadius: 10,
-                  py: 2,
-                  my: 1,
-                }}
-              >
-                Confirm
-              </Button>
+            <Button
+              onClick={() => {
+                navigate("/customer/page3");
+              }}
+              variant="contained"
+              disableElevation
+              size="large"
+              sx={{
+                minWidth: {
+                  lg: "450px",
+                  md: "400px",
+                  sm: "450px",
+                  xs: "220px",
+                },
+                borderRadius: 10,
+                py: 2,
+                my: 1,
+              }}
+            >
+              Confirm
+            </Button>
             {/* </Link> */}
           </Box>
           {/* =========submit button end========= */}

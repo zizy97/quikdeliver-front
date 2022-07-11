@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../images/logo.png";
-import shadows from "@mui/material/styles/shadows";
+
 
 const settings = [
   "Profile",

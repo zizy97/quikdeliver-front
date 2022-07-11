@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react"; //react
 //======MUI=======
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 //======MUI=======
 
 //=========Prograss Bar==========
@@ -59,7 +56,8 @@ function LinearProgressWithLabel(props) {
             "& .MuiLinearProgress-bar": {
               backgroundColor: "#12C919",
             },
-            width: 400,
+            ml: 5,
+            width: { lg: 500, md: 500, sm: 400, xs: 250 },
             borderRadius: 0,
             border: 1,
             borderColor: "grey.500",
@@ -76,30 +74,6 @@ function LinearProgressWithLabel(props) {
         <Typography variant="body2" color="green">{`${Math.round(
           props.value
         )}%`}</Typography>
-      </Box>
-    </Box>
-  );
-}
-
-function CircularProgressWithLabel(props) {
-  return (
-    <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress variant="determinate" {...props} />
-      <Box
-        sx={{
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0,
-          position: "absolute",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Typography variant="caption" component="div" color="text.secondary">
-          {`${Math.round(props.value)}%`}
-        </Typography>
       </Box>
     </Box>
   );

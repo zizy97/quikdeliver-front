@@ -10,7 +10,6 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Fade from "@mui/material/Fade";
-import Grow from "@mui/material/Grow";
 //--MUI--
 
 //--Imports---
@@ -18,6 +17,13 @@ import { HistoryData } from "./HistoryData";
 //--Imports---
 
 function Profile() {
+  const [first, setfirst] = useState(true);
+  useEffect(() => {
+    if (first) {
+      window.scrollTo(0, 0);
+    }
+    setfirst(false);
+  }, [first]);
   //=====Transitions handeling=====
   const [checked, setChecked] = useState(false);
 

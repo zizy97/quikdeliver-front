@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import StarIcon from "@mui/icons-material/Star";
@@ -11,7 +10,14 @@ import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return (
+    <Slide
+      direction="up"
+      ref={ref}
+      {...props}
+      style={{ transitionDelay: 500 }}
+    />
+  );
 });
 
 //=======Rating==========
@@ -35,15 +41,11 @@ function getLabelText(value) {
 //=======Rating ending==========
 
 const AlertDialogSlide2 = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   // ------rating------
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   // ------rating------
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -51,15 +53,6 @@ const AlertDialogSlide2 = () => {
 
   return (
     <div>
-      <Button
-        variant="outlined"
-        onClick={handleClickOpen}
-        sx={{
-          m: 15,
-        }}
-      >
-        App Rating
-      </Button>
       <Dialog
         open={open}
         TransitionComponent={Transition}

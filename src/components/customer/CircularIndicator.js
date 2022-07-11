@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react"; //react
 //======MUI=======
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import  {
-  circularProgressClasses,
-} from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
-
 //======MUI=======
 
 //=========Prograss Bar==========
@@ -52,12 +48,12 @@ function CircularIndicator({ indicator }) {
 function CircularProgressWithLabel(props) {
   return (
     <Box
+      style={{ zIndex: 1 }}
       sx={{
         position: "fixed",
-        top: 500,
-        left: { lg: 195, md: 30, sm: 30, xs: 30 },
 
-        display: "inline-flex",
+        top: { lg: "80%", md: "80%", sm: "80%", xs: "80%" },
+        left: { lg: "5%", md: "5%", sm: "5%", xs: "2%" },
       }}
     >
       <CircularProgress

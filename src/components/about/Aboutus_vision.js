@@ -13,12 +13,12 @@ function Aboutusvision(props) {
         <Typography
           component="h1"
           sx={{
-            fontSize: { lg: 33, md: 25, sm: 32, xs: 25 },
+            fontSize: { lg: 27, md: 23, sm: 27, xs: 23 },
             mt: 2,
             textAlign: "center",
             color: "white",
-            fontWeight: 700,
-            paddingTop: 2,
+            fontWeight: 500,
+            paddingTop: 0,
             bgcolor:
               " linear-gradient(124.76deg, #92CFE5 18.52%, #C9E7F2 84.72%)",
           }}
@@ -30,7 +30,7 @@ function Aboutusvision(props) {
           variant="body1"
           color="white"
           sx={{
-            fontSize: 18,
+            fontSize: 15,
             fontWeight: { lg: 300 },
             textAlign: "justify",
             padding: { xs: 2, sm: 0, lg: 2 },
