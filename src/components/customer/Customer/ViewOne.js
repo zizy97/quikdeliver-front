@@ -122,14 +122,15 @@ function ViewOne() {
   const [values, setValues] = useState(initialValues);
 
   const handleInputChange = (e) => {
+    console.log(e.target.value);
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
 
     if (values.deliveryAddress === "") setvalue1(0);
     else setvalue1(3);
 
     if (values.pickupAddress === "") setvalue2(0);
     else setvalue2(3);
+    setValues({ ...values, [name]: value });
   };
 
   useEffect(() => {
