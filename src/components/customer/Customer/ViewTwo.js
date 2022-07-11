@@ -43,6 +43,13 @@ import { useInView } from "react-intersection-observer";
 
 function ViewTwo() {
   const navigate = useNavigate();
+  const [first, setfirst] = useState(true)
+  useEffect(() => {
+    if(first){
+      window.scrollTo(0, 0)
+    }
+    setfirst(false)
+  })
   //===Indicator===
   const { indicator, setIndicator } = useGlobalContext();
   const [value1, setvalue1] = useState(0);
