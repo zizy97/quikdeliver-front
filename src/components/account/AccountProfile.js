@@ -23,7 +23,7 @@ const user = {
 
 function AccountProfile(props) {
   //=====Transitions handeling=====
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
 
   useEffect(() => {
     return () => {
