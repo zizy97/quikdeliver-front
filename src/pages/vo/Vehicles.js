@@ -1,8 +1,8 @@
-import { Box, Container, Grid, Pagination } from "@mui/material";
-import { vehicles } from "../../__mocks__/vehicles";
+import { Box, Container } from "@mui/material";
+//import { vehicles } from "../../__mocks__/vehicles";
 import { VehicleListToolbar } from "../../components/vehicles/VehicleListToolbar";
-import { VehicleCard } from "../../components/vehicles/VehicleCard";
-
+//import { VehicleCard } from "../../components/vehicles/VehicleCard";
+import Vehiclelist from "../../components/vo/Vehiclelist";
 const Vehicles = () => (
   <>
     <Box
@@ -14,23 +14,15 @@ const Vehicles = () => (
     >
       <Container maxWidth={false}>
         <VehicleListToolbar />
-        <Box sx={{ pt: 3 }}>
-          <Grid container spacing={3}>
+        <Box sx={{ mt: 3 }}>
+          {/** <Grid container spacing={3}>
             {vehicles.map((vehicle) => (
               <Grid item key={vehicle.id} lg={4} md={6} xs={12}>
                 <VehicleCard vehicle={vehicle} />
               </Grid>
-            ))}
-          </Grid>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            pt: 3,
-          }}
-        >
-          <Pagination color="primary" count={3} size="small" />
+          ))}*/}
+          <Vehiclelist />
+          {/** </Box> </Grid>*/}
         </Box>
       </Container>
     </Box>

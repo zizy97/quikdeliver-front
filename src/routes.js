@@ -35,11 +35,16 @@ import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 
 //vo Dashboard
 import Dashboardvo from "./pages/vo/Dashboardvo";
+import Accountvo from "./pages/vo/Accountvo";
 import Newrequest from "./components/vo/Newrequest";
 import Orderhistory from "./components/vo/Orderhistory";
 import Inprocess from "./components/vo/Inprocess";
 import Driversvo from "./pages/vo/Drivers";
 import Vehiclesvo from "./pages/vo/Vehicles";
+import Orderaccept from "./components/vo/Orderaccept/Orderaccept";
+import Adddriver from "./components/vo/Adddriver/Adddriver_form";
+import Editdriver from "./components/vo/Adddriver/Editdriver";
+//import Addvehicle from "./components/vo/Addvehicle_form";
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
@@ -92,6 +97,18 @@ const routes = (isAuthenticated, roles) => [
     element: <Map />,
   },
   {
+    path: "orderchange",
+    element: <Orderaccept />,
+  },
+  {
+    path: "adddriverform",
+    element: <Adddriver />,
+  },
+  {
+    path: "editdriver",
+    element: <Editdriver />,
+  },
+  {
     path: "/vo",
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
     children: [
@@ -100,7 +117,7 @@ const routes = (isAuthenticated, roles) => [
       { path: "inprocess", element: <Inprocess /> },
       { path: "vehicles", element: <Vehiclesvo /> },
       { path: "drivers", element: <Driversvo /> },
-      { path: "account", element: <Account /> },
+      { path: "account", element: <Accountvo /> },
       { path: "history", element: <Orderhistory /> },
       { path: "settings", element: <Settings /> },
       { path: "*", element: <Navigate to="/404" /> },

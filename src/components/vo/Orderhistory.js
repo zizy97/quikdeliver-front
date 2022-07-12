@@ -19,34 +19,33 @@ function createData(
   orderno,
   orderdate,
   customername,
-  customertel,
+  customertelephone,
   drivername,
   driverid,
-  drivertel,
-  status,
-  price
+  drivertelephone,
+  status
 ) {
   return {
     orderno,
     orderdate,
     customername,
-    customertel,
+    customertelephone,
     drivername,
     driverid,
-    drivertel,
+    drivertelephone,
     status,
-    price,
-    detailmore: [
+    deliverydetails: [
       {
-        date: "2020-01-05",
-        Receivername: "Nimal perera",
-        Receivertel: "0768452123",
-        Paddress: "No 12 Nagolla matale",
-        Daddress: "No 12 Nagolla matale",
+        deliverydate: "2020-01-05",
+        receivername: "Nimal perera",
+        receivertelephone: "0768452123",
+        pickupaddress: "No 12 Nagolla matale",
+        deliveryaddress: "No 12 Nagolla matale",
         vehiclename: "nissan",
         vehicleno: "QW2018",
         height: 50,
         weight: 200,
+        cost: 1500,
       },
     ],
   };
@@ -73,16 +72,17 @@ function Row(props) {
         </TableCell>
         <TableCell align="left">{row.orderdate}</TableCell>
         <TableCell align="left">{row.customername}</TableCell>
-        <TableCell align="left">{row.customertel}</TableCell>
+        <TableCell align="left">{row.customertelephone}</TableCell>
         <TableCell align="left">{row.drivername}</TableCell>
         <TableCell align="left">{row.driverid}</TableCell>
-        <TableCell align="left">{row.drivertel}</TableCell>
+        <TableCell align="left">{row.drivertelephone}</TableCell>
         <TableCell align="left">
           {" "}
           <SeverityPill
             color={
               (row.status === "Accepted" && "success") ||
               (row.status === "pending" && "error") ||
+              (row.status === "Canceled" && "info") ||
               "warning"
             }
           >
@@ -109,41 +109,46 @@ function Row(props) {
                     <TableCell align="left">Weight</TableCell>
                     <TableCell align="left">vehicle Name</TableCell>
                     <TableCell align="left">Vehicle No</TableCell>
+                    <TableCell align="left">Total Cost</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.detailmore.map((detailmoreRow) => (
-                    <TableRow key={detailmoreRow.date}>
+                  {row.deliverydetails.map((deliverydetailsRow) => (
+                    <TableRow key={deliverydetailsRow.deliverydate}>
                       <TableCell component="th" scope="row" align="left">
-                        {detailmoreRow.date}
+                        {deliverydetailsRow.deliverydate}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Receivername}
+                        {deliverydetailsRow.receivername}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Receivertel}
+                        {deliverydetailsRow.receivertelephone}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Daddress}
+                        {deliverydetailsRow.deliveryaddress}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Paddress}
-                      </TableCell>
-                      <TableCell align="left">
-                        {" "}
-                        {detailmoreRow.height}
+                        {deliverydetailsRow.pickupaddress}
                       </TableCell>
                       <TableCell align="left">
                         {" "}
-                        {detailmoreRow.weight}
+                        {deliverydetailsRow.height}
                       </TableCell>
                       <TableCell align="left">
                         {" "}
-                        {detailmoreRow.vehiclename}
+                        {deliverydetailsRow.weight}
                       </TableCell>
                       <TableCell align="left">
                         {" "}
-                        {detailmoreRow.vehicleno}
+                        {deliverydetailsRow.vehiclename}
+                      </TableCell>
+                      <TableCell align="left">
+                        {" "}
+                        {deliverydetailsRow.vehicleno}
+                      </TableCell>
+                      <TableCell align="left">
+                        {" "}
+                        {deliverydetailsRow.cost}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -162,24 +167,24 @@ Row.propTypes = {
     orderdate: PropTypes.string.isRequired,
     drivername: PropTypes.string.isRequired,
     customername: PropTypes.string.isRequired,
-    customertel: PropTypes.string.isRequired,
-    detailmore: PropTypes.arrayOf(
+    customertelephone: PropTypes.string.isRequired,
+    deliverydetails: PropTypes.arrayOf(
       PropTypes.shape({
-        Daddress: PropTypes.string.isRequired,
-        Receivername: PropTypes.string.isRequired,
-        Receivertel: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        Paddress: PropTypes.string.isRequired,
+        deliveryaddress: PropTypes.string.isRequired,
+        receivername: PropTypes.string.isRequired,
+        receivertelephone: PropTypes.string.isRequired,
+        deliverydate: PropTypes.string.isRequired,
+        pickupaddress: PropTypes.string.isRequired,
         vehiclename: PropTypes.string.isRequired,
         vehicleno: PropTypes.string.isRequired,
         height: PropTypes.number.isRequired,
         weight: PropTypes.number.isRequired,
+        cost: PropTypes.number.isRequired,
       })
     ).isRequired,
     orderno: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
     driverid: PropTypes.string.isRequired,
-    drivertel: PropTypes.string.isRequired,
+    drivertelephone: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
   }).isRequired,
 };
@@ -215,60 +220,20 @@ const rows = [
     "0741245126",
     "Deliverd"
   ),
-  createData(
-    "04",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "Deliverd"
-  ),
-  createData(
-    "05",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "kumara dissanayake",
-    "958475123v",
-    "0741245126",
-    "Deliverd"
-  ),
-  createData(
-    "06",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "Deliverd"
-  ),
-  createData(
-    "07",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "Deliverd"
-  ),
 ];
 
 export default function Newrequest() {
   return (
     <div>
       <Grid
-        container
-        direction={"row"}
+        component="main"
         sx={{
-          mt: 5,
-          ml: 5,
+          flexGrow: 1,
         }}
       >
-        <Typography variant="h4">Orders History</Typography>
+        <Typography variant="h4" sx={{ ml: 4, mt: 4 }}>
+          Orders History
+        </Typography>
       </Grid>
 
       <Grid

@@ -23,19 +23,41 @@ import DialogTitle from "@mui/material/DialogTitle";
 //===========model Dialog box=============================================//
 import { useNavigate } from "react-router-dom";
 function createData(
-  orderno,
-  orderdate,
-  customername,
-  customertelephone,
-  pickupaddress
+  driverno,
+  regdate,
+  drivername,
+  drivernic,
+  drivertelephone,
+  driveraddress
 ) {
   return {
-    orderno,
-    orderdate,
-    customername,
-    customertelephone,
-    pickupaddress,
+    driverno,
+    regdate,
+    drivername,
+    drivernic,
+    drivertelephone,
+    driveraddress,
     deliverydetails: [
+      {
+        deliverydate: "2020-01-05",
+        receivername: "Nimal perera",
+        deliveryaddress: "No 12 Nagolla matale",
+        receivertelephone: "0748452123",
+        vehiclename: "Van-Nissan",
+        vehicleno: "45PO12",
+        weight: 100,
+        height: 20,
+      },
+      {
+        deliverydate: "2020-01-02",
+        receivername: "Nimal perera",
+        deliveryaddress: "No 12 Nagolla matale",
+        receivertelephone: "0748452123",
+        vehiclename: "Van-Nissan",
+        vehicleno: "45PO12",
+        weight: 100,
+        height: 20,
+      },
       {
         deliverydate: "2020-01-05",
         receivername: "Nimal perera",
@@ -65,7 +87,7 @@ function Row(props) {
   //=====================model Diaolg box===========================================//
   const navigate = useNavigate();
   //====================================Accept Decline Buttons===========================//
-  const Accept = (
+  const Edit = (
     <Button
       onClick={() => {
         navigate("/orderchange");
@@ -81,11 +103,11 @@ function Row(props) {
         },
       }}
     >
-      Accept
+      Edit
     </Button>
   );
 
-  const Delete = (
+  const Remove = (
     <Button
       onClick={handleClickOpen}
       variant="contained"
@@ -98,7 +120,7 @@ function Row(props) {
         },
       }}
     >
-      Decline
+      Remove
     </Button>
   );
   //====================================Accept Decline Buttons===========================//
@@ -116,22 +138,24 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.orderno}
+          {row.driverno}
         </TableCell>
-        <TableCell align="left">{row.orderdate}</TableCell>
-        <TableCell align="left">{row.customername}</TableCell>
-        <TableCell align="left">{row.customertelephone}</TableCell>
-        <TableCell align="left">{row.pickupaddress}</TableCell>
-        <TableCell align="left">{Accept}</TableCell>
+        <TableCell align="left">{row.regdate}</TableCell>
+        <TableCell align="left">{row.drivername}</TableCell>
+        <TableCell align="left">{row.drivernic}</TableCell>
+        <TableCell align="left">{row.drivertelephone}</TableCell>
+        <TableCell align="left">{row.driveraddress}</TableCell>
+        <TableCell align="left">{row.driveraddress}</TableCell>
+        <TableCell align="left">{Edit}</TableCell>
 
-        <TableCell align="left">{Delete}</TableCell>
+        <TableCell align="left">{Remove}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={8}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                Delivery Details
+                Previous Delivery
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead sx={{ height: 30 }}>
@@ -183,7 +207,7 @@ function Row(props) {
       </TableRow>
       {/**========================================================================open model Dialog===================================== */}
       <Dialog open={opend} onClose={handleClose} sx={{ mt: { xs: 5 } }}>
-        <DialogTitle>Are you sure to delete the Order ? if yes</DialogTitle>
+        <DialogTitle>Are you sure to Remove the vehicle ? if yes</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ pb: 2 }}>Why?</DialogContentText>
           <TextField
@@ -207,7 +231,7 @@ function Row(props) {
               },
             }}
           >
-            Decline
+            Remove
           </Button>
           <Button
             onClick={handleClose}
@@ -232,10 +256,11 @@ function Row(props) {
 
 Row.propTypes = {
   row: PropTypes.shape({
-    orderdate: PropTypes.string.isRequired,
-    pickupaddress: PropTypes.string.isRequired,
-    customername: PropTypes.string.isRequired,
-    customertelephone: PropTypes.string.isRequired,
+    regdate: PropTypes.string.isRequired,
+    drivernic: PropTypes.string.isRequired,
+    drivername: PropTypes.string.isRequired,
+    driveraddress: PropTypes.string.isRequired,
+    drivertelephone: PropTypes.string.isRequired,
     deliverydetails: PropTypes.arrayOf(
       PropTypes.shape({
         deliveryaddress: PropTypes.string.isRequired,
@@ -248,7 +273,7 @@ Row.propTypes = {
         height: PropTypes.number.isRequired,
       })
     ).isRequired,
-    orderno: PropTypes.string.isRequired,
+    driverno: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -257,81 +282,23 @@ const rows = [
     "01",
     "2021-07-04",
     "Saman Perera",
+    "93568211v",
     "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
+    "No 12 Nagolla matale"
   ),
   createData(
     "02",
     "2021-07-04",
     "Saman Perera",
+    "93568211v",
     "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "03",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "04",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "05",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "06",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "07",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
+    "No 12 Nagolla matale"
   ),
 ];
 
 export default function Newrequest() {
   return (
     <div>
-      <Grid
-        component="main"
-        sx={{
-          flexGrow: 1,
-        }}
-      >
-        <Typography variant="h4" sx={{ ml: 4, mt: 4 }}>
-          New Orders
-        </Typography>
-      </Grid>
-
       <Grid
         container
         direction={"row"}
@@ -344,18 +311,20 @@ export default function Newrequest() {
             <TableHead sx={{ height: 80, backgroundColor: "#D4DCF7" }}>
               <TableRow>
                 <TableCell />
-                <TableCell>Order No</TableCell>
-                <TableCell align="left">Order Date</TableCell>
-                <TableCell align="left">Customer Name</TableCell>
-                <TableCell align="left">Customer Tel.No</TableCell>
-                <TableCell align="left">Pick up Address</TableCell>
-                <TableCell align="left">Accept</TableCell>
-                <TableCell align="left">Decline</TableCell>
+                <TableCell>Driver No</TableCell>
+                <TableCell align="left">Reg.Date</TableCell>
+                <TableCell align="left">Driver Name</TableCell>
+                <TableCell align="left">Driver NIC</TableCell>
+                <TableCell align="left">Driver Tel.No</TableCell>
+                <TableCell align="left">Driver Address</TableCell>
+                <TableCell align="left">Veiw Profile</TableCell>
+                <TableCell align="left">Edit</TableCell>
+                <TableCell align="left">Remove</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <Row key={row.orderno} row={row} />
+                <Row key={row.driverno} row={row} />
               ))}
             </TableBody>
           </Table>

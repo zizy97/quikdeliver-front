@@ -1,20 +1,14 @@
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Toolbar,
-  Stack,
-} from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsPopover from "./notification/NotificationsPopover";
 import Profile from "./profile";
-
+import logo from "../images/logo.png";
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.toolbar,
   boxShadow: theme.shadows[3],
-  zIndex: 100000
+  zIndex: 100000,
 }));
 
 export const DashboardNavbar = (props) => {
@@ -29,17 +23,27 @@ export const DashboardNavbar = (props) => {
           // },
           width: {
             lg: "100%",
-          },       }}
+          },
+        }}
         {...other}
       >
         <Toolbar
           disableGutters
           sx={{
-            minHeight:"60px",
+            minHeight: "60px",
             left: 0,
-            
           }}
         >
+          <Box
+            component="img"
+            alt="Your logo."
+            src={logo}
+            sx={{
+              marginLeft: { lg: 4 },
+              display: { xs: "none", sm: "none", lg: "block", md: "none" },
+              width: { lg: 70 },
+            }}
+          />
           <IconButton
             onClick={onSidebarOpen}
             sx={{
@@ -57,7 +61,7 @@ export const DashboardNavbar = (props) => {
             alignItems="center"
             spacing={{ xs: 0.5, sm: 1.5 }}
             sx={{
-              mr:"15px",
+              mr: "15px",
             }}
           >
             <NotificationsPopover />

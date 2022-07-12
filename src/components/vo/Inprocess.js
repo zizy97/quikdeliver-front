@@ -14,42 +14,34 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Grid, Button } from "@mui/material";
-import { SeverityPill } from "../SeverityPill";
-//=============model Dialolg box==========================================//
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-//===========model Dialog box=============================================//
+import { SeverityPill } from "../SeverityPill"; //========Status changing needed=======//
+import { useNavigate } from "react-router-dom";
 function createData(
   orderno,
   orderdate,
   customername,
-  customertel,
+  customertelephone,
   drivername,
-  driverid,
-  drivertel,
-  status,
-  price
+  drivernic,
+  drivertelephone,
+  status
 ) {
   return {
     orderno,
     orderdate,
     customername,
-    customertel,
+    customertelephone,
     drivername,
-    driverid,
-    drivertel,
+    drivernic,
+    drivertelephone,
     status,
-    price,
-    detailmore: [
+    deliverydetails: [
       {
-        date: "2020-01-05",
-        Receivername: "Nimal perera",
-        Receivertel: "0768452123",
-        Paddress: "No 12 Nagolla matale",
-        Daddress: "No 12 Nagolla matale",
+        deliverydate: "2020-01-05",
+        receivername: "Nimal perera",
+        receivertelephone: "0768452123",
+        pickupaddress: "No 12 Nagolla matale",
+        deliveryaddress: "No 12 Nagolla matale",
         vehiclename: "nissan",
         vehicleno: "QW2018",
         height: 50,
@@ -62,20 +54,13 @@ function createData(
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
-  //=====================model Diaolg box===========================================//
-  const [opend, setOpendialog] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpendialog(true);
-  };
-
-  const handleClose = () => {
-    setOpendialog(false);
-  };
-  //=====================model Diaolg box===========================================//
   //====================================Change Buttons===========================//
+  const navigate = useNavigate();
   const Change = (
     <Button
-      onClick={handleClickOpen}
+      onClick={() => {
+        navigate("/orderchange");
+      }}
       variant="contained"
       size="small"
       sx={{
@@ -84,6 +69,18 @@ function Row(props) {
         "&:hover": {
           backgroundColor: "primary.main",
         },
+      }}
+    >
+      Change
+    </Button>
+  );
+  const Changedisable = (
+    <Button
+      disabled
+      variant="contained"
+      size="small"
+      sx={{
+        borderRadius: 40,
       }}
     >
       Change
@@ -107,10 +104,10 @@ function Row(props) {
         </TableCell>
         <TableCell align="left">{row.orderdate}</TableCell>
         <TableCell align="left">{row.customername}</TableCell>
-        <TableCell align="left">{row.customertel}</TableCell>
+        <TableCell align="left">{row.customertelephone}</TableCell>
         <TableCell align="left">{row.drivername}</TableCell>
-        <TableCell align="left">{row.driverid}</TableCell>
-        <TableCell align="left">{row.drivertel}</TableCell>
+        <TableCell align="left">{row.drivernic}</TableCell>
+        <TableCell align="left">{row.drivertelephone}</TableCell>
         <TableCell align="left">
           {" "}
           <SeverityPill
@@ -124,50 +121,15 @@ function Row(props) {
             {row.status}
           </SeverityPill>
         </TableCell>
-        <TableCell align="center">{Change}</TableCell>
-        <Dialog open={opend} onClose={handleClose} sx={{ mt: { xs: 5 } }}>
-          <DialogTitle>Change Vehicle Or Driver</DialogTitle>
-          <DialogContent>
-            <DialogContentText sx={{ pb: 2 }}>
-              Please Choose vehicles and Drivers.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={handleClose}
-              variant="contained"
-              size="small"
-              sx={{
-                borderRadius: 30,
-                backgroundColor: "primary.main",
-                "&:hover": {
-                  backgroundColor: "primary.main",
-                },
-              }}
-            >
-              Add Changes
-            </Button>
-            <Button
-              onClick={handleClose}
-              variant="contained"
-              size="small"
-              sx={{
-                borderRadius: 30,
-                backgroundColor: "primary.main",
-                "&:hover": {
-                  backgroundColor: "primary.main",
-                },
-              }}
-            >
-              Cancel
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <TableCell align="center">
+          {" "}
+          {row.status === "Accepted" ? Changedisable : Change}
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
+            <Box sx={{ margin: 0 }}>
               <Typography variant="h6" gutterBottom component="div">
                 Delivery Details
               </Typography>
@@ -186,38 +148,38 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.detailmore.map((detailmoreRow) => (
-                    <TableRow key={detailmoreRow.date}>
+                  {row.deliverydetails.map((deliverydetailsRow) => (
+                    <TableRow key={deliverydetailsRow.deliverydate}>
                       <TableCell component="th" scope="row" align="left">
-                        {detailmoreRow.date}
+                        {deliverydetailsRow.deliverydate}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Receivername}
+                        {deliverydetailsRow.receivername}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Receivertel}
+                        {deliverydetailsRow.receivertelephone}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Daddress}
+                        {deliverydetailsRow.deliveryaddress}
                       </TableCell>
                       <TableCell align="left">
-                        {detailmoreRow.Paddress}
-                      </TableCell>
-                      <TableCell align="left">
-                        {" "}
-                        {detailmoreRow.height}
+                        {deliverydetailsRow.pickupaddress}
                       </TableCell>
                       <TableCell align="left">
                         {" "}
-                        {detailmoreRow.weight}
+                        {deliverydetailsRow.height}
                       </TableCell>
                       <TableCell align="left">
                         {" "}
-                        {detailmoreRow.vehiclename}
+                        {deliverydetailsRow.weight}
                       </TableCell>
                       <TableCell align="left">
                         {" "}
-                        {detailmoreRow.vehicleno}
+                        {deliverydetailsRow.vehiclename}
+                      </TableCell>
+                      <TableCell align="left">
+                        {" "}
+                        {deliverydetailsRow.vehicleno}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -236,14 +198,14 @@ Row.propTypes = {
     orderdate: PropTypes.string.isRequired,
     drivername: PropTypes.string.isRequired,
     customername: PropTypes.string.isRequired,
-    customertel: PropTypes.string.isRequired,
-    detailmore: PropTypes.arrayOf(
+    customertelephone: PropTypes.string.isRequired,
+    deliverydetails: PropTypes.arrayOf(
       PropTypes.shape({
-        Daddress: PropTypes.string.isRequired,
-        Receivername: PropTypes.string.isRequired,
-        Receivertel: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        Paddress: PropTypes.string.isRequired,
+        deliveryaddress: PropTypes.string.isRequired,
+        receivername: PropTypes.string.isRequired,
+        receivertelephone: PropTypes.string.isRequired,
+        deliverydate: PropTypes.string.isRequired,
+        pickupaddress: PropTypes.string.isRequired,
         vehiclename: PropTypes.string.isRequired,
         vehicleno: PropTypes.string.isRequired,
         height: PropTypes.number.isRequired,
@@ -251,9 +213,8 @@ Row.propTypes = {
       })
     ).isRequired,
     orderno: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    driverid: PropTypes.string.isRequired,
-    drivertel: PropTypes.string.isRequired,
+    drivernic: PropTypes.string.isRequired,
+    drivertelephone: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
   }).isRequired,
 };
@@ -335,14 +296,14 @@ export default function Newrequest() {
   return (
     <div>
       <Grid
-        container
-        direction={"row"}
+        component="main"
         sx={{
-          mt: 5,
-          ml: 5,
+          flexGrow: 1,
         }}
       >
-        <Typography variant="h4">Orders in Process</Typography>
+        <Typography variant="h4" sx={{ ml: 4, mt: 4 }}>
+          Orders in Process
+        </Typography>
       </Grid>
 
       <Grid
