@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Box, Divider, Drawer, useMediaQuery } from "@mui/material";
+import { Box, Divider, Drawer } from "@mui/material";
 import { NavItem } from "./NavItem";
 import {
   adminItems,
@@ -10,13 +10,37 @@ import {
   voItems,
 } from "../../../config/sidebar";
 
+import { motion } from "framer-motion";
+
 const DashboardSidebar = (props) => {
   const { open, onClose } = props;
   const location = useLocation();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
-    defaultMatches: true,
-    noSsr: false,
-  });
+  // const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
+  //   defaultMatches: true,
+  //   noSsr: false,
+  // });
+  //====framer motion animation====
+  const container = {
+    hidden: { opacity: 1, scale: 1 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemChild = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      color: "yellow",
+    },
+  };
+
+  //====framer motion animation====
 
   var items; //items is coming from sidebar.js
 
@@ -75,15 +99,20 @@ const DashboardSidebar = (props) => {
           }}
         /> */}
         <Box sx={{ minHeight: "12%" }}></Box>
+
         <Box sx={{ flexGrow: 1 }}>
-          {items.map((item) => (
-            <NavItem
-              key={item.title}
-              icon={item.icon}
-              href={item.href}
-              title={item.title}
-            />
-          ))}
+          <motion.div variants={container} initial="hidden" animate="visible">
+            {items.map((item) => (
+              <motion.div variants={itemChild}>
+                <NavItem
+                  key={item.title}
+                  icon={item.icon}
+                  href={item.href}
+                  title={item.title}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
         </Box>
 
         <Divider sx={{ borderColor: "#2D3748" }} />

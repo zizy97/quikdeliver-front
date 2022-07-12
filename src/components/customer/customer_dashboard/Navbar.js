@@ -4,7 +4,8 @@ import { AppBar, Box, IconButton, Toolbar, Stack } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsPopover from "./notification/NotificationsPopover";
 import Profile from "./profile";
-import CancelIcon from "@mui/icons-material/Cancel";
+import CloseIcon from "@mui/icons-material/Close";
+import { motion } from "framer-motion";
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: "rgba(0, 0, 0, 0.3)",
@@ -32,25 +33,32 @@ export const DashboardNavbar = (props) => {
           sx={{
             minHeight: "50px",
             left: 0,
+            pl: 2,
           }}
         >
-          <IconButton
-            icon={<MenuIcon />}
-            onClick={open ? onClose : onSidebarOpen}
-            sx={{
-              display: {
-                xs: "inline-flex",
-                lg: "inline-flex",
-              },
-              bgcolor: "white",
-            }}
-          >
-            {!open ? (
-              <MenuIcon fontSize="small" />
-            ) : (
-              <CancelIcon fontSize="small" />
-            )}
-          </IconButton>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+            <IconButton
+              icon={<MenuIcon />}
+              onClick={open ? onClose : onSidebarOpen}
+              sx={{
+                display: {
+                  xs: "inline-flex",
+                  lg: "inline-flex",
+                },
+                bgcolor: "white",
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+            >
+              {!open ? (
+                <MenuIcon fontSize="small" />
+              ) : (
+                <CloseIcon fontSize="small" />
+              )}
+            </IconButton>
+          </motion.div>
+
           <Box sx={{ flexGrow: 1 }} />
           <Stack
             direction="row"
@@ -60,8 +68,13 @@ export const DashboardNavbar = (props) => {
               mr: "15px",
             }}
           >
-            <NotificationsPopover />
-            <Profile />
+            {" "}
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+              <NotificationsPopover />
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+              <Profile />
+            </motion.div>
           </Stack>
         </Toolbar>
       </DashboardNavbarRoot>

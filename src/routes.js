@@ -27,13 +27,17 @@ import ProContent from "./components/driver/inprocess/ProContent";
 import History from "./components/driver/history/History";
 
 //Customer Dashboard
-import CustomerDashboard from "./components/customer/customer_dashboard/CustomerDashboard"
+import CustomerDashboard from "./components/customer/customer_dashboard/CustomerDashboard";
 import NewRequestDeliveryDetails from "./pages/customer/NewRequestDeliveryDetails";
 import NewRequestVehicleAndRoute from "./pages/customer/NewRequestVehicleAndRoute";
 import CustomerHistory from "./pages/customer/History";
 import Map from "./pages/customer/Map";
 import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 
+//New
+import File1 from "./components/customer/new/File1";
+import File2 from "./components/customer/new/File2";
+import File3 from "./components/customer/new/File3";
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
@@ -56,6 +60,18 @@ const routes = (isAuthenticated, roles) => [
         element: <Contactus />,
       },
     ],
+  },
+  {
+    path: "file1",
+    element: <File1 />,
+  },
+  {
+    path: "file2",
+    element: <File2 />,
+  },
+  {
+    path: "file3",
+    element: <File3 />,
   },
   {
     path: "login",
