@@ -19,7 +19,7 @@ import {
   WalletOutlined,
 } from "@ant-design/icons";
 
-import AuthServices from "../../services/AuthServices";
+import AuthServices from "../../service/AuthServices";
 import { useDispatch } from "react-redux/es/exports";
 import { useNavigate,useLocation } from "react-router-dom";
 

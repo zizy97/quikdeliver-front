@@ -33,7 +33,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 
-import AuthServices from "../../services/AuthServices";
+import AuthServices from "../../service/AuthServices";
 import { useDispatch } from "react-redux/es/exports";
 import { useNavigate } from "react-router-dom";
 

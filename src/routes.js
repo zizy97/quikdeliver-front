@@ -1,11 +1,29 @@
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import TestCase from "./test/TestCase";
 import SignInSide from "./pages/Signin";
 import NotFound from "./pages/404";
 import SendMail from "./pages/SendMail";
 
 //Admin Dashboard
+import PackageDeliveryRequest from './pages/admin/PackageDeliveryRequest';
+import PaymentProofUpload from './pages/admin/PaymentProofUpload';
+import PackageDeliveryRequests from './pages/admin/PackageDeliveryRequests';
+import DeliveryRequest from './pages/admin/DeliveryRequest';
+import AddDriver from './pages/admin/AddDriver';
+import AddVehicle from './pages/admin/AddVehicle';
+import UpcomingDeliveries from './pages/admin/UpcomingDeliveries';
+import OngoingDeliveries from './pages/admin/OngoingDeliveries';
+import CompletedDeliveries from './pages/admin/CompletedDeliveries';
+import RejectedDeliveries from './pages/admin/RejectedDeliveries';
+import EditDriver from './pages/admin/EditDriver';
+import EditVehicle from './pages/admin/EditVehicle';
+import ExpiredDeliveries from './pages/admin/ExpiredDeliveries';
+import TermsAndConditions from './components/package_delivery_requests/TermsAndConditions';
+import Allocations from './pages/admin//Allocations';
+import Reports from './pages/admin/Reports';
+
+
+
 import { DashboardLayout } from "../src/components/DashboardLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Drivers from "./pages/admin/Drivers";
@@ -38,52 +56,23 @@ const routes = (isAuthenticated, roles) => [
     path: "",
     element: <DefaultLayout />,
     children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/services",
-        element: <Services />,
-      },
-      {
-        path: "/contactus",
-        element: <Contactus />,
-      },
+      { path: "",element: <Home />},
+      { path: "/about",element: <About />,},
+      { path: "/services",element: <Services />,},
+      { path: "/contactus",element: <Contactus />,},
+      { path: 'delivery', element: <PackageDeliveryRequest /> },
+      { path: 'terms', element: <TermsAndConditions /> },
+      { path: 'payments/:requestId', element: <PaymentProofUpload /> },
     ],
   },
-  {
-    path: "login",
-    element: <SignInSide />,
-  },
-  {
-    path: "sendmail",
-    element: <SendMail />,
-  },
-  {
-    path: "signup",
-    element: <Register />,
-  },
-  {
-    path: "signin",
-    element: <Login />,
-  },
-  {
-    path: "new-booking",
-    element: <Customer />,
-  },
-  { 
-    path: "page2", 
-    element: <Customer2 /> 
-  },
-  { 
-    path: "page3", 
-    element: <Map /> 
-  },
+  { path: "login",element: <SignInSide />,},
+  { path: "sendmail",element: <SendMail />,},
+  { path: "signup",element: <Register />,},
+  { path: "signin",element: <Login />,},
+  { path: "new-booking",element: <Customer />,},
+  { path: "page2",element: <Customer2 />},
+  { path: "page3",element: <Map /> },
+
   {
     path: "/vo",
     element: true ? <DashboardLayout /> : <Navigate to="/signin" />,
@@ -109,12 +98,26 @@ const routes = (isAuthenticated, roles) => [
       ),
     children: [
       { path: "", element: <Dashboard /> },
+      { path: "dashboard", element: <Dashboard /> },
       { path: "vehicles", element: <Vehicles /> },
       { path: "drivers", element: <Drivers /> },
       { path: "account", element: <Account /> },
       { path: "settings", element: <Settings /> },
-      { path: "history", element: <Customer3 /> },
-      { path: "notification", element: <h1>This is space to notification</h1> },
+      { path: 'deliveries/ongoing', element: <OngoingDeliveries /> },
+      { path: 'deliveries/upcoming', element: <UpcomingDeliveries /> },
+      { path: 'deliveries/completed', element: <CompletedDeliveries /> },
+      { path: 'deliveries/expired', element: <ExpiredDeliveries /> },
+      { path: 'deliveries/rejected', element: <RejectedDeliveries /> },
+      { path: 'allocations', element: <Allocations /> },
+      { path: 'delivery/requests', element: <PackageDeliveryRequests /> },
+      { path: 'delivery/requests/:id', element: <DeliveryRequest /> },
+      { path: 'reports', element: <Reports /> },
+      { path: 'drivers', element: <Drivers /> },
+      { path: 'drivers/new', element: <AddDriver /> },
+      { path: 'drivers/:id/edit', element: <EditDriver /> },
+      { path: 'vehicles', element: <Vehicles /> },
+      { path: 'vehicles/new', element: <AddVehicle /> },
+      { path: 'vehicles/:id/edit', element: <EditVehicle /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
@@ -155,14 +158,7 @@ const routes = (isAuthenticated, roles) => [
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
-  {
-    path: "/test",
-    element: <TestCase />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
+  {path: "*",element: <NotFound />,},
 ];
 
 export default routes;

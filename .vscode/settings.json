@@ -16,6 +16,7 @@
         "signin",
         "sockjs",
         "SSNB",
-        "stompjs"
+        "stompjs",
+        "zustand"
     ]
 }

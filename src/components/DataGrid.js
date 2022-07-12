@@ -10,7 +10,7 @@ class ColumnDefinition {
       this.headerName = headerName;
       this.headerAlign = "center";
       this.align = "center";
-      this.width = width?width:150;
+      this.minWidth = width?width:150;
       this.flex = flex;
       this.renderCell = ({ value }) => value;
     }
@@ -19,7 +19,7 @@ class ColumnDefinition {
       this.headerName = headerName;
       this.headerAlign = "center";
       this.align = "center";
-      this.width = 100;
+      this.minWidth = 100;
       this.flex = flex;
       this.renderCell = ({ id }) =>
         icon.onclick ? (
@@ -77,6 +77,7 @@ const DataGrid = ({ fields, headerNames, rows, onRowClick, ...props }) => {
           },
           ".MuiDataGrid-columnHeader": {
             backgroundColor: "#2D3748",
+            color: "white",
           },
           ...props.sx,
         }}

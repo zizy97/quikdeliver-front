@@ -23,7 +23,7 @@ import IconButton from "@mui/material/IconButton";
 
 
 //Services get
-import AuthServices from "../services/AuthServices";
+import AuthServices from "../service/AuthServices";
 
 //import snackbar
 import CustomSnackBar from "../components/CustomSnackBar";

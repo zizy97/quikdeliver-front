@@ -100,7 +100,7 @@ export const DashboardSidebar = (props) => {
           sx: {
             backgroundColor: 'neutral.800',
             color: '#FFFFFF',
-            width: 200
+            minWidth: 200
           }
         }}
         variant="permanent"
@@ -119,7 +119,7 @@ export const DashboardSidebar = (props) => {
         sx: {
           backgroundColor: 'neutral.800',
           color: '#FFFFFF',
-          width: 200
+          minWidth: 200
         }
       }}
       sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}

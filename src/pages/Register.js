@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import AuthServices from "../services/AuthServices";
+import AuthServices from "../service/AuthServices";
 import { useState } from "react";
 
 import {

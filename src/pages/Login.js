@@ -6,7 +6,7 @@ import * as Yup from "yup";
 //dispacher is used to dispatch actions
 import { useDispatch } from "react-redux";
 //Services get
-import AuthServices from "../services/AuthServices";
+import AuthServices from "../service/AuthServices";
 //import snackbar
 import CustomSnackBar from "../components/CustomSnackBar";
 import InputAdornment from "@mui/material/InputAdornment";
