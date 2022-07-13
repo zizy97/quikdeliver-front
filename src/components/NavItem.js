@@ -16,9 +16,9 @@ export const NavItem = (props) => {
       disableGutters
       sx={{
         display: 'flex',
-        mb: 0.5,
-        py: 0.5,
-        px: 2,
+        mb: 0.1,
+        py: 0.1,
+        px: 1,
         backgroundColor: active && 'rgba(255,255,255, 0.08)',
         '&:hover': {
           backgroundColor: 'rgba(255,255,255, 0.08)'
@@ -39,7 +39,7 @@ export const NavItem = (props) => {
             color: active ? 'secondary.main' : 'neutral.300',
             fontWeight: active && 'fontWeightBold',
             justifyContent: 'flex-start',
-            px: 2,
+            px: 1,
             textAlign: 'left',
             textTransform: 'none',
             width: '100%',

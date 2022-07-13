@@ -231,7 +231,7 @@ const AddDriver = (props) => {
                                                         error={Boolean(touched.hourlyWage && errors.hourlyWage)}
                                                         fullWidth
                                                         helperText={touched.hourlyWage && errors.hourlyWage}
-                                                        label='Hourly Wage(AUD)*'
+                                                        label='Hourly Wage(Rs.)*'
                                                         margin='normal'
                                                         name='hourlyWage'
                                                         id="hourlyWage"
