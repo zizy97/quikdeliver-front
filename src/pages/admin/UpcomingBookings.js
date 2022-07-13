@@ -1,39 +1,20 @@
+/* eslint-disable no-unused-vars */
 import React,{useState} from 'react';
-import { Helmet } from 'react-helmet';
-import { Box, Card, CardHeader, Container } from '@mui/material';
 import JobList from '../../components/customer/JobList';
 import BookingService from '../../service/BookingService';
+import ContentLayout from '../../components/common/ContentLayout';
 
 export default function UpcomingBookings() {
-  const [customers, setcustomers] = useState([])
+  const [customers, setcustomers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   return (
-    <>
-    <Helmet>
-      <title>Upcoming Bookings</title>
-    </Helmet>
-    <Box
-      sx={{
-        backgroundColor: 'background.default',
-        minHeight: '100%',
-        py: 3
-      }}
-    >
-      <Container maxWidth={false}>
-        <Box>
-          <Box sx={{ mt: 3 }}>
-            <Card>
-              <CardHeader
-                title="Upcoming Bookings"
-              />
-            </Card>
-          </Box>
-        </Box>
-        <Box sx={{ pt: 3 }}>
-          <JobList customers={this.state.customers} />
-        </Box>
-      </Container>
-    </Box>
-  </>
+   <ContentLayout
+   header="Upcoming Bookings"
+   title="Upcoming Bookings"
+   loading={loading}
+   Component={<JobList customers={this.state.customers} />}
+ />
   )
 }
 

@@ -1,6 +1,6 @@
-import {useState } from 'react';
-import { Helmet } from 'react-helmet';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import { useState } from "react";
+import { Helmet } from "react-helmet";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import {
   Box,
   Card,
@@ -12,14 +12,14 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
-} from '@mui/material';
-import VehicleService from '../../service/VehicleService';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import ConfirmDialog from '../../components/dialog/InformationDialog';
-import { useNavigate } from 'react-router-dom';
-import { AddVehicleIcon } from '../../components/common/icons/Icons';
+  MenuItem,
+} from "@mui/material";
+import VehicleService from "../../service/VehicleService";
+import * as Yup from "yup";
+import { Formik } from "formik";
+import ConfirmDialog from "../../components/dialog/InformationDialog";
+import { useNavigate } from "react-router-dom";
+import { AddVehicleIcon } from "../../components/common/icons/Icons";
 
 const AddVehicle = () => {
   const vehicleService = new VehicleService();
@@ -33,9 +33,9 @@ const AddVehicle = () => {
       </Helmet>
       <Box
         sx={{
-          backgroundColor: 'background.default',
-          minHeight: '100%',
-          py: 3
+          backgroundColor: "background.default",
+          minHeight: "100%",
+          py: 3,
         }}
       >
         <Container maxWidth={true}>
@@ -44,38 +44,41 @@ const AddVehicle = () => {
               <Card>
                 <CardHeader title={`Add New Vehicle`} />
               </Card>
-              <Container maxWidth="md">
+              <Container
+                maxWidth="md"
+                sx={{ mt: 3, backgroundColor: "white", p: 3, borderRadius: 1 }}
+              >
                 {showModal ? (
                   <ConfirmDialog
-                    title={'Done'}
-                    msg={'New Vehicle Added Successfully.'}
-                    handleOk={() => navigate('../', { replace: true })}
+                    title={"Done"}
+                    msg={"New Vehicle Added Successfully."}
+                    handleOk={() => navigate("../", { replace: true })}
                   />
                 ) : null}
                 <Formik
                   initialValues={{
-                    registrationNumber: '',
-                    model: '',
-                    type: '',
-                    vehicleDescription: ''
+                    registrationNumber: "",
+                    model: "",
+                    type: "",
+                    vehicleDescription: "",
                   }}
                   validationSchema={Yup.object().shape({
                     registrationNumber: Yup.string().required(
-                      'Vehicle registration number is required'
+                      "Vehicle registration number is required"
                     ),
-                    model: Yup.string().max(255).required('Model is required'),
-                    type: Yup.string().max(255).required('Type is required'),
+                    model: Yup.string().max(255).required("Model is required"),
+                    type: Yup.string().max(255).required("Type is required"),
                     vehicleDescription: Yup.string()
                       .max(255)
-                      .required('Vehicle description is required')
+                      .required("Vehicle description is required"),
                   })}
                   onSubmit={async (values, { resetForm }) => {
-                    values['currentAllocationStatus'] = false;
+                    values["currentAllocationStatus"] = false;
                     console.log(values);
                     const addedVehicle = await vehicleService.addNewVehicle(
                       values
                     );
-                    console.log('Added vehicle', addedVehicle.data);
+                    console.log("Added vehicle", addedVehicle.data);
                     setShowModal(true);
                     resetForm();
                   }}
@@ -87,7 +90,7 @@ const AddVehicle = () => {
                     handleSubmit,
                     isSubmitting,
                     touched,
-                    values
+                    values,
                   }) => (
                     <form onSubmit={handleSubmit}>
                       <Grid container>
@@ -109,7 +112,7 @@ const AddVehicle = () => {
                             onBlur={handleBlur}
                             onChange={handleChange}
                             InputLabelProps={{
-                              shrink: true
+                              shrink: true,
                             }}
                             type="text"
                             value={values.registrationNumber}
@@ -130,7 +133,7 @@ const AddVehicle = () => {
                             onBlur={handleBlur}
                             onChange={handleChange}
                             InputLabelProps={{
-                              shrink: true
+                              shrink: true,
                             }}
                             type="text"
                             value={values.model}
@@ -159,23 +162,23 @@ const AddVehicle = () => {
                               name="type"
                               id="type"
                               InputLabelProps={{
-                                shrink: true
+                                shrink: true,
                               }}
                               onBlur={handleBlur}
                               onChange={handleChange}
                               value={values.type}
                               label="Type"
                             >
-                              <MenuItem value={'TWO_TON_VAN'}>
+                              <MenuItem value={"TWO_TON_VAN"}>
                                 TWO TON VAN
                               </MenuItem>
-                              <MenuItem value={'FOUR_TON_TRUCK'}>
+                              <MenuItem value={"FOUR_TON_TRUCK"}>
                                 FOUR TON TRUCK
                               </MenuItem>
-                              <MenuItem value={'EIGHT_TON_TRUCK'}>
+                              <MenuItem value={"EIGHT_TON_TRUCK"}>
                                 EIGHT TON TRUCK
                               </MenuItem>
-                              <MenuItem value={'TEN_TON_TRUCK'}>
+                              <MenuItem value={"TEN_TON_TRUCK"}>
                                 TEN TON TRUCK
                               </MenuItem>
                             </Select>
@@ -204,7 +207,7 @@ const AddVehicle = () => {
                             multiline
                             value={values.vehicleDescription}
                             InputLabelProps={{
-                              shrink: true
+                              shrink: true,
                             }}
                             rows={2}
                             rowsmax={4}
@@ -212,17 +215,19 @@ const AddVehicle = () => {
                         </Grid>
                       </Grid>
 
-                      <Box sx={{ py: 2 }} style={{ textAlign: 'center' }}>
+                      <Box sx={{ py: 2 }} style={{ textAlign: "center" }}>
                         <Button
                           color="primary"
                           fullWidth
                           disabled={isSubmitting}
-                          style={{ textAlign: 'center' }}
+                          style={{ textAlign: "center" }}
                           size="large"
                           type="button"
                           onClick={handleSubmit}
                           variant="contained"
-                        ><AddVehicleIcon height="32" width="32" /><span style={{width:"10px"}}/>
+                        >
+                          <AddVehicleIcon height="32" width="32" />
+                          <span style={{ width: "10px" }} />
                           Add
                         </Button>
                       </Box>

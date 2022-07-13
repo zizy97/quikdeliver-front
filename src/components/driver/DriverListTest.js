@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import DriverService from '../../service/DriverService';
 
 export default function DriverListTest({ drivers, ...rest }) {
+  console.log(drivers);
   const navigate = useNavigate();
   const [gridHeight, setGridHeight] = React.useState(
     window.innerHeight - window.innerHeight * 0.35
@@ -141,7 +142,7 @@ export default function DriverListTest({ drivers, ...rest }) {
   return (
     <div style={{ height: gridHeight }}>
       <DataGrid
-        rows={[]}
+        rows={rows}
         columns={columns}
         disableColumnMenu
         components={{

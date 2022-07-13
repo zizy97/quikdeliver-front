@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -858,7 +859,7 @@ const DeliveryRequest = () => {
                                 handleDeliveryStatusChange(e.target.value)
                               }
                               value={
-                                packageDeliveryRequest.status ==
+                                packageDeliveryRequest.status ===
                                 'ADMIN_REJECTED'
                                   ? stateChange
                                     ? 'ADMIN_REJECTED'
@@ -912,11 +913,11 @@ const DeliveryRequest = () => {
                           <Button
                             style={{ backgroundColor: '#12824C' }}
                             disabled={
-                              packageDeliveryRequest?.status ==
+                              packageDeliveryRequest?.status ===
                                 'ADMIN_APPROVED' ||
-                              packageDeliveryRequest?.status ==
+                              packageDeliveryRequest?.status ===
                                 'DELIVERY_IN_PROGRESS' ||
-                              packageDeliveryRequest?.status ==
+                              packageDeliveryRequest?.status ===
                                 'DELIVERY_COMPLETED'
                             }
                             fullWidth

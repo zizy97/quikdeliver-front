@@ -31,7 +31,7 @@ import Vehicles from "./pages/admin/Vehicles";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings";
 import Register from "./pages/Register";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contactus from "./pages/ContactUs";
@@ -50,8 +50,9 @@ import Customer2 from "./pages/customer/Customer2";
 import Customer3 from "./pages/customer/Customer3";
 import Map from "./pages/customer/Map";
 import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
+import Login from "./pages/admin/Login";
 
-const routes = (isAuthenticated, roles) => [
+const routes = (isAuthenticated) => [
   {
     path: "",
     element: <DefaultLayout />,
@@ -91,7 +92,7 @@ const routes = (isAuthenticated, roles) => [
   {
     path: "/admin",
     element:
-      isAuthenticated && roles.includes("ROLE_CUSTOMER") ? (
+      isAuthenticated ? (
         <DashboardLayout />
       ) : (
         <Navigate to="/signin" />

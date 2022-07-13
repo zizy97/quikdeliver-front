@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React,{useEffect} from 'react';
-import { EditIcon, DeleteIcon } from '../../components/common/icons/Icons';
+import { EditIcon, DeleteIcon } from '../common/icons/Icons';
 import { Tooltip } from '@mui/material';
 import {
   Button,
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { changeStatus } from '../../utils/changestatus';
 import { DataGrid,GridToolbarContainer,GridToolbarExport,GridToolbarDensitySelector,GridToolbarFilterButton,GridToolbarColumnsButton } from '@mui/x-data-grid';
 
-export default function VehicalTestList({ vehicles, ...rest }) {
+export default function VehicleTestList({ vehicles, ...rest }) {
   const navigate = useNavigate();
   const [gridHeight, setGridHeight] = React.useState(window.innerHeight - window.innerHeight * 0.35);
   useEffect(() => {

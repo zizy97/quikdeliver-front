@@ -1,62 +1,37 @@
-import { Helmet } from 'react-helmet';
-import { Box, Button, Card, CardActions, CardHeader, CircularProgress, Container } from '@mui/material';
-import React from 'react';
-import PackageService from '../../service/PackageService';
-import { useNavigate } from 'react-router-dom';
-import { AddDeliverRequestIcon } from '../../components/common/icons/Icons';
-import { Tooltip } from '@mui/material';
-import TestDemo from '../../components/package_delivery_requests/TestDemo';
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React from "react";
+import PackageService from "../../service/PackageService";
+import TestDemo from "../../components/package_delivery_requests/TestDemo";
+import { useState } from "react";
+import ContentLayout from "../../components/common/ContentLayout";
 
 export default function PackageDeliveryRequests() {
-  const navigate = useNavigate();
-  const [loading, setloading] = useState(false)
-  const [deliveryRequests, setdeliveryRequests] = useState([])
-  return (
-    <>
-        <Helmet>
-          <title>Package Delivery Requests</title>
-        </Helmet>
-        <Box
-          sx={{
-            backgroundColor: 'background.default',
-            minHeight: '100%',
-            py: 3
-          }}
-        >
-          <Container maxWidth={false}>
-            <Box>
-              <Box sx={{ mt: 3 }}>
-                <Card>
-                  <CardHeader style = {{display: 'inline-block'}}
-                    title="Package Delivery Requests"
-                  />
-                  <CardActions style = {{display: 'inline-block', float: 'right'}} >
-                    <Tooltip title="Add"><Button onClick={()=>{navigate('/delivery')}} size="small" ><AddDeliverRequestIcon height="32" width="32"/></Button></Tooltip>
-                  </CardActions>
-                </Card>
-              </Box>
-            </Box>
-            <Box sx={{ pt: 3 }}>
-              {<TestDemo deliveryRequests={deliveryRequests}/>}
-              
+  const [loading, setloading] = useState(false);
+  const [deliveryRequests, setdeliveryRequests] = useState([]);
 
-              {loading && (
-                    <CircularProgress
-                      size={100}
-                      sx={{
-                        color: 'primary',
-                        position: 'fixed',
-                        top: '50%',
-                        left: '47%',
-                        marginTop: '-12px',
-                        marginLeft: '-12px',
-                      }}
-                    />
-                  )}
-            </Box>
-          </Container>
-        </Box>
-      </>
-  )
+  const deliveries =[
+    {
+      id: "OR45612",
+      customer:{
+        id:1,
+        customerName: "Supun Tharuka",
+      },
+      deliveryFee: 100.00,
+      pickupDate: "2022-02-05",
+      pickupAddress: "Horana",
+      dropOffAddress: "Matara",
+      status: "ADMIN_APPROVED",
+      allocated:true,
+      paymentProofLinkUsed:true
+    }
+  ]
+
+  return (
+    <ContentLayout
+      header="Package Delivery Requests"
+      title="Package Delivery Requests"
+      loading={loading}
+      Component={<TestDemo deliveryRequests={deliveries} />}
+    />
+  );
 }

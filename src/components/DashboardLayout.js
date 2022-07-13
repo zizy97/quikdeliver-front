@@ -28,7 +28,13 @@ export const DashboardLayout = (props) => {
             flex: '1 1 auto',
             flexDirection: 'column',
             width: '100%',
-            m:5,
+            m:{
+              xs:2,
+              sm:2,
+              md:2,
+              lg:1,
+              xl:4
+            }
           }}
         >
           <Outlet/>

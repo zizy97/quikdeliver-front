@@ -3,7 +3,7 @@ import axios, { AxiosStatic } from 'axios';
 
 export default class HttpService {
 
-  baseUrl = 'http://gradeamoversbackend-env.eba-dnpq5qjq.ap-southeast-1.elasticbeanstalk.com/booking-service/';
+  baseUrl = 'http://localhost:5000/booking-service/';
 
   get(url) {
     const headers = {

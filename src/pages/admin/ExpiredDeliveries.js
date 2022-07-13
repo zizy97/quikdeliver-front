@@ -14,20 +14,23 @@ export default function ExpiredDeliveries() {
   const [loading, setLoading] = useState(false);
 
 
-  // useEffect(async () => {
-  //   setLoading(true);
-  //   const deliveryPackageRes = await packageService.findExpiredPackageDeliveryRequests();
-  //   console.log(deliveryPackageRes.data);
-  //   const deliveryPackageDrop = deliveryPackageRes.data.map(delivery => {
-  //     return {
-  //       ...delivery,
-  //       label: delivery.id
-  //     };
-  //   });
-  //   console.log(deliveryPackageDrop);
-  //   setDeliveries(deliveryPackageDrop);
-  //   setLoading(false);
-  // }, []);
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      const deliveryPackageRes = await packageService.findExpiredPackageDeliveryRequests();
+      console.log(deliveryPackageRes.data);
+      const deliveryPackageDrop = deliveryPackageRes.data.map(delivery => {
+        return {
+          ...delivery,
+          label: delivery.id
+        };
+      });
+      console.log(deliveryPackageDrop);
+      setDeliveries(deliveryPackageDrop);
+      setLoading(false);
+    }
+    getData();
+  });
 
   return (
     <>
