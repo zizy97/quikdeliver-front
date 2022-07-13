@@ -122,20 +122,20 @@ const DeliveryRequest = () => {
     console.log(data);
   };
 
-  useEffect(async () => {
-    console.log(id);
-    setLoading(true);
-    const packageDeliveryRequest =
-      await packageService.findPackageDeliveryRequest(id);
-    setPackageDeliveryRequest(packageDeliveryRequest.data);
-    setIsValuesLoaded(true);
-    setLoading(false);
-    setOriginalStatus(packageDeliveryRequest.data.status);
-    pickupAddressRef.current.value = packageDeliveryRequest.data.pickupAddress;
-    dropoffAddressRef.current.value =
-      packageDeliveryRequest.data.dropOffAddress;
-    console.log(packageDeliveryRequest.data);
-  }, []);
+  // useEffect(async () => {
+  //   console.log(id);
+  //   setLoading(true);
+  //   const packageDeliveryRequest =
+  //     await packageService.findPackageDeliveryRequest(id);
+  //   setPackageDeliveryRequest(packageDeliveryRequest.data);
+  //   setIsValuesLoaded(true);
+  //   setLoading(false);
+  //   setOriginalStatus(packageDeliveryRequest.data.status);
+  //   pickupAddressRef.current.value = packageDeliveryRequest.data.pickupAddress;
+  //   dropoffAddressRef.current.value =
+  //     packageDeliveryRequest.data.dropOffAddress;
+  //   console.log(packageDeliveryRequest.data);
+  // }, []);
 
   const handleAccept = async () => {
     setLoading(true);

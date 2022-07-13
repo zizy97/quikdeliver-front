@@ -44,7 +44,7 @@ export default function Drivers() {
                     title='Drivers'
                   />
                   <CardActions style = {{display: 'inline-block', float: 'right'}} >
-                    <Tooltip title="Add Driver"><Button onClick={()=>{navigate('/admin/drivers/new')}} size="small" ><AddUserIcon color="#652341" width="48" height="48" /></Button></Tooltip>
+                    <Tooltip title="Add Driver"><Button onClick={()=>{navigate('/admin/drivers/new')}} size="small" ><AddUserIcon  width="40" height="40" /></Button></Tooltip>
                 </CardActions>
                 </Card>
               </Box>

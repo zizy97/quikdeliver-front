@@ -42,7 +42,7 @@ export default function Vehicles() {
                     title='Vehicles'
                   />
                   <CardActions style = {{display: 'inline-block', float: 'right'}} >
-                   <Tooltip title="Add Vehicle"><Button component={Link} to={'/admin/vehicles/new'} size="small" ><AddVehicleIcon color="#652341" width="48" height="48" /></Button></Tooltip>
+                   <Tooltip title="Add Vehicle"><Button component={Link} to={'/admin/vehicles/new'} size="small" ><AddVehicleIcon  width="40" height="40" /></Button></Tooltip>
                 </CardActions>
                 </Card>
               </Box>
