@@ -110,11 +110,11 @@ export default function DriverListTest({ drivers, ...rest }) {
   const rows = drivers.map((driver) => ({
     id: driver.id,
     name: driver.name,
-    phone: '+61 ' + driver.telephoneNumber,
+    phone: '+94 ' + driver.telephoneNumber,
     email: driver.email,
     address: driver.address,
     license: driver.license,
-    ecNumber: '+61 ' + driver.emergencyContactNumber,
+    ecNumber: '+94 ' + driver.emergencyContactNumber,
     actions: driver.id
   }));
   function CustomToolbar() {

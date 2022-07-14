@@ -46,7 +46,7 @@ const EditVehicle = () => {
       setLoading(false);
     };
     getData();
-  });
+  },[]);
   return (
     <>
       <Helmet>

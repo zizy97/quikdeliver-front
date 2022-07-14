@@ -44,7 +44,7 @@ export default function Allocations() {
       setVehicles(vehicleDrop);
     };
     getData();
-  });
+  },[]);
 
   useEffect(() => {
     const getData = async () => {
@@ -61,7 +61,7 @@ export default function Allocations() {
       setDrivers(driversDrop);
     };
     getData();
-  });
+  },[]);
 
   useEffect(() => {
     const getData = async () => {
@@ -91,7 +91,7 @@ export default function Allocations() {
       }
     };
     getData();
-  });
+  },[]);
 
   useEffect(() => {
     const getData = async () => {
@@ -102,7 +102,7 @@ export default function Allocations() {
       setLoading(false);
     };
     getData();
-  });
+  },[]);
 
   const handleAllocation = async () => {
     setLoading(true);

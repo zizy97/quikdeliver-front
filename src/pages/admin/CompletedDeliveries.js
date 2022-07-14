@@ -26,7 +26,7 @@ export default function CompletedDeliveries() {
       setLoading(false);
     };
     getData();
-  });
+  },[]);
 
   return (
     <ContentLayout

@@ -52,7 +52,7 @@ const EditDriver = () => {
       addressRef.current.value = driverRes.data.address;
     };
     getData();
-  });
+  },[]);
 
   const { ref: addressRef } = usePlacesWidget({
     apiKey: "AIzaSyDpL0YWqm79YWD9b0SwEdrrWtrHFxNjXg8",

@@ -25,7 +25,7 @@ export default function UpcomingDeliveries() {
       setLoading(false);
     };
     getData();
-  });
+  },[]);
 
   return (
     <ContentLayout

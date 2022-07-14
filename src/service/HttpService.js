@@ -1,9 +1,10 @@
 import AUTH from '../utils/constants';
-import axios, { AxiosStatic } from 'axios';
+import axios from 'axios';
+// { AxiosStatic }
 
 export default class HttpService {
 
-  baseUrl = 'http://localhost:5000/booking-service/';
+  baseUrl = 'https://quik-booking-platform.herokuapp.com/booking-service/';
 
   get(url) {
     const headers = {

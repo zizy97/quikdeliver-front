@@ -22,7 +22,7 @@ export default function Drivers() {
         setLoading(false);
       }
       getData();
-  });
+  },[]);
 
   return (
     <ContentLayout

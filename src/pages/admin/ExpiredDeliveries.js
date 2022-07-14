@@ -30,7 +30,7 @@ export default function ExpiredDeliveries() {
       setLoading(false);
     }
     getData();
-  });
+  },[]);
 
   return (
     <>

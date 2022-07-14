@@ -25,7 +25,7 @@ export default function RejectedDeliveries() {
       setLoading(false);
     };
     getData();
-  });
+  },[]);
 
   return (
     <ContentLayout

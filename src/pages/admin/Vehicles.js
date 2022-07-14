@@ -21,7 +21,7 @@ export default function Vehicles() {
         setLoading(false);
       }
       getData();
-  });
+  },[]);
   return (
     <ContentLayout
       header="Vehicles"

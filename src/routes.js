@@ -5,7 +5,7 @@ import NotFound from "./pages/404";
 import SendMail from "./pages/SendMail";
 
 //Admin Dashboard
-import PackageDeliveryRequest from './pages/admin/PackageDeliveryRequest';
+import PackageRequest from "./pages/admin/PackageRequest";
 import PaymentProofUpload from './pages/admin/PaymentProofUpload';
 import PackageDeliveryRequests from './pages/admin/PackageDeliveryRequests';
 import DeliveryRequest from './pages/admin/DeliveryRequest';
@@ -61,7 +61,7 @@ const routes = (isAuthenticated) => [
       { path: "/about",element: <About />,},
       { path: "/services",element: <Services />,},
       { path: "/contactus",element: <Contactus />,},
-      { path: 'delivery', element: <PackageDeliveryRequest /> },
+      { path: 'delivery', element: <PackageRequest /> },
       { path: 'terms', element: <TermsAndConditions /> },
       { path: 'payments/:requestId', element: <PaymentProofUpload /> },
     ],
