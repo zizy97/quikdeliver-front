@@ -4,7 +4,7 @@ import TestCase from "./test/TestCase";
 import SignInSide from "./pages/Signin";
 import NotFound from "./pages/404";
 import SendMail from "./pages/SendMail";
-
+import Bookingservice from "../src/components/services/Bookingservice";
 //Admin Dashboard
 import { DashboardLayout } from "../src/components/DashboardLayout";
 import Dashboard from "./pages/admin/Dashboard";
@@ -44,7 +44,7 @@ import Vehiclesvo from "./pages/vo/Vehicles";
 import Orderaccept from "./components/vo/Orderaccept/Orderaccept";
 import Adddriver from "./components/vo/Adddriver/Adddriver_form";
 import Editdriver from "./components/vo/Adddriver/Editdriver";
-//import Addvehicle from "./components/vo/Addvehicle_form";
+import Addvehicle from "./components/vo/Addvehicle/Addvehicle_form";
 const routes = (isAuthenticated, roles) => [
   {
     path: "",
@@ -105,8 +105,16 @@ const routes = (isAuthenticated, roles) => [
     element: <Adddriver />,
   },
   {
+    path: "addvehicleform",
+    element: <Addvehicle />,
+  },
+  {
     path: "editdriver",
     element: <Editdriver />,
+  },
+  {
+    path: "bookingservice",
+    element: <Bookingservice />,
   },
   {
     path: "/vo",

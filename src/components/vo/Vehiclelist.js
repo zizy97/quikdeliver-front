@@ -21,50 +21,32 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 //===========model Dialog box=============================================//
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 function createData(
-  driverno,
+  vehicleid,
   regdate,
-  drivername,
-  drivernic,
-  drivertelephone,
-  driveraddress
+  vehiclename,
+  vehicleno,
+  vehiclecolor,
+  vehiclefuel,
+  vehicleprofile
 ) {
   return {
-    driverno,
+    vehicleid,
     regdate,
-    drivername,
-    drivernic,
-    drivertelephone,
-    driveraddress,
+    vehiclename,
+    vehicleno,
+    vehiclecolor,
+    vehiclefuel,
+    vehicleprofile,
     deliverydetails: [
       {
         deliverydate: "2020-01-05",
         receivername: "Nimal perera",
         deliveryaddress: "No 12 Nagolla matale",
         receivertelephone: "0748452123",
-        vehiclename: "Van-Nissan",
-        vehicleno: "45PO12",
-        weight: 100,
-        height: 20,
-      },
-      {
-        deliverydate: "2020-01-02",
-        receivername: "Nimal perera",
-        deliveryaddress: "No 12 Nagolla matale",
-        receivertelephone: "0748452123",
-        vehiclename: "Van-Nissan",
-        vehicleno: "45PO12",
-        weight: 100,
-        height: 20,
-      },
-      {
-        deliverydate: "2020-01-05",
-        receivername: "Nimal perera",
-        deliveryaddress: "No 12 Nagolla matale",
-        receivertelephone: "0748452123",
-        vehiclename: "Van-Nissan",
-        vehicleno: "45PO12",
+        drivername: "Van-Nissan",
+        drivernic: "85412567v",
         weight: 100,
         height: 20,
       },
@@ -138,14 +120,18 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.driverno}
+          {row.vehicleid}
         </TableCell>
         <TableCell align="left">{row.regdate}</TableCell>
-        <TableCell align="left">{row.drivername}</TableCell>
-        <TableCell align="left">{row.drivernic}</TableCell>
-        <TableCell align="left">{row.drivertelephone}</TableCell>
-        <TableCell align="left">{row.driveraddress}</TableCell>
-        <TableCell align="left">{row.driveraddress}</TableCell>
+        <TableCell align="left">
+          {" "}
+          <Link style={{ textDecoration: "none" }} to={row.vehicleprofile}>
+            {row.vehiclename}
+          </Link>
+        </TableCell>
+        <TableCell align="left">{row.vehicleno}</TableCell>
+        <TableCell align="left">{row.vehiclecolor}</TableCell>
+        <TableCell align="left">{row.vehiclefuel}</TableCell>
         <TableCell align="left">{Edit}</TableCell>
 
         <TableCell align="left">{Remove}</TableCell>
@@ -164,8 +150,8 @@ function Row(props) {
                     <TableCell align="left">Reciever's Name</TableCell>
                     <TableCell align="left">Reciever's Tel.No</TableCell>
                     <TableCell align="left">Delivery Address</TableCell>
-                    <TableCell align="left">Veh.Name</TableCell>
-                    <TableCell align="left">Veh.No</TableCell>
+                    <TableCell align="left">Driver Name</TableCell>
+                    <TableCell align="left">Driver NIC</TableCell>
                     <TableCell align="left">Height</TableCell>
                     <TableCell align="left">Weight</TableCell>
                   </TableRow>
@@ -186,10 +172,10 @@ function Row(props) {
                         {deliverydetailsRow.deliveryaddress}
                       </TableCell>
                       <TableCell align="left">
-                        {deliverydetailsRow.vehiclename}
+                        {deliverydetailsRow.drivername}
                       </TableCell>
                       <TableCell align="left">
-                        {deliverydetailsRow.vehicleno}
+                        {deliverydetailsRow.drivernic}
                       </TableCell>
                       <TableCell align="left">
                         {deliverydetailsRow.weight}
@@ -257,23 +243,24 @@ function Row(props) {
 Row.propTypes = {
   row: PropTypes.shape({
     regdate: PropTypes.string.isRequired,
-    drivernic: PropTypes.string.isRequired,
-    drivername: PropTypes.string.isRequired,
-    driveraddress: PropTypes.string.isRequired,
-    drivertelephone: PropTypes.string.isRequired,
+    vehicleno: PropTypes.string.isRequired,
+    vehiclename: PropTypes.string.isRequired,
+    vehiclecolor: PropTypes.string.isRequired,
+    vehiclefuel: PropTypes.number.isRequired,
+    vehicleprofile: PropTypes.string.isRequired,
     deliverydetails: PropTypes.arrayOf(
       PropTypes.shape({
         deliveryaddress: PropTypes.string.isRequired,
         receivername: PropTypes.string.isRequired,
         receivertelephone: PropTypes.string.isRequired,
         deliverydate: PropTypes.string.isRequired,
-        vehiclename: PropTypes.string.isRequired,
-        vehicleno: PropTypes.string.isRequired,
+        drivername: PropTypes.string.isRequired,
+        drivernic: PropTypes.string.isRequired,
         weight: PropTypes.number.isRequired,
         height: PropTypes.number.isRequired,
       })
     ).isRequired,
-    driverno: PropTypes.string.isRequired,
+    vehicleid: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -281,18 +268,20 @@ const rows = [
   createData(
     "01",
     "2021-07-04",
-    "Saman Perera",
-    "93568211v",
-    "0718462159",
-    "No 12 Nagolla matale"
+    "Lorry",
+    "QW23",
+    "Black",
+    2,
+    "http://localhost:3000/vo/drivers"
   ),
   createData(
     "02",
     "2021-07-04",
-    "Saman Perera",
-    "93568211v",
-    "0718462159",
-    "No 12 Nagolla matale"
+    "Van",
+    "QW23",
+    "Black",
+    1,
+    "http://localhost:3000/vo/drivers"
   ),
 ];
 
@@ -311,20 +300,19 @@ export default function Newrequest() {
             <TableHead sx={{ height: 80, backgroundColor: "#D4DCF7" }}>
               <TableRow>
                 <TableCell />
-                <TableCell>Driver No</TableCell>
+                <TableCell>Vehicle ID</TableCell>
                 <TableCell align="left">Reg.Date</TableCell>
-                <TableCell align="left">Driver Name</TableCell>
-                <TableCell align="left">Driver NIC</TableCell>
-                <TableCell align="left">Driver Tel.No</TableCell>
-                <TableCell align="left">Driver Address</TableCell>
-                <TableCell align="left">Veiw Profile</TableCell>
+                <TableCell align="left">Vehicle Name</TableCell>
+                <TableCell align="left">Vehicle No</TableCell>
+                <TableCell align="left">Vehicle Color</TableCell>
+                <TableCell align="left">Fuel per 1km(L)</TableCell>
                 <TableCell align="left">Edit</TableCell>
                 <TableCell align="left">Remove</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <Row key={row.driverno} row={row} />
+                <Row key={row.vehicleid} row={row} />
               ))}
             </TableBody>
           </Table>
