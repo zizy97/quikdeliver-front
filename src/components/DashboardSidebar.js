@@ -60,15 +60,6 @@ export const DashboardSidebar = (props) => {
           width: "100%",
         }}
       >
-        {/* <div>
-          <Box sx={{ minHeight:"64px",backgroundColor:"background.paper"}}></Box>
-        </div>
-        <Divider
-          sx={{
-            borderColor: '#2D3748',
-            // my: 3
-          }}
-        /> */}
         <Box sx={{minHeight:"12%"}}></Box>
         <Box sx={{ flexGrow: 1 }}>
           {items.map((item) => (

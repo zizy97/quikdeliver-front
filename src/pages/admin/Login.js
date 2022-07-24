@@ -159,7 +159,7 @@ const LoginPage = () => {
                     shrink: true,
                   }}
                   type='password'
-                  value={values.password}
+                  value={values.password}usePlacesWidget
                   variant='outlined' 
                 />
                 <Box sx={{ py: 2 }}>

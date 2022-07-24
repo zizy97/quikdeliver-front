@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Drawercomp from "./NavbarDrawer";
-import logo from "../images/logo.png";
 import logo2 from "../images/logo2.png";
 import { useNavigate } from "react-router-dom";
 
