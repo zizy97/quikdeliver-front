@@ -22,6 +22,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 //===========model Dialog box=============================================//
 import { useNavigate, Link } from "react-router-dom";
+import { SeverityPill } from "../SeverityPill"; //========Status changing needed=======//
 function createData(
   driverno,
   regdate,
@@ -30,7 +31,8 @@ function createData(
   driveremail,
   drivertelephone,
   driveraddress,
-  driverprofile
+  driverprofile,
+  dstatus
 ) {
   return {
     driverno,
@@ -41,6 +43,7 @@ function createData(
     drivertelephone,
     driveraddress,
     driverprofile,
+    dstatus,
     deliverydetails: [
       {
         deliverydate: "2020-01-05",
@@ -154,12 +157,24 @@ function Row(props) {
         <TableCell align="left">{row.driveremail}</TableCell>
         <TableCell align="left">{row.drivertelephone}</TableCell>
         <TableCell align="left">{row.driveraddress}</TableCell>
+        <TableCell align="left">
+          {" "}
+          <SeverityPill
+            color={
+              (row.dstatus === "Available" && "success") ||
+              (row.dstatus === "Not Available" && "error") ||
+              "warning"
+            }
+          >
+            {row.dstatus}
+          </SeverityPill>
+        </TableCell>
         <TableCell align="left">{Edit}</TableCell>
 
         <TableCell align="left">{Remove}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={10}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={11}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
@@ -284,6 +299,7 @@ Row.propTypes = {
       })
     ).isRequired,
     driverno: PropTypes.string.isRequired,
+    dstatus: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -296,7 +312,8 @@ const rows = [
     "asfvd@gmail.com",
     "0718462159",
     "No 12 Nagolla matale",
-    "http://localhost:3000/vo/drivers"
+    "http://localhost:3000/vo/drivers",
+    "Available"
   ),
   createData(
     "02",
@@ -306,7 +323,8 @@ const rows = [
     "asfvd@gmail.com",
     "0718462159",
     "No 12 Nagolla matale",
-    "http://localhost:3000/vo/drivers"
+    "http://localhost:3000/vo/drivers",
+    "Not Available"
   ),
 ];
 
@@ -332,6 +350,7 @@ export default function Newrequest() {
                 <TableCell align="left">Driver Email</TableCell>
                 <TableCell align="left">Driver Tel.No</TableCell>
                 <TableCell align="left">Driver Address</TableCell>
+                <TableCell align="left">Status</TableCell>
                 <TableCell align="left">Edit</TableCell>
                 <TableCell align="left">Remove</TableCell>
               </TableRow>

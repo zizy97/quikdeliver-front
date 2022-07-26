@@ -22,6 +22,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 //===========model Dialog box=============================================//
 import { useNavigate, Link } from "react-router-dom";
+import { SeverityPill } from "../SeverityPill"; //========Status changing needed=======//
 function createData(
   vehicleid,
   regdate,
@@ -29,7 +30,8 @@ function createData(
   vehicleno,
   vehiclecolor,
   vehiclefuel,
-  vehicleprofile
+  vehicleprofile,
+  vstatus
 ) {
   return {
     vehicleid,
@@ -39,6 +41,7 @@ function createData(
     vehiclecolor,
     vehiclefuel,
     vehicleprofile,
+    vstatus,
     deliverydetails: [
       {
         deliverydate: "2020-01-05",
@@ -72,7 +75,7 @@ function Row(props) {
   const Edit = (
     <Button
       onClick={() => {
-        navigate("/orderchange");
+        navigate("/editvehicle");
       }}
       variant="contained"
       size="small"
@@ -132,6 +135,18 @@ function Row(props) {
         <TableCell align="left">{row.vehicleno}</TableCell>
         <TableCell align="left">{row.vehiclecolor}</TableCell>
         <TableCell align="left">{row.vehiclefuel}</TableCell>
+        <TableCell align="left">
+          {" "}
+          <SeverityPill
+            color={
+              (row.vstatus === "Available" && "success") ||
+              (row.vstatus === "Not Available" && "error") ||
+              "warning"
+            }
+          >
+            {row.vstatus}
+          </SeverityPill>
+        </TableCell>
         <TableCell align="left">{Edit}</TableCell>
 
         <TableCell align="left">{Remove}</TableCell>
@@ -261,6 +276,7 @@ Row.propTypes = {
       })
     ).isRequired,
     vehicleid: PropTypes.string.isRequired,
+    vstatus: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -272,7 +288,8 @@ const rows = [
     "QW23",
     "Black",
     2,
-    "http://localhost:3000/vo/drivers"
+    "http://localhost:3000/vo/drivers",
+    "Available"
   ),
   createData(
     "02",
@@ -281,7 +298,8 @@ const rows = [
     "QW23",
     "Black",
     1,
-    "http://localhost:3000/vo/drivers"
+    "http://localhost:3000/vo/drivers",
+    "Not Available"
   ),
 ];
 
@@ -306,6 +324,7 @@ export default function Newrequest() {
                 <TableCell align="left">Vehicle No</TableCell>
                 <TableCell align="left">Vehicle Color</TableCell>
                 <TableCell align="left">Fuel per 1km(L)</TableCell>
+                <TableCell align="left">Availability</TableCell>
                 <TableCell align="left">Edit</TableCell>
                 <TableCell align="left">Remove</TableCell>
               </TableRow>

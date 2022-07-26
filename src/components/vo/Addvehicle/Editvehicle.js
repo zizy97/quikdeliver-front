@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
-//import * as React from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import * as React from "react";
+import { Box, Button, Grid,Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
-import Dlist from "./Dlist";
 import { useNavigate } from "react-router-dom";
-export default function Addnew() {
+export default function Editvehicle() {
   const navigate = useNavigate();
-  /**===================================================Image Upload=========================================================== */
-  const [selectedImage, setSelectedImage] = useState();
-
-  const imageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
-  };
-  /**const removeSelectedImage = () => {
-    setSelectedImage();
-  };*/
-  /**===================================================Image Upload=========================================================== */
   return (
     <Grid container direction={"row"}>
+    <Grid item lg={1} md={1} sm={1} xs={1}></Grid>
+    <Grid item lg={10} md={10} sm={10} xs={10}>
+    <Box
+      sx={{
+        backgroundColor: "white",
+        borderRadius: 2,
+        mt: 5,
+      }}
+    >
       <Grid item lg={12} md={12} sm={12} xs={12}>
+        <Typography variant="h4" color="primary.main" sx={{ p: 8}}>
+            Edit Vehicle Details
+        </Typography>
       <Box
           component="form"
           sx={{
@@ -33,20 +31,23 @@ export default function Addnew() {
           noValidate
           autoComplete="off"
         >
-          <TextField
+         <TextField
             id="outlined-basic"
             label="Enter vehicle Name"
             variant="outlined"
+            defaultValue="Van"
           />
           <TextField
             id="outlined-basic"
             label="Enter Vehicle Number"
             variant="outlined"
+            defaultValue="CQ1234"
           />
           <TextField
             id="outlined-basic"
             label="Enter Vehicle Color"
             variant="outlined"
+            defaultValue="White"
           />
 
           <TextField
@@ -54,56 +55,32 @@ export default function Addnew() {
             label="Enter Fuel Per 1km(L)"
             variant="outlined"
             type="number"
+            defaultValue="2"
           />
             <TextField
             id="outlined-basic"
             label="Enter Cost Per 1Km"
             variant="outlined"
             type="number"
+            defaultValue="400.00"
           />
             <TextField
             id="outlined-basic"
             label="Enter Other Details"
             variant="outlined"
-            type="number"
+            defaultValue="no"
           />
         </Box>
       </Grid>
       <Grid item lg={12} md={12} sm={12} xs={12} sx={{p:8}}>
-            <Button variant="contained" component="label" sx={{backgroundColor:'#708090'}}>
-              Upload Vehicle Image
-              <input hidden accept="image/*" multiple type="file"  onChange={imageChange} />
-            </Button>
-      </Grid>
-      <Grid item lg={12} md={12} sm={12} xs={12} sx={{pl:8,pr:8}}>
-        <Box sx={{p:1,border: '1px dashed grey',width:{lg:800,md:"100%",sm:"100%",xs:"100%"},height:400 }}>
-      {selectedImage && (
-          <div>
-            <img
-              src={URL.createObjectURL(selectedImage)}
-              alt="Thumb"
-              height="380px" 
-              width="100%"
-            />
-          </div>
-        )}
-        </Box>
-      </Grid>
-         
-           {/**   <Button variant="contained" sx={{ backgroundColor: "error.main",ml:30 }}component="label" onClick={removeSelectedImage}>
-              Remove Image
-            </Button>*/}
-      <Grid item lg={12} md={12} sm={12} xs={12} sx={{p:8}}>
-          <Typography   color="primary.main" variant="h6" sx={{mb:3}}>
-            Select Drivers to the vehicle from Driver list
-          </Typography>
-          <Dlist />
-          <Box>
+      <Box
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="flex-end">
           <Button
             variant="contained"
             sx={{
               textAlign: "right",
-              mt: 5,
               borderRadius: 40,
               backgroundColor: "primary.main",
               "&:hover": {
@@ -111,7 +88,7 @@ export default function Addnew() {
               },
             }}
           >
-            Add Vehicle
+          Edit Driver
           </Button>
           <Button
             onClick={() => {
@@ -122,7 +99,6 @@ export default function Addnew() {
               textAlign: "right",
               borderRadius: 40,
               ml: 1,
-              mt: 5,
               backgroundColor: "primary.main",
               "&:hover": {
                 backgroundColor: "primary.main",
@@ -133,6 +109,8 @@ export default function Addnew() {
           </Button>
         </Box>
       </Grid>
+    </Box>
+    </Grid>
     </Grid>
   );
 }

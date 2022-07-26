@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Grid, Button, TextField } from "@mui/material";
+import { Grid, Button, TextField} from "@mui/material";
 //=============model Dialolg box==========================================//
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -22,6 +22,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 //===========model Dialog box=============================================//
 import { useNavigate } from "react-router-dom";
+
 function createData(
   orderno,
   orderdate,
@@ -74,7 +75,6 @@ function Row(props) {
       size="small"
       sx={{
         borderRadius: 40,
-
         backgroundColor: "primary.main",
         "&:hover": {
           backgroundColor: "primary.main",
@@ -135,7 +135,7 @@ function Row(props) {
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead sx={{ height: 30 }}>
-                  <TableRow sx={{ backgroundColor: "grey" }}>
+                  <TableRow sx={{ backgroundColor: "#D4DCF7" }}>
                     <TableCell align="left">Delivery Date</TableCell>
                     <TableCell align="left">Reciever's Name</TableCell>
                     <TableCell align="left">Reciever's Tel.No</TableCell>
@@ -262,60 +262,7 @@ const rows = [
     500,
     100
   ),
-  createData(
-    "02",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "03",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "04",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "05",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "06",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
-  createData(
-    "07",
-    "2021-07-04",
-    "Saman Perera",
-    "0718462159",
-    "No 12 Nagolla matale",
-    500,
-    100
-  ),
+  
 ];
 
 export default function Newrequest() {
@@ -325,10 +272,16 @@ export default function Newrequest() {
         component="main"
         sx={{
           flexGrow: 1,
+          backgroundColor:"white",
+          p:{lg:4,xs:4},
+          mt:{lg:10,xs:5},
+          ml:{lg:4,xs:2},
+          mr:{lg:4,xs:2},
+          borderRadius:2
         }}
       >
-        <Typography variant="h4" sx={{ ml: 4, mt: 4 }}>
-          New Orders
+       <Typography variant="h3" >
+          NEW ORDER REQUESTS
         </Typography>
       </Grid>
 
@@ -341,7 +294,7 @@ export default function Newrequest() {
       >
         <TableContainer component={Paper}>
           <Table aria-label="collapsible table">
-            <TableHead sx={{ height: 80, backgroundColor: "#D4DCF7" }}>
+            <TableHead sx={{ height: 80, backgroundColor:"#D4DCF7" }}>
               <TableRow>
                 <TableCell />
                 <TableCell>Order No</TableCell>

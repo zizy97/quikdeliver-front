@@ -59,9 +59,10 @@ export default function Adddriver() {
             backgroundColor: "white",
             borderRadius: 2,
             mt: 5,
+            mb:5
           }}
         >
-          <Typography variant="h6" sx={{ p: 3, textAlign: "center" }}>
+          <Typography variant="h4" color="primary.main" sx={{ p: 8}}>
             Enter the Driver Details
           </Typography>{" "}
           {Svalue === "New" ? <Addnew /> : <Addregister />}

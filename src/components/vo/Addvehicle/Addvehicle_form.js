@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { Grid, Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Addnew from "../Addvehicle/Addnew";
@@ -20,14 +19,15 @@ export default function Adddriver() {
       ></Grid>
       <Grid item lg={1} md={1} sm={1} xs={1}></Grid>
       <Grid item lg={10} md={10} sm={10} xs={10}>
-        <Box
+      <Box
           sx={{
             backgroundColor: "white",
             borderRadius: 2,
             mt: 5,
+            mb:5
           }}
         >
-          <Typography variant="h6" sx={{ p: 3, textAlign: "center" }}>
+          <Typography variant="h4" color="primary.main" sx={{ p: 8}}>
             Enter the vehicle Details
           </Typography>{" "}
           <Addnew />

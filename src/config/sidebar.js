@@ -89,27 +89,27 @@ export const voItems = [
   {
     href: "/vo/requests",
     icon: <AssignmentTurnedInIcon />,
-    title: "Requests",
+    title: " Order Requests",
   },
   {
     href: "/vo/inprocess",
     icon: <HourglassTopIcon />,
-    title: "In Process",
+    title: "Pending Orders",
   },
   {
     href: "/vo/drivers",
     icon: <PersonIcon />,
-    title: "Drivers",
+    title: "Driver List",
   },
   {
     href: "/vo/vehicles",
     icon: <LocalShippingIcon />,
-    title: "Vehicles",
+    title: "Vehicle List",
   },
   {
     href: "/vo/history",
     icon: <HistoryIcon />,
-    title: "History",
+    title: "Order History",
   },
   {
     href: "/vo/account",

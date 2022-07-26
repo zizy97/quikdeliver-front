@@ -1,39 +1,64 @@
 import * as React from "react";
-
-import { Grid, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Grid, Box ,Button} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Orderdetails from "../Orderaccept/Orderdetails";
-
+import Assigning from "./Assigning";
+import Orderdetails from "./Orderdetails";
 export default function Adddriver() {
+  const navigate = useNavigate();
   return (
-    <Grid container direction={"row"}>
-      <Grid item lg={8} md={8} sm={12} xs={12}></Grid>
-      <Grid
-        item
-        lg={4}
-        md={4}
-        sm={12}
-        xs={12}
-        sx={{
-          textAlign: { xs: "center", sm: "center", lg: "left", md: "left" },
-        }}
-      ></Grid>
-      <Grid item lg={1} md={1} sm={1} xs={1}></Grid>
-      <Grid item lg={10} md={10} sm={10} xs={10}>
-        <Box
-          sx={{
-            backgroundColor: "white",
-            borderRadius: 2,
-            mt: 5,
+    <>
+    <Grid component="main" sx={{flexGrow: 1,backgroundColor:"white",p:{lg:8,xs:3,md:4},m:{lg:8,xs:2,md:5},borderRadius:2}}>
+      <Typography variant="h3" color="primary.main" sx={{  textAlign: "left" }}>
+        ORDER BOOKING DETAILS
+      </Typography>
+    <Grid item lg={12} md={12} sm={12} xs={12} mt={4} >
+      <Box>
+        <Orderdetails/>
+      </Box>
+    </Grid>
+    <Grid item lg={12} md={12} sm={12} xs={12} mt={4} >
+      <Assigning/>
+    </Grid>
+    <Grid item lg={12} md={12} sm={12} xs={12} mt={4} >
+      <Box
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="flex-end">
+          <Button
+           onClick={() => {
+            navigate("/vo/requests");
           }}
-        >
-          <Typography variant="h6" sx={{ p: 3, textAlign: "center" }}>
-            Order Details
-          </Typography>{" "}
-          <Orderdetails />
+            variant="contained"
+            sx={{
+              mr:2,
+              borderRadius: 40,
+              backgroundColor: "primary.main",
+              "&:hover": {
+                backgroundColor: "primary.main",
+              },
+            }}
+          >
+            Finish
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/vo/requests");
+            }}
+            variant="contained"
+            sx={{
+              borderRadius: 40,
+              backgroundColor: "primary.main",
+              "&:hover": {
+                backgroundColor: "primary.main",
+              },
+            }}
+          >
+            Cancel
+          </Button>
         </Box>
       </Grid>
-      <Grid item lg={1} md={1} sm={1} xs={1}></Grid>
     </Grid>
+    </>
   );
 }

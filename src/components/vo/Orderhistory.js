@@ -210,16 +210,6 @@ const rows = [
     "0741245126",
     "Deliverd"
   ),
-  createData(
-    "03",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "Deliverd"
-  ),
 ];
 
 export default function Newrequest() {
@@ -229,10 +219,16 @@ export default function Newrequest() {
         component="main"
         sx={{
           flexGrow: 1,
+          backgroundColor:"white",
+          p:{lg:4,xs:4},
+          mt:{lg:10,xs:5},
+          ml:{lg:4,xs:2},
+          mr:{lg:4,xs:2},
+          borderRadius:2
         }}
       >
-        <Typography variant="h4" sx={{ ml: 4, mt: 4 }}>
-          Orders History
+        <Typography variant="h3">
+          ORDER HISTORY
         </Typography>
       </Grid>
 

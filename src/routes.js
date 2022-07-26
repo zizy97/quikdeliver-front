@@ -44,6 +44,7 @@ import Vehiclesvo from "./pages/vo/Vehicles";
 import Orderaccept from "./components/vo/Orderaccept/Orderaccept";
 import Adddriver from "./components/vo/Adddriver/Adddriver_form";
 import Editdriver from "./components/vo/Adddriver/Editdriver";
+import Editvehicle from "./components/vo/Addvehicle/Editvehicle";
 import Addvehicle from "./components/vo/Addvehicle/Addvehicle_form";
 const routes = (isAuthenticated, roles) => [
   {
@@ -111,6 +112,10 @@ const routes = (isAuthenticated, roles) => [
   {
     path: "editdriver",
     element: <Editdriver />,
+  },
+  {
+    path: "editvehicle",
+    element: <Editvehicle />,
   },
   {
     path: "bookingservice",

@@ -233,60 +233,20 @@ const rows = [
   createData(
     "02",
     "2021-07-04",
-    "Saman Perera",
+    "Nihal Mendis",
     "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
-    "0741245126",
+    "Gimahana Dasanayake",
+    "998475123v",
+    "0762315126",
     "canceled"
   ),
   createData(
     "03",
     "2021-07-04",
-    "Saman Perera",
+    "Rohana Weerasinghe",
     "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "pending"
-  ),
-  createData(
-    "04",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "pending"
-  ),
-  createData(
-    "05",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "kumara dissanayake",
-    "958475123v",
-    "0741245126",
-    "Accepted"
-  ),
-  createData(
-    "06",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
-    "0741245126",
-    "pending"
-  ),
-  createData(
-    "07",
-    "2021-07-04",
-    "Saman Perera",
-    "0714512236",
-    "Kumara Dissanayake",
-    "958475123v",
+    "Malith Adikari",
+    "978475123v",
     "0741245126",
     "Accepted"
   ),
@@ -299,10 +259,16 @@ export default function Newrequest() {
         component="main"
         sx={{
           flexGrow: 1,
+          backgroundColor:"white",
+          p:{lg:4,xs:4},
+          mt:{lg:10,xs:5},
+          ml:{lg:4,xs:2},
+          mr:{lg:4,xs:2},
+          borderRadius:2
         }}
       >
-        <Typography variant="h4" sx={{ ml: 4, mt: 4 }}>
-          Orders in Process
+        <Typography variant="h3">
+         PENDING ORDERS
         </Typography>
       </Grid>
 
