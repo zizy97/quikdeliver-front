@@ -5,7 +5,6 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Radio from "@mui/material/Radio";
@@ -14,7 +13,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import Slide from "@mui/material/Slide";
 import Divider from "@mui/material/Divider";
 //--MUI--
 // =========Icons==========
@@ -24,6 +22,8 @@ import NoteAltIcon from "@mui/icons-material/NoteAlt";
 // =========Icons end==========
 
 // =========Import Component==========
+import TitleText from "./TitleText";
+import TextInput from "./TextInput";
 import FullScreenDialog from "./DeclarationForm";
 import Indicator from "../Indicator";
 import CircularIndicator from "../CircularIndicator";
@@ -191,7 +191,7 @@ function NewRequestDeliveryDetails(handleClickOpen) {
         sx={{
           bgcolor: "transparent",
           pb: 1,
-          pt: 1,
+          pt: 9,
         }}
       >
         <Grid>
@@ -222,11 +222,6 @@ function NewRequestDeliveryDetails(handleClickOpen) {
             </Grid>
           </Box>
         </Grid>
-        {/* <Grow
-          in={checked}
-          style={{ transformOrigin: "0 0 0" }}
-          {...(checked ? { timeout: 500 } : {})}
-        > */}
 
         <motion.div
           variants={containerVarients}
@@ -241,648 +236,453 @@ function NewRequestDeliveryDetails(handleClickOpen) {
                 justifyContent: "center",
               }}
             >
-              <Grid item xs={12}>
-                <Box
-                  sx={{
-                    minWidth: { lg: "275px" },
-                    maxHeight: {
-                      xs: "225px",
-                      sm: "225px",
-                      md: "223px",
-                      lg: "240px",
-                    },
-                    textAlign: "center",
-                    alignItems: "center",
-                    bgcolor: "transparent",
-                    mt: 0,
-                    pt: 2,
-                    pb: 0,
-                    mb: 0,
-                    borderRadius: 20,
-
-                    // borderColor: "#5E8FD4",
-                  }}
-                >
-                  <Card
-                    varient="container"
-                    ref={containerRef}
-                    elevation={0}
-                    sx={{
-                      bgcolor: "transparent",
-                    }}
-                  >
-                    <Typography
-                      color="text.primary"
-                      component="div"
-                      sx={{
-                        px: 10,
-                        pt: 0,
-                        fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
-                        fontWeight: 190,
-                      }}
-                    >
-                      Just tell us... <b>where do you want to </b>
-                    </Typography>
-                  </Card>
-                </Box>
-
-                <Box
-                  sx={{
-                    minWidth: { lg: "275px" },
-                    maxHeight: {
-                      xs: "225px",
-                      sm: "225px",
-                      md: "223px",
-                      lg: "240px",
-                    },
-                    textAlign: "center",
-                    alignItems: "center",
-                    bgcolor: "transparent",
-                    mt: 0,
-                    p: 2,
-                    pt: 0,
-                    mb: -12,
-                    borderRadius: 20,
-
-                    // borderColor: "#5E8FD4",
-                  }}
-                  ref={containerRef}
-                >
-                  <Card
-                    varient="container"
-                    ref={containerRef}
-                    elevation={0}
-                    sx={{
-                      bgcolor: "transparent",
-                    }}
-                  >
-                    <Typography
-                      color="text.primary"
-                      component="div"
-                      sx={{
-                        px: 10,
-                        pt: 0,
-                        fontSize: { lg: 35, md: 35, sm: 30, xs: 25 },
-                        fontWeight: 190,
-                      }}
-                    >
-                      <b>receive the parcel?</b>
-                    </Typography>
-                  </Card>
-                </Box>
-              </Grid>
+              <TitleText
+                marginBtm={-12.5}
+                text1={"Just tell us..."}
+                text2={"where do you want to"}
+                text4={"receive the parcel"}
+              />
             </Box>
           </Grid>
 
-          {/* =====Taking Delivery Location via radio button=====*/}
+          {/* =====Taking Delivery Location via radio button ending ===*/}
 
+          {/* form */}
           <Box
+            component="form"
+            onSubmit={handleSubmit}
             sx={{
               flexGrow: 1,
-              m: { lg: 4, md: 4, sm: 2, xs: 1 },
-              pt: 6, //overlapping
-              pb: 3,
               display: "flex",
-              background: "white",
-              justifyContent: "center",
+              background: "#D6EEF8",
+              my: 4,
+              px: 3,
+              py: 2,
               borderRadius: 1,
-              borderColor: "#3878FE",
-              alignContent: "center",
-              textAlign: "center",
-              bgcolor: "white",
               boxShadow: `0px 2px 8px rgba(100, 116, 139, 0.25)`,
             }}
-            onSubmit={handleSubmit}
-            container
-            variant="outlined"
-            component="form"
+            justifyContent="center"
           >
-            <FormControl
+            <Grid
+              container
+              spacing={{ xs: 0, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
               sx={{
+                alignItems: "center",
+                textAlign: "center",
                 justifyContent: "center",
               }}
             >
-              <RadioGroup
-                row
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={value}
-                onChange={handleChange}
-              >
-                <Grid container sx={{ textAlign: "center", pt: 3 }}>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <FormControlLabel
-                      value="myself"
-                      control={<Radio />}
-                      label="Delivery it to me"
-                      labelPlacement="bottom"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <FormControlLabel
-                      value="another"
-                      control={<Radio />}
-                      label="Delivery for another person"
-                      labelPlacement="bottom"
-                    />
-                  </Grid>
-                </Grid>
-              </RadioGroup>
-            </FormControl>
-          </Box>
-        </motion.div>
-        {/* =====Taking Delivery Location via radio button ending ===*/}
-        <motion.div
-          variants={containerVarients}
-          initial="hidden"
-          animate="visible"
-        >
-          <Box
-            sx={{
-              flexGrow: 1,
-              mt: 0,
-              m: { lg: 4, md: 4, sm: 2, xs: 1 },
-              mx: 4,
-              display: "flex",
-              background: "white",
-              textAlign: "center",
-              borderRadius: 1,
-              borderColor: "#3878FE",
-              boxShadow: `0px 2px 8px rgba(100, 116, 139, 0.25)`,
-            }}
-            container
-            variant="outlined"
-            direction={"row"}
-            justifyContent="center"
-          >
-            <Grid container spacing={0}>
-              {/* form */}
-              <Box
-                component="form"
-                onSubmit={handleSubmit}
-                container
-                variant="outlined"
-                direction={"row"}
-                sx={{
-                  display: "flex",
-                  background: "transparent",
-                  textAlign: "center",
-                  my: 4,
-                }}
-                justifyContent="center"
-              >
-                <Grid
-                  container
-                  rowSpacing={1}
-                  columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <FormControl
                   sx={{
-                    alignItems: "center",
-                    textAlign: "center",
                     justifyContent: "center",
+                    mt: 3,
+                    mb: 2,
                   }}
                 >
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <div>
-                      <Box>
-                        <Typography sx={{ fontSize: 30, fontWeight: 200 }}>
-                          Sender's Details
-                        </Typography>
-                      </Box>
-                      {/* ========Pickup address========= */}
-                      <TextField
-                        style={{
-                          backgroundColor: "#EFF0F3",
-                        }}
-                        id="outlined-textarea"
-                        label="Pickup Address*"
-                        placeholder="Placeholder"
-                        InputLabelProps={{
-                          style: {
-                            color: "#1964FF",
-                            fontWeight: 800,
-                          },
-                        }}
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        InputProps={{
-                          style: {
-                            borderRadius: 3,
-                            borderColor: "blue",
-                          },
-                          endAdornment: (
-                            <InputAdornment position="start" sx={{ mr: -1 }}>
-                              {/* <FileUploadIcon
-                                sx={{ color: "#1964FF", fontSize: 40 }}
-                              /> */}
-                              <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                              <lord-icon
-                                src="https://cdn.lordicon.com/ribwzplp.json"
-                                trigger="hover"
-                                colors="primary:#1663c7"
-                                state="hover-2"
-                                style={{ width: "50px", height: "50px" }}
-                              ></lord-icon>
-                            </InputAdornment>
-                          ),
-                        }}
-                        multiline
-                        maxRows={4}
-                        name="pickupAddress"
-                        value={values.pickupAddress}
-                        onChange={handleInputChange}
-                        size="large"
-                        margin="dense"
-                        helperText="Please enter Sender's Address"
-                      />
-                      {/* ========Pickup address========= */}
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-controlled-radio-buttons-group"
+                    name="controlled-radio-buttons-group"
+                    value={value}
+                    onChange={handleChange}
+                  >
+                    <Grid container sx={{ textAlign: "center", pt: 3 }}>
+                      <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <FormControlLabel
+                          value="myself"
+                          control={<Radio />}
+                          label="Delivery it to me"
+                          labelPlacement="bottom"
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <FormControlLabel
+                          value="another"
+                          control={<Radio />}
+                          label="Delivery for another person"
+                          labelPlacement="bottom"
+                        />
+                      </Grid>
+                    </Grid>
+                  </RadioGroup>
+                </FormControl>
+                <Divider variant="middle" />
+              </Grid>
 
-                      {/* =========Sender's Name========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Sender's Name*"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="senderName"
-                        value={values.senderName}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                      />
-                      {/* =========Sender's Name end========= */}
-                      {/* =========Sender's Contact Number========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Sender's Contact Number*"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="senderNumber"
-                        value={values.senderNumber}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                      />
-                      {/* =========Sender's Contact Number end========= */}
-                      {/* =========Sender's Alternative Contact Number========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Sender's Alternative Number"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="senderAlternativeNumber"
-                        value={values.senderAlternativeNumber}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                      />
-                      {/* =========Sender's Alternative Contact Number end========= */}
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={6} lg={6}>
-                    <div>
-                      <Box>
-                        <Typography sx={{ fontSize: 30, fontWeight: 200 }}>
-                          Receiver's Details
-                        </Typography>
-                      </Box>
-                      {/* ========Delivery address========= */}
-                      <TextField
-                        style={{
-                          backgroundColor: "#EFF0F3",
-                        }}
-                        id="custom-css-outlined-input"
-                        label="Delivery Address*"
-                        InputLabelProps={{
-                          style: {
-                            color: "#1964FF",
-                            fontWeight: 800,
-                          },
-                        }}
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                          borderRadius: 1,
-                        }}
-                        InputProps={{
-                          style: {
-                            borderRadius: 5,
-                            borderColor: "blue",
-                            bgcolor: "white",
-                          },
-                          endAdornment: (
-                            <InputAdornment position="start" sx={{ mr: -1 }}>
-                              {/* <DownloadIcon
+              <Grid item xs={12} sm={12} md={6} lg={6}>
+                <div>
+                  <Box>
+                    <Typography sx={{ fontSize: 30, fontWeight: 200 }}>
+                      Sender's Details
+                    </Typography>
+                  </Box>
+                  {/* ========Pickup address========= */}
+                  <motion.div whileHover={{ scale: 1.01 }}>
+                    <TextField
+                      style={{
+                        backgroundColor: "#FFFFFF",
+                      }}
+                      id="outlined-textarea"
+                      label="Pickup Address*"
+                      placeholder="Placeholder"
+                      InputLabelProps={{
+                        style: {
+                          color: "#1964FF",
+                          fontWeight: 800,
+                        },
+                      }}
+                      fullWidth
+                      sx={{ mx: 0, borderRadius: 1 }}
+                      InputProps={{
+                        style: {
+                          borderRadius: 3,
+                          borderColor: "blue",
+                        },
+                        endAdornment: (
+                          <InputAdornment position="start" sx={{ mr: -1 }}>
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon
+                              src="https://cdn.lordicon.com/ribwzplp.json"
+                              trigger="hover"
+                              colors="primary:#1663c7"
+                              state="hover-2"
+                              style={{ width: "40px", height: "40px" }}
+                            ></lord-icon>
+                          </InputAdornment>
+                        ),
+                      }}
+                      multiline
+                      maxRows={4}
+                      name="pickupAddress"
+                      value={values.pickupAddress}
+                      onChange={handleInputChange}
+                      size="large"
+                      margin="dense"
+                      helperText="Please enter Sender's Address"
+                    />
+                  </motion.div>
+                  {/* ========Pickup address========= */}
+
+                  {/* =========Sender's Name========= */}
+                  <TextInput
+                    maxRows={4}
+                    name="senderName"
+                    value={values.senderName}
+                    onChange={handleInputChange}
+                    label="Sender's Name*"
+                    id="outlined-textarea"
+                    InputLabelProps={{
+                      style: {
+                        color: "black",
+                      },
+                    }}
+                  />
+                  {/* =========Sender's Name end========= */}
+                  {/* =========Sender's Contact Number========= */}
+                  <TextInput
+                    maxRows={4}
+                    name="senderNumber"
+                    value={values.senderNumber}
+                    onChange={handleInputChange}
+                    label="Sender's Contact Number*"
+                    id="outlined-textarea"
+                    InputLabelProps={{
+                      style: {
+                        color: "black",
+                      },
+                    }}
+                  />
+                  {/* =========Sender's Contact Number end========= */}
+                  {/* =========Sender's Alternative Contact Number========= */}
+
+                  <TextInput
+                    maxRows={4}
+                    name="senderAlternativeNumber"
+                    value={values.senderAlternativeNumber}
+                    onChange={handleInputChange}
+                    label="Sender's Alternative Number"
+                    id="outlined-textarea"
+                    InputLabelProps={{
+                      style: {
+                        color: "black",
+                      },
+                    }}
+                  />
+
+                  {/* =========Sender's Alternative Contact Number end========= */}
+                </div>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={6} lg={6}>
+                <div>
+                  <Box>
+                    <Typography sx={{ fontSize: 30, fontWeight: 200 }}>
+                      Receiver's Details
+                    </Typography>
+                  </Box>
+                  {/* ========Delivery address========= */}
+                  <TextField
+                    style={{
+                      backgroundColor: "#FFFFFF",
+                    }}
+                    id="custom-css-outlined-input"
+                    label="Delivery Address*"
+                    InputLabelProps={{
+                      style: {
+                        color: "#1964FF",
+                        fontWeight: 800,
+                      },
+                    }}
+                    fullWidth
+                    sx={{ mx: 0, borderRadius: 1 }}
+                    InputProps={{
+                      style: {
+                        borderRadius: 5,
+                        borderColor: "blue",
+                        bgcolor: "white",
+                      },
+                      endAdornment: (
+                        <InputAdornment position="start" sx={{ mr: -1 }}>
+                          {/* <DownloadIcon
                                   sx={{ color: "#1964FF", fontSize: 40 }}
                                 /> */}
-                              <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                              <lord-icon
-                                src="https://cdn.lordicon.com/zvpyzhdi.json"
-                                trigger="hover"
-                                colors="primary:#3080e8"
-                                state="hover-2"
-                                style={{ width: "50px", height: "50px" }}
-                              ></lord-icon>
-                            </InputAdornment>
-                          ),
-                        }}
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={6}
-                        name="deliveryAddress"
-                        value={values.deliveryAddress}
-                        onChange={handleInputChange}
-                        size="large"
-                        margin="dense"
-                        helperText="Please enter Receiver's Address"
-                      />
-                      {/* ========Delivery address end========= */}
-                      {/* =========Receiver's Name========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Receiver's Name*"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="receiverName"
-                        value={values.receiverName}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                      />
-                      {/* =========Receiver's Name end========= */}
-                      {/* =========Receiver's Contact Number========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Receiver's Contact Number*"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="receiverNumber"
-                        value={values.receiverNumber}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                      />
-                      {/* =========Receiver's Contact Number end========= */}
-                      {/* =========Receiver's Alternative Contact Number========= */}
-                      <TextField
-                        sx={{
-                          minWidth: {
-                            lg: "450px",
-                            md: "400px",
-                            sm: "450px",
-                            xs: "300px",
-                          },
-                        }}
-                        // size="small"
-                        id="outlined-textarea"
-                        label="Receiver's Alternative Number"
-                        placeholder="Placeholder"
-                        multiline
-                        maxRows={4}
-                        name="receiverAlternativeNumber"
-                        value={values.receiverAlternativeNumber}
-                        onChange={handleInputChange}
-                        // onChange={handleChange}
-                        margin="dense"
-                      />
-                      {/* =========Receiver's Alternative Contact Number end========= */}
-                    </div>
-                  </Grid>
-                  {/* <Divider>CENTER</Divider> */}
-                  <Divider sx={{ color: "black" }} />
+                          <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                          <lord-icon
+                            src="https://cdn.lordicon.com/zvpyzhdi.json"
+                            trigger="hover"
+                            colors="primary:#3080e8"
+                            state="hover-2"
+                            style={{ width: "40px", height: "40px" }}
+                          ></lord-icon>
+                        </InputAdornment>
+                      ),
+                    }}
+                    placeholder="Placeholder"
+                    multiline
+                    maxRows={6}
+                    name="deliveryAddress"
+                    value={values.deliveryAddress}
+                    onChange={handleInputChange}
+                    size="large"
+                    margin="dense"
+                    helperText="Please enter Receiver's Address"
+                  />
+                  {/* ========Delivery address end========= */}
+                  {/* =========Receiver's Name========= */}
+                  <TextInput
+                    maxRows={4}
+                    name="receiverName"
+                    value={values.receiverName}
+                    onChange={handleInputChange}
+                    label="Receiver's Name*"
+                    id="outlined-textarea"
+                    InputLabelProps={{
+                      style: {
+                        color: "black",
+                      },
+                    }}
+                  />
 
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <div>
-                      <Box sx={{ mt: 3 }}>
-                        <Typography sx={{ fontSize: 30, fontWeight: 200 }}>
-                          Pickup Details
-                        </Typography>
-                      </Box>
-                      <Grid item xs={12} sm={12} md={12} lg={12}>
-                        {" "}
-                        {/* =========Description of item========= */}
-                        <TextField
-                          sx={{
-                            minWidth: {
-                              lg: "450px",
-                              md: "400px",
-                              sm: "450px",
-                              xs: "300px",
-                            },
-                          }}
-                          // size="small"
-                          id="outlined-textarea"
-                          label="Description Of the Item"
-                          placeholder="Placeholder"
-                          multiline
-                          maxRows={4}
-                          name="descriptionOfItem"
-                          value={values.descriptionOfItem}
-                          onChange={handleInputChange}
-                          // onChange={handleChange}
-                          margin="dense"
-                        />
-                        {/* =========Description of itam end========= */}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={12} lg={12}>
-                        {/* =========Pacage weight========= */}
-                        <TextField
-                          sx={{
-                            minWidth: {
-                              lg: "450px",
-                              md: "400px",
-                              sm: "450px",
-                              xs: "300px",
-                            },
-                            mx: 4,
-                          }}
-                          // size="small"
-                          id="outlined-textarea"
-                          label="Pacage Weight"
-                          placeholder="Placeholder"
-                          multiline
-                          maxRows={4}
-                          name="pacageWeight"
-                          value={values.pacageWeight}
-                          onChange={handleInputChange}
-                          // onChange={handleChange}
-                          margin="dense"
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="start">
-                                <ScaleIcon sx={{ color: "#FFBC39" }} />
-                              </InputAdornment>
-                            ),
-                          }}
-                        />
-                        {/* ========= Pacage weight end========= */}
-                        {/* =========Pacage Image========= */}
-                        <label htmlFor="contained-button-file">
-                          <Input
-                            accept="image/*"
-                            id="contained-button-file"
-                            multiple
-                            type="file"
-                          />
-                          <Button
-                            sx={{
-                              minWidth: {
-                                lg: "450px",
-                                md: "400px",
-                                sm: "450px",
-                                xs: "300px",
-                              },
-                              mx: 4,
-                              my: 1.3,
-                            }}
-                            variant="outlined"
-                            component="span"
-                            size="large"
-                            endIcon={
-                              <AddAPhotoIcon sx={{ color: "#FFBC39" }} />
-                            }
-                          >
-                            Pacage Image
-                          </Button>
-                        </label>
+                  {/* =========Receiver's Name end========= */}
+                  {/* =========Receiver's Contact Number========= */}
+                  <TextInput
+                    maxRows={4}
+                    name="receiverNumber"
+                    value={values.receiverNumber}
+                    onChange={handleInputChange}
+                    label="Receiver's Contact Number*"
+                    id="outlined-textarea"
+                    InputLabelProps={{
+                      style: {
+                        color: "black",
+                      },
+                    }}
+                  />
 
-                        {/* =========Pacage Image end========= */}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={12} lg={12}>
-                        {/* =========Special Notes========= */}
-                        <TextField
-                          sx={{
-                            minWidth: {
-                              lg: "90%",
-                              md: "90%",
-                              sm: "450px",
-                              xs: "300px",
-                            },
-                            mt: 1,
-                          }}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="start">
-                                <NoteAltIcon
-                                  sx={{ color: "#FFBC39", fontSize: 30 }}
-                                />
-                              </InputAdornment>
-                            ),
-                          }}
-                          id="outlined-textarea"
-                          label="Special Notes"
-                          placeholder="Placeholder"
-                          multiline
-                          maxRows={4}
-                          // onChange={handleChange}
-                          // size="small"
-                          margin="dense"
-                          helperText="Please mention about your parcel"
-                        />
-                        {/* =========Special Notes end========= */}
-                      </Grid>
-                    </div>
-                  </Grid>
+                  {/* =========Receiver's Contact Number end========= */}
+                  {/* =========Receiver's Alternative Contact Number========= */}
+                  <TextInput
+                    maxRows={4}
+                    name="receiverAlternativeNumber"
+                    value={values.receiverAlternativeNumber}
+                    onChange={handleInputChange}
+                    label="Receiver's Alternative Number"
+                    id="outlined-textarea"
+                    InputLabelProps={{
+                      style: {
+                        color: "black",
+                      },
+                    }}
+                  />
 
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    {/* =========submit button========= */}
-                    <FullScreenDialog />
-                    {/* =========submit button end========= */}
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    {/* =========submit button========= */}
-                    {/* ========Routing========== */}
-                    {/* <Link
-                        to="/customer/page2"
-                        style={{ textDecoration: "none", color: "white" }}
-                      > */}
+                  {/* =========Receiver's Alternative Contact Number end========= */}
+                </div>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Box sx={{ mt: 3 }}>
+                  <Typography sx={{ fontSize: 30, fontWeight: 200 }}>
+                    Pickup Details
+                  </Typography>
+                </Box>
+              </Grid>
+
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                sx={{ alignSelf: "flex-start" }}
+              >
+                {/* =========Description of item========= */}
+                <TextInput
+                  maxRows={4}
+                  name="descriptionOfItem"
+                  value={values.descriptionOfItem}
+                  onChange={handleInputChange}
+                  label="Description of the Item"
+                  id="outlined-textarea"
+                  InputLabelProps={{
+                    style: {
+                      color: "black",
+                    },
+                  }}
+                />
+
+                {/* =========Description of itam end========= */}
+                {/* =========Special Notes========= */}
+
+                <TextField
+                  style={{
+                    backgroundColor: "#FFFFFF",
+                    height: 217,
+                  }}
+                  fullWidth
+                  sx={{ mx: 0, borderRadius: 1 }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <NoteAltIcon sx={{ color: "#FFBC39", fontSize: 30 }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                  id="outlined-textarea"
+                  label="Special Notes"
+                  InputLabelProps={{
+                    style: {
+                      color: "black",
+                    },
+                  }}
+                  placeholder="Placeholder"
+                  multiline
+                  rows={8}
+                  maxRows={10}
+                  // onChange={handleChange}
+                  // size="small"
+                  margin="dense"
+                />
+                {/* =========Special Notes end========= */}
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                sx={{ alignSelf: "flex-start" }}
+              >
+                {/* =========Pacage weight========= */}
+                <TextInput
+                  maxRows={4}
+                  name="pacageWeight"
+                  value={values.pacageWeight}
+                  onChange={handleInputChange}
+                  label="Pacage Weight"
+                  id="outlined-textarea"
+                  InputLabelProps={{
+                    style: {
+                      color: "black",
+                    },
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <ScaleIcon sx={{ color: "#FFBC39" }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+
+                {/* ========= Pacage weight end========= */}
+                {/* =========Pacage Image========= */}
+                <Box sx={{ my: 1 }}>
+                  <label htmlFor="contained-button-file">
+                    <Input
+                      accept="image/*"
+                      id="contained-button-file"
+                      multiple
+                      type="file"
+                    />
                     <Button
-                      onClick={() => {
-                        navigate("/customer/page2");
+                      style={{
+                        backgroundColor: "#FFFFFF",
+                        color: "black",
+                        fontWeight: 400,
+                      }}
+                      fullWidth
+                      sx={{
+                        mx: 0,
+                        borderRadius: 1,
+                        height: 57,
                       }}
                       variant="contained"
-                      disableElevation
+                      component="span"
                       size="large"
-                      sx={{
-                        minWidth: {
-                          lg: "450px",
-                          md: "400px",
-                          sm: "450px",
-                          xs: "300px",
-                        },
-                        borderRadius: 10,
-                        py: 2,
-                        my: 1,
-                      }}
+                      endIcon={<AddAPhotoIcon sx={{ color: "#FFBC39" }} />}
                     >
-                      Done
+                      Pacage Image
                     </Button>
-                    {/* </Link> */}
-                    {/* =========submit button end========= */}
-                  </Grid>
-                </Grid>
-              </Box>
-              {/* form ending*/}
+                  </label>
+                </Box>
+
+                {/* =========Pacage Image end========= */}
+                {/* ===Upload image preview===*/}
+                <Box sx={{ width: "100%", height: 100 }}></Box>
+                {/* ===Upload image preview end=== */}
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                {/* =========submit button========= */}
+                <FullScreenDialog />
+                {/* =========submit button end========= */}
+              </Grid>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
+                {/* =========submit button========= */}
+                {/* ========Routing========== */}
+
+                <Button
+                  onClick={() => {
+                    navigate("/customer/page2");
+                  }}
+                  variant="contained"
+                  disableElevation
+                  size="large"
+                  type="submit"
+                  sx={{
+                    width: "20%",
+                    borderRadius: 10,
+                  }}
+                >
+                  Done
+                </Button>
+                {/* =========submit button end========= */}
+              </Grid>
             </Grid>
           </Box>
+          {/* form ending*/}
         </motion.div>
         {/* ===========form part ending========== */}
       </Container>

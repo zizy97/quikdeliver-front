@@ -66,7 +66,7 @@ function AccountProfile(props) {
           {...props}
           elevation={3}
           sx={{
-            backgroundColor: "#D3E2FF",
+            backgroundColor: "#D6EEF8",
             borderRadius: 1,
             // border: 1,
             // borderColor: "#5E8FD4",

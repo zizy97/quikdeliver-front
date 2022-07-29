@@ -1,0 +1,58 @@
+export const VehicleData = [
+  {
+    id: 1,
+    vehicleName: "Bike",
+    costPerKm: 350,
+    Vehicle: "Scooter",
+    Driver: "Saman Kumara",
+    description: "This Bike is awesome",
+    capasity: "100kg",
+    // ==========================
+    value: "a",
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": "a" },
+    size: "large",
+  },
+  {
+    id: 2,
+    vehicleName: "Car",
+    costPerKm: 550,
+    Vehicle: "Bicycle",
+    Driver: "Charitha Fernando",
+    description: "Impossible is nothing",
+    capasity: "300kg",
+    // ==========================
+    value: "b",
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": "b" },
+    size: "large",
+  },
+  {
+    id: 3,
+    vehicleName: "Sudu Van",
+    costPerKm: 650,
+    Vehicle: "Van",
+    Driver: "Sasindu Sesath",
+    description: "Hollo world",
+    capasity: "500kg",
+    // ==========================
+    value: "c",
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": "c" },
+    size: "large",
+  },
+  {
+    id: 4,
+    vehicleName: "Truck",
+    costPerKm: 950,
+    Vehicle: "Truck",
+    Driver: "Supun Sithara",
+    description: "Hollo world",
+    capasity: "5000kg",
+    // ==========================
+    value: "d",
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": "d" },
+    size: "large",
+  },
+];

@@ -58,7 +58,7 @@ function LinearProgressWithLabel(props) {
             },
             ml: 5,
             width: { lg: 500, md: 500, sm: 400, xs: 250 },
-            borderRadius: 0,
+            borderRadius: 2,
             border: 1,
             borderColor: "grey.500",
             height: 13,

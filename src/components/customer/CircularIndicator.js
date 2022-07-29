@@ -53,7 +53,7 @@ function CircularProgressWithLabel(props) {
         position: "fixed",
 
         top: { lg: "80%", md: "80%", sm: "80%", xs: "80%" },
-        left: { lg: "5%", md: "5%", sm: "5%", xs: "2%" },
+        left: { lg: "1.4%", md: "1.4%", sm: "1.4%", xs: "1.4%" },
       }}
     >
       <CircularProgress

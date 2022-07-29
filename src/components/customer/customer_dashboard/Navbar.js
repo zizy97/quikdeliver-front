@@ -8,7 +8,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { motion } from "framer-motion";
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
-  backgroundColor: "rgba(0, 0, 0, 0.3)",
+  backgroundColor: "rgba(188, 212, 222, 0.2)",
+  backgroundImage:
+    "linear-gradient(to top bottom , rgba(188, 212, 222, 0.2), rgba(188, 212, 222,0.0))",
+  backdropFilter: "blur(7px)",
   zIndex: 100000,
 }));
 

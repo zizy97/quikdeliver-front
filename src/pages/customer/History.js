@@ -7,7 +7,7 @@ function CustomerPage() {
     <div
       style={{
         // background: `url(${Img03})`,
-        background: "#E9EAEC",
+        background: "#D6EEF8",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

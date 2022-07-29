@@ -9,6 +9,8 @@ const AppProvider = ({ children }) => {
   // ====AppRating====
   const [appRating, setAppRating] = useState(false);
 
+  
+
   //---framer-motion---
   const containerVarients = {
     hidden: {

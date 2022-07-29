@@ -15,7 +15,7 @@ function CustomerPage() {
       // }}
       style={{
         // background: `url(${Img03})`,
-        background: "#E9EAEC",
+        background: "#BCD4DE",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

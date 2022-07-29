@@ -13,11 +13,12 @@ import Typography from "@mui/material/Typography";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
   },
   "& .MuiDialogActions-root": {
     padding: theme.spacing(1),
   },
+  zIndex:1000000
 }));
 
 const BootstrapDialogTitle = (props) => {
@@ -34,7 +35,6 @@ const BootstrapDialogTitle = (props) => {
             position: "absolute",
             right: 8,
             top: 8,
-
             color: "black",
             bgcolor: "#FD8686",
             borderRadius: 30,

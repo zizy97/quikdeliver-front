@@ -33,15 +33,8 @@ export default function FullScreenDialog() {
         disableElevation
         size="large"
         sx={{
-          minWidth: {
-            lg: "450px",
-            md: "400px",
-            sm: "450px",
-            xs: "300px",
-          },
+          width: "20%",
           borderRadius: 10,
-          py: 2,
-          my: 2,
           borderColor: "#FFBC39",
           hoverColor: "#FFBC39",
         }}
@@ -57,6 +50,7 @@ export default function FullScreenDialog() {
         TransitionComponent={Transition}
         sx={{
           backgroundColor: "white",
+          zIndex: 100000,
         }}
       >
         <AppBar sx={{ position: "relative", backgroundColor: "white" }}>

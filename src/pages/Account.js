@@ -27,7 +27,7 @@ function Account() {
         sx={{
           flexGrow: 1,
           py: 8,
-          background: "#ECF2FF",
+          background: "#BCD4DE",
         }}
       >
         <Container maxWidth="lg">

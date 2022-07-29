@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -12,6 +13,10 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 //===import Image===
 import Img from "../../../images/UnregisterCustomer.jpg";
+//===import Components
+import useForm from "./useForm";
+
+import axios from "axios";
 
 function Copyright(props) {
   const [first, setfirst] = useState(true);
@@ -31,9 +36,9 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="/">
         Quik
-      </Link>{" "}
+      </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -45,11 +50,60 @@ const theme = createTheme();
 export default function SignInSide() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
+    // if (
+    //   customer.name &&
+    //   customer.address &&
+    //   customer.email &&
+    //   customer.mobile
+    // ) {
+    //   // const newCustomer = { ...customer, id: new Date().getTime().toString() };
+    //   fetch("http://localhost:8082/api/customer", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(customer),
+    //   }).then(() => {
+    //     console.log("New customer added!");
+    //     console.log(customer);
+    //   });
+    // }
+    console.log(customer);
+
+    // axios
+    //   .post("http://localhost:8082/api/customer", customer)
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
+
+    fetch("http://localhost:8082/api/customer", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(customer),
+    })
+      .then((response) => Promise.all([response.json(), response.headers]))
+      .then(([body, headers]) =>
+        headers.forEach((element) => {
+          console.log(element);
+        })
+      );
+  };
+
+  const navigate = useNavigate();
+
+  const [customer, setCustomer] = useState({
+    name: "",
+    address: "",
+    email: "",
+    mobile: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCustomer({ ...customer, [name]: value });
   };
 
   return (
@@ -91,7 +145,7 @@ export default function SignInSide() {
               variant="h5"
               sx={{ fontWeight: 190 }}
             >
-              Give us <b>Few details abount you</b>
+              Give us <b>Few details about you</b>
             </Typography>
             <Box
               component="form"
@@ -106,6 +160,8 @@ export default function SignInSide() {
                 id="name"
                 label="Name"
                 name="name"
+                value={customer.name}
+                onChange={handleChange}
                 autoComplete="name"
                 autoFocus
               />
@@ -116,6 +172,8 @@ export default function SignInSide() {
                 id="address"
                 label="Address"
                 name="address"
+                value={customer.address}
+                onChange={handleChange}
                 autoComplete="address"
                 autoFocus
               />
@@ -126,6 +184,8 @@ export default function SignInSide() {
                 id="email"
                 label="Email Address"
                 name="email"
+                value={customer.email}
+                onChange={handleChange}
                 autoComplete="email"
                 autoFocus
               />
@@ -133,10 +193,13 @@ export default function SignInSide() {
                 margin="normal"
                 required
                 fullWidth
-                name="mobile number"
+                name="mobile"
+                value={customer.mobile}
+                onChange={handleChange}
                 label="mobile"
                 id="mobile"
                 autoComplete="telephone"
+                autoFocus
               />
               <FormControlLabel
                 control={
@@ -145,6 +208,11 @@ export default function SignInSide() {
                 label="Remember me"
               />
               <Button
+                // onClick={() => {
+                //    navigate("/customer/new-booking");
+                //   handleSubmit();
+                // }}
+                onClick={handleSubmit}
                 type="submit"
                 fullWidth
                 variant="contained"

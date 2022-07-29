@@ -103,7 +103,7 @@ const DashboardSidebar = (props) => {
         <Box sx={{ flexGrow: 1 }}>
           <motion.div variants={container} initial="hidden" animate="visible">
             {items.map((item) => (
-              <motion.div variants={itemChild}>
+              <motion.div variants={itemChild} key={item.title}>
                 <NavItem
                   key={item.title}
                   icon={item.icon}

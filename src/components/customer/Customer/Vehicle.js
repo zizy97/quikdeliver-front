@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 // MUI
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
 import Slider from "@mui/material/Slider";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -11,8 +12,10 @@ import Radio from "@mui/material/Radio";
 import CardMedia from "@mui/material/CardMedia";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-
 // MUI
+
+//==3rd party Library==
+import { motion } from "framer-motion";
 
 //========Vehicles Component===================
 function VehicleType({
@@ -27,6 +30,8 @@ function VehicleType({
   costPerKm,
   description,
   capasity,
+  setSelectedValue,
+  setDeliveryCost,
 }) {
   // const controlProps = (item) => ({
   //   checked: selectedValue === item,
@@ -45,7 +50,7 @@ function VehicleType({
 
     {
       value: 10000,
-      label: "100000 LKR",
+      label: "10000 LKR",
     },
   ];
 
@@ -75,18 +80,6 @@ function VehicleType({
     console.log(maxVal);
 
     setValueRanger([minVal, maxVal]);
-
-    // if (maxVal - minVal < minDistance) {
-    //   if (activeThumb === 0) {
-    //     const clamped = Math.min(minVal, 100 - minDistance);
-    //     setValueRanger([clamped, clamped + minDistance]);
-    //   } else {
-    //     const clamped = Math.max(maxVal, minDistance);
-    //     setValueRanger([clamped - minDistance, clamped]);
-    //   }
-    // } else {
-    //   setValueRanger(values);
-    // }
   };
 
   const handleChange = (event, newValue, activeThumb) => {
@@ -106,218 +99,217 @@ function VehicleType({
       setValueRanger(newValue);
     }
 
-     values.minValue=valueRanger[0];
+    values.minValue = valueRanger[0];
     values.maxValue = valueRanger[1];
-   
   };
   // ----Range Slider---
 
   return (
     <>
-      <Box sx={{ textAlign: "center" }}>
-        <Typography
-          component={"div"}
-          variant="h6"
-          sx={{
-            p: 0.5,
-            borderRadius: 4,
-            minWidth: 90,
-            background: "white",
-          }}
-        >
-          {Vehicle}
-          <Radio
-            checked={checked}
-            onChange={onChange}
-            value={value}
-            name={name}
-            inputProps={inputProps}
-
-            // size="large"
-            // {...controlProps("c")}
-            // sx={{
-            //   "& .MuiSvgIcon-root": {
-            //     fontSize: 28,
-            //   },
-            // }}
-          />
-        </Typography>
-      </Box>
-      {/* =========================================== */}
-      <Card
-        variant="outlined"
-        sx={{
-          bgcolor: "#ECF2FF",
-          // height: { xs: 270, sm: 200, md: 180, lg: 170 },
-          height: "100%",
-          // borderColor: "#FEA500",
-          "&:hover": { bgcolor: "#D9D9D9" },
-          elavation: 0,
-          width: "90%",
-          ml: "5%",
-          mt: 0,
-          display: "flex",
-          borderRadius: 1,
-          textAlign: "center",
-          justifyContent: "center",
+      <motion.div
+        whileHover={{
+          scale: 1.01,
         }}
       >
-        <Grid container>
-          <Grid
-            container
-            xs={12}
-            sm={12}
-            md={3}
-            lg={3}
-            sx={{ justifyContent: "center" }}
-          >
-            <CardMedia
-              component="img"
+        <Box sx={{ textAlign: "center" }}>
+          <Box>
+            <Grid
+              item
               sx={{
-                width: 100,
-                height: 100,
-                borderRadius: 20,
-                m: 1,
-              }}
-              image="/static/images/vehicles/veh-8.jpg"
-              alt="Live from space album cover"
-              objectFit="cover"
-            />
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            sm={12}
-            md={9}
-            lg={9}
-            sx={{ justifyContent: "center" }}
-          >
-            <CardContent
-              sx={{
-                py: 0,
-                p: 1,
+                m: 2,
+                mb: 0,
+                justifyContent: "left",
               }}
             >
-              {/* <Grid container alignItems="center">
-            <Grid item xs>
-              <Typography
-                gutterBottom
-                color="text.secondary"
-                component="div"
-                textAlign="left"
-              >
-                Cost per km :
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                gutterBottom
-                color="text.secondary"
-                component="div"
-                textAlign="right"
-              >
-                <b>{costPerKm}LKR</b>
-              </Typography>
-            </Grid>
-          </Grid> */}
-              <Typography component={"div"} variant="body2">
-                You can select a vehicle within following price range
-              </Typography>
-              {/* ===Range slider=== */}
-              <Slider
-                min={0}
-                step={1}
-                max={10000}
-                getAriaLabel={() => "Minimum distance shift"}
-                value={valueRanger}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-                valueLabelFormat={valueLabelFormat}
-                getAriaValueText={valueLabelFormat}
-                disableSwap
-                marks={marks}
-              />
-              {/* ===Range slider=== */}
-              <Grid
-                container
-                spacing={0.5}
+              <Paper
+                elevation={13}
                 sx={{
-                  alignItems: "center",
+                  bgcolor: "yellow",
+                  width: 100,
+                  height: 100,
+                  borderRadius: 20,
+                  mb: -9, //overlapping
+                  boxShadow: 3,
                 }}
               >
-                <Grid item>
-                  <TextField
-                    name="minValue"
-                    value={values.minValue}
-                    onChange={HandlePriceChange}
-                    sx={{ m: 1, width: 130 }}
-                    size="small"
-                    id="filled-password-input"
-                    label="Min"
-                    type="number"
-                    autoComplete="current-password"
-                    variant="outlined"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">LKR</InputAdornment>
-                      ),
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    sx={{
+                      width: 100,
+                      height: 100,
+                      borderRadius: 20,
                     }}
-                    helperText="Per KM"
+                    image="/static/images/vehicles/veh-8.jpg"
+                    alt="Live from space album cover"
                   />
-                </Grid>
-                <Grid item sx={{ mt: -3 }}>
-                  <p sx={{ width: 5 }}> to</p>
-                </Grid>
-                <Grid item>
-                  <TextField
-                    name="maxValue"
-                    value={values.maxValue}
-                    onChange={HandlePriceChange}
-                    sx={{ m: 1, width: 130 }}
-                    size="small"
-                    id="filled-password-input"
-                    label="Max"
-                    type="number"
-                    autoComplete="current-password"
-                    variant="outlined"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">LKR</InputAdornment>
-                      ),
-                    }}
-                    helperText="Per KM"
-                  />
-                </Grid>
-              </Grid>
+                </motion.div>
+              </Paper>
+            </Grid>
+          </Box>
+          <Typography
+            component={"div"}
+            variant="h6"
+            sx={{
+              p: 0.5,
+              borderRadius: 4,
+              background: "#D6EEF8",
+            }}
+          >
+            {Vehicle}
+            <Radio
+              checked={checked}
+              onChange={onChange}
+              value={value}
+              name={name}
+              inputProps={inputProps}
 
-              <Grid container alignItems="center">
-                <Grid item xs>
+              // size="large"
+              // {...controlProps("c")}
+              // sx={{
+              //   "& .MuiSvgIcon-root": {
+              //     fontSize: 28,
+              //   },
+              // }}
+            />
+          </Typography>
+        </Box>
+        {/* =========================================== */}
+
+        <Card
+          sx={{
+            bgcolor: "#FFFFFF",
+            height: "100%",
+            width: "100%",
+            mt: 0,
+            display: "flex",
+            borderRadius: 1,
+            textAlign: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Grid container>
+            <Grid container sx={{ justifyContent: "center" }}>
+              <CardContent
+                sx={{
+                  py: 0,
+
+                  justifyContent: "center",
+                }}
+              >
+                <Typography
+                  component={"div"}
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mt: 2 }}
+                >
+                  You can select a vehicle within following price range
+                </Typography>
+                {/* ===Range slider=== */}
+                <Slider
+                  min={0}
+                  step={1}
+                  max={10000}
+                  getAriaLabel={() => "Minimum distance shift"}
+                  value={valueRanger}
+                  onChange={handleChange}
+                  valueLabelDisplay="auto"
+                  valueLabelFormat={valueLabelFormat}
+                  getAriaValueText={valueLabelFormat}
+                  disableSwap
+                  marks={marks}
+                  // sx={{ mx: "10%" }}
+                />
+                {/* ===Range slider=== */}
+                <Grid
+                  container
+                  spacing={0.5}
+                  sx={{
+                    alignItems: "center",
+                  }}
+                >
+                  <Grid item lg={5} md={5} sm={12} xs={12}>
+                    <TextField
+                      style={{
+                        backgroundColor: "#EFF0F3",
+                      }}
+                      name="minValue"
+                      value={values.minValue}
+                      onChange={HandlePriceChange}
+                      sx={{ my: 1, width: "100%", borderRadius: 1 }}
+                      size="small"
+                      id="filled-password-input"
+                      label="Min"
+                      type="number"
+                      autoComplete="current-password"
+                      variant="outlined"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">LKR</InputAdornment>
+                        ),
+                      }}
+                      helperText="Per KM"
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    lg={2}
+                    md={2}
+                    sm={12}
+                    xs={12}
+                    sx={{ mt: -3, textAlign: "center" }}
+                  >
+                    <p sx={{ width: 5 }}> to</p>
+                  </Grid>
+                  <Grid item lg={5} md={5} sm={12} xs={12}>
+                    <TextField
+                      style={{
+                        backgroundColor: "#EFF0F3",
+                      }}
+                      name="maxValue"
+                      value={values.maxValue}
+                      onChange={HandlePriceChange}
+                      sx={{ my: 1, width: "100%", borderRadius: 1 }}
+                      size="small"
+                      id="filled-password-input"
+                      label="Max"
+                      type="number"
+                      autoComplete="current-password"
+                      variant="outlined"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">LKR</InputAdornment>
+                        ),
+                      }}
+                      helperText="Per KM"
+                    />
+                  </Grid>
+                </Grid>
+
+                <Grid
+                  container
+                  textAlign="center"
+                  sx={{ textAlign: "center", justifyContent: "center" }}
+                >
                   <Typography
-                    gutterBottom
+                    variant="body2"
                     color="text.secondary"
                     component="div"
-                    textAlign="left"
+                    textAlign="center"
                   >
-                    Max Weight :
+                    Max Weight :{capasity}
                   </Typography>
                 </Grid>
-                <Grid item>
-                  <Typography
-                    gutterBottom
-                    color="text.secondary"
-                    component="div"
-                    textAlign="right"
-                  >
-                    <b>{capasity}</b>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </CardContent>
+              </CardContent>
+            </Grid>
           </Grid>
-        </Grid>
-
-        {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
-      </Card>
+          {/* <Divider orientation="vertical" variant="middle" flexItem /> */}
+        </Card>
+      </motion.div>
     </>
   );
 }
