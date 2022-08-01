@@ -51,8 +51,10 @@ import Customer3 from "./pages/customer/Customer3";
 import Map from "./pages/customer/Map";
 import UnregisteredCustomerDetails from "./pages/customer/UnregisteredCustomer";
 import Login from "./pages/admin/Login";
+import Test from "./test/Test";
 
 const routes = (isAuthenticated) => [
+  { path: "test",element: <Test />},
   {
     path: "",
     element: <DefaultLayout />,

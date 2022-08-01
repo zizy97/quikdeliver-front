@@ -34,7 +34,7 @@ export default function PackageRequest() {
   const [files, setFiles] = useState([]);
   const [filesU, setFilesU] = useState({});
   const [loading, setLoading] = useState(false);
-  const [country, setCountry] = useState("sl");
+  const [country, setCountry] = useState("lk");
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [distance, setDistance] = useState({ text: "0", value: 0 });
@@ -47,15 +47,17 @@ export default function PackageRequest() {
   const datePickerRef = useRef();
 
   const { ref: pickupAddressRef } = usePlacesWidget({
-    apiKey: { GoogleMap_API_KEY },
-    onPlaceSelected: (place) => {
+    apiKey: GoogleMap_API_KEY,
+    onPlaceSelected: (place, ref) => {
       if (!place.address_components || place.address_components.length < 2) {
         pickupAddressRef.current.value = "";
         return;
       }
       // console.log(place.address_components);
+      console.log(place);
       setOrigin(place.formatted_address);
       setFormattedPickupAddress(place.formatted_address);
+      ref ="hjjhh"
     },
     inputAutocompleteValue: "country",
     options: {
@@ -65,7 +67,7 @@ export default function PackageRequest() {
   });
 
   const { ref: dropoffAddressRef } = usePlacesWidget({
-    apiKey: { GoogleMap_API_KEY },
+    apiKey: GoogleMap_API_KEY,
     onPlaceSelected: (place) => {
       if (!place.address_components || place.address_components.length < 2) {
         dropoffAddressRef.current.value = "";
@@ -74,9 +76,9 @@ export default function PackageRequest() {
       setDestination(place.formatted_address);
       setFormattedDropoffAddress(place.formatted_address);
     },
-    inputAutocompleteValue: "country",
+    // inputAutocompleteValue: "country",
     options: {
-      types: ["address"],
+      types: ["(cities)"],
       componentRestrictions: { country },
     },
   });
@@ -202,7 +204,7 @@ export default function PackageRequest() {
                 customerEmail: values.email,
               },
               // pickupAddress: formattedPickupAddress,
-              // dropOffAddress: formattedDropoffAddress,              
+              // dropOffAddress: formattedDropoffAddress,
               pickupAddress: "Sample pickup address",
               dropOffAddress: "Sample dropoff address",
               specialRemarks: values.specialRemarks,
@@ -272,7 +274,7 @@ export default function PackageRequest() {
                 lg={6}
                 md={6}
                 sm={6}
-                sx={{ backgroundColor: "white", p: 2,borderRadius: 2 }}
+                sx={{ backgroundColor: "white", p: 2, borderRadius: 2 }}
               >
                 <TextField
                   sx={{ m: 1, minWidth: 200, width: "20%" }}
@@ -369,7 +371,7 @@ export default function PackageRequest() {
                 lg={6}
                 md={6}
                 sm={12}
-                sx={{ backgroundColor: "white", p: 2,borderRadius: 2 }}
+                sx={{ backgroundColor: "white", p: 2, borderRadius: 2 }}
               >
                 <TextField
                   sx={{ m: 1, minWidth: 200, width: "40%" }}
@@ -410,6 +412,7 @@ export default function PackageRequest() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   inputRef={dropoffAddressRef}
+                  value={values.dropOffAddress}
                 />
                 <TextField
                   sx={{ m: 1, minWidth: 100, width: "10%" }}
@@ -442,7 +445,7 @@ export default function PackageRequest() {
                 lg={6}
                 md={6}
                 sm={12}
-                sx={{ backgroundColor: "white", p: 2,borderRadius: 2 }}
+                sx={{ backgroundColor: "white", p: 2, borderRadius: 2 }}
               >
                 <TextField
                   sx={{ m: 1 }}
@@ -512,7 +515,7 @@ export default function PackageRequest() {
                 lg={6}
                 md={6}
                 sm={12}
-                sx={{ backgroundColor: "white", p: 2,borderRadius: 2 }}
+                sx={{ backgroundColor: "white", p: 2, borderRadius: 2 }}
               >
                 <TextField
                   sx={{ m: 1, minWidth: 200, width: "75%" }}
@@ -610,7 +613,7 @@ export default function PackageRequest() {
                 lg={6}
                 md={6}
                 sm={12}
-                sx={{ backgroundColor: "white", p: 2,borderRadius: 2 }}
+                sx={{ backgroundColor: "white", p: 2, borderRadius: 2 }}
               >
                 <FileUpload
                   accept=".jpg,.png,.jpeg"

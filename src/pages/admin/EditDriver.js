@@ -18,6 +18,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import ConfirmDialog from "../../components/dialog/InformationDialog";
 import { usePlacesWidget } from "react-google-autocomplete";
+import { GoogleMap_API_KEY } from "../../config/keys";
 
 const EditDriver = () => {
   const driverService = new DriverService();
@@ -37,7 +38,7 @@ const EditDriver = () => {
 
   const [formattedAddress, setFormattedAddress] = useState("");
   const [origin, setOrigin] = useState("");
-  const [country, setCountry] = useState("sl");
+  const [country, setCountry] = useState("lk");
 
   const [showModal, setShowModal] = useState(false);
 
@@ -55,7 +56,7 @@ const EditDriver = () => {
   },[]);
 
   const { ref: addressRef } = usePlacesWidget({
-    apiKey: "AIzaSyDpL0YWqm79YWD9b0SwEdrrWtrHFxNjXg8",
+    apiKey: GoogleMap_API_KEY,
     onPlaceSelected: (place) => {
       if (!place.address_components || place.address_components.length < 2) {
         addressRef.current.value = "";
