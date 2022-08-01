@@ -33,12 +33,12 @@ const AddDriver = (props) => {
 
   const [formattedAddress, setFormattedAddress] = useState("");
   const [origin, setOrigin] = useState("");
-  const [country, setCountry] = useState("au");
+  const [country, setCountry] = useState("lk");
 
   const [showModal, setShowModal] = useState(false);
 
   const { ref: addressRef } = usePlacesWidget({
-    apiKey: { GoogleMap_API_KEY },
+    apiKey: GoogleMap_API_KEY,
     onPlaceSelected: (place) => {
       if (!place.address_components || place.address_components.length < 2) {
         addressRef.current.value = "";
